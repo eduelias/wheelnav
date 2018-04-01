@@ -15,7 +15,7 @@
 /* Documentation: http://wheelnavjs.softwaretailoring.net/documentation/core.html          */
 /* ======================================================================================= */
 
-wheelnav = function (divId, raphael, divWidth, divHeight) {
+wheelnav = function(divId, raphael, divWidth, divHeight) {
 
     this.holderId = "wheel";
 
@@ -27,12 +27,12 @@ wheelnav = function (divId, raphael, divWidth, divHeight) {
     var holderDiv = document.getElementById(divId);
 
     if ((holderDiv === null ||
-        holderDiv === undefined) &&
+            holderDiv === undefined) &&
         (raphael === undefined ||
-        raphael === null)) {
+            raphael === null)) {
         return this;
     }
-    
+
     //Prepare raphael object and set the width
     var canvasWidth;
     var clearContent = true;
@@ -59,15 +59,13 @@ wheelnav = function (divId, raphael, divWidth, divHeight) {
             }
             this.raphael = new Raphael(divId, divWidth, divHeight);
             canvasWidth = divWidth;
-        }
-        else {
+        } else {
             this.raphael = new Raphael(divId);
             canvasWidth = holderDiv.clientWidth;
         }
 
         this.raphael.setViewBox(0, 0, this.raphael.width, this.raphael.height, true);
-    }
-    else {
+    } else {
         //The divId parameter has to be the identifier of the wheelnav in this case.
         this.raphael = raphael;
         canvasWidth = this.raphael.width;
@@ -109,10 +107,11 @@ wheelnav = function (divId, raphael, divWidth, divHeight) {
     this.navItemCountLabelOffset = 0;
     this.navItems = [];
     this.navItemsEnabled = true;
+    this.navAction = null;
     this.animateFinishFunction = null;
 
     // These settings are useful when navItem.sliceAngle < 360 / this.navItemCount
-    this.navItemsContinuous = false; 
+    this.navItemsContinuous = false;
     this.navItemsCentered = true; // This is reasoned when this.navItemsContinuous = false;
 
     this.colors = colorpalette.defaultpalette;
@@ -157,7 +156,7 @@ wheelnav = function (divId, raphael, divWidth, divHeight) {
     this.slicePathAttr = null;
     this.sliceHoverAttr = null;
     this.sliceSelectedAttr = null;
-    
+
     this.titleFont = '100 24px Impact, Charcoal, sans-serif';
     this.titleAttr = null;
     this.titleHoverAttr = null;
@@ -189,8 +188,7 @@ wheelnav = function (divId, raphael, divWidth, divHeight) {
     this.animatetime = null;
     if (slicePath()["PieSlice"] !== undefined) {
         this.slicePathFunction = slicePath().PieSlice;
-    }
-    else {
+    } else {
         this.slicePathFunction = slicePath().NullSlice;
     }
     this.sliceClickablePathFunction = null;
@@ -214,7 +212,7 @@ wheelnav = function (divId, raphael, divWidth, divHeight) {
     return this;
 };
 
-wheelnav.prototype.initWheel = function (titles) {
+wheelnav.prototype.initWheel = function(titles) {
 
     //Init slices and titles
     this.styleWheel();
@@ -229,8 +227,7 @@ wheelnav.prototype.initWheel = function (titles) {
         }
 
         this.navItemCount = titles.length;
-    }
-    else {
+    } else {
         titles = null;
     }
 
@@ -240,12 +237,8 @@ wheelnav.prototype.initWheel = function (titles) {
 
         if (this.navItemCountLabeled) {
             itemTitle = (i + this.navItemCountLabelOffset).toString();
-        }
-        else {
-            if (titles !== null)
-                { itemTitle = titles[i]; }
-            else
-                { itemTitle = ""; }
+        } else {
+            if (titles !== null) { itemTitle = titles[i]; } else { itemTitle = ""; }
         }
 
         navItem = new wheelnavItem(this, itemTitle, i);
@@ -257,17 +250,16 @@ wheelnav.prototype.initWheel = function (titles) {
     for (i = 0; i < this.navItems.length; i++) {
         this.navItems[i].fillAttr = this.colors[colorIndex];
         colorIndex++;
-        if (colorIndex === this.colors.length) { colorIndex = 0;}
+        if (colorIndex === this.colors.length) { colorIndex = 0; }
     }
 };
 
-wheelnav.prototype.createWheel = function (titles, withSpread) {
+wheelnav.prototype.createWheel = function(titles, withSpread) {
 
     if (this.currentPercent === null) {
         if (withSpread) {
             this.currentPercent = this.minPercent;
-        }
-        else {
+        } else {
             this.currentPercent = this.maxPercent;
         }
     }
@@ -295,7 +287,7 @@ wheelnav.prototype.createWheel = function (titles, withSpread) {
             }
         }
 
-        keyelement.addEventListener("keydown", this.keyNavigateFunction =  function (e) {
+        keyelement.addEventListener("keydown", this.keyNavigateFunction = function(e) {
             e = e || window.e;
             var keyCodeEvent = e.which || e.keyCode;
             if ([thiswheelnav.keynavigateDownCode, thiswheelnav.keynavigateDownCodeAlt, thiswheelnav.keynavigateUpCode, thiswheelnav.keynavigateUpCodeAlt].indexOf(e.keyCode) > -1) {
@@ -307,25 +299,28 @@ wheelnav.prototype.createWheel = function (titles, withSpread) {
             if (keyCodeEvent === thiswheelnav.keynavigateUpCode || keyCodeEvent === thiswheelnav.keynavigateUpCodeAlt) {
                 if (thiswheelnav.currentClick === thiswheelnav.navItemCount - 1) {
                     keynavigate = 0;
-                }
-                else {
+                } else {
                     keynavigate = thiswheelnav.currentClick + 1;
                 }
             }
             if (keyCodeEvent === thiswheelnav.keynavigateDownCode || keyCodeEvent === thiswheelnav.keynavigateDownCodeAlt) {
                 if (thiswheelnav.currentClick === 0) {
                     keynavigate = thiswheelnav.navItemCount - 1;
-                }
-                else {
+                } else {
                     keynavigate = thiswheelnav.currentClick - 1;
                 }
             }
 
             if (keynavigate !== null) {
                 thiswheelnav.navigateWheel(keynavigate);
+                e.tartgetItem = thiswheelnav.navItems[keynavigate];
 
                 if (thiswheelnav.navItems[keynavigate].navigateFunction !== null) {
-                    thiswheelnav.navItems[keynavigate].navigateFunction();
+                    thiswheelnav.navItems[keynavigate].navigateFunction(e);
+                }
+
+                if (thiswheelnav.navAction) {
+                    thiswheelnav.navAction(e, [thiswheelnav, keynavigate]);
                 }
             }
         });
@@ -344,7 +339,7 @@ wheelnav.prototype.createWheel = function (titles, withSpread) {
     return this;
 };
 
-wheelnav.prototype.removeWheel = function () {
+wheelnav.prototype.removeWheel = function() {
     this.raphael.remove();
 
     if (this.keynavigateEnabled) {
@@ -361,7 +356,7 @@ wheelnav.prototype.removeWheel = function () {
     }
 };
 
-wheelnav.prototype.refreshWheel = function (withPathAndTransform) {
+wheelnav.prototype.refreshWheel = function(withPathAndTransform) {
 
     for (i = 0; i < this.navItemCount; i++) {
         var navItem = this.navItems[i];
@@ -373,7 +368,7 @@ wheelnav.prototype.refreshWheel = function (withPathAndTransform) {
     this.spreader.setCurrentTransform();
 };
 
-wheelnav.prototype.navigateWheel = function (clicked) {
+wheelnav.prototype.navigateWheel = function(clicked) {
 
     this.animateUnlock(true);
 
@@ -395,8 +390,7 @@ wheelnav.prototype.navigateWheel = function (clicked) {
                 navItem.selected = true;
                 this.selectedNavItemIndex = i;
             }
-        }
-        else {
+        } else {
             if (!this.multiSelect) {
                 navItem.selected = false;
             }
@@ -418,8 +412,7 @@ wheelnav.prototype.navigateWheel = function (clicked) {
             var currentAnimateTime;
             if (this.animatetime != null) {
                 currentAnimateTime = this.animatetime;
-            }
-            else {
+            } else {
                 currentAnimateTime = 1500;
             }
 
@@ -429,8 +422,7 @@ wheelnav.prototype.navigateWheel = function (clicked) {
             }
 
             if (this.rotateRoundCount > 0) {
-                if (this.clockwise) { navItem.currentRotateAngle -= this.rotateRoundCount * 360; }
-                else { navItem.currentRotateAngle += this.rotateRoundCount * 360; }
+                if (this.clockwise) { navItem.currentRotateAngle -= this.rotateRoundCount * 360; } else { navItem.currentRotateAngle += this.rotateRoundCount * 360; }
 
                 navItem.animatetime = currentAnimateTime * (this.rotateRoundCount + 1);
             }
@@ -448,20 +440,18 @@ wheelnav.prototype.navigateWheel = function (clicked) {
     if (this.clickModeSpreadOff) {
         this.currentPercent = this.maxPercent;
         this.spreadWheel();
-    }
-    else {
+    } else {
         if (clicked !== null &&
             !this.clickModeRotate) {
             this.marker.setCurrentTransform(this.navItems[this.currentClick].navAngle);
-        }
-        else {
+        } else {
             this.marker.setCurrentTransform();
         }
         this.spreader.setCurrentTransform(true);
     }
 };
 
-wheelnav.prototype.spreadWheel = function () {
+wheelnav.prototype.spreadWheel = function() {
 
     this.animateUnlock(true);
     this.animateLocked = true;
@@ -469,8 +459,7 @@ wheelnav.prototype.spreadWheel = function () {
     if (this.currentPercent === this.maxPercent ||
         this.currentPercent === null) {
         this.currentPercent = this.minPercent;
-    }
-    else {
+    } else {
         this.currentPercent = this.maxPercent;
     }
 
@@ -486,9 +475,9 @@ wheelnav.prototype.spreadWheel = function () {
     return this;
 };
 
-wheelnav.prototype.animateUnlock = function (force, withFinishFunction) {
+wheelnav.prototype.animateUnlock = function(force, withFinishFunction) {
 
-    if (force !== undefined && 
+    if (force !== undefined &&
         force === true) {
         for (var f = 0; f < this.navItemCount; f++) {
             this.navItems[f].navSliceUnderAnimation = false;
@@ -502,8 +491,7 @@ wheelnav.prototype.animateUnlock = function (force, withFinishFunction) {
                 this.navItems[f].navTitlePath.stop();
             }
         }
-    }
-    else {
+    } else {
         for (var i = 0; i < this.navItemCount; i++) {
             if (this.navItems[i].navSliceUnderAnimation === true ||
                 this.navItems[i].navTitleUnderAnimation === true ||
@@ -522,7 +510,7 @@ wheelnav.prototype.animateUnlock = function (force, withFinishFunction) {
     }
 };
 
-wheelnav.prototype.setTooltips = function (tooltips) {
+wheelnav.prototype.setTooltips = function(tooltips) {
     if (tooltips !== undefined &&
         tooltips !== null &&
         Array.isArray(tooltips) &&
@@ -533,30 +521,30 @@ wheelnav.prototype.setTooltips = function (tooltips) {
     }
 };
 
-wheelnav.prototype.getItemId = function (index) {
+wheelnav.prototype.getItemId = function(index) {
     return "wheelnav-" + this.holderId + "-item-" + index;
 };
-wheelnav.prototype.getSliceId = function (index) {
+wheelnav.prototype.getSliceId = function(index) {
     return "wheelnav-" + this.holderId + "-slice-" + index;
 };
-wheelnav.prototype.getClickableSliceId = function (index) {
+wheelnav.prototype.getClickableSliceId = function(index) {
     return "wheelnav-" + this.holderId + "-clickableslice-" + index;
 };
-wheelnav.prototype.getTitleId = function (index) {
+wheelnav.prototype.getTitleId = function(index) {
     return "wheelnav-" + this.holderId + "-title-" + index;
 };
-wheelnav.prototype.getTitlePathId = function (index) {
+wheelnav.prototype.getTitlePathId = function(index) {
     return "wheelnav-" + this.holderId + "-titlepath-" + index;
 };
-wheelnav.prototype.getLineId = function (index) {
+wheelnav.prototype.getLineId = function(index) {
     return "wheelnav-" + this.holderId + "-line-" + index;
 };
-wheelnav.prototype.getSpreaderId = function () {
+wheelnav.prototype.getSpreaderId = function() {
     return "wheelnav-" + this.holderId + "-spreader";
 };
-wheelnav.prototype.getSpreaderTitleId = function () {
+wheelnav.prototype.getSpreaderTitleId = function() {
     return "wheelnav-" + this.holderId + "-spreadertitle";
 };
-wheelnav.prototype.getMarkerId = function () {
+wheelnav.prototype.getMarkerId = function() {
     return "wheelnav-" + this.holderId + "-marker";
 };
