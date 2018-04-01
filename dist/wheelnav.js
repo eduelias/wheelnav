@@ -1,5 +1,8403 @@
-(function(n){var o="0.4.2",e="hasOwnProperty",f=/[\.\/]/,s="*",h=function(){},c=function(n,t){return n-t},r,i,u={n:{}},t=function(n,f){var o,p;n=String(n);var k=u,w=i,v=Array.prototype.slice.call(arguments,2),s=t.listeners(n),a=0,e,l=[],y={},h=[],b=r;for(r=n,i=0,o=0,p=s.length;o<p;o++)"zIndex"in s[o]&&(l.push(s[o].zIndex),s[o].zIndex<0&&(y[s[o].zIndex]=s[o]));for(l.sort(c);l[a]<0;)if(e=y[l[a++]],h.push(e.apply(f,v)),i)return i=w,h;for(o=0;o<p;o++)if(e=s[o],"zIndex"in e)if(e.zIndex==l[a]){if(h.push(e.apply(f,v)),i)break;do if(a++,e=y[l[a]],e&&h.push(e.apply(f,v)),i)break;while(e)}else y[e.zIndex]=e;else if(h.push(e.apply(f,v)),i)break;return i=w,r=b,h.length?h:null};t._events=u;t.listeners=function(n){for(var a=n.split(f),t=u,i,v,o,e,p,h,c=[t],l=[],r=0,y=a.length;r<y;r++){for(h=[],e=0,p=c.length;e<p;e++)for(t=c[e].n,v=[t[a[r]],t[s]],o=2;o--;)i=v[o],i&&(h.push(i),l=l.concat(i.f||[]));c=h}return l};t.on=function(n,t){var e,i,r,o;if(n=String(n),typeof t!="function")return function(){};for(e=n.split(f),i=u,r=0,o=e.length;r<o;r++)i=i.n,i=i.hasOwnProperty(e[r])&&i[e[r]]||(i[e[r]]={n:{}});for(i.f=i.f||[],r=0,o=i.f.length;r<o;r++)if(i.f[r]==t)return h;return i.f.push(t),function(n){+n==+n&&(t.zIndex=+n)}};t.f=function(n){var i=[].slice.call(arguments,1);return function(){t.apply(null,[n,null].concat(i).concat([].slice.call(arguments,0)))}};t.stop=function(){i=1};t.nt=function(n){return n?new RegExp("(?:\\.|\\/|^)"+n+"(?:\\.|\\/|$)").test(r):r};t.nts=function(){return r.split(f)};t.off=t.unbind=function(n,i){var a,r,h,v,c,p,o,w,l,y;if(!n){t._events=u={n:{}};return}for(a=n.split(f),l=[u],c=0,p=a.length;c<p;c++)for(o=0;o<l.length;o+=v.length-2){if(v=[o,1],r=l[o].n,a[c]!=s)r[a[c]]&&v.push(r[a[c]]);else for(h in r)r[e](h)&&v.push(r[h]);l.splice.apply(l,v)}for(c=0,p=l.length;c<p;c++)for(r=l[c];r.n;){if(i){if(r.f){for(o=0,w=r.f.length;o<w;o++)if(r.f[o]==i){r.f.splice(o,1);break}r.f.length||delete r.f}for(h in r.n)if(r.n[e](h)&&r.n[h].f){for(y=r.n[h].f,o=0,w=y.length;o<w;o++)if(y[o]==i){y.splice(o,1);break}y.length||delete r.n[h].f}}else{delete r.f;for(h in r.n)r.n[e](h)&&r.n[h].f&&delete r.n[h].f}r=r.n}};t.once=function(n,i){var r=function(){return t.unbind(n,r),i.apply(this,arguments)};return t.on(n,r)};t.version=o;t.toString=function(){return"You are running Eve "+o};typeof module!="undefined"&&module.exports?module.exports=t:typeof define!="undefined"?define("eve",[],function(){return t}):n.eve=t})(window||this),function(n,t){typeof define=="function"&&define.amd?define(["eve"],function(i){return t(n,i)}):t(n,n.eve)}(this,function(n,t){function i(n){var r,u;return i.is(n,"function")?ai?n():t.on("raphael.DOMload",n):i.is(n,tt)?i._engine.create[v](i,n.splice(0,3+i.is(n[0],p))).add(n):(r=Array.prototype.slice.call(arguments,0),i.is(r[r.length-1],"function")?(u=r.pop(),ai?u.call(i._engine.create[v](i,r)):t.on("raphael.DOMload",function(){u.call(i._engine.create[v](i,r))})):i._engine.create[v](i,arguments))}function pt(n){var i,t;if(typeof n=="function"||Object(n)!==n)return n;i=new n.constructor;for(t in n)n[a](t)&&(i[t]=pt(n[t]));return i}function sf(n,t){for(var i=0,r=n.length;i<r;i++)if(n[i]===t)return n.push(n.splice(i,1)[0])}function it(n,t,i){function r(){var o=Array.prototype.slice.call(arguments,0),u=o.join("␀"),f=r.cache=r.cache||{},e=r.count=r.count||[];return f[a](u)?(sf(e,u),i?i(f[u]):f[u]):(e.length>=1e3&&delete f[e.shift()],e.push(u),f[u]=n[v](t,o),i?i(f[u]):f[u])}return r}function oi(){return this.hex}function br(n,t){for(var i,f=[],r=0,u=n.length;u-2*!t>r;r+=2)i=[{x:+n[r-2],y:+n[r-1]},{x:+n[r],y:+n[r+1]},{x:+n[r+2],y:+n[r+3]},{x:+n[r+4],y:+n[r+5]}],t?r?u-4==r?i[3]={x:+n[0],y:+n[1]}:u-2==r&&(i[2]={x:+n[0],y:+n[1]},i[3]={x:+n[2],y:+n[3]}):i[0]={x:+n[u-2],y:+n[u-1]}:u-4==r?i[3]=i[2]:r||(i[0]={x:+n[r],y:+n[r+1]}),f.push(["C",(-i[0].x+6*i[1].x+i[2].x)/6,(-i[0].y+6*i[1].y+i[2].y)/6,(i[1].x+6*i[2].x-i[3].x)/6,(i[1].y+6*i[2].y-i[3].y)/6,i[2].x,i[2].y]);return f}function kr(n,t,i,r,u){var f=-3*t+9*i-9*r+3*u,e=n*f+6*t-12*i+6*r;return n*e-3*t+3*i}function vt(n,t,i,r,f,e,o,s,h){var c;h==null&&(h=1);h=h>1?1:h<0?0:h;var l=h/2,w=[-.1252,.1252,-.3678,.3678,-.5873,.5873,-.7699,.7699,-.9041,.9041,-.9816,.9816],b=[.2491,.2491,.2335,.2335,.2032,.2032,.1601,.1601,.1069,.1069,.0472,.0472],a=0;for(c=0;c<12;c++){var v=l*w[c]+l,y=kr(v,n,i,f,o),p=kr(v,t,r,e,s),k=y*y+p*p;a+=b[c]*u.sqrt(k)}return l*a}function cf(n,t,i,r,u,f,e,o,s){if(!(s<0)&&!(vt(n,t,i,r,u,f,e,o)<s)){for(var a=1,l=a/2,h=a-l,c=vt(n,t,i,r,u,f,e,o,h);y(c-s)>.01;)l/=2,h+=(c<s?1:-1)*l,c=vt(n,t,i,r,u,f,e,o,h);return h}}function lf(n,t,i,r,u,f,e,s){if(!(o(n,i)<l(u,e))&&!(l(n,i)>o(u,e))&&!(o(t,r)<l(f,s))&&!(l(t,r)>o(f,s))){var p=(n*r-t*i)*(u-e)-(n-i)*(u*s-f*e),w=(n*r-t*i)*(f-s)-(t-r)*(u*s-f*e),a=(n-i)*(f-s)-(t-r)*(u-e);if(a){var v=p/a,y=w/a,h=+v.toFixed(2),c=+y.toFixed(2);if(!(h<+l(n,i).toFixed(2))&&!(h>+o(n,i).toFixed(2))&&!(h<+l(u,e).toFixed(2))&&!(h>+o(u,e).toFixed(2))&&!(c<+l(t,r).toFixed(2))&&!(c>+o(t,r).toFixed(2))&&!(c<+l(f,s).toFixed(2))&&!(c>+o(f,s).toFixed(2)))return{x:v,y:y}}}}function di(n,t,r){var ut=i.bezierBBox(n),ft=i.bezierBBox(t),u,h,c,d,g;if(!i.isBBoxIntersect(ut,ft))return r?0:[];var et=vt.apply(0,n),ot=vt.apply(0,t),p=o(~~(et/5),1),w=o(~~(ot/5),1),nt=[],tt=[],rt={},it=r?0:[];for(u=0;u<p+1;u++)h=i.findDotsAtSegment.apply(i,n.concat(u/p)),nt.push({x:h.x,y:h.y,t:u/p});for(u=0;u<w+1;u++)h=i.findDotsAtSegment.apply(i,t.concat(u/w)),tt.push({x:h.x,y:h.y,t:u/w});for(u=0;u<p;u++)for(c=0;c<w;c++){var e=nt[u],a=nt[u+1],s=tt[c],v=tt[c+1],b=y(a.x-e.x)<.001?"y":"x",k=y(v.x-s.x)<.001?"y":"x",f=lf(e.x,e.y,a.x,a.y,s.x,s.y,v.x,v.y);if(f){if(rt[f.x.toFixed(4)]==f.y.toFixed(4))continue;rt[f.x.toFixed(4)]=f.y.toFixed(4);d=e.t+y((f[b]-e[b])/(a[b]-e[b]))*(a.t-e.t);g=s.t+y((f[k]-s[k])/(v[k]-s[k]))*(v.t-s.t);d>=0&&d<=1.001&&g>=0&&g<=1.001&&(r?it++:it.push({x:f.x,y:f.y,t1:l(d,1),t2:l(g,1)}))}}return it}function gi(n,t,r){var e,o,s,h,b,k,d,g,c,l,y,p,nt,a,w,tt,v,u,f,it;for(n=i._path2curve(n),t=i._path2curve(t),y=r?0:[],p=0,nt=n.length;p<nt;p++)if(a=n[p],a[0]=="M")e=b=a[1],o=k=a[2];else for(a[0]=="C"?(c=[e,o].concat(a.slice(1)),e=c[6],o=c[7]):(c=[e,o,e,o,b,k,b,k],e=b,o=k),w=0,tt=t.length;w<tt;w++)if(v=t[w],v[0]=="M")s=d=v[1],h=g=v[2];else if(v[0]=="C"?(l=[s,h].concat(v.slice(1)),s=l[6],h=l[7]):(l=[s,h,s,h,d,g,d,g],s=d,h=g),u=di(c,l,r),r)y+=u;else{for(f=0,it=u.length;f<it;f++)u[f].segment1=p,u[f].segment2=w,u[f].bez1=c,u[f].bez2=l;y=y.concat(u)}return y}function ht(n,t,i,r,u,f){n!=null?(this.a=+n,this.b=+t,this.c=+i,this.d=+r,this.e=+u,this.f=+f):(this.a=1,this.b=0,this.c=0,this.d=1,this.e=0,this.f=0)}function eu(){return this.x+lt+this.y+lt+this.width+" × "+this.height}function gf(n,t,i,r,u,f){function l(n){return((h*n+o)*n+e)*n}function v(n,t){var i=p(n,t);return((a*i+c)*i+s)*i}function p(n,t){for(var r,u,f,s,i=n,c=0;c<8;c++){if(f=l(i)-n,y(f)<t)return i;if(s=(3*h*i+2*o)*i+e,y(s)<1e-6)break;i=i-f/s}if(r=0,u=1,i=n,i<r)return r;if(i>u)return u;while(r<u){if(f=l(i),y(f-n)<t)return i;n>f?r=i:u=i;i=(u-r)/2+r}return i}var e=3*t,o=3*(r-t)-e,h=1-e-o,s=3*i,c=3*(u-i)-s,a=1-s-c;return v(n,1/(200*f))}function ft(n,t){var i=[],u={},r;if(this.ms=t,this.times=1,n){for(r in n)n[a](r)&&(u[h(r)]=n[r],i.push(h(r)));i.sort(tf)}this.anim=u;this.top=i[i.length-1];this.percents=i}function kt(n,r,u,e,o,c){var nt,v,et,l,at,dt,ii,tt,vt,gt,yt,d,rt,st,ct,ni,ft,lt;u=h(u);var it,ot,pt,ti,bt,kt,w=n.ms,y={},g={},k={};if(e){for(v=0,et=f.length;v<et;v++)if(nt=f[v],nt.el.id==r.id&&nt.anim==n){nt.percent!=u?(f.splice(v,1),pt=1):ot=nt;r.attr(nt.totalOrigin);break}}else e=+g;for(v=0,et=n.percents.length;v<et;v++)if(n.percents[v]==u||n.percents[v]>e*n.top){u=n.percents[v];bt=n.percents[v-1]||0;w=w/n.top*(u-bt);ti=n.percents[v+1];it=n.anim[u];break}else e&&r.attr(n.anim[n.percents[v]]);if(it){if(ot)ot.initstatus=e,ot.start=new Date-ot.ms*e;else{for(l in it)if(it[a](l)&&(wi[a](l)||r.paper.customAttributes[a](l))){y[l]=r.attr(l);y[l]==null&&(y[l]=bu[l]);g[l]=it[l];switch(wi[l]){case p:k[l]=(g[l]-y[l])/w;break;case"colour":y[l]=i.getRGB(y[l]);at=i.getRGB(g[l]);k[l]={r:(at.r-y[l].r)/w,g:(at.g-y[l].g)/w,b:(at.b-y[l].b)/w};break;case"path":for(dt=wt(y[l],g[l]),ii=dt[1],y[l]=dt[0],k[l]=[],v=0,et=y[l].length;v<et;v++)for(k[l][v]=[0],tt=1,vt=y[l][v].length;tt<vt;tt++)k[l][v][tt]=(ii[v][tt]-y[l][v][tt])/w;break;case"transform":if(gt=r._,yt=yf(gt[l],g[l]),yt)for(y[l]=yt.from,g[l]=yt.to,k[l]=[],k[l].real=!0,v=0,et=y[l].length;v<et;v++)for(k[l][v]=[y[l][v][0]],tt=1,vt=y[l][v].length;tt<vt;tt++)k[l][v][tt]=(g[l][v][tt]-y[l][v][tt])/w;else d=r.matrix||new ht,rt={_:{transform:gt.transform},getBBox:function(){return r.getBBox(1)}},y[l]=[d.a,d.b,d.c,d.d,d.e,d.f],iu(rt,g[l]),g[l]=rt._.transform,k[l]=[(rt.matrix.a-d.a)/w,(rt.matrix.b-d.b)/w,(rt.matrix.c-d.c)/w,(rt.matrix.d-d.d)/w,(rt.matrix.e-d.e)/w,(rt.matrix.f-d.f)/w];break;case"csv":if(st=b(it[l])[ut](vi),ct=b(y[l])[ut](vi),l=="clip-rect")for(y[l]=ct,k[l]=[],v=ct.length;v--;)k[l][v]=(st[v]-y[l][v])/w;g[l]=st;break;default:for(st=[][s](it[l]),ct=[][s](y[l]),k[l]=[],v=r.paper.customAttributes[l].length;v--;)k[l][v]=((st[v]||0)-(ct[v]||0))/w}}if(ni=it.easing,ft=i.easing_formulas[ni],ft||(ft=b(ni).match(wu),ft&&ft.length==5?(lt=ft,ft=function(n){return gf(n,+lt[1],+lt[2],+lt[3],+lt[4],w)}):ft=uf),kt=it.start||n.start||+new Date,nt={anim:n,percent:u,timestamp:kt,start:kt+(n.del||0),status:0,initstatus:e||0,stop:!1,ms:w,easing:ft,from:y,diff:k,to:g,el:r,callback:it.callback,prev:bt,next:ti,repeat:c||n.times,origin:r.attr(),totalOrigin:o},f.push(nt),e&&!ot&&!pt&&(nt.stop=!0,nt.start=new Date-w*e,f.length==1))return or();pt&&(nt.start=new Date-nt.ms*e);f.length==1&&hu(or)}t("raphael.anim.start."+r.id,r,n)}}function cu(n){for(var t=0;t<f.length;t++)f[t].el.paper==n&&f.splice(t--,1)}var ui,fi,ff,hf,et,bt,rr,ct,fu,g,yt,w,li;i.version="2.1.2";i.eve=t;var ai,vi=/[, ]+/,lu={circle:1,rect:1,path:1,ellipse:1,text:1,image:1},au=/\{(\d+)\}/g,a="hasOwnProperty",r={doc:document,win:n},yi={was:Object.prototype[a].call(r.win,"Raphael"),is:r.win.Raphael},hr=function(){this.ca=this.customAttributes={}},c,v="apply",s="concat",dt="ontouchstart"in r.win||r.win.DocumentTouch&&r.doc instanceof DocumentTouch,d="",lt=" ",b=String,ut="split",cr="click dblclick mousedown mousemove mouseout mouseover mouseup touchstart touchmove touchend touchcancel"[ut](lt),gt={mousedown:"touchstart",mousemove:"touchmove",mouseup:"touchend"},ni=b.prototype.toLowerCase,u=Math,o=u.max,l=u.min,y=u.abs,nt=u.pow,k=u.PI,p="number",ti="string",tt="array",vu=Object.prototype.toString,ne=i._ISURL=/^url\(['"]?([^\)]+?)['"]?\)$/i,yu=/^\s*((#[a-f\d]{6})|(#[a-f\d]{3})|rgba?\(\s*([\d\.]+%?\s*,\s*[\d\.]+%?\s*,\s*[\d\.]+%?(?:\s*,\s*[\d\.]+%?)?)\s*\)|hsba?\(\s*([\d\.]+(?:deg|\xb0|%)?\s*,\s*[\d\.]+%?\s*,\s*[\d\.]+(?:%?\s*,\s*[\d\.]+)?)%?\s*\)|hsla?\(\s*([\d\.]+(?:deg|\xb0|%)?\s*,\s*[\d\.]+%?\s*,\s*[\d\.]+(?:%?\s*,\s*[\d\.]+)?)%?\s*\))\s*$/i,pu={NaN:1,Infinity:1,"-Infinity":1},wu=/^(?:cubic-)?bezier\(([^,]+),([^,]+),([^,]+),([^\)]+)\)/,pi=u.round,h=parseFloat,st=parseInt,lr=b.prototype.toUpperCase,bu=i._availableAttrs={"class":"","arrow-end":"none","arrow-start":"none",blur:0,"clip-rect":"0 0 1e9 1e9",cursor:"default",cx:0,cy:0,fill:"#fff","fill-opacity":1,font:'10px "Arial"',"font-family":'"Arial"',"font-size":"10","font-style":"normal","font-weight":400,gradient:0,height:0,href:"http://raphaeljs.com/","letter-spacing":0,opacity:1,path:"M0,0",r:0,rx:0,ry:0,src:"",stroke:"#000","stroke-dasharray":"","stroke-linecap":"butt","stroke-linejoin":"butt","stroke-miterlimit":0,"stroke-opacity":1,"stroke-width":1,target:"_blank","text-anchor":"middle",title:"Raphael",transform:"",width:0,x:0,y:0},wi=i._availableAnimAttrs={blur:p,"clip-rect":"csv",cx:p,cy:p,fill:"colour","fill-opacity":p,"font-size":p,height:p,opacity:p,path:"path",r:p,rx:p,ry:p,stroke:"colour","stroke-opacity":p,"stroke-width":p,transform:"transform",width:p,x:p,y:p},bi=/[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*,[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*/,ku={hs:1,rg:1},du=/,?([achlmqrstvxz]),?/gi,gu=/([achlmrqstvz])[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029,]*((-?\d*\.?\d*(?:e[\-+]?\d+)?[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*,?[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*)+)/ig,nf=/([rstm])[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029,]*((-?\d*\.?\d*(?:e[\-+]?\d+)?[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*,?[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*)+)/ig,ar=/(-?\d*\.?\d*(?:e[\-+]?\d+)?)[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*,?[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*/ig,te=i._radial_gradient=/^r(?:\(([^,]+?)[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*,[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*([^\)]+?)\))?/,at={},ie=function(n,t){return n.key-t.key},tf=function(n,t){return h(n)-h(t)},rf=function(){},uf=function(n){return n},ii=i._rectPath=function(n,t,i,r,u){return u?[["M",n+u,t],["l",i-u*2,0],["a",u,u,0,0,1,u,u],["l",0,r-u*2],["a",u,u,0,0,1,-u,u],["l",u*2-i,0],["a",u,u,0,0,1,-u,-u],["l",0,u*2-r],["a",u,u,0,0,1,u,-u],["z"]]:[["M",n,t],["l",i,0],["l",0,r],["l",-i,0],["z"]]},vr=function(n,t,i,r){return r==null&&(r=i),[["M",n,t],["m",0,-r],["a",i,r,0,1,1,0,2*r],["a",i,r,0,1,1,0,-2*r],["z"]]},ri=i._getPath={path:function(n){return n.attr("path")},circle:function(n){var t=n.attrs;return vr(t.cx,t.cy,t.r)},ellipse:function(n){var t=n.attrs;return vr(t.cx,t.cy,t.rx,t.ry)},rect:function(n){var t=n.attrs;return ii(t.x,t.y,t.width,t.height,t.r)},image:function(n){var t=n.attrs;return ii(t.x,t.y,t.width,t.height)},text:function(n){var t=n._getBBox();return ii(t.x,t.y,t.width,t.height)},set:function(n){var t=n._getBBox();return ii(t.x,t.y,t.width,t.height)}},ki=i.mapPath=function(n,t){if(!t)return n;var f,e,u,i,o,s,r;for(n=wt(n),u=0,o=n.length;u<o;u++)for(r=n[u],i=1,s=r.length;i<s;i+=2)f=t.x(r[i],r[i+1]),e=t.y(r[i],r[i+1]),r[i]=f,r[i+1]=e;return n};if(i._g=r,i.type=r.win.SVGAngle||r.doc.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure","1.1")?"SVG":"VML",i.type=="VML"){if(ui=r.doc.createElement("div"),ui.innerHTML='<v:shape adj="1"/>',fi=ui.firstChild,fi.style.behavior="url(#default#VML)",!(fi&&typeof fi.adj=="object"))return i.type=d;ui=null}i.svg=!(i.vml=i.type=="VML");i._Paper=hr;i.fn=c=hr.prototype=i.prototype;i._id=0;i._oid=0;i.is=function(n,t){return(t=ni.call(t),t=="finite")?!pu[a](+n):t=="array"?n instanceof Array:t=="null"&&n===null||t==typeof n&&n!==null||t=="object"&&n===Object(n)||t=="array"&&Array.isArray&&Array.isArray(n)||vu.call(n).slice(8,-1).toLowerCase()==t};i.angle=function(n,t,r,f,e,o){if(e==null){var s=n-r,h=t-f;return!s&&!h?0:(180+u.atan2(-h,-s)*180/k+360)%360}return i.angle(n,t,e,o)-i.angle(r,f,e,o)};i.rad=function(n){return n%360*k/180};i.deg=function(n){return n*180/k%360};i.snapTo=function(n,t,r){var f,u;if(r=i.is(r,"finite")?r:10,i.is(n,tt)){for(f=n.length;f--;)if(y(n[f]-t)<=r)return n[f]}else{if(n=+n,u=t%n,u<r)return t-u;if(u>n-r)return t-u+n}return t};ff=i.createUUID=function(n,t){return function(){return"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(n,t).toUpperCase()}}(/[xy]/g,function(n){var t=u.random()*16|0,i=n=="x"?t:t&3|8;return i.toString(16)});i.setWindow=function(n){t("raphael.setWindow",i,r.win,n);r.win=n;r.doc=r.win.document;i._engine.initWin&&i._engine.initWin(r.win)};var ei=function(n){var e,u,f,o,t;if(i.vml){e=/^\s+|\s+$/g;try{f=new ActiveXObject("htmlfile");f.write("<body>");f.close();u=f.body}catch(s){u=createPopup().document.body}o=u.createTextRange();ei=it(function(n){try{u.style.color=b(n).replace(e,d);var t=o.queryCommandValue("ForeColor");return t=(t&255)<<16|t&65280|(t&16711680)>>>16,"#"+("000000"+t.toString(16)).slice(-6)}catch(i){return"none"}})}else t=r.doc.createElement("i"),t.title="Raphaël Colour Picker",t.style.display="none",r.doc.body.appendChild(t),ei=it(function(n){return t.style.color=n,r.doc.defaultView.getComputedStyle(t,d).getPropertyValue("color")});return ei(n)},ef=function(){return"hsb("+[this.h,this.s,this.b]+")"},of=function(){return"hsl("+[this.h,this.s,this.l]+")"},yr=function(){return this.hex},pr=function(n,t,r){if(t==null&&i.is(n,"object")&&"r"in n&&"g"in n&&"b"in n&&(r=n.b,t=n.g,n=n.r),t==null&&i.is(n,ti)){var u=i.getRGB(n);n=u.r;t=u.g;r=u.b}return(n>1||t>1||r>1)&&(n/=255,t/=255,r/=255),[n,t,r]},wr=function(n,t,r,u){n*=255;t*=255;r*=255;var f={r:n,g:t,b:r,hex:i.rgb(n,t,r),toString:yr};return i.is(u,"finite")&&(f.opacity=u),f};i.color=function(n){var t;return i.is(n,"object")&&"h"in n&&"s"in n&&"b"in n?(t=i.hsb2rgb(n),n.r=t.r,n.g=t.g,n.b=t.b,n.hex=t.hex):i.is(n,"object")&&"h"in n&&"s"in n&&"l"in n?(t=i.hsl2rgb(n),n.r=t.r,n.g=t.g,n.b=t.b,n.hex=t.hex):(i.is(n,"string")&&(n=i.getRGB(n)),i.is(n,"object")&&"r"in n&&"g"in n&&"b"in n?(t=i.rgb2hsl(n),n.h=t.h,n.s=t.s,n.l=t.l,t=i.rgb2hsb(n),n.v=t.b):(n={hex:"none"},n.r=n.g=n.b=n.h=n.s=n.v=n.l=-1)),n.toString=yr,n};i.hsb2rgb=function(n,t,i,r){this.is(n,"object")&&"h"in n&&"s"in n&&"b"in n&&(i=n.b,t=n.s,n=n.h,r=n.o);n*=360;var e,o,s,f,u;return n=n%360/60,u=i*t,f=u*(1-y(n%2-1)),e=o=s=i-u,n=~~n,e+=[u,f,0,0,f,u][n],o+=[f,u,u,f,0,0][n],s+=[0,0,f,u,u,f][n],wr(e,o,s,r)};i.hsl2rgb=function(n,t,i,r){this.is(n,"object")&&"h"in n&&"s"in n&&"l"in n&&(i=n.l,t=n.s,n=n.h);(n>1||t>1||i>1)&&(n/=360,t/=100,i/=100);n*=360;var e,o,s,f,u;return n=n%360/60,u=2*t*(i<.5?i:1-i),f=u*(1-y(n%2-1)),e=o=s=i-u/2,n=~~n,e+=[u,f,0,0,f,u][n],o+=[f,u,u,f,0,0][n],s+=[0,0,f,u,u,f][n],wr(e,o,s,r)};i.rgb2hsb=function(n,t,i){i=pr(n,t,i);n=i[0];t=i[1];i=i[2];var f,e,u,r;return u=o(n,t,i),r=u-l(n,t,i),f=r==0?null:u==n?(t-i)/r:u==t?(i-n)/r+2:(n-t)/r+4,f=(f+360)%6/6,e=r==0?0:r/u,{h:f,s:e,b:u,toString:ef}};i.rgb2hsl=function(n,t,i){i=pr(n,t,i);n=i[0];t=i[1];i=i[2];var e,h,u,f,s,r;return f=o(n,t,i),s=l(n,t,i),r=f-s,e=r==0?null:f==n?(t-i)/r:f==t?(i-n)/r+2:(n-t)/r+4,e=(e+360)%6/6,u=(f+s)/2,h=r==0?0:u<.5?r/(2*u):r/(2-2*u),{h:e,s:h,l:u,toString:of}};i._path2string=function(){return this.join(",").replace(du,"$1")};hf=i._preload=function(n,t){var i=r.doc.createElement("img");i.style.cssText="position:absolute;left:-9999em;top:-9999em";i.onload=function(){t.call(this);this.onload=null;r.doc.body.removeChild(this)};i.onerror=function(){r.doc.body.removeChild(this)};r.doc.body.appendChild(i);i.src=n};i.getRGB=it(function(n){if(!n||!!((n=b(n)).indexOf("-")+1))return{r:-1,g:-1,b:-1,hex:"none",error:1,toString:oi};if(n=="none")return{r:-1,g:-1,b:-1,hex:"none",toString:oi};ku[a](n.toLowerCase().substring(0,2))||n.charAt()=="#"||(n=ei(n));var u,f,e,o,s,t,r=n.match(yu);return r?(r[2]&&(e=st(r[2].substring(5),16),f=st(r[2].substring(3,5),16),u=st(r[2].substring(1,3),16)),r[3]&&(e=st((s=r[3].charAt(3))+s,16),f=st((s=r[3].charAt(2))+s,16),u=st((s=r[3].charAt(1))+s,16)),r[4]&&(t=r[4][ut](bi),u=h(t[0]),t[0].slice(-1)=="%"&&(u*=2.55),f=h(t[1]),t[1].slice(-1)=="%"&&(f*=2.55),e=h(t[2]),t[2].slice(-1)=="%"&&(e*=2.55),r[1].toLowerCase().slice(0,4)=="rgba"&&(o=h(t[3])),t[3]&&t[3].slice(-1)=="%"&&(o/=100)),r[5])?(t=r[5][ut](bi),u=h(t[0]),t[0].slice(-1)=="%"&&(u*=2.55),f=h(t[1]),t[1].slice(-1)=="%"&&(f*=2.55),e=h(t[2]),t[2].slice(-1)=="%"&&(e*=2.55),(t[0].slice(-3)=="deg"||t[0].slice(-1)=="°")&&(u/=360),r[1].toLowerCase().slice(0,4)=="hsba"&&(o=h(t[3])),t[3]&&t[3].slice(-1)=="%"&&(o/=100),i.hsb2rgb(u,f,e,o)):r[6]?(t=r[6][ut](bi),u=h(t[0]),t[0].slice(-1)=="%"&&(u*=2.55),f=h(t[1]),t[1].slice(-1)=="%"&&(f*=2.55),e=h(t[2]),t[2].slice(-1)=="%"&&(e*=2.55),(t[0].slice(-3)=="deg"||t[0].slice(-1)=="°")&&(u/=360),r[1].toLowerCase().slice(0,4)=="hsla"&&(o=h(t[3])),t[3]&&t[3].slice(-1)=="%"&&(o/=100),i.hsl2rgb(u,f,e,o)):(r={r:u,g:f,b:e,toString:oi},r.hex="#"+(16777216|e|f<<8|u<<16).toString(16).slice(1),i.is(o,"finite")&&(r.opacity=o),r):{r:-1,g:-1,b:-1,hex:"none",error:1,toString:oi}},i);i.hsb=it(function(n,t,r){return i.hsb2rgb(n,t,r).hex});i.hsl=it(function(n,t,r){return i.hsl2rgb(n,t,r).hex});i.rgb=it(function(n,t,i){return"#"+(16777216|i|t<<8|n<<16).toString(16).slice(1)});i.getColor=function(n){var t=this.getColor.start=this.getColor.start||{h:0,s:1,b:n||.75},i=this.hsb2rgb(t.h,t.s,t.b);return t.h+=.075,t.h>1&&(t.h=0,t.s-=.2,t.s<=0&&(this.getColor.start={h:0,s:1,b:t.b})),i.hex};i.getColor.reset=function(){delete this.start};i.parsePathString=function(n){var r,u,t;return n?(r=et(n),r.arr)?rt(r.arr):(u={a:7,c:6,h:1,l:2,m:2,r:4,q:4,s:4,t:2,v:1,z:0},t=[],i.is(n,tt)&&i.is(n[0],tt)&&(t=rt(n)),t.length||b(n).replace(gu,function(n,i,r){var f=[],e=i.toLowerCase();if(r.replace(ar,function(n,t){t&&f.push(+t)}),e=="m"&&f.length>2&&(t.push([i][s](f.splice(0,2))),e="l",i=i=="m"?"l":"L"),e=="r")t.push([i][s](f));else while(f.length>=u[e])if(t.push([i][s](f.splice(0,u[e]))),!u[e])break}),t.toString=i._path2string,r.arr=rt(t),t):null};i.parseTransformString=it(function(n){if(!n)return null;var t=[];return i.is(n,tt)&&i.is(n[0],tt)&&(t=rt(n)),t.length||b(n).replace(nf,function(n,i,r){var u=[],f=ni.call(i);r.replace(ar,function(n,t){t&&u.push(+t)});t.push([i][s](u))}),t.toString=i._path2string,t});et=function(n){var t=et.ps=et.ps||{};return t[n]?t[n].sleep=100:t[n]={sleep:100},setTimeout(function(){for(var i in t)t[a](i)&&i!=n&&(t[i].sleep--,t[i].sleep||delete t[i])}),t[n]};i.findDotsAtSegment=function(n,t,i,r,f,e,o,s,h){var c=1-h,w=nt(c,3),b=nt(c,2),l=h*h,d=l*h,tt=w*n+b*3*h*i+c*3*h*h*f+d*o,it=w*t+b*3*h*r+c*3*h*h*e+d*s,a=n+2*h*(i-n)+l*(f-2*i+n),v=t+2*h*(r-t)+l*(e-2*r+t),y=i+2*h*(f-i)+l*(o-2*f+i),p=r+2*h*(e-r)+l*(s-2*e+r),rt=c*n+h*i,ut=c*t+h*r,ft=c*f+h*o,et=c*e+h*s,g=90-u.atan2(a-y,v-p)*180/k;return(a>y||v<p)&&(g+=180),{x:tt,y:it,m:{x:a,y:v},n:{x:y,y:p},start:{x:rt,y:ut},end:{x:ft,y:et},alpha:g}};i.bezierBBox=function(n,t,r,u,f,e,o,s){i.is(n,"array")||(n=[n,t,r,u,f,e,o,s]);var h=tu.apply(null,n);return{x:h.min.x,y:h.min.y,x2:h.max.x,y2:h.max.y,width:h.max.x-h.min.x,height:h.max.y-h.min.y}};i.isPointInsideBBox=function(n,t,i){return t>=n.x&&t<=n.x2&&i>=n.y&&i<=n.y2};i.isBBoxIntersect=function(n,t){var r=i.isPointInsideBBox;return r(t,n.x,n.y)||r(t,n.x2,n.y)||r(t,n.x,n.y2)||r(t,n.x2,n.y2)||r(n,t.x,t.y)||r(n,t.x2,t.y)||r(n,t.x,t.y2)||r(n,t.x2,t.y2)||(n.x<t.x2&&n.x>t.x||t.x<n.x2&&t.x>n.x)&&(n.y<t.y2&&n.y>t.y||t.y<n.y2&&t.y>n.y)};i.pathIntersection=function(n,t){return gi(n,t)};i.pathIntersectionNumber=function(n,t){return gi(n,t,1)};i.isPointInsidePath=function(n,t,r){var u=i.pathBBox(n);return i.isPointInsideBBox(u,t,r)&&gi(n,[["M",t,r],["H",u.x2+10]],1)%2==1};i._removedFactory=function(n){return function(){t("raphael.log",null,"Raphaël: you are calling to method “"+n+"” of removed object",n)}};var nr=i.pathBBox=function(n){var c=et(n),h,p,u;if(c.bbox)return pt(c.bbox);if(!n)return{x:0,y:0,width:0,height:0,x2:0,y2:0};n=wt(n);var f=0,e=0,i=[],r=[],t;for(h=0,p=n.length;h<p;h++)t=n[h],t[0]=="M"?(f=t[1],e=t[2],i.push(f),r.push(e)):(u=tu(f,e,t[1],t[2],t[3],t[4],t[5],t[6]),i=i[s](u.min.x,u.max.x),r=r[s](u.min.y,u.max.y),f=t[5],e=t[6]);var a=l[v](0,i),y=l[v](0,r),w=o[v](0,i),b=o[v](0,r),k=w-a,d=b-y,g={x:a,y:y,x2:w,y2:b,width:k,height:d,cx:a+k/2,cy:y+d/2};return c.bbox=pt(g),g},rt=function(n){var t=pt(n);return t.toString=i._path2string,t},af=i._pathToRelative=function(n){var v=et(n),u,p,f,t,s,w,h,b,c;if(v.rel)return rt(v.rel);i.is(n,tt)&&i.is(n&&n[0],tt)||(n=i.parsePathString(n));var r=[],o=0,e=0,l=0,a=0,y=0;for(n[0][0]=="M"&&(o=n[0][1],e=n[0][2],l=o,a=e,y++,r.push(["M",o,e])),u=y,p=n.length;u<p;u++){if(f=r[u]=[],t=n[u],t[0]!=ni.call(t[0])){f[0]=ni.call(t[0]);switch(f[0]){case"a":f[1]=t[1];f[2]=t[2];f[3]=t[3];f[4]=t[4];f[5]=t[5];f[6]=+(t[6]-o).toFixed(3);f[7]=+(t[7]-e).toFixed(3);break;case"v":f[1]=+(t[1]-e).toFixed(3);break;case"m":l=t[1];a=t[2];default:for(s=1,w=t.length;s<w;s++)f[s]=+(t[s]-(s%2?o:e)).toFixed(3)}}else for(f=r[u]=[],t[0]=="m"&&(l=t[1]+o,a=t[2]+e),h=0,b=t.length;h<b;h++)r[u][h]=t[h];c=r[u].length;switch(r[u][0]){case"z":o=l;e=a;break;case"h":o+=+r[u][c-1];break;case"v":e+=+r[u][c-1];break;default:o+=+r[u][c-2];e+=+r[u][c-1]}}return r.toString=i._path2string,v.rel=rt(r),r},dr=i._pathToAbsolute=function(n){var p=et(n),w,t,r,v,k,h,e,y,c,d;if(p.abs)return rt(p.abs);if(i.is(n,tt)&&i.is(n&&n[0],tt)||(n=i.parsePathString(n)),!n||!n.length)return[["M",0,0]];var o=[],u=0,f=0,l=0,a=0,b=0;for(n[0][0]=="M"&&(u=+n[0][1],f=+n[0][2],l=u,a=f,b++,o[0]=["M",u,f]),w=n.length==3&&n[0][0]=="M"&&n[1][0].toUpperCase()=="R"&&n[2][0].toUpperCase()=="Z",v=b,k=n.length;v<k;v++){if(o.push(t=[]),r=n[v],r[0]!=lr.call(r[0])){t[0]=lr.call(r[0]);switch(t[0]){case"A":t[1]=r[1];t[2]=r[2];t[3]=r[3];t[4]=r[4];t[5]=r[5];t[6]=+(r[6]+u);t[7]=+(r[7]+f);break;case"V":t[1]=+r[1]+f;break;case"H":t[1]=+r[1]+u;break;case"R":for(h=[u,f][s](r.slice(1)),e=2,y=h.length;e<y;e++)h[e]=+h[e]+u,h[++e]=+h[e]+f;o.pop();o=o[s](br(h,w));break;case"M":l=+r[1]+u;a=+r[2]+f;default:for(e=1,y=r.length;e<y;e++)t[e]=+r[e]+(e%2?u:f)}}else if(r[0]=="R")h=[u,f][s](r.slice(1)),o.pop(),o=o[s](br(h,w)),t=["R"][s](r.slice(-2));else for(c=0,d=r.length;c<d;c++)t[c]=r[c];switch(t[0]){case"Z":u=l;f=a;break;case"H":u=t[1];break;case"V":f=t[1];break;case"M":l=t[t.length-2];a=t[t.length-1];default:u=t[t.length-2];f=t[t.length-1]}}return o.toString=i._path2string,p.abs=rt(o),o},si=function(n,t,i,r){return[n,t,i,r,i,r]},gr=function(n,t,i,r,u,f){var e=1/3,o=2/3;return[e*n+o*i,e*t+o*r,e*u+o*i,e*f+o*r,u,f]},nu=function(n,t,i,r,f,e,o,h,c,l){var at=k*120/180,et=k/180*(+f||0),p=[],g,ot=it(function(n,t,i){var r=n*u.cos(i)-t*u.sin(i),f=n*u.sin(i)+t*u.cos(i);return{x:r,y:f}}),st,lt,w,gt;if(l)v=l[0],a=l[1],rt=l[2],ft=l[3];else{g=ot(n,t,-et);n=g.x;t=g.y;g=ot(h,c,-et);h=g.x;c=g.y;var oi=u.cos(k/180*f),si=u.sin(k/180*f),b=(n-h)/2,d=(t-c)/2,tt=b*b/(i*i)+d*d/(r*r);tt>1&&(tt=u.sqrt(tt),i=tt*i,r=tt*r);var ht=i*i,ct=r*r,vt=(e==o?-1:1)*u.sqrt(y((ht*ct-ht*d*d-ct*b*b)/(ht*d*d+ct*b*b))),rt=vt*i*d/r+(n+h)/2,ft=vt*-r*b/i+(t+c)/2,v=u.asin(((t-ft)/r).toFixed(9)),a=u.asin(((c-ft)/r).toFixed(9));v=n<rt?k-v:v;a=h<rt?k-a:a;v<0&&(v=k*2+v);a<0&&(a=k*2+a);o&&v>a&&(v=v-k*2);!o&&a>v&&(a=a-k*2)}if(st=a-v,y(st)>at){var ni=a,ti=h,ii=c;a=v+at*(o&&a>v?1:-1);h=rt+i*u.cos(a);c=ft+r*u.sin(a);p=nu(h,c,i,r,f,0,o,ti,ii,[a,ni,rt,ft])}st=a-v;var ri=u.cos(v),ui=u.sin(v),fi=u.cos(a),ei=u.sin(a),yt=u.tan(st/4),pt=4/3*i*yt,wt=4/3*r*yt,bt=[n,t],nt=[n+pt*ui,t-wt*ri],kt=[h+pt*ei,c-wt*fi],dt=[h,c];if(nt[0]=2*bt[0]-nt[0],nt[1]=2*bt[1]-nt[1],l)return[nt,kt,dt][s](p);for(p=[nt,kt,dt][s](p).join()[ut](","),lt=[],w=0,gt=p.length;w<gt;w++)lt[w]=w%2?ot(p[w-1],p[w],et).y:ot(p[w],p[w+1],et).x;return lt},hi=function(n,t,i,r,u,f,e,o,s){var h=1-s;return{x:nt(h,3)*n+nt(h,2)*3*s*i+h*3*s*s*u+nt(s,3)*e,y:nt(h,3)*t+nt(h,2)*3*s*r+h*3*s*s*f+nt(s,3)*o}},tu=it(function(n,t,i,r,f,e,s,h){var b=f-2*i+n-(s-2*f+i),c=2*(i-n)-2*(f-i),g=n-i,p=(-c+u.sqrt(c*c-4*b*g))/2/b,w=(-c-u.sqrt(c*c-4*b*g))/2/b,k=[t,h],d=[n,s],a;return y(p)>"1e12"&&(p=.5),y(w)>"1e12"&&(w=.5),p>0&&p<1&&(a=hi(n,t,i,r,f,e,s,h,p),d.push(a.x),k.push(a.y)),w>0&&w<1&&(a=hi(n,t,i,r,f,e,s,h,w),d.push(a.x),k.push(a.y)),b=e-2*r+t-(h-2*e+r),c=2*(r-t)-2*(e-r),g=t-r,p=(-c+u.sqrt(c*c-4*b*g))/2/b,w=(-c-u.sqrt(c*c-4*b*g))/2/b,y(p)>"1e12"&&(p=.5),y(w)>"1e12"&&(w=.5),p>0&&p<1&&(a=hi(n,t,i,r,f,e,s,h,p),d.push(a.x),k.push(a.y)),w>0&&w<1&&(a=hi(n,t,i,r,f,e,s,h,w),d.push(a.x),k.push(a.y)),{min:{x:l[v](0,d),y:l[v](0,k)},max:{x:o[v](0,d),y:o[v](0,k)}}}),wt=i._path2curve=it(function(n,t){var w=!t&&et(n),r,a;if(!t&&w.curve)return rt(w.curve);var u=dr(n),i=t&&dr(t),f={x:0,y:0,bx:0,by:0,X:0,Y:0,qx:null,qy:null},e={x:0,y:0,bx:0,by:0,X:0,Y:0,qx:null,qy:null},b=function(n,t,i){var r,u;if(!n)return["C",t.x,t.y,t.x,t.y,t.x,t.y];n[0]in{T:1,Q:1}||(t.qx=t.qy=null);switch(n[0]){case"M":t.X=n[1];t.Y=n[2];break;case"A":n=["C"][s](nu[v](0,[t.x,t.y][s](n.slice(1))));break;case"S":i=="C"||i=="S"?(r=t.x*2-t.bx,u=t.y*2-t.by):(r=t.x,u=t.y);n=["C",r,u][s](n.slice(1));break;case"T":i=="Q"||i=="T"?(t.qx=t.x*2-t.qx,t.qy=t.y*2-t.qy):(t.qx=t.x,t.qy=t.y);n=["C"][s](gr(t.x,t.y,t.qx,t.qy,n[1],n[2]));break;case"Q":t.qx=n[1];t.qy=n[2];n=["C"][s](gr(t.x,t.y,n[1],n[2],n[3],n[4]));break;case"L":n=["C"][s](si(t.x,t.y,n[1],n[2]));break;case"H":n=["C"][s](si(t.x,t.y,n[1],t.y));break;case"V":n=["C"][s](si(t.x,t.y,t.x,n[1]));break;case"Z":n=["C"][s](si(t.x,t.y,t.X,t.Y))}return n},k=function(n,t){if(n[t].length>7){n[t].shift();for(var r=n[t];r.length;)n.splice(t++,0,["C"][s](r.splice(0,6)));n.splice(t,1);a=o(u.length,i&&i.length||0)}},d=function(n,t,r,f,e){n&&t&&n[e][0]=="M"&&t[e][0]!="M"&&(t.splice(e,0,["M",f.x,f.y]),r.bx=0,r.by=0,r.x=n[e][1],r.y=n[e][2],a=o(u.length,i&&i.length||0))};for(r=0,a=o(u.length,i&&i.length||0);r<a;r++){u[r]=b(u[r],f);k(u,r);i&&(i[r]=b(i[r],e));i&&k(i,r);d(u,i,f,e,r);d(i,u,e,f,r);var c=u[r],l=i&&i[r],y=c.length,p=i&&l.length;f.x=c[y-2];f.y=c[y-1];f.bx=h(c[y-4])||f.x;f.by=h(c[y-3])||f.y;e.bx=i&&(h(l[p-4])||e.x);e.by=i&&(h(l[p-3])||e.y);e.x=i&&l[p-2];e.y=i&&l[p-1]}return i||(w.curve=rt(u)),i?[u,i]:u},null,rt),fe=i._parseDots=it(function(n){for(var f,s,c,e,u,l,r=[],t=0,o=n.length;t<o;t++){if(f={},s=n[t].match(/^([^:]*):?([\d\.]*)/),f.color=i.getRGB(s[1]),f.color.error)return null;f.color=f.color.hex;s[2]&&(f.offset=s[2]+"%");r.push(f)}for(t=1,o=r.length-1;t<o;t++)if(!r[t].offset){for(c=h(r[t-1].offset||0),e=0,u=t+1;u<o;u++)if(r[u].offset){e=r[u].offset;break}for(e||(e=100,u=o),e=h(e),l=(e-c)/(u-t+1);t<u;t++)c+=l,r[t].offset=c+"%"}return r}),ci=i._tear=function(n,t){n==t.top&&(t.top=n.prev);n==t.bottom&&(t.bottom=n.next);n.next&&(n.next.prev=n.prev);n.prev&&(n.prev.next=n.next)},ee=i._tofront=function(n,t){t.top!==n&&(ci(n,t),n.next=null,n.prev=t.top,t.top.next=n,t.top=n)},oe=i._toback=function(n,t){t.bottom!==n&&(ci(n,t),n.next=t.bottom,n.prev=null,t.bottom.prev=n,t.bottom=n)},se=i._insertafter=function(n,t,i){ci(n,i);t==i.top&&(i.top=n);t.next&&(t.next.prev=n);n.next=t.next;n.prev=t;t.next=n},he=i._insertbefore=function(n,t,i){ci(n,i);t==i.bottom&&(i.bottom=n);t.prev&&(t.prev.next=n);n.prev=t.prev;t.prev=n;n.next=t},vf=i.toMatrix=function(n,t){var r=nr(n),i={_:{transform:d},getBBox:function(){return r}};return iu(i,t),i.matrix},ce=i.transformPath=function(n,t){return ki(n,vf(n,t))},iu=i._extractTransform=function(n,t){var w,tt;if(t==null)return n._.transform;t=b(t).replace(/\.{3}|\u2026/g,n._.transform||d);var a=i.parseTransformString(t),v=0,g=0,nt=0,y=1,p=1,e=n._,u=new ht;if(e.transform=a||[],a)for(w=0,tt=a.length;w<tt;w++){var r=a[w],o=r.length,l=b(r[0]).toLowerCase(),k=r[0]!=l,s=k?u.invert():0,it,rt,h,c,f;l=="t"&&o==3?k?(it=s.x(0,0),rt=s.y(0,0),h=s.x(r[1],r[2]),c=s.y(r[1],r[2]),u.translate(h-it,c-rt)):u.translate(r[1],r[2]):l=="r"?o==2?(f=f||n.getBBox(1),u.rotate(r[1],f.x+f.width/2,f.y+f.height/2),v+=r[1]):o==4&&(k?(h=s.x(r[2],r[3]),c=s.y(r[2],r[3]),u.rotate(r[1],h,c)):u.rotate(r[1],r[2],r[3]),v+=r[1]):l=="s"?o==2||o==3?(f=f||n.getBBox(1),u.scale(r[1],r[o-1],f.x+f.width/2,f.y+f.height/2),y*=r[1],p*=r[o-1]):o==5&&(k?(h=s.x(r[3],r[4]),c=s.y(r[3],r[4]),u.scale(r[1],r[2],h,c)):u.scale(r[1],r[2],r[3],r[4]),y*=r[1],p*=r[2]):l=="m"&&o==7&&u.add(r[1],r[2],r[3],r[4],r[5],r[6]);e.dirtyT=1;n.matrix=u}n.matrix=u;e.sx=y;e.sy=p;e.deg=v;e.dx=g=u.e;e.dy=nt=u.f;y==1&&p==1&&!v&&e.bbox?(e.bbox.x+=+g,e.bbox.y+=+nt):e.dirtyT=1},ru=function(n){var t=n[0];switch(t.toLowerCase()){case"t":return[t,0,0];case"m":return[t,1,0,0,1,0,0];case"r":return n.length==4?[t,0,n[2],n[3]]:[t,0];case"s":return n.length==5?[t,1,1,n[3],n[4]]:n.length==3?[t,1,1]:[t,1]}},yf=i._equaliseTransform=function(n,t){t=b(t).replace(/\.{3}|\u2026/g,n);n=i.parseTransformString(n)||[];t=i.parseTransformString(t)||[];for(var l=o(n.length,t.length),s=[],h=[],u=0,f,c,r,e;u<l;u++){if(r=n[u]||ru(t[u]),e=t[u]||ru(r),r[0]!=e[0]||r[0].toLowerCase()=="r"&&(r[2]!=e[2]||r[3]!=e[3])||r[0].toLowerCase()=="s"&&(r[3]!=e[3]||r[4]!=e[4]))return;for(s[u]=[],h[u]=[],f=0,c=o(r.length,e.length);f<c;f++)f in r&&(s[u][f]=r[f]),f in e&&(h[u][f]=e[f])}return{from:s,to:h}};i._getContainer=function(n,t,u,f){var e;if(e=f==null&&!i.is(n,"object")?r.doc.getElementById(n):n,e!=null)return e.tagName?t==null?{container:e,width:e.style.pixelWidth||e.offsetWidth,height:e.style.pixelHeight||e.offsetHeight}:{container:e,width:t,height:u}:{container:1,x:n,y:t,width:u,height:f}};i.pathToRelative=af;i._engine={};i.path2curve=wt;i.matrix=function(n,t,i,r,u,f){return new ht(n,t,i,r,u,f)},function(n){function t(n){return n[0]*n[0]+n[1]*n[1]}function r(n){var i=u.sqrt(t(n));n[0]&&(n[0]/=i);n[1]&&(n[1]/=i)}n.add=function(n,t,i,r,u,f){var e=[[],[],[]],a=[[this.a,this.c,this.e],[this.b,this.d,this.f],[0,0,1]],l=[[n,i,u],[t,r,f],[0,0,1]],o,s,h,c;for(n&&n instanceof ht&&(l=[[n.a,n.c,n.e],[n.b,n.d,n.f],[0,0,1]]),o=0;o<3;o++)for(s=0;s<3;s++){for(c=0,h=0;h<3;h++)c+=a[o][h]*l[h][s];e[o][s]=c}this.a=e[0][0];this.b=e[1][0];this.c=e[0][1];this.d=e[1][1];this.e=e[0][2];this.f=e[1][2]};n.invert=function(){var n=this,t=n.a*n.d-n.b*n.c;return new ht(n.d/t,-n.b/t,-n.c/t,n.a/t,(n.c*n.f-n.d*n.e)/t,(n.b*n.e-n.a*n.f)/t)};n.clone=function(){return new ht(this.a,this.b,this.c,this.d,this.e,this.f)};n.translate=function(n,t){this.add(1,0,0,1,n,t)};n.scale=function(n,t,i,r){t==null&&(t=n);(i||r)&&this.add(1,0,0,1,i,r);this.add(n,0,0,t,0,0);(i||r)&&this.add(1,0,0,1,-i,-r)};n.rotate=function(n,t,r){n=i.rad(n);t=t||0;r=r||0;var f=+u.cos(n).toFixed(9),e=+u.sin(n).toFixed(9);this.add(f,e,-e,f,t,r);this.add(1,0,0,1,-t,-r)};n.x=function(n,t){return n*this.a+t*this.c+this.e};n.y=function(n,t){return n*this.b+t*this.d+this.f};n.get=function(n){return+this[b.fromCharCode(97+n)].toFixed(4)};n.toString=function(){return i.svg?"matrix("+[this.get(0),this.get(1),this.get(2),this.get(3),this.get(4),this.get(5)].join()+")":[this.get(0),this.get(2),this.get(1),this.get(3),0,0].join()};n.toFilter=function(){return"progid:DXImageTransform.Microsoft.Matrix(M11="+this.get(0)+", M12="+this.get(2)+", M21="+this.get(1)+", M22="+this.get(3)+", Dx="+this.get(4)+", Dy="+this.get(5)+", sizingmethod='auto expand')"};n.offset=function(){return[this.e.toFixed(4),this.f.toFixed(4)]};n.split=function(){var n={},f,e,o;return n.dx=this.e,n.dy=this.f,f=[[this.a,this.c],[this.b,this.d]],n.scalex=u.sqrt(t(f[0])),r(f[0]),n.shear=f[0][0]*f[1][0]+f[0][1]*f[1][1],f[1]=[f[1][0]-f[0][0]*n.shear,f[1][1]-f[0][1]*n.shear],n.scaley=u.sqrt(t(f[1])),r(f[1]),n.shear/=n.scaley,e=-f[0][1],o=f[1][1],o<0?(n.rotate=i.deg(u.acos(o)),e<0&&(n.rotate=360-n.rotate)):n.rotate=i.deg(u.asin(e)),n.isSimple=!+n.shear.toFixed(9)&&(n.scalex.toFixed(9)==n.scaley.toFixed(9)||!n.rotate),n.isSuperSimple=!+n.shear.toFixed(9)&&n.scalex.toFixed(9)==n.scaley.toFixed(9)&&!n.rotate,n.noRotation=!+n.shear.toFixed(9)&&!n.rotate,n};n.toTransformString=function(n){var t=n||this[ut]();return t.isSimple?(t.scalex=+t.scalex.toFixed(4),t.scaley=+t.scaley.toFixed(4),t.rotate=+t.rotate.toFixed(4),(t.dx||t.dy?"t"+[t.dx,t.dy]:d)+(t.scalex!=1||t.scaley!=1?"s"+[t.scalex,t.scaley,0,0]:d)+(t.rotate?"r"+[t.rotate,0,0]:d)):"m"+[this.get(0),this.get(1),this.get(2),this.get(3),this.get(4),this.get(5)]}}(ht.prototype);bt=navigator.userAgent.match(/Version\/(.*?)\s/)||navigator.userAgent.match(/Chrome\/(\d+)/);c.safari=navigator.vendor=="Apple Computer, Inc."&&(bt&&bt[1]<4||navigator.platform.slice(0,2)=="iP")||navigator.vendor=="Google Inc."&&bt&&bt[1]<8?function(){var n=this.rect(-99,-99,this.width+99,this.height+99).attr({stroke:"none"});setTimeout(function(){n.remove()})}:rf;var pf=function(){this.returnValue=!1},wf=function(){return this.originalEvent.preventDefault()},bf=function(){this.cancelBubble=!0},kf=function(){return this.originalEvent.stopPropagation()},uu=function(n){var t=r.doc.documentElement.scrollTop||r.doc.body.scrollTop,i=r.doc.documentElement.scrollLeft||r.doc.body.scrollLeft;return{x:n.clientX+i,y:n.clientY+t}},df=function(){return r.doc.addEventListener?function(n,t,i,r){var u=function(n){var t=uu(n);return i.call(r,n,t.x,t.y)},f;return n.addEventListener(t,u,!1),dt&&gt[t]&&(f=function(t){for(var f=uu(t),e=t,u=0,o=t.targetTouches&&t.targetTouches.length;u<o;u++)if(t.targetTouches[u].target==n){t=t.targetTouches[u];t.originalEvent=e;t.preventDefault=wf;t.stopPropagation=kf;break}return i.call(r,t,f.x,f.y)},n.addEventListener(gt[t],f,!1)),function(){return n.removeEventListener(t,u,!1),dt&&gt[t]&&n.removeEventListener(gt[t],u,!1),!0}}:r.doc.attachEvent?function(n,t,i,u){var f=function(n){n=n||r.win.event;var t=r.doc.documentElement.scrollTop||r.doc.body.scrollTop,f=r.doc.documentElement.scrollLeft||r.doc.body.scrollLeft,e=n.clientX+f,o=n.clientY+t;return n.preventDefault=n.preventDefault||pf,n.stopPropagation=n.stopPropagation||bf,i.call(u,n,e,o)};return n.attachEvent("on"+t,f),function(){return n.detachEvent("on"+t,f),!0}}:void 0}(),ot=[],tr=function(n){for(var f=n.clientX,e=n.clientY,v=r.doc.documentElement.scrollTop||r.doc.body.scrollTop,y=r.doc.documentElement.scrollLeft||r.doc.body.scrollLeft,i,l=ot.length,s,o;l--;){if(i=ot[l],dt&&n.touches){for(s=n.touches.length;s--;)if(o=n.touches[s],o.identifier==i.el._drag.id){f=o.clientX;e=o.clientY;(n.originalEvent?n.originalEvent:n).preventDefault();break}}else n.preventDefault();var u=i.el.node,h,a=u.nextSibling,c=u.parentNode,p=u.style.display;r.win.opera&&c.removeChild(u);u.style.display="none";h=i.el.paper.getElementByPoint(f,e);u.style.display=p;r.win.opera&&(a?c.insertBefore(u,a):c.appendChild(u));h&&t("raphael.drag.over."+i.el.id,i.el,h);f+=y;e+=v;t("raphael.drag.move."+i.el.id,i.move_scope||i.el,f-i.el._drag.x,e-i.el._drag.y,f,e,n)}},ir=function(n){i.unmousemove(tr).unmouseup(ir);for(var u=ot.length,r;u--;)r=ot[u],r.el._drag={},t("raphael.drag.end."+r.el.id,r.end_scope||r.start_scope||r.move_scope||r.el,n);ot=[]},e=i.el={};for(rr=cr.length;rr--;)(function(n){i[n]=e[n]=function(t,u){return i.is(t,"function")&&(this.events=this.events||[],this.events.push({name:n,f:t,unbind:df(this.shape||this.node||r.doc,n,t,u||this)})),this};i["un"+n]=e["un"+n]=function(t){for(var r=this.events||[],u=r.length;u--;)r[u].name==n&&(i.is(t,"undefined")||r[u].f==t)&&(r[u].unbind(),r.splice(u,1),r.length||delete this.events);return this}})(cr[rr]);e.data=function(n,r){var u=at[this.id]=at[this.id]||{},f;if(arguments.length==0)return u;if(arguments.length==1){if(i.is(n,"object")){for(f in n)n[a](f)&&this.data(f,n[f]);return this}return t("raphael.data.get."+this.id,this,u[n],n),u[n]}return u[n]=r,t("raphael.data.set."+this.id,this,r,n),this};e.removeData=function(n){return n==null?at[this.id]={}:at[this.id]&&delete at[this.id][n],this};e.getData=function(){return pt(at[this.id]||{})};e.hover=function(n,t,i,r){return this.mouseover(n,i).mouseout(t,r||i)};e.unhover=function(n,t){return this.unmouseover(n).unmouseout(t)};ct=[];e.drag=function(n,u,f,e,o,s){function h(h){var l,c;(h.originalEvent||h).preventDefault();var a=h.clientX,v=h.clientY,y=r.doc.documentElement.scrollTop||r.doc.body.scrollTop,p=r.doc.documentElement.scrollLeft||r.doc.body.scrollLeft;if(this._drag.id=h.identifier,dt&&h.touches)for(l=h.touches.length;l--;)if(c=h.touches[l],this._drag.id=c.identifier,c.identifier==this._drag.id){a=c.clientX;v=c.clientY;break}this._drag.x=a+p;this._drag.y=v+y;ot.length||i.mousemove(tr).mouseup(ir);ot.push({el:this,move_scope:e,start_scope:o,end_scope:s});u&&t.on("raphael.drag.start."+this.id,u);n&&t.on("raphael.drag.move."+this.id,n);f&&t.on("raphael.drag.end."+this.id,f);t("raphael.drag.start."+this.id,o||e||this,h.clientX+p,h.clientY+y,h)}return this._drag={},ct.push({el:this,start:h}),this.mousedown(h),this};e.onDragOver=function(n){n?t.on("raphael.drag.over."+this.id,n):t.unbind("raphael.drag.over."+this.id)};e.undrag=function(){for(var n=ct.length;n--;)ct[n].el==this&&(this.unmousedown(ct[n].start),ct.splice(n,1),t.unbind("raphael.drag.*."+this.id));ct.length||i.unmousemove(tr).unmouseup(ir);ot=[]};c.circle=function(n,t,r){var u=i._engine.circle(this,n||0,t||0,r||0);return this.__set__&&this.__set__.push(u),u};c.rect=function(n,t,r,u,f){var e=i._engine.rect(this,n||0,t||0,r||0,u||0,f||0);return this.__set__&&this.__set__.push(e),e};c.ellipse=function(n,t,r,u){var f=i._engine.ellipse(this,n||0,t||0,r||0,u||0);return this.__set__&&this.__set__.push(f),f};c.path=function(n){!n||i.is(n,ti)||i.is(n[0],tt)||(n+=d);var t=i._engine.path(i.format[v](i,arguments),this);return this.__set__&&this.__set__.push(t),t};c.image=function(n,t,r,u,f){var e=i._engine.image(this,n||"about:blank",t||0,r||0,u||0,f||0);return this.__set__&&this.__set__.push(e),e};c.text=function(n,t,r){var u=i._engine.text(this,n||0,t||0,b(r));return this.__set__&&this.__set__.push(u),u};c.set=function(n){i.is(n,"array")||(n=Array.prototype.splice.call(arguments,0,arguments.length));var t=new yt(n);return this.__set__&&this.__set__.push(t),t.paper=this,t.type="set",t};c.setStart=function(n){this.__set__=n||this.set()};c.setFinish=function(){var n=this.__set__;return delete this.__set__,n};c.setSize=function(n,t){return i._engine.setSize.call(this,n,t)};c.setViewBox=function(n,t,r,u,f){return i._engine.setViewBox.call(this,n,t,r,u,f)};c.top=c.bottom=null;c.raphael=i;fu=function(n){var u=n.getBoundingClientRect(),f=n.ownerDocument,t=f.body,i=f.documentElement,e=i.clientTop||t.clientTop||0,o=i.clientLeft||t.clientLeft||0,s=u.top+(r.win.pageYOffset||i.scrollTop||t.scrollTop)-e,h=u.left+(r.win.pageXOffset||i.scrollLeft||t.scrollLeft)-o;return{y:s,x:h}};c.getElementByPoint=function(n,t){var o=this,f=o.canvas,i=r.doc.elementFromPoint(n,t),s,u,e;if(r.win.opera&&i.tagName=="svg"&&(s=fu(f),u=f.createSVGRect(),u.x=n-s.x,u.y=t-s.y,u.width=u.height=1,e=f.getIntersectionList(u,null),e.length&&(i=e[e.length-1])),!i)return null;while(i.parentNode&&i!=f.parentNode&&!i.raphael)i=i.parentNode;return i==o.canvas.parentNode&&(i=f),i&&i.raphael?o.getById(i.raphaelid):null};c.getElementsByBBox=function(n){var t=this.set();return this.forEach(function(r){i.isBBoxIntersect(r.getBBox(),n)&&t.push(r)}),t};c.getById=function(n){for(var t=this.bottom;t;){if(t.id==n)return t;t=t.next}return null};c.forEach=function(n,t){for(var i=this.bottom;i;){if(n.call(t,i)===!1)return this;i=i.next}return this};c.getElementsByPoint=function(n,t){var i=this.set();return this.forEach(function(r){r.isPointInside(n,t)&&i.push(r)}),i};e.isPointInside=function(n,t){var r=this.realPath=ri[this.type](this);return this.attr("transform")&&this.attr("transform").length&&(r=i.transformPath(r,this.attr("transform"))),i.isPointInsidePath(r,n,t)};e.getBBox=function(n){if(this.removed)return{};var t=this._;return n?((t.dirty||!t.bboxwt)&&(this.realPath=ri[this.type](this),t.bboxwt=nr(this.realPath),t.bboxwt.toString=eu,t.dirty=0),t.bboxwt):((t.dirty||t.dirtyT||!t.bbox)&&((t.dirty||!this.realPath)&&(t.bboxwt=0,this.realPath=ri[this.type](this)),t.bbox=nr(ki(this.realPath,this.matrix)),t.bbox.toString=eu,t.dirty=t.dirtyT=0),t.bbox)};e.clone=function(){if(this.removed)return null;var n=this.paper[this.type]().attr(this.attr());return this.__set__&&this.__set__.push(n),n};e.glow=function(n){var r;if(this.type=="text")return null;n=n||{};var t={width:(n.width||10)+(+this.attr("stroke-width")||1),fill:n.fill||!1,opacity:n.opacity||.5,offsetx:n.offsetx||0,offsety:n.offsety||0,color:n.color||"#000"},u=t.width/2,f=this.paper,e=f.set(),i=this.realPath||ri[this.type](this);for(i=this.matrix?ki(i,this.matrix):i,r=1;r<u+1;r++)e.push(f.path(i).attr({stroke:t.color,fill:t.fill?t.color:"none","stroke-linejoin":"round","stroke-linecap":"round","stroke-width":+(t.width/u*r).toFixed(3),opacity:+(t.opacity/u).toFixed(3)}));return e.insertBefore(this).translate(t.offsetx,t.offsety)};var ur=function(n,t,r,u,f,e,o,s,h){return h==null?vt(n,t,r,u,f,e,o,s):i.findDotsAtSegment(n,t,r,u,f,e,o,s,cf(n,t,r,u,f,e,o,s,h))},fr=function(n,t){return function(r,u,f){var y,p;r=wt(r);var s,h,e,a,c="",v={},o,l=0;for(y=0,p=r.length;y<p;y++){if(e=r[y],e[0]=="M")s=+e[1],h=+e[2];else{if(a=ur(s,h,e[1],e[2],e[3],e[4],e[5],e[6]),l+a>u){if(t&&!v.start){if(o=ur(s,h,e[1],e[2],e[3],e[4],e[5],e[6],u-l),c+=["C"+o.start.x,o.start.y,o.m.x,o.m.y,o.x,o.y],f)return c;v.start=c;c=["M"+o.x,o.y+"C"+o.n.x,o.n.y,o.end.x,o.end.y,e[5],e[6]].join();l+=a;s=+e[5];h=+e[6];continue}if(!n&&!t)return o=ur(s,h,e[1],e[2],e[3],e[4],e[5],e[6],u-l),{x:o.x,y:o.y,alpha:o.alpha}}l+=a;s=+e[5];h=+e[6]}c+=e.shift()+e}return v.end=c,o=n?l:t?v:i.findDotsAtSegment(s,h,e[0],e[1],e[2],e[3],e[4],e[5],1),o.alpha&&(o={x:o.x,y:o.y,alpha:o.alpha}),o}},ou=fr(1),su=fr(),er=fr(0,1);i.getTotalLength=ou;i.getPointAtLength=su;i.getSubpath=function(n,t,i){if(this.getTotalLength(n)-i<1e-6)return er(n,t).end;var r=er(n,i,1);return t?er(r,t).end:r};e.getTotalLength=function(){var n=this.getPath();if(n)return this.node.getTotalLength?this.node.getTotalLength():ou(n)};e.getPointAtLength=function(n){var t=this.getPath();if(t)return su(t,n)};e.getPath=function(){var n,t=i._getPath[this.type];if(this.type!="text"&&this.type!="set")return t&&(n=t(this)),n};e.getSubpath=function(n,t){var r=this.getPath();if(r)return i.getSubpath(r,n,t)};g=i.easing_formulas={linear:function(n){return n},"<":function(n){return nt(n,1.7)},">":function(n){return nt(n,.48)},"<>":function(n){var i=.48-n/1.04,r=u.sqrt(.1734+i*i),f=r-i,o=nt(y(f),1/3)*(f<0?-1:1),e=-r-i,s=nt(y(e),1/3)*(e<0?-1:1),t=o+s+.5;return(1-t)*3*t*t+t*t*t},backIn:function(n){var t=1.70158;return n*n*((t+1)*n-t)},backOut:function(n){n=n-1;var t=1.70158;return n*n*((t+1)*n+t)+1},elastic:function(n){return n==!!n?n:nt(2,-10*n)*u.sin((n-.075)*2*k/.3)+1},bounce:function(n){var r=7.5625,t=2.75,i;return n<1/t?i=r*n*n:n<2/t?(n-=1.5/t,i=r*n*n+.75):n<2.5/t?(n-=2.25/t,i=r*n*n+.9375):(n-=2.625/t,i=r*n*n+.984375),i}};g.easeIn=g["ease-in"]=g["<"];g.easeOut=g["ease-out"]=g[">"];g.easeInOut=g["ease-in-out"]=g["<>"];g["back-in"]=g.backIn;g["back-out"]=g.backOut;var f=[],hu=n.requestAnimationFrame||n.webkitRequestAnimationFrame||n.mozRequestAnimationFrame||n.oRequestAnimationFrame||n.msRequestAnimationFrame||function(n){setTimeout(n,16)},or=function(){for(var ft=+new Date,b=0,n,v,r,u,g,c,nt,w,ut;b<f.length;b++)if(n=f[b],!n.el.removed&&!n.paused){var k=ft-n.start,h=n.ms,et=n.easing,o=n.from,l=n.diff,tt=n.to,ot=n.t,y=n.el,it={},e,rt={},d;if(n.initstatus?(k=(n.initstatus*n.anim.top-n.prev)/(n.percent-n.prev)*h,n.status=n.initstatus,delete n.initstatus,n.stop&&f.splice(b--,1)):n.status=(n.prev+(n.percent-n.prev)*(k/h))/n.anim.top,!(k<0))if(k<h){v=et(k/h);for(r in o)if(o[a](r)){switch(wi[r]){case p:e=+o[r]+v*h*l[r];break;case"colour":e="rgb("+[sr(pi(o[r].r+v*h*l[r].r)),sr(pi(o[r].g+v*h*l[r].g)),sr(pi(o[r].b+v*h*l[r].b))].join(",")+")";break;case"path":for(e=[],u=0,g=o[r].length;u<g;u++){for(e[u]=[o[r][u][0]],c=1,nt=o[r][u].length;c<nt;c++)e[u][c]=+o[r][u][c]+v*h*l[r][u][c];e[u]=e[u].join(lt)}e=e.join(lt);break;case"transform":if(l[r].real)for(e=[],u=0,g=o[r].length;u<g;u++)for(e[u]=[o[r][u][0]],c=1,nt=o[r][u].length;c<nt;c++)e[u][c]=o[r][u][c]+v*h*l[r][u][c];else w=function(n){return+o[r][n]+v*h*l[r][n]},e=[["m",w(0),w(1),w(2),w(3),w(4),w(5)]];break;case"csv":if(r=="clip-rect")for(e=[],u=4;u--;)e[u]=+o[r][u]+v*h*l[r][u];break;default:for(ut=[][s](o[r]),e=[],u=y.paper.customAttributes[r].length;u--;)e[u]=+ut[u]+v*h*l[r][u]}it[r]=e}y.attr(it),function(n,i,r){setTimeout(function(){t("raphael.anim.frame."+n,i,r)})}(y.id,y,n.anim)}else{if(function(n,r,u){setTimeout(function(){t("raphael.anim.frame."+r.id,r,u);t("raphael.anim.finish."+r.id,r,u);i.is(n,"function")&&n.call(r)})}(n.callback,y,n.anim),y.attr(tt),f.splice(b--,1),n.repeat>1&&!n.next){for(d in tt)tt[a](d)&&(rt[d]=n.totalOrigin[d]);n.el.attr(rt);kt(n.anim,n.el,n.anim.percents[0],null,n.totalOrigin,n.repeat-1)}n.next&&!n.stop&&kt(n.anim,n.el,n.next,null,n.totalOrigin,n.repeat)}}i.svg&&y&&y.paper&&y.paper.safari();f.length&&hu(or)},sr=function(n){return n>255?255:n<0?0:n};e.animateWith=function(n,t,r,u,e,o){var s=this,c,h,l;if(s.removed)return o&&o.call(s),s;for(c=r instanceof ft?r:i.animation(r,u,e,o),kt(c,s,c.percents[0],null,s.attr()),h=0,l=f.length;h<l;h++)if(f[h].anim==t&&f[h].el==n){f[l-1].start=f[h].start;break}return s};e.onAnimation=function(n){return n?t.on("raphael.anim.frame."+this.id,n):t.unbind("raphael.anim.frame."+this.id),this};ft.prototype.delay=function(n){var t=new ft(this.anim,this.ms);return t.times=this.times,t.del=+n||0,t};ft.prototype.repeat=function(n){var t=new ft(this.anim,this.ms);return t.del=this.del,t.times=u.floor(o(n,0))||1,t};i.animation=function(n,t,r,u){if(n instanceof ft)return n;(i.is(r,"function")||!r)&&(u=u||r||null,r=null);n=Object(n);t=+t||0;var e={},o;for(var f in n)n[a](f)&&h(f)!=f&&h(f)+"%"!=f&&(o=!0,e[f]=n[f]);return o?(r&&(e.easing=r),u&&(e.callback=u),new ft({100:e},t)):new ft(n,t)};e.animate=function(n,t,r,u){var f=this,e;return f.removed?(u&&u.call(f),f):(e=n instanceof ft?n:i.animation(n,t,r,u),kt(e,f,e.percents[0],null,f.attr()),f)};e.setTime=function(n,t){return n&&t!=null&&this.status(n,l(t,n.ms)/n.ms),this};e.status=function(n,t){var u=[],r=0,e,i;if(t!=null)return kt(n,this,-1,l(t,1)),this;for(e=f.length;r<e;r++)if(i=f[r],i.el.id==this.id&&(!n||i.anim==n)){if(n)return i.status;u.push({anim:i.anim,status:i.status})}return n?0:u};e.pause=function(n){for(var i=0;i<f.length;i++)f[i].el.id!=this.id||n&&f[i].anim!=n||t("raphael.anim.pause."+this.id,this,f[i].anim)!==!1&&(f[i].paused=!0);return this};e.resume=function(n){for(var r,i=0;i<f.length;i++)f[i].el.id!=this.id||n&&f[i].anim!=n||(r=f[i],t("raphael.anim.resume."+this.id,this,r.anim)!==!1&&(delete r.paused,this.status(r.anim,r.status)));return this};e.stop=function(n){for(var i=0;i<f.length;i++)f[i].el.id!=this.id||n&&f[i].anim!=n||t("raphael.anim.stop."+this.id,this,f[i].anim)!==!1&&f.splice(i--,1);return this};t.on("raphael.remove",cu);t.on("raphael.clear",cu);e.toString=function(){return"Raphaël’s object"};yt=function(n){if(this.items=[],this.length=0,this.type="set",n)for(var t=0,i=n.length;t<i;t++)n[t]&&(n[t].constructor==e.constructor||n[t].constructor==yt)&&(this[this.items.length]=this.items[this.items.length]=n[t],this.length++)};w=yt.prototype;w.push=function(){for(var n,t,i=0,r=arguments.length;i<r;i++)n=arguments[i],n&&(n.constructor==e.constructor||n.constructor==yt)&&(t=this.items.length,this[t]=this.items[t]=n,this.length++);return this};w.pop=function(){return this.length&&delete this[this.length--],this.items.pop()};w.forEach=function(n,t){for(var i=0,r=this.items.length;i<r;i++)if(n.call(t,this.items[i],i)===!1)return this;return this};for(li in e)e[a](li)&&(w[li]=function(n){return function(){var t=arguments;return this.forEach(function(i){i[n][v](i,t)})}}(li));w.attr=function(n,t){var r,f,u,e;if(n&&i.is(n,tt)&&i.is(n[0],"object"))for(r=0,f=n.length;r<f;r++)this.items[r].attr(n[r]);else for(u=0,e=this.items.length;u<e;u++)this.items[u].attr(n,t);return this};w.clear=function(){while(this.length)this.pop()};w.splice=function(n,t){var r;n=n<0?o(this.length+n,0):n;t=o(0,l(this.length-n,t));for(var u=[],e=[],f=[],i=2;i<arguments.length;i++)f.push(arguments[i]);for(i=0;i<t;i++)e.push(this[n+i]);for(;i<this.length-n;i++)u.push(this[n+i]);for(r=f.length,i=0;i<r+u.length;i++)this.items[n+i]=this[n+i]=i<r?f[i]:u[i-r];for(i=this.items.length=this.length-=t-r;this[i];)delete this[i++];return new yt(e)};w.exclude=function(n){for(var t=0,i=this.length;t<i;t++)if(this[t]==n)return this.splice(t,1),!0};w.animate=function(n,t,r,u){var o;(i.is(r,"function")||!r)&&(u=r||null);var e=this.items.length,f=e,h,c=this,s;if(!e)return this;for(u&&(s=function(){--e||u.call(c)}),r=i.is(r,ti)?r:s,o=i.animation(n,t,r,s),h=this.items[--f].animate(o);f--;)this.items[f]&&!this.items[f].removed&&this.items[f].animateWith(h,o,o),this.items[f]&&!this.items[f].removed||e--;return this};w.insertAfter=function(n){for(var t=this.items.length;t--;)this.items[t].insertAfter(n);return this};w.getBBox=function(){for(var n,t=[],i=[],r=[],u=[],f=this.items.length;f--;)this.items[f].removed||(n=this.items[f].getBBox(),t.push(n.x),i.push(n.y),r.push(n.x+n.width),u.push(n.y+n.height));return t=l[v](0,t),i=l[v](0,i),r=o[v](0,r),u=o[v](0,u),{x:t,y:i,x2:r,y2:u,width:r-t,height:u-i}};w.clone=function(n){n=this.paper.set();for(var t=0,i=this.items.length;t<i;t++)n.push(this.items[t].clone());return n};w.toString=function(){return"Raphaël‘s set"};w.glow=function(n){var t=this.paper.set();return this.forEach(function(i){var r=i.glow(n);r!=null&&r.forEach(function(n){t.push(n)})}),t};w.isPointInside=function(n,t){var i=!1;return this.forEach(function(r){if(r.isPointInside(n,t))return i=!0,!1}),i};i.registerFont=function(n){var i,u,f,r,t,e;if(!n.face)return n;this.fonts=this.fonts||{};i={w:n.w,face:{},glyphs:{}};u=n.face["font-family"];for(f in n.face)n.face[a](f)&&(i.face[f]=n.face[f]);if(this.fonts[u]?this.fonts[u].push(i):this.fonts[u]=[i],!n.svg){i.face["units-per-em"]=st(n.face["units-per-em"],10);for(r in n.glyphs)if(n.glyphs[a](r)&&(t=n.glyphs[r],i.glyphs[r]={w:t.w,k:{},d:t.d&&"M"+t.d.replace(/[mlcxtrv]/g,function(n){return{l:"L",c:"C",x:"z",t:"m",r:"l",v:"c"}[n]||"M"})+"z"},t.k))for(e in t.k)t[a](e)&&(i.glyphs[r].k[e]=t.k[e])}return n};c.getFont=function(n,t,r,u){var f,h,o,e,s,c;if(u=u||"normal",r=r||"normal",t=+t||{normal:400,bold:700,lighter:300,bolder:800}[t]||400,i.fonts){if(f=i.fonts[n],!f){h=new RegExp("(^|\\s)"+n.replace(/[^\w\d\s+!~.:_-]/g,d)+"(\\s|$)","i");for(o in i.fonts)if(i.fonts[a](o)&&h.test(o)){f=i.fonts[o];break}}if(f)for(s=0,c=f.length;s<c;s++)if(e=f[s],e.face["font-weight"]==t&&(e.face["font-style"]==r||!e.face["font-style"])&&e.face["font-stretch"]==u)break;return e}};c.print=function(n,t,r,u,f,e,s,h){var a,et,k,y;e=e||"middle";s=o(l(s||0,1),-1);h=o(l(h||1,3),1);var v=b(r)[ut](d),g=0,p=0,tt=d,c;if(i.is(u,"string")&&(u=this.getFont(u)),u){c=(f||16)/u.face["units-per-em"];var w=u.face.bbox[ut](vi),it=+w[0],nt=w[3]-w[1],rt=0,ft=+w[1]+(e=="baseline"?nt+ +u.face.descent:nt/2);for(a=0,et=v.length;a<et;a++)v[a]=="\n"?(g=0,y=0,p=0,rt+=nt*h):(k=p&&u.glyphs[v[a-1]]||{},y=u.glyphs[v[a]],g+=p?(k.w||u.w)+(k.k&&k.k[v[a]]||0)+u.w*s:0,p=1),y&&y.d&&(tt+=i.transformPath(y.d,["t",g*c,rt*c,"s",c,c,it,ft,"t",(n-it)/c,(t-ft)/c]))}return this.path(tt).attr({fill:"#000",stroke:"none"})};c.add=function(n){if(i.is(n,"array"))for(var u=this.set(),r=0,f=n.length,t;r<f;r++)t=n[r]||{},lu[a](t.type)&&u.push(this[t.type]().attr(t));return u};i.format=function(n,t){var r=i.is(t,tt)?[0][s](t):arguments;return n&&i.is(n,ti)&&r.length-1&&(n=n.replace(au,function(n,t){return r[++t]==null?d:r[t]})),n||d};i.fullfill=function(){var n=/\{([^\}]+)\}/g,t=/(?:(?:^|\.)(.+?)(?=\[|\.|$|\()|\[('|")(.+?)\2\])(\(\))?/g,i=function(n,i,r){var u=r;return i.replace(t,function(n,t,i,r,f){t=t||r;u&&(t in u&&(u=u[t]),typeof u=="function"&&f&&(u=u()))}),u=(u==null||u==r?n:u)+""};return function(t,r){return String(t).replace(n,function(n,t){return i(n,t,r)})}}();i.ninja=function(){return yi.was?r.win.Raphael=yi.is:delete Raphael,i};i.st=w,function(n,t,r){function u(){/in/.test(n.readyState)?setTimeout(u,9):i.eve("raphael.DOMload")}n.readyState==null&&n.addEventListener&&(n.addEventListener(t,r=function(){n.removeEventListener(t,r,!1);n.readyState="complete"},!1),n.readyState="loading");u()}(document,"DOMContentLoaded");t.on("raphael.DOMload",function(){ai=!0});return function(){var nt,v;if(i.svg){var t="hasOwnProperty",u=String,f=parseFloat,tt=parseInt,c=Math,k=c.max,y=c.abs,d=c.pow,l=/[, ]+/,p=i.eve,o="",w=" ",a="http://www.w3.org/1999/xlink",ft={block:"M5,0 0,2.5 5,5z",classic:"M5,0 0,2.5 5,5 3.5,3 3.5,2z",diamond:"M2.5,0 5,2.5 2.5,5 0,2.5z",open:"M6,1 1,3.5 6,6",oval:"M2.5,0A2.5,2.5,0,0,1,2.5,5 2.5,2.5,0,0,1,2.5,0z"},e={};i.toString=function(){return"Your browser supports SVG.\nYou are running Raphaël "+this.version};var n=function(r,f){var e,o;if(f){typeof r=="string"&&(r=n(r));for(e in f)f[t](e)&&(e.substring(0,6)=="xlink:"?r.setAttributeNS(a,e.substring(6),u(f[e])):r!==undefined&&(o=u(f[e]),(e!=="d"||e==="d"&&o!=="M,0,0")&&r.setAttribute(e,o)))}else r=i._g.doc.createElementNS("http://www.w3.org/2000/svg",r),r.style&&(r.style.webkitTapHighlightColor="rgba(0,0,0,0)");return r},it=function(t,r){var w="linear",l=t.id+r,b=.5,s=.5,tt=t.node,it=t.paper,g=tt.style,a=i._g.doc.getElementById(l),v,e,nt,p,h,rt;if(!a){if(r=u(r).replace(i._radial_gradient,function(n,t,i){if(w="radial",t&&i){b=f(t);s=f(i);var r=(s>.5)*2-1;d(b-.5,2)+d(s-.5,2)>.25&&(s=c.sqrt(.25-d(b-.5,2))*r+.5)&&s!=.5&&(s=s.toFixed(5)-1e-5*r)}return o}),r=r.split(/\s*\-\s*/),w=="linear"){if(v=r.shift(),v=-f(v),isNaN(v))return null;e=[0,0,c.cos(i.rad(v)),c.sin(i.rad(v))];nt=1/(k(y(e[2]),y(e[3]))||1);e[2]*=nt;e[3]*=nt;e[2]<0&&(e[0]=-e[2],e[2]=0);e[3]<0&&(e[1]=-e[3],e[3]=0)}if(p=i._parseDots(r),!p)return null;if(l=l.replace(/[\(\)\s,\xb0#]/g,"_"),t.gradient&&l!=t.gradient.id&&(it.defs.removeChild(t.gradient),delete t.gradient),!t.gradient)for(a=n(w+"Gradient",{id:l}),t.gradient=a,n(a,w=="radial"?{fx:b,fy:s}:{x1:e[0],y1:e[1],x2:e[2],y2:e[3],gradientTransform:t.matrix.invert()}),it.defs.appendChild(a),h=0,rt=p.length;h<rt;h++)a.appendChild(n("stop",{offset:p[h].offset?p[h].offset:h?"100%":"0%","stop-color":p[h].color||"#fff"}))}return n(tt,{fill:"url(#"+l+")",opacity:1,"fill-opacity":1}),g.fill=o,g.opacity=1,g.fillOpacity=1,1},b=function(t){var i=t.getBBox(1);n(t.pattern,{patternTransform:t.matrix.invert()+" translate("+i.x+","+i.y+")"})},s=function(r,f,s){var b,k,g,tt,it,rt;if(r.type=="path"){for(var ut=u(f).toLowerCase().split("-"),ht=r.paper,h=s?"end":"start",ct=r.node,l=r.attrs,d=l["stroke-width"],et=ut.length,a="classic",p,w,ot,st,c,v=3,y=3,nt=5;et--;)switch(ut[et]){case"block":case"classic":case"oval":case"diamond":case"open":case"none":a=ut[et];break;case"wide":y=5;break;case"narrow":y=2;break;case"long":v=5;break;case"short":v=2}a=="open"?(v+=2,y+=2,nt+=2,ot=1,st=s?4:1,c={fill:"none",stroke:l.stroke}):(st=ot=v/2,c={fill:l.stroke,stroke:"none"});r._.arrows?s?(r._.arrows.endPath&&e[r._.arrows.endPath]--,r._.arrows.endMarker&&e[r._.arrows.endMarker]--):(r._.arrows.startPath&&e[r._.arrows.startPath]--,r._.arrows.startMarker&&e[r._.arrows.startMarker]--):r._.arrows={};a!="none"?(b="raphael-marker-"+a,k="raphael-marker-"+h+a+v+y,i._g.doc.getElementById(b)?e[b]++:(ht.defs.appendChild(n(n("path"),{"stroke-linecap":"round",d:ft[a],id:b})),e[b]=1),g=i._g.doc.getElementById(k),g?(e[k]++,tt=g.getElementsByTagName("use")[0]):(g=n(n("marker"),{id:k,markerHeight:y,markerWidth:v,orient:"auto",refX:st,refY:y/2}),tt=n(n("use"),{"xlink:href":"#"+b,transform:(s?"rotate(180 "+v/2+" "+y/2+") ":o)+"scale("+v/nt+","+y/nt+")","stroke-width":(2/(v/nt+y/nt)).toFixed(4)}),g.appendChild(tt),ht.defs.appendChild(g),e[k]=1),n(tt,c),it=ot*(a!="diamond"&&a!="oval"),s?(p=r._.arrows.startdx*d||0,w=i.getTotalLength(l.path)-it*d):(p=it*d,w=i.getTotalLength(l.path)-(r._.arrows.enddx*d||0)),c={},c["marker-"+h]="url(#"+k+")",(w||p)&&(c.d=i.getSubpath(l.path,p,w)),n(ct,c),r._.arrows[h+"Path"]=b,r._.arrows[h+"Marker"]=k,r._.arrows[h+"dx"]=it,r._.arrows[h+"Type"]=a,r._.arrows[h+"String"]=f):(s?(p=r._.arrows.startdx*d||0,w=i.getTotalLength(l.path)-p):(p=0,w=i.getTotalLength(l.path)-(r._.arrows.enddx*d||0)),r._.arrows[h+"Path"]&&n(ct,{d:i.getSubpath(l.path,p,w)}),delete r._.arrows[h+"Path"],delete r._.arrows[h+"Marker"],delete r._.arrows[h+"dx"],delete r._.arrows[h+"Type"],delete r._.arrows[h+"String"]);for(c in e)e[t](c)&&!e[c]&&(rt=i._g.doc.getElementById(c),rt&&rt.parentNode.removeChild(rt))}},et={"":[0],none:[0],"-":[3,1],".":[1,1],"-.":[3,1,1,1],"-..":[3,1,1,1,1,1],". ":[1,3],"- ":[4,3],"--":[8,3],"- .":[4,3,1,3],"--.":[8,3,1,3],"--..":[8,3,1,3,1,3]},rt=function(t,i,r){if(i=et[u(i).toLowerCase()],i){for(var e=t.attrs["stroke-width"]||"1",s={round:e,square:e,butt:0}[t.attrs["stroke-linecap"]||r["stroke-linecap"]]||0,o=[],f=i.length;f--;)o[f]=i[f]*e+(f%2?1:-1)*s;n(t.node,{"stroke-dasharray":o.join(",")})}},g=function(r,f){var h=r.node,c=r.attrs,pt=h.style.visibility,v,e,d,vt,g,et,nt,p,st,at,ht,ct,lt,w,ut,ft,yt;h.style.visibility="hidden";for(v in f)if(f[t](v)){if(!i._availableAttrs[t](v))continue;e=f[v];c[v]=e;switch(v){case"blur":r.blur(e);break;case"title":d=h.getElementsByTagName("title");d.length&&(d=d[0])?d.firstChild.nodeValue=e:(d=n("title"),vt=i._g.doc.createTextNode(e),d.appendChild(vt),h.appendChild(d));break;case"href":case"target":g=h.parentNode;g.tagName.toLowerCase()!="a"&&(et=n("a"),g.insertBefore(et,h),et.appendChild(h),g=et);v=="target"?g.setAttributeNS(a,"show",e=="blank"?"new":e):g.setAttributeNS(a,v,e);break;case"cursor":h.style.cursor=e;break;case"transform":r.transform(e);break;case"arrow-start":s(r,e);break;case"arrow-end":s(r,e,1);break;case"clip-rect":nt=u(e).split(l);nt.length==4&&(r.clip&&r.clip.parentNode.parentNode.removeChild(r.clip.parentNode),p=n("clipPath"),st=n("rect"),p.id=i.createUUID(),n(st,{x:nt[0],y:nt[1],width:nt[2],height:nt[3]}),p.appendChild(st),r.paper.defs.appendChild(p),n(h,{"clip-path":"url(#"+p.id+")"}),r.clip=st);e||(at=h.getAttribute("clip-path"),at&&(ht=i._g.doc.getElementById(at.replace(/(^url\(#|\)$)/g,o)),ht&&ht.parentNode.removeChild(ht),n(h,{"clip-path":o}),delete r.clip));break;case"path":r.type=="path"&&(n(h,{d:e?c.path=i._pathToAbsolute(e):"M0,0"}),r._.dirty=1,r._.arrows&&("startString"in r._.arrows&&s(r,r._.arrows.startString),"endString"in r._.arrows&&s(r,r._.arrows.endString,1)));break;case"width":if(h.setAttribute(v,e),r._.dirty=1,c.fx)v="x",e=c.x;else break;case"x":c.fx&&(e=-c.x-(c.width||0));case"rx":if(v=="rx"&&r.type=="rect")break;case"cx":h.setAttribute(v,e);r.pattern&&b(r);r._.dirty=1;break;case"height":if(h.setAttribute(v,e),r._.dirty=1,c.fy)v="y",e=c.y;else break;case"y":c.fy&&(e=-c.y-(c.height||0));case"ry":if(v=="ry"&&r.type=="rect")break;case"cy":h.setAttribute(v,e);r.pattern&&b(r);r._.dirty=1;break;case"r":r.type=="rect"?n(h,{rx:e,ry:e}):h.setAttribute(v,e);r._.dirty=1;break;case"src":r.type=="image"&&h.setAttributeNS(a,"href",e);break;case"stroke-width":(r._.sx!=1||r._.sy!=1)&&(e/=k(y(r._.sx),y(r._.sy))||1);r.paper._vbSize&&(e*=r.paper._vbSize);h.setAttribute(v,e);c["stroke-dasharray"]&&rt(r,c["stroke-dasharray"],f);r._.arrows&&("startString"in r._.arrows&&s(r,r._.arrows.startString),"endString"in r._.arrows&&s(r,r._.arrows.endString,1));break;case"stroke-dasharray":rt(r,e,f);break;case"fill":if(ct=u(e).match(i._ISURL),ct){p=n("pattern");lt=n("image");p.id=i.createUUID();n(p,{x:0,y:0,patternUnits:"userSpaceOnUse",height:1,width:1});n(lt,{x:0,y:0,"xlink:href":ct[1]});p.appendChild(lt),function(t){i._preload(ct[1],function(){var i=this.offsetWidth,u=this.offsetHeight;n(t,{width:i,height:u});n(lt,{width:i,height:u});r.paper.safari()})}(p);r.paper.defs.appendChild(p);n(h,{fill:"url(#"+p.id+")"});r.pattern=p;r.pattern&&b(r);break}if(w=i.getRGB(e),w.error){if((r.type=="circle"||r.type=="ellipse"||u(e).charAt()!="r")&&it(r,e)){("opacity"in c||"fill-opacity"in c)&&(ut=i._g.doc.getElementById(h.getAttribute("fill").replace(/^url\(#|\)$/g,o)),ut&&(ft=ut.getElementsByTagName("stop"),n(ft[ft.length-1],{"stop-opacity":("opacity"in c?c.opacity:1)*("fill-opacity"in c?c["fill-opacity"]:1)})));c.gradient=e;c.fill="none";break}}else delete f.gradient,delete c.gradient,!i.is(c.opacity,"undefined")&&i.is(f.opacity,"undefined")&&n(h,{opacity:c.opacity}),!i.is(c["fill-opacity"],"undefined")&&i.is(f["fill-opacity"],"undefined")&&n(h,{"fill-opacity":c["fill-opacity"]});w[t]("opacity")&&n(h,{"fill-opacity":w.opacity>1?w.opacity/100:w.opacity});case"stroke":w=i.getRGB(e);h.setAttribute(v,w.hex);v=="stroke"&&w[t]("opacity")&&n(h,{"stroke-opacity":w.opacity>1?w.opacity/100:w.opacity});v=="stroke"&&r._.arrows&&("startString"in r._.arrows&&s(r,r._.arrows.startString),"endString"in r._.arrows&&s(r,r._.arrows.endString,1));break;case"gradient":(r.type=="circle"||r.type=="ellipse"||u(e).charAt()!="r")&&it(r,e);break;case"opacity":c.gradient&&!c[t]("stroke-opacity")&&n(h,{"stroke-opacity":e>1?e/100:e});case"fill-opacity":if(c.gradient){ut=i._g.doc.getElementById(h.getAttribute("fill").replace(/^url\(#|\)$/g,o));ut&&(ft=ut.getElementsByTagName("stop"),n(ft[ft.length-1],{"stop-opacity":e}));break}default:v=="font-size"&&(e=tt(e,10)+"px");yt=v.replace(/(\-.)/g,function(n){return n.substring(1).toUpperCase()});h.style[yt]=e;r._.dirty=1;h.setAttribute(v,e)}}ot(r,f);h.style.visibility=pt},ut=1.2,ot=function(r,f){var y,h,l,e,a,p,v;if(r.type=="text"&&(f[t]("text")||f[t]("font")||f[t]("font-size")||f[t]("x")||f[t]("y"))){var c=r.attrs,s=r.node,w=s.firstChild?tt(i._g.doc.defaultView.getComputedStyle(s.firstChild,o).getPropertyValue("font-size"),10):10;if(f[t]("text")){for(c.text=f.text;s.firstChild;)s.removeChild(s.firstChild);for(y=u(f.text).split("\n"),h=[],e=0,a=y.length;e<a;e++)l=n("tspan"),e&&n(l,{dy:w*ut,x:c.x}),l.appendChild(i._g.doc.createTextNode(y[e])),s.appendChild(l),h[e]=l}else for(h=s.getElementsByTagName("tspan"),e=0,a=h.length;e<a;e++)e?n(h[e],{dy:w*ut,x:c.x}):n(h[0],{dy:0});n(s,{x:c.x,y:c.y});r._.dirty=1;p=r._getBBox();v=c.y-(p.y+p.height/2);v&&i.is(v,"finite")&&n(h[0],{dy:v})}},h=function(n,t){this[0]=this.node=n;n.raphael=!0;this.id=i._oid++;n.raphaelid=this.id;this.matrix=i.matrix();this.realPath=null;this.paper=t;this.attrs=this.attrs||{};this._={transform:[],sx:1,sy:1,deg:0,dx:0,dy:0,dirty:1};t.bottom||(t.bottom=this);this.prev=t.top;t.top&&(t.top.next=this);t.top=this;this.next=null},r=i.el;h.prototype=r;r.constructor=h;i._engine.path=function(t,i){var u=n("path"),r;return i.canvas&&i.canvas.appendChild(u),r=new h(u,i),r.type="path",g(r,{fill:"none",stroke:"#000",path:t}),r};r.rotate=function(n,t,i){if(this.removed)return this;if(n=u(n).split(l),n.length-1&&(t=f(n[1]),i=f(n[2])),n=f(n[0]),i==null&&(t=i),t==null||i==null){var r=this.getBBox(1);t=r.x+r.width/2;i=r.y+r.height/2}return this.transform(this._.transform.concat([["r",n,t,i]])),this};r.scale=function(n,t,i,r){if(this.removed)return this;if(n=u(n).split(l),n.length-1&&(t=f(n[1]),i=f(n[2]),r=f(n[3])),n=f(n[0]),t==null&&(t=n),r==null&&(i=r),i==null||r==null)var e=this.getBBox(1);return i=i==null?e.x+e.width/2:i,r=r==null?e.y+e.height/2:r,this.transform(this._.transform.concat([["s",n,t,i,r]])),this};r.translate=function(n,t){return this.removed?this:(n=u(n).split(l),n.length-1&&(t=f(n[1])),n=f(n[0])||0,t=+t||0,this.transform(this._.transform.concat([["t",n,t]])),this)};r.transform=function(r){var u=this._,f;return r==null?u.transform:(i._extractTransform(this,r),this.clip&&n(this.clip,{transform:this.matrix.invert()}),this.pattern&&b(this),this.node&&n(this.node,{transform:this.matrix}),(u.sx!=1||u.sy!=1)&&(f=this.attrs[t]("stroke-width")?this.attrs["stroke-width"]:1,this.attr({"stroke-width":f})),this)};r.hide=function(){return this.removed||this.paper.safari(this.node.style.display="none"),this};r.show=function(){return this.removed||this.paper.safari(this.node.style.display=""),this};r.remove=function(){var n,t;if(!this.removed&&this.node.parentNode){n=this.paper;n.__set__&&n.__set__.exclude(this);p.unbind("raphael.*.*."+this.id);this.gradient&&n.defs.removeChild(this.gradient);i._tear(this,n);this.node.parentNode.tagName.toLowerCase()=="a"?this.node.parentNode.parentNode.removeChild(this.node.parentNode):this.node.parentNode.removeChild(this.node);for(t in this)this[t]=typeof this[t]=="function"?i._removedFactory(t):null;this.removed=!0}};r._getBBox=function(){var t,n;this.node.style.display=="none"&&(this.show(),t=!0);n={};try{n=this.node.getBBox()}catch(i){}finally{n=n||{}}return t&&this.hide(),n};r.attr=function(n,r){var e,c,a,s,o,h,f,u,v,y;if(this.removed)return this;if(n==null){e={};for(c in this.attrs)this.attrs[t](c)&&(e[c]=this.attrs[c]);return e.gradient&&e.fill=="none"&&(e.fill=e.gradient)&&delete e.gradient,e.transform=this._.transform,e}if(r==null&&i.is(n,"string")){if(n=="fill"&&this.attrs.fill=="none"&&this.attrs.gradient)return this.attrs.gradient;if(n=="transform")return this._.transform;for(a=n.split(l),s={},o=0,h=a.length;o<h;o++)n=a[o],s[n]=n in this.attrs?this.attrs[n]:i.is(this.paper.customAttributes[n],"function")?this.paper.customAttributes[n].def:i._availableAttrs[n];return h-1?s:s[a[0]]}if(r==null&&i.is(n,"array")){for(s={},o=0,h=n.length;o<h;o++)s[n[o]]=this.attr(n[o]);return s}r!=null?(f={},f[n]=r):n!=null&&i.is(n,"object")&&(f=n);for(u in f)p("raphael.attr."+u+"."+this.id,this,f[u]);for(u in this.paper.customAttributes)if(this.paper.customAttributes[t](u)&&f[t](u)&&i.is(this.paper.customAttributes[u],"function")){v=this.paper.customAttributes[u].apply(this,[].concat(f[u]));this.attrs[u]=f[u];for(y in v)v[t](y)&&(f[y]=v[y])}return g(this,f),this};r.toFront=function(){if(this.removed)return this;this.node.parentNode.tagName.toLowerCase()=="a"?this.node.parentNode.parentNode.appendChild(this.node.parentNode):this.node.parentNode.appendChild(this.node);var n=this.paper;return n.top!=this&&i._tofront(this,n),this};r.toBack=function(){var n,t;return this.removed?this:(n=this.node.parentNode,n===null)?this:(n.tagName.toLowerCase()=="a"?n.parentNode.insertBefore(this.node.parentNode,this.node.parentNode.parentNode.firstChild):n.firstChild!=this.node&&n.insertBefore(this.node,this.node.parentNode.firstChild),i._toback(this,this.paper),t=this.paper,this)};r.insertAfter=function(n){if(this.removed)return this;var t=n.node||n[n.length-1].node;return t.nextSibling?t.parentNode.insertBefore(this.node,t.nextSibling):t.parentNode.appendChild(this.node),i._insertafter(this,n,this.paper),this};r.insertBefore=function(n){if(this.removed)return this;var t=n.node||n[0].node;return t.parentNode.insertBefore(this.node,t),i._insertbefore(this,n,this.paper),this};r.blur=function(t){var r=this,u,f;return+t!=0?(u=n("filter"),f=n("feGaussianBlur"),r.attrs.blur=t,u.id=i.createUUID(),n(f,{stdDeviation:+t||1.5}),u.appendChild(f),r.paper.defs.appendChild(u),r._blur=u,n(r.node,{filter:"url(#"+u.id+")"})):(r._blur&&(r._blur.parentNode.removeChild(r._blur),delete r._blur,delete r.attrs.blur),r.node.removeAttribute("filter")),r};i._engine.circle=function(t,i,r,u){var e=n("circle"),f;return t.canvas&&t.canvas.appendChild(e),f=new h(e,t),f.attrs={cx:i,cy:r,r:u,fill:"none",stroke:"#000"},f.type="circle",n(e,f.attrs),f};i._engine.rect=function(t,i,r,u,f,e){var s=n("rect"),o;return t.canvas&&t.canvas.appendChild(s),o=new h(s,t),o.attrs={x:i,y:r,width:u,height:f,r:e||0,rx:e||0,ry:e||0,fill:"none",stroke:"#000"},o.type="rect",n(s,o.attrs),o};i._engine.ellipse=function(t,i,r,u,f){var o=n("ellipse"),e;return t.canvas&&t.canvas.appendChild(o),e=new h(o,t),e.attrs={cx:i,cy:r,rx:u,ry:f,fill:"none",stroke:"#000"},e.type="ellipse",n(o,e.attrs),e};i._engine.image=function(t,i,r,u,f,e){var o=n("image"),s;return n(o,{x:r,y:u,width:f,height:e,preserveAspectRatio:"none"}),o.setAttributeNS(a,"href",i),t.canvas&&t.canvas.appendChild(o),s=new h(o,t),s.attrs={x:r,y:u,width:f,height:e,src:i},s.type="image",s};i._engine.text=function(t,r,u,f){var o=n("text"),e;return t.canvas&&t.canvas.appendChild(o),e=new h(o,t),e.attrs={x:r,y:u,"text-anchor":"middle",text:f,font:i._availableAttrs.font,stroke:"none",fill:"#000"},e.type="text",g(e,e.attrs),e};i._engine.setSize=function(n,t){return this.width=n||this.width,this.height=t||this.height,this.canvas.setAttribute("width",this.width),this.canvas.setAttribute("height",this.height),this._viewBox&&this.setViewBox.apply(this,this._viewBox),this};i._engine.create=function(){var u=i._getContainer.apply(0,arguments),t=u&&u.container,o=u.x,s=u.y,f=u.width,e=u.height,r,h,c;if(!t)throw new Error("SVG container not found.");return r=n("svg"),h="overflow:hidden;",o=o||0,s=s||0,f=f||512,e=e||342,n(r,{height:e,version:1.1,width:f,xmlns:"http://www.w3.org/2000/svg"}),t==1?(r.style.cssText=h+"position:absolute;left:"+o+"px;top:"+s+"px",i._g.doc.body.appendChild(r),c=1):(r.style.cssText=h+"position:relative",t.firstChild?t.insertBefore(r,t.firstChild):t.appendChild(r)),t=new i._Paper,t.width=f,t.height=e,t.canvas=r,t.clear(),t._left=t._top=0,c&&(t.renderfix=function(){}),t.renderfix(),t};i._engine.setViewBox=function(t,i,r,u,f){p("raphael.setViewBox",this,this._viewBox,[t,i,r,u,f]);var o=k(r/this.width,u/this.height),e=this.top,c=f?"xMidYMid meet":"xMinYMin",s,h;for(t==null?(this._vbSize&&(o=1),delete this._vbSize,s="0 0 "+this.width+w+this.height):(this._vbSize=o,s=t+w+i+w+r+w+u),n(this.canvas,{viewBox:s,preserveAspectRatio:c});o&&e;)h="stroke-width"in e.attrs?e.attrs["stroke-width"]:1,e.attr({"stroke-width":h}),e._.dirty=1,e._.dirtyT=1,e=e.prev;return this._viewBox=[t,i,r,u,!!f],this};i.prototype.renderfix=function(){var n=this.canvas,u=n.style,t,i,r;try{t=n.getScreenCTM()||n.createSVGMatrix()}catch(f){t=n.createSVGMatrix()}i=-t.e%1;r=-t.f%1;(i||r)&&(i&&(this._left=(this._left+i)%1,u.left=this._left+"px"),r&&(this._top=(this._top+r)%1,u.top=this._top+"px"))};i.prototype.clear=function(){i.eve("raphael.clear",this);for(var t=this.canvas;t.firstChild;)t.removeChild(t.firstChild);this.bottom=this.top=null;(this.desc=n("desc")).appendChild(i._g.doc.createTextNode("Created with Raphaël "+i.version));t.appendChild(this.desc);t.appendChild(this.defs=n("defs"))};i.prototype.remove=function(){p("raphael.remove",this);this.canvas.parentNode&&this.canvas.parentNode.removeChild(this.canvas);for(var n in this)this[n]=typeof this[n]=="function"?i._removedFactory(n):null};nt=i.st;for(v in r)r[t](v)&&!nt[t](v)&&(nt[v]=function(n){return function(){var t=arguments;return this.forEach(function(i){i[n].apply(i,t)})}}(v))}}(),function(){var s,d,y;if(i.vml){var h="hasOwnProperty",t=String,f=parseFloat,c=Math,e=c.round,k=c.max,g=c.min,p=c.abs,l="fill",a=/[, ]+/,ut=i.eve,ft=" progid:DXImageTransform.Microsoft",o=" ",u="",nt={M:"m",L:"l",C:"c",Z:"x",m:"t",l:"r",c:"v",z:"x"},et=/([clmz]),?([^clmz]*)/gi,ot=/ progid:\S+Blur\([^\)]+\)/g,st=/-?[^,\s-]+/g,tt="position:absolute;left:0;top:0;width:1px;height:1px",n=21600,ht={path:1,rect:1,image:1},ct={circle:1,ellipse:1},lt=function(r){var l=/[ahqstv]/ig,a=i._pathToAbsolute,v,c,y,f,s,w,h,p;if(t(r).match(l)&&(a=i._path2curve),l=/[clmz]/g,a==i._pathToAbsolute&&!t(r).match(l))return t(r).replace(et,function(t,i,r){var u=[],o=i.toLowerCase()=="m",f=nt[i];return r.replace(st,function(t){o&&u.length==2&&(f+=u+nt[i=="m"?"l":"L"],u=[]);u.push(e(t*n))}),f+u});for(c=a(r),v=[],s=0,w=c.length;s<w;s++){for(y=c[s],f=c[s][0].toLowerCase(),f=="z"&&(f="x"),h=1,p=y.length;h<p;h++)f+=e(y[h]*n)+(h!=p-1?",":u);v.push(f)}return v.join(o)},it=function(n,t,r){var u=i.matrix();return u.rotate(-n,.5,.5),{dx:u.x(t,r),dy:u.y(t,r)}},w=function(t,i,r,u,f,e){var v=t._,k=t.matrix,h=v.fillpos,c=t.node,y=c.style,w=1,b="",d=n/i,g=n/r,a,s;(y.visibility="hidden",i&&r)&&(c.coordsize=p(d)+o+p(g),y.rotation=e*(i*r<0?-1:1),e&&(a=it(e,u,f),u=a.dx,f=a.dy),i<0&&(b+="x"),r<0&&(b+=" y")&&(w=-1),y.flip=b,c.coordorigin=u*-d+o+f*-g,(h||v.fillsize)&&(s=c.getElementsByTagName(l),s=s&&s[0],c.removeChild(s),h&&(a=it(e,k.x(h[0],h[1]),k.y(h[0],h[1])),s.position=a.dx*w+o+a.dy*w),v.fillsize&&(s.size=v.fillsize[0]*p(i)+o+v.fillsize[1]*p(r)),c.appendChild(s)),y.visibility="visible")};i.toString=function(){return"Your browser doesn’t support SVG. Falling down to VML.\nYou are running Raphaël "+this.version};var rt=function(n,i,r){for(var u=t(i).toLowerCase().split("-"),o=r?"end":"start",f=u.length,s="classic",h="medium",c="medium",e;f--;)switch(u[f]){case"block":case"classic":case"oval":case"diamond":case"open":case"none":s=u[f];break;case"wide":case"narrow":c=u[f];break;case"long":case"short":h=u[f]}e=n.node.getElementsByTagName("stroke")[0];e[o+"arrow"]=s;e[o+"arrowlength"]=h;e[o+"arrowwidth"]=c},v=function(r,c){var yt,nt,ot,ut,ft,y,si,pt,st,tt,d,dt,gt,et,ni,vt,ri,bt,hi;r.attrs=r.attrs||{};var b=r.node,v=r.attrs,it=b.style,ui=ht[r.type]&&(c.x!=v.x||c.y!=v.y||c.width!=v.width||c.height!=v.height||c.cx!=v.cx||c.cy!=v.cy||c.rx!=v.rx||c.ry!=v.ry||c.r!=v.r),ci=ct[r.type]&&(v.cx!=c.cx||v.cy!=c.cy||v.r!=c.r||v.rx!=c.rx||v.ry!=c.ry),p=r;for(yt in c)c[h](yt)&&(v[yt]=c[yt]);if(ui&&(v.path=i._getPath[r.type](r),r._.dirty=1),c.href&&(b.href=c.href),c.title&&(b.title=c.title),c.target&&(b.target=c.target),c.cursor&&(it.cursor=c.cursor),"blur"in c&&r.blur(c.blur),(c.path&&r.type=="path"||ui)&&(b.path=lt(~t(v.path).toLowerCase().indexOf("r")?i._pathToAbsolute(v.path):v.path),r.type=="image"&&(r._.fillpos=[v.x,v.y],r._.fillsize=[v.width,v.height],w(r,1,1,0,0,0))),"transform"in c&&r.transform(c.transform),ci){var kt=+v.cx,fi=+v.cy,ei=+v.rx||+v.r||0,oi=+v.ry||+v.r||0;b.path=i.format("ar{0},{1},{2},{3},{4},{1},{4},{1}x",e((kt-ei)*n),e((fi-oi)*n),e((kt+ei)*n),e((fi+oi)*n),e(kt*n));r._.dirty=1}if("clip-rect"in c&&(nt=t(c["clip-rect"]).split(a),nt.length==4&&(nt[2]=+nt[2]+ +nt[0],nt[3]=+nt[3]+ +nt[1],ot=b.clipRect||i._g.doc.createElement("div"),ut=ot.style,ut.clip=i.format("rect({1}px {2}px {3}px {0}px)",nt),b.clipRect||(ut.position="absolute",ut.top=0,ut.left=0,ut.width=r.paper.width+"px",ut.height=r.paper.height+"px",b.parentNode.insertBefore(ot,b),ot.appendChild(b),b.clipRect=ot)),c["clip-rect"]||b.clipRect&&(b.clipRect.style.clip="auto")),r.textpath&&(ft=r.textpath.style,c.font&&(ft.font=c.font),c["font-family"]&&(ft.fontFamily='"'+c["font-family"].split(",")[0].replace(/^['"]+|['"]+$/g,u)+'"'),c["font-size"]&&(ft.fontSize=c["font-size"]),c["font-weight"]&&(ft.fontWeight=c["font-weight"]),c["font-style"]&&(ft.fontStyle=c["font-style"])),"arrow-start"in c&&rt(p,c["arrow-start"]),"arrow-end"in c&&rt(p,c["arrow-end"],1),(c.opacity!=null||c["stroke-width"]!=null||c.fill!=null||c.src!=null||c.stroke!=null||c["stroke-width"]!=null||c["stroke-opacity"]!=null||c["fill-opacity"]!=null||c["stroke-dasharray"]!=null||c["stroke-miterlimit"]!=null||c["stroke-linejoin"]!=null||c["stroke-linecap"]!=null)&&(y=b.getElementsByTagName(l),si=!1,y=y&&y[0],y||(si=y=s(l)),r.type=="image"&&c.src&&(y.src=c.src),c.fill&&(y.on=!0),(y.on==null||c.fill=="none"||c.fill===null)&&(y.on=!1),y.on&&c.fill&&(pt=t(c.fill).match(i._ISURL),pt?(y.parentNode==b&&b.removeChild(y),y.rotate=!0,y.src=pt[1],y.type="tile",st=r.getBBox(1),y.position=st.x+o+st.y,r._.fillpos=[st.x,st.y],i._preload(pt[1],function(){r._.fillsize=[this.offsetWidth,this.offsetHeight]})):(y.color=i.getRGB(c.fill).hex,y.src=u,y.type="solid",i.getRGB(c.fill).error&&(p.type in{circle:1,ellipse:1}||t(c.fill).charAt()!="r")&&at(p,c.fill,y)&&(v.fill="none",v.gradient=c.fill,y.rotate=!1))),("fill-opacity"in c||"opacity"in c)&&(tt=((+v["fill-opacity"]+1||2)-1)*((+v.opacity+1||2)-1)*((+i.getRGB(c.fill).o+1||2)-1),tt=g(k(tt,0),1),y.opacity=tt,y.src&&(y.color="none")),b.appendChild(y),d=b.getElementsByTagName("stroke")&&b.getElementsByTagName("stroke")[0],dt=!1,d||(dt=d=s("stroke")),(c.stroke&&c.stroke!="none"||c["stroke-width"]||c["stroke-opacity"]!=null||c["stroke-dasharray"]||c["stroke-miterlimit"]||c["stroke-linejoin"]||c["stroke-linecap"])&&(d.on=!0),(c.stroke=="none"||c.stroke===null||d.on==null||c.stroke==0||c["stroke-width"]==0)&&(d.on=!1),gt=i.getRGB(c.stroke),d.on&&c.stroke&&(d.color=gt.hex),tt=((+v["stroke-opacity"]+1||2)-1)*((+v.opacity+1||2)-1)*((+gt.o+1||2)-1),et=(f(c["stroke-width"])||1)*.75,tt=g(k(tt,0),1),c["stroke-width"]==null&&(et=v["stroke-width"]),c["stroke-width"]&&(d.weight=et),et&&et<1&&(tt*=et)&&(d.weight=1),d.opacity=tt,c["stroke-linejoin"]&&(d.joinstyle=c["stroke-linejoin"]||"miter"),d.miterlimit=c["stroke-miterlimit"]||8,c["stroke-linecap"]&&(d.endcap=c["stroke-linecap"]=="butt"?"flat":c["stroke-linecap"]=="square"?"square":"round"),"stroke-dasharray"in c&&(ni={"-":"shortdash",".":"shortdot","-.":"shortdashdot","-..":"shortdashdotdot",". ":"dot","- ":"dash","--":"longdash","- .":"dashdot","--.":"longdashdot","--..":"longdashdotdot"},d.dashstyle=ni[h](c["stroke-dasharray"])?ni[c["stroke-dasharray"]]:u),dt&&b.appendChild(d)),p.type=="text"){p.paper.canvas.style.display=u;var ti=p.paper.span,ii=100,wt=v.font&&v.font.match(/\d+(?:\.\d*)?(?=px)/);for(it=ti.style,v.font&&(it.font=v.font),v["font-family"]&&(it.fontFamily=v["font-family"]),v["font-weight"]&&(it.fontWeight=v["font-weight"]),v["font-style"]&&(it.fontStyle=v["font-style"]),wt=f(v["font-size"]||wt&&wt[0])||10,it.fontSize=wt*ii+"px",p.textpath.string&&(ti.innerHTML=t(p.textpath.string).replace(/</g,"&#60;").replace(/&/g,"&#38;").replace(/\n/g,"<br>")),vt=ti.getBoundingClientRect(),p.W=v.w=(vt.right-vt.left)/ii,p.H=v.h=(vt.bottom-vt.top)/ii,p.X=v.x,p.Y=v.y+p.H/2,(("x"in c)||("y"in c))&&(p.path.v=i.format("m{0},{1}l{2},{1}",e(v.x*n),e(v.y*n),e(v.x*n)+1)),ri=["x","y","text","font","font-family","font-weight","font-style","font-size"],bt=0,hi=ri.length;bt<hi;bt++)if(ri[bt]in c){p._.dirty=1;break}switch(v["text-anchor"]){case"start":p.textpath.style["v-text-align"]="left";p.bbx=p.W/2;break;case"end":p.textpath.style["v-text-align"]="right";p.bbx=-p.W/2;break;default:p.textpath.style["v-text-align"]="center";p.bbx=0}p.textpath.style["v-text-kern"]=!0}},at=function(n,r,e){var l,s,a,h,w;n.attrs=n.attrs||{};var b=n.attrs,v=Math.pow,y="linear",p=".5 .5";if((n.attrs.gradient=r,r=t(r).replace(i._radial_gradient,function(n,t,i){return y="radial",t&&i&&(t=f(t),i=f(i),v(t-.5,2)+v(i-.5,2)>.25&&(i=c.sqrt(.25-v(t-.5,2))*((i>.5)*2-1)+.5),p=t+o+i),u}),r=r.split(/\s*\-\s*/),y=="linear"&&(l=r.shift(),l=-f(l),isNaN(l)))||(s=i._parseDots(r),!s))return null;if(n=n.shape||n.node,s.length){for(n.removeChild(e),e.on=!0,e.method="none",e.color=s[0].color,e.color2=s[s.length-1].color,a=[],h=0,w=s.length;h<w;h++)s[h].offset&&a.push(s[h].offset+o+s[h].color);e.colors=a.length?a.join():"0% "+e.color;y=="radial"?(e.type="gradientTitle",e.focus="100%",e.focussize="0 0",e.focusposition=p,e.angle=0):(e.type="gradient",e.angle=(270-l)%360);n.appendChild(e)}return 1},b=function(n,t){this[0]=this.node=n;n.raphael=!0;this.id=i._oid++;n.raphaelid=this.id;this.X=0;this.Y=0;this.attrs={};this.paper=t;this.matrix=i.matrix();this._={transform:[],sx:1,sy:1,dx:0,dy:0,deg:0,dirty:1,dirtyT:1};t.bottom||(t.bottom=this);this.prev=t.top;t.top&&(t.top.next=this);t.top=this;this.next=null},r=i.el;b.prototype=r;r.constructor=b;r.transform=function(r){var e,a,l;if(r==null)return this._.transform;e=this.paper._viewBoxShift;a=e?"s"+[e.scale,e.scale]+"-1-1t"+[e.dx,e.dy]:u;e&&(l=r=t(r).replace(/\.{3}|\u2026/g,this._.transform||u));i._extractTransform(this,a+r);var s=this.matrix.clone(),h=this.skew,c=this.node,f,v=~t(this.attrs.fill).indexOf("-"),d=!t(this.attrs.fill).indexOf("url(");if(s.translate(1,1),d||v||this.type=="image")if(h.matrix="1 0 0 1",h.offset="0 0",f=s.split(),v&&f.noRotation||!f.isSimple){c.style.filter=s.toFilter();var y=this.getBBox(),p=this.getBBox(1),b=y.x-p.x,k=y.y-p.y;c.coordorigin=b*-n+o+k*-n;w(this,1,1,b,k,0)}else c.style.filter=u,w(this,f.scalex,f.scaley,f.dx,f.dy,f.rotate);else c.style.filter=u,h.matrix=t(s),h.offset=s.offset();return l&&(this._.transform=l),this};r.rotate=function(n,i,r){if(this.removed)return this;if(n!=null){if(n=t(n).split(a),n.length-1&&(i=f(n[1]),r=f(n[2])),n=f(n[0]),r==null&&(i=r),i==null||r==null){var u=this.getBBox(1);i=u.x+u.width/2;r=u.y+u.height/2}return this._.dirtyT=1,this.transform(this._.transform.concat([["r",n,i,r]])),this}};r.translate=function(n,i){return this.removed?this:(n=t(n).split(a),n.length-1&&(i=f(n[1])),n=f(n[0])||0,i=+i||0,this._.bbox&&(this._.bbox.x+=n,this._.bbox.y+=i),this.transform(this._.transform.concat([["t",n,i]])),this)};r.scale=function(n,i,r,u){if(this.removed)return this;if(n=t(n).split(a),n.length-1&&(i=f(n[1]),r=f(n[2]),u=f(n[3]),isNaN(r)&&(r=null),isNaN(u)&&(u=null)),n=f(n[0]),i==null&&(i=n),u==null&&(r=u),r==null||u==null)var e=this.getBBox(1);return r=r==null?e.x+e.width/2:r,u=u==null?e.y+e.height/2:u,this.transform(this._.transform.concat([["s",n,i,r,u]])),this._.dirtyT=1,this};r.hide=function(){return this.removed||(this.node.style.display="none"),this};r.show=function(){return this.removed||(this.node.style.display=u),this};r._getBBox=function(){return this.removed?{}:{x:this.X+(this.bbx||0)-this.W/2,y:this.Y-this.H,width:this.W,height:this.H}};r.remove=function(){if(!this.removed&&this.node.parentNode){this.paper.__set__&&this.paper.__set__.exclude(this);i.eve.unbind("raphael.*.*."+this.id);i._tear(this,this.paper);this.node.parentNode.removeChild(this.node);this.shape&&this.shape.parentNode.removeChild(this.shape);for(var n in this)this[n]=typeof this[n]=="function"?i._removedFactory(n):null;this.removed=!0}};r.attr=function(n,t){var f,c,y,o,e,s,r,u,p,w;if(this.removed)return this;if(n==null){f={};for(c in this.attrs)this.attrs[h](c)&&(f[c]=this.attrs[c]);return f.gradient&&f.fill=="none"&&(f.fill=f.gradient)&&delete f.gradient,f.transform=this._.transform,f}if(t==null&&i.is(n,"string")){if(n==l&&this.attrs.fill=="none"&&this.attrs.gradient)return this.attrs.gradient;for(y=n.split(a),o={},e=0,s=y.length;e<s;e++)n=y[e],o[n]=n in this.attrs?this.attrs[n]:i.is(this.paper.customAttributes[n],"function")?this.paper.customAttributes[n].def:i._availableAttrs[n];return s-1?o:o[y[0]]}if(this.attrs&&t==null&&i.is(n,"array")){for(o={},e=0,s=n.length;e<s;e++)o[n[e]]=this.attr(n[e]);return o}t!=null&&(r={},r[n]=t);t==null&&i.is(n,"object")&&(r=n);for(u in r)ut("raphael.attr."+u+"."+this.id,this,r[u]);if(r){for(u in this.paper.customAttributes)if(this.paper.customAttributes[h](u)&&r[h](u)&&i.is(this.paper.customAttributes[u],"function")){p=this.paper.customAttributes[u].apply(this,[].concat(r[u]));this.attrs[u]=r[u];for(w in p)p[h](w)&&(r[w]=p[w])}r.text&&this.type=="text"&&(this.textpath.string=r.text);v(this,r)}return this};r.toFront=function(){return this.removed||this.node.parentNode.appendChild(this.node),this.paper&&this.paper.top!=this&&i._tofront(this,this.paper),this};r.toBack=function(){return this.removed?this:(this.node.parentNode.firstChild!=this.node&&(this.node.parentNode.insertBefore(this.node,this.node.parentNode.firstChild),i._toback(this,this.paper)),this)};r.insertAfter=function(n){return this.removed?this:(n.constructor==i.st.constructor&&(n=n[n.length-1]),n.node.nextSibling?n.node.parentNode.insertBefore(this.node,n.node.nextSibling):n.node.parentNode.appendChild(this.node),i._insertafter(this,n,this.paper),this)};r.insertBefore=function(n){return this.removed?this:(n.constructor==i.st.constructor&&(n=n[0]),n.node.parentNode.insertBefore(this.node,n.node),i._insertbefore(this,n,this.paper),this)};r.blur=function(n){var t=this.node.runtimeStyle,r=t.filter;return r=r.replace(ot,u),+n!=0?(this.attrs.blur=n,t.filter=r+o+ft+".Blur(pixelradius="+(+n||1.5)+")",t.margin=i.format("-{0}px 0 0 -{0}px",e(+n||1.5))):(t.filter=r,t.margin=0,delete this.attrs.blur),this};i._engine.path=function(t,i){var f=s("shape"),r,h,e;return f.style.cssText=tt,f.coordsize=n+o+n,f.coordorigin=i.coordorigin,r=new b(f,i),h={fill:"none",stroke:"#000"},t&&(h.path=t),r.type="path",r.path=[],r.Path=u,v(r,h),i.canvas.appendChild(f),e=s("skew"),e.on=!0,f.appendChild(e),r.skew=e,r.transform(u),r};i._engine.rect=function(n,t,r,u,f,e){var h=i._rectPath(t,r,u,f,e),o=n.path(h),s=o.attrs;return o.X=s.x=t,o.Y=s.y=r,o.W=s.width=u,o.H=s.height=f,s.r=e,s.path=h,o.type="rect",o};i._engine.ellipse=function(n,t,i,r,u){var f=n.path(),e=f.attrs;return f.X=t-r,f.Y=i-u,f.W=r*2,f.H=u*2,f.type="ellipse",v(f,{cx:t,cy:i,rx:r,ry:u}),f};i._engine.circle=function(n,t,i,r){var u=n.path(),f=u.attrs;return u.X=t-r,u.Y=i-r,u.W=u.H=r*2,u.type="circle",v(u,{cx:t,cy:i,r:r}),u};i._engine.image=function(n,t,r,u,f,e){var a=i._rectPath(r,u,f,e),o=n.path(a).attr({stroke:"none"}),s=o.attrs,c=o.node,h=c.getElementsByTagName(l)[0];return s.src=t,o.X=s.x=r,o.Y=s.y=u,o.W=s.width=f,o.H=s.height=e,s.path=a,o.type="image",h.parentNode==c&&c.removeChild(h),h.rotate=!0,h.src=t,h.type="tile",o._.fillpos=[r,u],o._.fillsize=[f,e],c.appendChild(h),w(o,1,1,0,0,0),o};i._engine.text=function(r,f,h,c){var a=s("shape"),y=s("path"),p=s("textpath"),l,k,w;return f=f||0,h=h||0,c=c||"",y.v=i.format("m{0},{1}l{2},{1}",e(f*n),e(h*n),e(f*n)+1),y.textpathok=!0,p.string=t(c),p.on=!0,a.style.cssText=tt,a.coordsize=n+o+n,a.coordorigin="0 0",l=new b(a,r),k={fill:"#000",stroke:"none",font:i._availableAttrs.font,text:c},l.shape=a,l.path=y,l.textpath=p,l.type="text",l.attrs.text=t(c),l.attrs.x=f,l.attrs.y=h,l.attrs.w=1,l.attrs.h=1,v(l,k),a.appendChild(p),a.appendChild(y),r.canvas.appendChild(a),w=s("skew"),w.on=!0,a.appendChild(w),l.skew=w,l.transform(u),l};i._engine.setSize=function(n,t){var r=this.canvas.style;return this.width=n,this.height=t,n==+n&&(n+="px"),t==+t&&(t+="px"),r.width=n,r.height=t,r.clip="rect(0 "+n+" "+t+" 0)",this._viewBox&&i._engine.setViewBox.apply(this,this._viewBox),this};i._engine.setViewBox=function(n,t,r,u,f){i.eve("raphael.setViewBox",this,this._viewBox,[n,t,r,u,f]);var e=this.width,o=this.height,c=1/k(r/e,u/o),s,h;return f&&(s=o/u,h=e/r,r*s<e&&(n-=(e-r*s)/2/s),u*h<o&&(t-=(o-u*h)/2/h)),this._viewBox=[n,t,r,u,!!f],this._viewBoxShift={dx:-n,dy:-t,scale:c},this.forEach(function(n){n.transform("...")}),this};i._engine.initWin=function(n){var t=n.document;t.createStyleSheet().addRule(".rvml","behavior:url(#default#VML)");try{t.namespaces.rvml||t.namespaces.add("rvml","urn:schemas-microsoft-com:vml");s=function(n){return t.createElement("<rvml:"+n+' class="rvml">')}}catch(i){s=function(n){return t.createElement("<"+n+' xmlns="urn:schemas-microsoft.com:vml" class="rvml">')}}};i._engine.initWin(i._g.win);i._engine.create=function(){var e=i._getContainer.apply(0,arguments),f=e.container,r=e.height,u=e.width,c=e.x,l=e.y;if(!f)throw new Error("VML container not found.");var t=new i._Paper,s=t.canvas=i._g.doc.createElement("div"),h=s.style;return c=c||0,l=l||0,u=u||512,r=r||342,t.width=u,t.height=r,u==+u&&(u+="px"),r==+r&&(r+="px"),t.coordsize=n*1e3+o+n*1e3,t.coordorigin="0 0",t.span=i._g.doc.createElement("span"),t.span.style.cssText="position:absolute;left:-9999em;top:-9999em;padding:0;margin:0;line-height:1;",s.appendChild(t.span),h.cssText=i.format("top:0;left:0;width:{0};height:{1};display:inline-block;position:relative;clip:rect(0 {0} {1} 0);overflow:hidden",u,r),f==1?(i._g.doc.body.appendChild(s),h.left=c+"px",h.top=l+"px",h.position="absolute"):f.firstChild?f.insertBefore(s,f.firstChild):f.appendChild(s),t.renderfix=function(){},t};i.prototype.clear=function(){i.eve("raphael.clear",this);this.canvas.innerHTML=u;this.span=i._g.doc.createElement("span");this.span.style.cssText="position:absolute;left:-9999em;top:-9999em;padding:0;margin:0;line-height:1;display:inline;";this.canvas.appendChild(this.span);this.bottom=this.top=null};i.prototype.remove=function(){i.eve("raphael.remove",this);this.canvas.parentNode.removeChild(this.canvas);for(var n in this)this[n]=typeof this[n]=="function"?i._removedFactory(n):null;return!0};d=i.st;for(y in r)r[h](y)&&!d[h](y)&&(d[y]=function(n){return function(){var t=arguments;return this.forEach(function(i){i[n].apply(i,t)})}}(y))}}(),yi.was?r.win.Raphael=i:Raphael=i,i});
-//# sourceMappingURL=raphael.min.js.map
+//------------------------------------------------------------
+// Free icons from http://dmitrybaranovskiy.github.io/raphael/
+//------------------------------------------------------------
+
+var icon = {
+        "?": "M16,1.466C7.973,1.466,1.466,7.973,1.466,16c0,8.027,6.507,14.534,14.534,14.534c8.027,0,14.534-6.507,14.534-14.534C30.534,7.973,24.027,1.466,16,1.466z M17.328,24.371h-2.707v-2.596h2.707V24.371zM17.328,19.003v0.858h-2.707v-1.057c0-3.19,3.63-3.696,3.63-5.963c0-1.034-0.924-1.826-2.134-1.826c-1.254,0-2.354,0.924-2.354,0.924l-1.541-1.915c0,0,1.519-1.584,4.137-1.584c2.487,0,4.796,1.54,4.796,4.136C21.156,16.208,17.328,16.627,17.328,19.003z",
+        i: "M16,1.466C7.973,1.466,1.466,7.973,1.466,16c0,8.027,6.507,14.534,14.534,14.534c8.027,0,14.534-6.507,14.534-14.534C30.534,7.973,24.027,1.466,16,1.466z M14.757,8h2.42v2.574h-2.42V8z M18.762,23.622H16.1c-1.034,0-1.475-0.44-1.475-1.496v-6.865c0-0.33-0.176-0.484-0.484-0.484h-0.88V12.4h2.662c1.035,0,1.474,0.462,1.474,1.496v6.887c0,0.309,0.176,0.484,0.484,0.484h0.88V23.622z",
+        $: "M16,1.466C7.973,1.466,1.466,7.973,1.466,16c0,8.027,6.507,14.534,14.534,14.534c8.027,0,14.534-6.507,14.534-14.534C30.534,7.973,24.027,1.466,16,1.466z M17.255,23.88v2.047h-1.958v-2.024c-3.213-0.44-4.621-3.08-4.621-3.08l2.002-1.673c0,0,1.276,2.223,3.586,2.223c1.276,0,2.244-0.683,2.244-1.849c0-2.729-7.349-2.398-7.349-7.459c0-2.2,1.738-3.785,4.137-4.159V5.859h1.958v2.046c1.672,0.22,3.652,1.1,3.652,2.993v1.452h-2.596v-0.704c0-0.726-0.925-1.21-1.959-1.21c-1.32,0-2.288,0.66-2.288,1.584c0,2.794,7.349,2.112,7.349,7.415C21.413,21.614,19.785,23.506,17.255,23.88z",
+        arrowleftalt: "M16,30.534c8.027,0,14.534-6.507,14.534-14.534c0-8.027-6.507-14.534-14.534-14.534C7.973,1.466,1.466,7.973,1.466,16C1.466,24.027,7.973,30.534,16,30.534zM18.335,6.276l3.536,3.538l-6.187,6.187l6.187,6.187l-3.536,3.537l-9.723-9.724L18.335,6.276z",
+        arrowalt: "M16,1.466C7.973,1.466,1.466,7.973,1.466,16c0,8.027,6.507,14.534,14.534,14.534c8.027,0,14.534-6.507,14.534-14.534C30.534,7.973,24.027,1.466,16,1.466zM13.665,25.725l-3.536-3.539l6.187-6.187l-6.187-6.187l3.536-3.536l9.724,9.723L13.665,25.725z",
+        "!": "M26.711,14.086L16.914,4.29c-0.778-0.778-2.051-0.778-2.829,0L4.29,14.086c-0.778,0.778-0.778,2.05,0,2.829l9.796,9.796c0.778,0.777,2.051,0.777,2.829,0l9.797-9.797C27.488,16.136,27.488,14.864,26.711,14.086zM14.702,8.981c0.22-0.238,0.501-0.357,0.844-0.357s0.624,0.118,0.844,0.353c0.221,0.235,0.33,0.531,0.33,0.885c0,0.306-0.101,1.333-0.303,3.082c-0.201,1.749-0.379,3.439-0.531,5.072H15.17c-0.135-1.633-0.301-3.323-0.5-5.072c-0.198-1.749-0.298-2.776-0.298-3.082C14.372,9.513,14.482,9.22,14.702,8.981zM16.431,21.799c-0.247,0.241-0.542,0.362-0.885,0.362s-0.638-0.121-0.885-0.362c-0.248-0.241-0.372-0.533-0.372-0.876s0.124-0.638,0.372-0.885c0.247-0.248,0.542-0.372,0.885-0.372s0.638,0.124,0.885,0.372c0.248,0.247,0.372,0.542,0.372,0.885S16.679,21.558,16.431,21.799z",
+        "?2": "M26.711,14.086L16.914,4.29c-0.778-0.778-2.051-0.778-2.829,0L4.29,14.086c-0.778,0.778-0.778,2.05,0,2.829l9.796,9.796c0.778,0.777,2.051,0.777,2.829,0l9.797-9.797C27.488,16.136,27.488,14.864,26.711,14.086zM16.431,21.799c-0.248,0.241-0.543,0.362-0.885,0.362c-0.343,0-0.638-0.121-0.886-0.362c-0.247-0.241-0.371-0.533-0.371-0.876s0.124-0.638,0.371-0.885c0.248-0.248,0.543-0.372,0.886-0.372c0.342,0,0.637,0.124,0.885,0.372c0.248,0.247,0.371,0.542,0.371,0.885S16.679,21.558,16.431,21.799zM18.911,15.198c-0.721,0.716-1.712,1.147-2.972,1.294v2.027h-0.844v-3.476c0.386-0.03,0.768-0.093,1.146-0.188c0.38-0.095,0.719-0.25,1.019-0.464c0.312-0.227,0.555-0.5,0.729-0.822c0.174-0.322,0.261-0.77,0.261-1.346c0-0.918-0.194-1.623-0.582-2.113c-0.389-0.49-0.956-0.735-1.701-0.735c-0.281,0-0.527,0.042-0.738,0.124s-0.366,0.16-0.464,0.234c0.031,0.146,0.072,0.357,0.124,0.633c0.052,0.275,0.078,0.486,0.078,0.633c0,0.226-0.098,0.433-0.294,0.619c-0.195,0.187-0.479,0.28-0.853,0.28c-0.33,0-0.565-0.113-0.706-0.339s-0.211-0.489-0.211-0.789c0-0.244,0.067-0.484,0.201-0.72c0.135-0.235,0.346-0.463,0.633-0.684c0.245-0.195,0.577-0.364,0.995-0.504c0.419-0.141,0.854-0.211,1.308-0.211c0.647,0,1.223,0.103,1.724,0.308c0.502,0.205,0.914,0.479,1.238,0.822c0.337,0.355,0.586,0.755,0.748,1.198c0.162,0.444,0.243,0.926,0.243,1.446C19.994,13.558,19.633,14.482,18.911,15.198z",
+        stopsign: "M20.833,2.625H10.167l-7.542,7.542v10.666l7.542,7.542h10.666l7.542-7.542V10.167L20.833,2.625zM23.76,17.145c-0.461,0.432-0.496-0.021-1.151,0.385c-0.655,0.404-1.067,0.844-1.067,0.844l-0.578,0.564c0,0-1.199,1.422-1.59,1.717c-0.392,0.291-0.572,0.166-0.572,0.166c-0.133,0.23-0.641,0.656-1.193,1.025c-0.549,0.371-0.99,1.354-0.99,1.354l-0.208,1.465c0,0-1.597,0.021-3.096-0.293c-1.499-0.314-2.699-0.982-2.699-0.982l0.655-1.451c0,0-0.58-2.225-0.636-3.926c-0.056-1.703,0.572-2.958,0.481-3.37c-0.09-0.412-0.438-1.109-0.523-1.569c-0.083-0.46-0.307-2.036-0.327-2.238c-0.021-0.202-0.28-2.232,0.614-2.204c0.891,0.027,0.648,1.388,0.725,2.246c0.077,0.857,1.13,3.249,1.297,3.123c0.167-0.125-0.056-2.398,0.006-2.838c0.063-0.439,0.182-2.315,0.293-2.747c0.112-0.433,0.105-1.778,0.935-1.66c0.83,0.118,0.606,1.332,0.488,1.813c-0.118,0.48,0.021,1.597,0.07,2.302c0.048,0.704,0.112,2.356,0.112,2.356l0.404-0.042c0,0,0.913-5,0.976-5.439c0.062-0.439,0.182-1.618,0.858-1.472c1.117,0.242,0.516,1.967,0.516,1.967l-0.486,5.509c0,0,0.166,0.224,0.492,0.021c0.33-0.202,1.312-3.25,1.459-3.927c0.146-0.676,0.084-2.678,1.145-2.428c1.059,0.252,0.453,2.755,0.124,4.353c-0.327,1.597-1.03,3.39-1.03,3.39l-0.433,1.631l0.376,0.852l0.412-0.092l0.898-0.717c0,0,0,0,0.614-0.461c0.613-0.46,1.764-0.495,2.044-0.355C23.453,16.154,24.221,16.713,23.76,17.145z",
+        temp: "M17.5,19.508V8.626h-3.999v10.881c-1.404,0.727-2.375,2.178-2.375,3.869c0,2.416,1.959,4.375,4.375,4.375s4.375-1.959,4.375-4.375C19.876,21.686,18.905,20.234,17.5,19.508zM20.5,5.249c0-2.757-2.244-5-5.001-5s-4.998,2.244-4.998,5v12.726c-1.497,1.373-2.376,3.314-2.376,5.4c0,4.066,3.31,7.377,7.376,7.377s7.374-3.311,7.374-7.377c0-2.086-0.878-4.029-2.375-5.402V5.249zM20.875,23.377c0,2.963-2.41,5.373-5.375,5.373c-2.962,0-5.373-2.41-5.373-5.373c0-1.795,0.896-3.443,2.376-4.438V5.251c0-1.654,1.343-3,2.997-3s3,1.345,3,3v13.688C19.979,19.934,20.875,21.582,20.875,23.377zM22.084,8.626l4.5,2.598V6.029L22.084,8.626z",
+        thunder: "M25.371,7.306c-0.092-3.924-3.301-7.077-7.248-7.079c-2.638,0.001-4.942,1.412-6.208,3.517c-0.595-0.327-1.28-0.517-2.01-0.517C7.626,3.229,5.772,5.033,5.689,7.293c-2.393,0.786-4.125,3.025-4.127,5.686c0,3.312,2.687,6,6,6v-0.002h5.271l-2.166,3.398l1.977-0.411L10,30.875l9.138-10.102L17,21l2.167-2.023h4.269c3.312,0,6-2.688,6-6C29.434,10.34,27.732,8.11,25.371,7.306zM23.436,16.979H7.561c-2.209-0.006-3.997-1.792-4.001-4.001c-0.002-1.982,1.45-3.618,3.35-3.931c0.265-0.043,0.502-0.191,0.657-0.414C7.722,8.41,7.779,8.136,7.73,7.87C7.702,7.722,7.685,7.582,7.685,7.446C7.689,6.221,8.68,5.23,9.905,5.228c0.647,0,1.217,0.278,1.633,0.731c0.233,0.257,0.587,0.375,0.927,0.309c0.342-0.066,0.626-0.307,0.748-0.63c0.749-1.992,2.662-3.412,4.911-3.41c2.899,0.004,5.244,2.35,5.251,5.249c0,0.161-0.009,0.326-0.027,0.497c-0.049,0.517,0.305,0.984,0.815,1.079c1.86,0.344,3.274,1.966,3.271,3.923C27.43,15.186,25.645,16.973,23.436,16.979z",
+        snow: "M25.372,6.912c-0.093-3.925-3.302-7.078-7.248-7.08c-2.638,0.002-4.942,1.412-6.208,3.518c-0.595-0.327-1.28-0.518-2.01-0.518C7.627,2.834,5.773,4.639,5.69,6.898c-2.393,0.786-4.125,3.025-4.127,5.686c0,3.312,2.687,6,6,6v-0.002h15.875c3.312,0,6-2.688,6-6C29.434,9.944,27.732,7.715,25.372,6.912zM23.436,16.584H7.562c-2.209-0.006-3.997-1.793-4.001-4c-0.002-1.983,1.45-3.619,3.35-3.933c0.265-0.043,0.502-0.19,0.657-0.414C7.723,8.015,7.78,7.74,7.731,7.475C7.703,7.326,7.686,7.187,7.686,7.051c0.004-1.225,0.995-2.217,2.22-2.219c0.647,0,1.217,0.278,1.633,0.731c0.233,0.257,0.587,0.375,0.927,0.31c0.342-0.066,0.626-0.308,0.748-0.631c0.749-1.992,2.662-3.412,4.911-3.41c2.898,0.004,5.244,2.351,5.251,5.25c0,0.16-0.009,0.325-0.026,0.496c-0.05,0.518,0.305,0.984,0.814,1.079c1.859,0.345,3.273,1.966,3.271,3.923C27.43,14.791,25.645,16.578,23.436,16.584zM16.667,24.09l1.119-1.119c0.389-0.391,0.389-1.025,0-1.416c-0.392-0.391-1.025-0.391-1.415,0l-1.119,1.119l-1.119-1.119c-0.391-0.391-1.025-0.391-1.415,0c-0.391,0.391-0.391,1.025,0,1.416l1.118,1.117l-1.12,1.121c-0.389,0.393-0.389,1.021,0,1.414c0.195,0.188,0.451,0.293,0.707,0.293c0.256,0,0.512-0.104,0.708-0.293l1.12-1.119l1.12,1.119c0.195,0.188,0.451,0.293,0.708,0.293c0.256,0,0.512-0.104,0.707-0.293c0.391-0.396,0.391-1.021,0-1.414L16.667,24.09zM25.119,21.817c-0.393-0.392-1.025-0.392-1.415,0l-1.12,1.121l-1.12-1.121c-0.391-0.392-1.022-0.392-1.414,0c-0.39,0.392-0.39,1.022,0,1.416l1.119,1.119l-1.119,1.119c-0.39,0.391-0.39,1.022,0,1.413c0.195,0.195,0.451,0.294,0.707,0.294c0.257,0,0.513-0.099,0.707-0.294l1.12-1.118l1.12,1.118c0.194,0.195,0.45,0.294,0.707,0.294c0.256,0,0.513-0.099,0.708-0.294c0.389-0.391,0.389-1.022,0-1.413l-1.12-1.119l1.12-1.119C25.507,22.842,25.507,22.209,25.119,21.817zM9.334,23.953l1.119-1.119c0.389-0.394,0.389-1.021,0-1.414c-0.391-0.394-1.025-0.394-1.415,0l-1.119,1.119l-1.12-1.121c-0.391-0.39-1.023-0.39-1.415,0c-0.391,0.396-0.391,1.024,0,1.418l1.119,1.117l-1.12,1.118c-0.391,0.394-0.391,1.025,0,1.414c0.196,0.195,0.452,0.293,0.708,0.293c0.256,0,0.511-0.098,0.707-0.293l1.12-1.119l1.121,1.121c0.195,0.195,0.451,0.293,0.707,0.293s0.513-0.098,0.708-0.293c0.389-0.391,0.389-1.022,0-1.416L9.334,23.953z",
+        hail: "M25.372,6.912c-0.093-3.925-3.302-7.078-7.248-7.08c-2.638,0.002-4.942,1.412-6.208,3.518c-0.595-0.327-1.28-0.518-2.01-0.518C7.627,2.834,5.773,4.639,5.69,6.898c-2.393,0.786-4.125,3.025-4.127,5.686c0,3.312,2.687,6,6,6v-0.002h15.875c3.312,0,6-2.688,6-6C29.434,9.944,27.732,7.715,25.372,6.912zM23.436,16.584H7.562c-2.209-0.006-3.997-1.793-4.001-4c-0.002-1.983,1.45-3.619,3.35-3.933c0.265-0.043,0.502-0.19,0.657-0.414C7.723,8.015,7.78,7.74,7.731,7.475C7.703,7.326,7.686,7.187,7.686,7.051c0.004-1.225,0.995-2.217,2.22-2.219c0.647,0,1.217,0.278,1.633,0.731c0.233,0.257,0.587,0.375,0.927,0.31c0.342-0.066,0.626-0.308,0.748-0.631c0.749-1.992,2.662-3.412,4.911-3.41c2.898,0.004,5.244,2.351,5.251,5.25c0,0.16-0.009,0.325-0.026,0.496c-0.05,0.518,0.305,0.984,0.814,1.079c1.859,0.345,3.273,1.966,3.271,3.923C27.43,14.791,25.645,16.578,23.436,16.584zM11.503,23.709c-0.784-0.002-1.418-0.636-1.418-1.416c0-0.785,0.634-1.416,1.418-1.418c0.78,0.002,1.413,0.633,1.416,1.418C12.917,23.073,12.284,23.707,11.503,23.709zM19.002,23.709c-0.783-0.002-1.418-0.636-1.418-1.416c0-0.785,0.635-1.416,1.418-1.418c0.779,0.002,1.414,0.633,1.414,1.418C20.417,23.073,19.784,23.707,19.002,23.709zM7.503,28.771c-0.783-0.002-1.417-0.637-1.417-1.418s0.634-1.414,1.417-1.416c0.78,0.002,1.415,0.635,1.415,1.416C8.917,28.135,8.284,28.77,7.503,28.771zM15.001,28.771c-0.782-0.002-1.417-0.637-1.417-1.418s0.634-1.414,1.417-1.416c0.78,0.002,1.413,0.635,1.415,1.416C16.415,28.135,15.784,28.77,15.001,28.771zM22.5,28.771c-0.782-0.002-1.416-0.634-1.416-1.416c0-0.785,0.634-1.418,1.416-1.42c0.781,0.002,1.414,0.635,1.418,1.42C23.915,28.138,23.282,28.77,22.5,28.771z",
+        rain: "M25.371,7.306c-0.092-3.924-3.301-7.077-7.248-7.079c-2.638,0.001-4.942,1.412-6.208,3.517c-0.595-0.327-1.28-0.517-2.01-0.517C7.626,3.229,5.772,5.033,5.689,7.293c-2.393,0.786-4.125,3.025-4.127,5.686c0,3.312,2.687,6,6,6v-0.002h15.874c3.312,0,6-2.688,6-6C29.434,10.34,27.732,8.11,25.371,7.306zM23.436,16.979H7.561c-2.209-0.006-3.997-1.792-4.001-4.001c-0.002-1.982,1.45-3.618,3.35-3.931c0.265-0.043,0.502-0.191,0.657-0.414C7.722,8.41,7.779,8.136,7.73,7.87C7.702,7.722,7.685,7.582,7.685,7.446C7.689,6.221,8.68,5.23,9.905,5.228c0.647,0,1.217,0.278,1.633,0.731c0.233,0.257,0.587,0.375,0.927,0.309c0.342-0.066,0.626-0.307,0.748-0.63c0.749-1.992,2.662-3.412,4.911-3.41c2.899,0.004,5.244,2.35,5.251,5.249c0,0.161-0.009,0.326-0.027,0.497c-0.049,0.517,0.305,0.984,0.815,1.079c1.86,0.344,3.274,1.966,3.271,3.923C27.43,15.186,25.645,16.973,23.436,16.979zM9.029,26.682c0-1.115,0.021-5.425,0.021-5.432c0.002-0.409-0.247-0.779-0.628-0.932c-0.38-0.152-0.815-0.059-1.099,0.24c-0.006,0.008-1.037,1.098-2.081,2.342c-0.523,0.627-1.048,1.287-1.463,1.896c-0.399,0.648-0.753,1.066-0.811,1.885C2.971,28.355,4.324,29.711,6,29.714C7.672,29.71,9.029,28.354,9.029,26.682zM4.971,26.727c0.091-0.349,1.081-1.719,1.993-2.764c0.025-0.029,0.051-0.061,0.076-0.089c-0.005,1.124-0.01,2.294-0.01,2.808c0,0.567-0.461,1.028-1.029,1.03C5.447,27.71,4.997,27.273,4.971,26.727zM16.425,26.682c0-1.115,0.021-5.424,0.021-5.43c0.002-0.41-0.247-0.779-0.628-0.934c-0.381-0.152-0.814-0.058-1.1,0.242c-0.006,0.008-1.035,1.094-2.08,2.342c-0.522,0.623-1.047,1.285-1.463,1.894c-0.399,0.649-0.753,1.068-0.809,1.888c0,1.672,1.354,3.028,3.029,3.028C15.068,29.711,16.425,28.354,16.425,26.682zM12.365,26.729c0.092-0.349,1.081-1.72,1.993-2.765c0.025-0.03,0.05-0.06,0.075-0.089c-0.005,1.123-0.011,2.294-0.011,2.807c-0.002,0.568-0.461,1.027-1.028,1.029C12.84,27.709,12.392,27.273,12.365,26.729zM23.271,20.317c-0.38-0.153-0.816-0.06-1.099,0.24c-0.009,0.008-1.037,1.097-2.08,2.342c-0.523,0.625-1.049,1.285-1.462,1.896c-0.402,0.649-0.754,1.067-0.812,1.886c0,1.672,1.354,3.029,3.03,3.029c1.673,0,3.027-1.357,3.027-3.029c0-1.115,0.022-5.425,0.022-5.431C23.9,20.84,23.651,20.47,23.271,20.317zM21.879,26.681c-0.004,0.568-0.463,1.027-1.031,1.029c-0.553-0.002-1.002-0.438-1.028-0.982c0.092-0.349,1.081-1.72,1.993-2.765c0.025-0.028,0.05-0.059,0.074-0.088C21.883,24.998,21.879,26.167,21.879,26.681z",
+        cloudy: "M14.378,6.781c0.41,0.988,1.938,0.346,1.524-0.648C15.708,5.667,15.515,5.2,15.32,4.734c-0.289-0.695-0.875-3.233-2.042-2.747c-1.03,0.433-0.128,1.846,0.142,2.494C13.739,5.248,14.059,6.015,14.378,6.781M20.8,7.223c1.094,0.453,1.538-1.551,1.813-2.216c0.281-0.677,1.478-2.565,0.357-3.029c-1.092-0.453-1.537,1.548-1.813,2.216C20.876,4.872,19.68,6.757,20.8,7.223M18.137,6.692c1.183,0,0.829-2.019,0.829-2.742c0-0.732,0.383-2.935-0.829-2.935c-1.183,0-0.828,2.019-0.828,2.742C17.309,4.49,16.926,6.692,18.137,6.692M23.058,8.729c0.852,0.85,2.142-0.972,2.659-1.49c0.512-0.513,2.187-1.687,1.352-2.524c-0.834-0.836-2.013,0.843-2.522,1.353C24.028,6.585,22.198,7.874,23.058,8.729M24.565,10.986c0.448,1.091,2.183-0.01,2.849-0.286c0.676-0.28,2.858-0.771,2.394-1.89c-0.455-1.091-2.181,0.008-2.849,0.285C26.281,9.377,24.102,9.866,24.565,10.986M12.036,8.742c0.752,0.75,1.932-0.415,1.17-1.173c-0.253-0.347-0.646-0.645-0.949-0.946c-0.541-0.539-2.162-2.799-3.068-1.889c-0.79,0.791,0.586,1.755,1.083,2.25C10.859,7.57,11.447,8.156,12.036,8.742M29.365,17.397c-0.768-0.317-1.534-0.635-2.302-0.952c-0.646-0.268-2.07-1.169-2.495-0.135c-0.481,1.168,2.054,1.747,2.751,2.035c0.455,0.188,0.911,0.377,1.367,0.565C29.7,19.331,30.379,17.816,29.365,17.397M29.942,12.817c-0.83,0-1.66,0-2.49,0c-0.701,0-2.357-0.288-2.355,0.83c0,1.262,2.567,0.827,3.319,0.827c0.493,0,0.986,0,1.479-0.001C30.99,14.473,31.043,12.815,29.942,12.817M24.234,18.568c-0.673-0.673-1.773,0.189-1.281,1.007c-0.295-0.264-0.614-0.499-0.961-0.69c3.894-2.866,3.328-9.006-1.021-11.107c-2.024-0.978-4.481-0.828-6.368,0.394c-0.871,0.564-1.603,1.336-2.119,2.236c-0.262,0.456-0.468,0.943-0.612,1.449c-0.074,0.258-0.131,0.521-0.172,0.786c-0.083,0.534-0.109,0.553-0.553,0.871c-0.182-0.957-1.64-0.675-2.326-0.674c-0.815,0.001-1.963-0.217-2.752,0.046c-0.867,0.289-0.652,1.615,0.263,1.613c0.324,0.052,0.701-0.001,1.028-0.001c0.904-0.001,1.809-0.002,2.713-0.003c-0.308,0.352-0.496,0.969-0.94,0.77c-0.467-0.209-0.978-0.319-1.49-0.319c-0.951,0-1.877,0.375-2.561,1.036c-0.681,0.658-1.088,1.569-1.123,2.516c-0.944,0.31-1.791,0.891-2.421,1.658c-2.756,3.354-0.265,8.554,4.058,8.554v-0.002c3.597,0,7.194,0,10.792,0c1.341,0,2.843,0.167,4.168-0.113c3.652-0.772,5.361-5.21,3.133-8.229c0.548,0.547,1.096,1.094,1.644,1.641c0.183,0.183,0.364,0.424,0.575,0.574c0.552,0.552,1.524,0.066,1.403-0.713c-0.097-0.622-1.042-1.267-1.448-1.673C25.319,19.652,24.776,19.11,24.234,18.568M18.137,8.787c4.559,0.009,6.576,5.979,2.912,8.734c-0.637-3.505-4.161-5.824-7.629-5.03C13.943,10.367,15.852,8.792,18.137,8.787M22.895,24.08c-0.633,3.346-4.149,2.879-6.68,2.879c-3.017,0-6.033,0-9.049,0c-0.767,0-1.62,0.084-2.373-0.095c-2.274-0.538-3.416-3.242-2.172-5.235c0.678-1.087,1.568-1.19,2.626-1.67c0.604-0.273,0.456-0.807,0.456-1.331c0.002-0.597,0.284-1.169,0.756-1.533c0.787-0.608,1.943-0.497,2.611,0.234c1.098,1.205,1.96-1.346,2.507-1.893c2.025-2.025,5.475-1.708,7.068,0.684c0.344,0.516,0.581,1.102,0.693,1.712c0.097,0.529-0.115,1.341,0.188,1.796c0.291,0.47,0.943,0.463,1.397,0.68c0.508,0.23,0.963,0.591,1.304,1.034C22.834,22.125,23.064,23.107,22.895,24.08M6.906,9.917c0.881,0.364,1.763,0.727,2.644,1.091c0.353,0.146,0.707,0.292,1.06,0.437c0.997,0.412,1.637-1.119,0.642-1.526C10.47,9.441,9.456,9.177,8.609,8.828c-0.354-0.146-0.707-0.292-1.06-0.437C6.554,7.98,5.912,9.505,6.906,9.917",
+        sun: "M15.502,7.504c-4.35,0-7.873,3.523-7.873,7.873c0,4.347,3.523,7.872,7.873,7.872c4.346,0,7.871-3.525,7.871-7.872C23.374,11.027,19.85,7.504,15.502,7.504zM15.502,21.25c-3.244-0.008-5.866-2.63-5.874-5.872c0.007-3.243,2.63-5.866,5.874-5.874c3.242,0.008,5.864,2.631,5.871,5.874C21.366,18.62,18.744,21.242,15.502,21.25zM15.502,6.977c0.553,0,1-0.448,1-1.001V1.125c-0.002-0.553-0.448-1-1-1c-0.553,0-1.001,0.449-1,1.002v4.85C14.502,6.528,14.949,6.977,15.502,6.977zM18.715,7.615c0.125,0.053,0.255,0.076,0.382,0.077c0.394,0,0.765-0.233,0.925-0.618l1.856-4.483c0.21-0.511-0.031-1.095-0.541-1.306c-0.511-0.211-1.096,0.031-1.308,0.541L18.174,6.31C17.963,6.82,18.205,7.405,18.715,7.615zM21.44,9.436c0.195,0.194,0.451,0.293,0.707,0.293s0.512-0.098,0.707-0.293l3.43-3.433c0.391-0.39,0.39-1.023,0-1.415c-0.392-0.39-1.025-0.39-1.415,0.002L21.44,8.021C21.049,8.412,21.049,9.045,21.44,9.436zM23.263,12.16c0.158,0.385,0.531,0.617,0.923,0.617c0.127,0,0.257-0.025,0.383-0.078l4.48-1.857c0.511-0.211,0.753-0.797,0.541-1.307s-0.796-0.752-1.307-0.54l-4.481,1.857C23.292,11.064,23.051,11.65,23.263,12.16zM29.752,14.371l-4.851,0.001c-0.552,0-1,0.448-0.998,1.001c0,0.553,0.447,0.999,0.998,0.999l4.852-0.002c0.553,0,0.999-0.449,0.999-1C30.752,14.817,30.304,14.369,29.752,14.371zM29.054,19.899l-4.482-1.854c-0.512-0.212-1.097,0.03-1.307,0.541c-0.211,0.511,0.031,1.096,0.541,1.308l4.482,1.854c0.126,0.051,0.256,0.075,0.383,0.075c0.393,0,0.765-0.232,0.925-0.617C29.806,20.695,29.563,20.109,29.054,19.899zM22.86,21.312c-0.391-0.391-1.023-0.391-1.414,0.001c-0.391,0.39-0.39,1.022,0,1.413l3.434,3.429c0.195,0.195,0.45,0.293,0.706,0.293s0.513-0.098,0.708-0.293c0.391-0.392,0.389-1.025,0-1.415L22.86,21.312zM20.029,23.675c-0.211-0.511-0.796-0.752-1.307-0.541c-0.51,0.212-0.752,0.797-0.54,1.308l1.86,4.48c0.159,0.385,0.531,0.617,0.925,0.617c0.128,0,0.258-0.024,0.383-0.076c0.511-0.211,0.752-0.797,0.54-1.309L20.029,23.675zM15.512,23.778c-0.553,0-1,0.448-1,1l0.004,4.851c0,0.553,0.449,0.999,1,0.999c0.553,0,1-0.448,0.998-1l-0.003-4.852C16.511,24.226,16.062,23.777,15.512,23.778zM12.296,23.142c-0.51-0.21-1.094,0.031-1.306,0.543l-1.852,4.483c-0.21,0.511,0.033,1.096,0.543,1.307c0.125,0.052,0.254,0.076,0.382,0.076c0.392,0,0.765-0.234,0.924-0.619l1.853-4.485C13.051,23.937,12.807,23.353,12.296,23.142zM9.57,21.325c-0.392-0.391-1.025-0.389-1.415,0.002L4.729,24.76c-0.391,0.392-0.389,1.023,0.002,1.415c0.195,0.194,0.45,0.292,0.706,0.292c0.257,0,0.513-0.098,0.708-0.293l3.427-3.434C9.961,22.349,9.961,21.716,9.57,21.325zM7.746,18.604c-0.213-0.509-0.797-0.751-1.307-0.54L1.96,19.925c-0.511,0.212-0.752,0.798-0.54,1.308c0.16,0.385,0.531,0.616,0.924,0.616c0.127,0,0.258-0.024,0.383-0.076l4.479-1.861C7.715,19.698,7.957,19.113,7.746,18.604zM7.1,15.392c0-0.553-0.447-0.999-1-0.999l-4.851,0.006c-0.553,0-1.001,0.448-0.999,1.001c0.001,0.551,0.449,1,1,0.998l4.852-0.006C6.654,16.392,7.102,15.942,7.1,15.392zM1.944,10.869l4.485,1.85c0.125,0.053,0.254,0.076,0.381,0.076c0.393,0,0.766-0.232,0.925-0.618c0.212-0.511-0.032-1.097-0.544-1.306L2.708,9.021c-0.511-0.21-1.095,0.032-1.306,0.542C1.19,10.074,1.435,10.657,1.944,10.869zM8.137,9.451c0.195,0.193,0.449,0.291,0.705,0.291s0.513-0.098,0.709-0.295c0.391-0.389,0.389-1.023-0.004-1.414L6.113,4.609C5.723,4.219,5.088,4.221,4.699,4.612c-0.391,0.39-0.389,1.024,0.002,1.414L8.137,9.451zM10.964,7.084c0.16,0.384,0.532,0.615,0.923,0.615c0.128,0,0.258-0.025,0.384-0.077c0.51-0.212,0.753-0.798,0.54-1.307l-1.864-4.479c-0.212-0.51-0.798-0.751-1.308-0.539C9.129,1.51,8.888,2.096,9.1,2.605L10.964,7.084z",
+        undo: "M12.981,9.073V6.817l-12.106,6.99l12.106,6.99v-2.422c3.285-0.002,9.052,0.28,9.052,2.269c0,2.78-6.023,4.263-6.023,4.263v2.132c0,0,13.53,0.463,13.53-9.823C29.54,9.134,17.952,8.831,12.981,9.073z",
+        detour: "M29.342,15.5l-7.556-4.363v2.614H18.75c-1.441-0.004-2.423,1.002-2.875,1.784c-0.735,1.222-1.056,2.561-1.441,3.522c-0.135,0.361-0.278,0.655-0.376,0.817c-1.626,0-0.998,0-2.768,0c-0.213-0.398-0.571-1.557-0.923-2.692c-0.237-0.676-0.5-1.381-1.013-2.071C8.878,14.43,7.89,13.726,6.75,13.75H2.812v3.499c0,0,0.358,0,1.031,0h2.741c0.008,0.013,0.018,0.028,0.029,0.046c0.291,0.401,0.634,1.663,1.031,2.888c0.218,0.623,0.455,1.262,0.92,1.897c0.417,0.614,1.319,1.293,2.383,1.293H11c2.25,0,1.249,0,3.374,0c0.696,0.01,1.371-0.286,1.809-0.657c1.439-1.338,1.608-2.886,2.13-4.127c0.218-0.608,0.453-1.115,0.605-1.314c0.006-0.01,0.012-0.018,0.018-0.025h2.85v2.614L29.342,15.5zM10.173,14.539c0.568,0.76,0.874,1.559,1.137,2.311c0.04,0.128,0.082,0.264,0.125,0.399h2.58c0.246-0.697,0.553-1.479,1.005-2.228c0.252-0.438,0.621-0.887,1.08-1.272H9.43C9.735,14.003,9.99,14.277,10.173,14.539z",
+        merge: "M29.342,15.5l-7.556-4.363v2.613h-1.411c-0.788-0.01-1.331-0.241-2.019-0.743c-1.021-0.745-2.094-2.181-3.551-3.568C13.367,8.06,11.291,6.73,8.5,6.749H2.812v3.5H8.5c2.231,0.012,3.441,1.185,5.07,2.934c0.697,0.753,1.428,1.58,2.324,2.323c-1.396,1.165-2.412,2.516-3.484,3.501c-1.183,1.081-2.202,1.723-3.912,1.741H2.813v3.5h5.716c3.752,0.001,6.035-2.319,7.619-4.066c0.817-0.895,1.537-1.691,2.209-2.191c0.686-0.502,1.23-0.732,2.017-0.742h1.412v2.614L29.342,15.5z",
+        split: "M21.786,20.698c-1.792-0.237-2.912-1.331-4.358-2.886c-0.697-0.751-1.428-1.577-2.324-2.319c1.396-1.165,2.411-2.519,3.483-3.503c1.01-0.92,1.901-1.519,3.199-1.688v2.574l7.556-4.363L21.786,4.15v2.652c-3.34,0.266-5.45,2.378-6.934,4.013c-0.819,0.896-1.537,1.692-2.212,2.192c-0.685,0.501-1.227,0.731-2.013,0.742c-0.001,0-0.002,0-0.003,0H2.812v3.5h0.001v0.001c0,0,0.046-0.001,0.136-0.001h7.677c0.786,0.011,1.33,0.241,2.017,0.743c1.021,0.743,2.095,2.181,3.552,3.568c1.312,1.258,3.162,2.46,5.592,2.649v2.664l7.556-4.36l-7.556-4.361V20.698z",
+        fork: "M13.741,10.249h8.045v2.627l7.556-4.363l-7.556-4.363v2.598H9.826C11.369,7.612,12.616,8.922,13.741,10.249zM21.786,20.654c-0.618-0.195-1.407-0.703-2.291-1.587c-1.79-1.756-3.712-4.675-5.731-7.227c-2.049-2.486-4.159-4.972-7.451-5.091h-3.5v3.5h3.5c0.656-0.027,1.683,0.486,2.879,1.683c1.788,1.753,3.712,4.674,5.731,7.226c1.921,2.331,3.907,4.639,6.863,5.016v2.702l7.556-4.362l-7.556-4.362V20.654z",
+        fork_alt: "M21.786,12.873l7.556-4.361l-7.556-4.362v2.701c-2.929,0.374-4.905,2.64-6.809,4.952c0.545,0.703,1.08,1.418,1.604,2.127c0.192,0.26,0.383,0.514,0.573,0.77c0.802-1.043,1.584-1.999,2.341-2.74c0.884-0.885,1.673-1.393,2.291-1.588V12.873zM17.661,17.006c-1.893-2.371-3.815-5.354-6.009-7.537c-1.461-1.428-3.155-2.664-5.34-2.693h-3.5v3.5h3.5c0.971-0.119,2.845,1.333,4.712,3.771c1.895,2.371,3.815,5.354,6.011,7.537c1.326,1.297,2.847,2.426,4.751,2.645v2.646l7.556-4.363l-7.556-4.362v2.535C20.746,20.346,19.205,19.022,17.661,17.006z",
+        exchange: "M21.786,12.876l7.556-4.363l-7.556-4.363v2.598H2.813v3.5h18.973V12.876zM10.368,18.124l-7.556,4.362l7.556,4.362V24.25h18.974v-3.501H10.368V18.124z",
+        shuffle: "M21.786,20.654c-0.618-0.195-1.407-0.703-2.291-1.587c-0.757-0.742-1.539-1.698-2.34-2.741c-0.191,0.256-0.382,0.51-0.574,0.77c-0.524,0.709-1.059,1.424-1.604,2.127c1.904,2.31,3.88,4.578,6.809,4.952v2.701l7.556-4.362l-7.556-4.362V20.654zM9.192,11.933c0.756,0.741,1.538,1.697,2.339,2.739c0.195-0.262,0.39-0.521,0.587-0.788c0.52-0.703,1.051-1.412,1.592-2.11c-2.032-2.463-4.133-4.907-7.396-5.025h-3.5v3.5h3.5C6.969,10.223,7.996,10.735,9.192,11.933zM21.786,10.341v2.535l7.556-4.363l-7.556-4.363v2.647c-1.904,0.219-3.425,1.348-4.751,2.644c-2.196,2.183-4.116,5.167-6.011,7.538c-1.867,2.438-3.741,3.888-4.712,3.771h-3.5v3.5h3.5c2.185-0.029,3.879-1.266,5.34-2.693c2.194-2.184,4.116-5.167,6.009-7.538C19.205,12.003,20.746,10.679,21.786,10.341z",
+        refresh: "M24.083,15.5c-0.009,4.739-3.844,8.574-8.583,8.583c-4.741-0.009-8.577-3.844-8.585-8.583c0.008-4.741,3.844-8.577,8.585-8.585c1.913,0,3.665,0.629,5.09,1.686l-1.782,1.783l8.429,2.256l-2.26-8.427l-1.89,1.89c-2.072-1.677-4.717-2.688-7.587-2.688C8.826,3.418,3.418,8.826,3.416,15.5C3.418,22.175,8.826,27.583,15.5,27.583S27.583,22.175,27.583,15.5H24.083z",
+        ccw: "M24.249,15.499c-0.009,4.832-3.918,8.741-8.75,8.75c-2.515,0-4.768-1.064-6.365-2.763l2.068-1.442l-7.901-3.703l0.744,8.694l2.193-1.529c2.244,2.594,5.562,4.242,9.26,4.242c6.767,0,12.249-5.482,12.249-12.249H24.249zM15.499,6.75c2.516,0,4.769,1.065,6.367,2.764l-2.068,1.443l7.901,3.701l-0.746-8.693l-2.192,1.529c-2.245-2.594-5.562-4.245-9.262-4.245C8.734,3.25,3.25,8.734,3.249,15.499H6.75C6.758,10.668,10.668,6.758,15.499,6.75z",
+        acw: "M19.275,3.849l1.695,8.56l1.875-1.642c2.311,3.59,1.72,8.415-1.584,11.317c-2.24,1.96-5.186,2.57-7.875,1.908l-0.84,3.396c3.75,0.931,7.891,0.066,11.02-2.672c4.768-4.173,5.521-11.219,1.94-16.279l2.028-1.775L19.275,3.849zM8.154,20.232c-2.312-3.589-1.721-8.416,1.582-11.317c2.239-1.959,5.186-2.572,7.875-1.909l0.842-3.398c-3.752-0.93-7.893-0.067-11.022,2.672c-4.765,4.174-5.519,11.223-1.939,16.283l-2.026,1.772l8.26,2.812l-1.693-8.559L8.154,20.232z",
+        contract: "M25.083,18.895l-8.428-2.259l2.258,8.428l1.838-1.837l7.053,7.053l2.476-2.476l-7.053-7.053L25.083,18.895zM5.542,11.731l8.428,2.258l-2.258-8.428L9.874,7.398L3.196,0.72L0.72,3.196l6.678,6.678L5.542,11.731zM7.589,20.935l-6.87,6.869l2.476,2.476l6.869-6.869l1.858,1.857l2.258-8.428l-8.428,2.258L7.589,20.935zM23.412,10.064l6.867-6.87l-2.476-2.476l-6.868,6.869l-1.856-1.856l-2.258,8.428l8.428-2.259L23.412,10.064z",
+        expand: "M25.545,23.328,17.918,15.623,25.534,8.007,27.391,9.864,29.649,1.436,21.222,3.694,23.058,5.53,15.455,13.134,7.942,5.543,9.809,3.696,1.393,1.394,3.608,9.833,5.456,8.005,12.98,15.608,5.465,23.123,3.609,21.268,1.351,29.695,9.779,27.438,7.941,25.6,15.443,18.098,23.057,25.791,21.19,27.638,29.606,29.939,27.393,21.5z",
+        stop: "M5.5,5.5h20v20h-20z",
+        end: "M21.167,5.5,21.167,13.681,6.684,5.318,6.684,25.682,21.167,17.318,21.167,25.5,25.5,25.5,25.5,5.5z",
+        start: "M24.316,5.318,9.833,13.682,9.833,5.5,5.5,5.5,5.5,25.5,9.833,25.5,9.833,17.318,24.316,25.682z",
+        ff: "M25.5,15.5,15.2,9.552,15.2,15.153,5.5,9.552,5.5,21.447,15.2,15.847,15.2,21.447z",
+        rw: "M5.5,15.499,15.8,21.447,15.8,15.846,25.5,21.447,25.5,9.552,15.8,15.152,15.8,9.552z",
+        play: "M6.684,25.682L24.316,15.5L6.684,5.318V25.682z",
+		arrowright: "M11.166,23.963L22.359,17.5c1.43-0.824,1.43-2.175,0-3L11.166,8.037c-1.429-0.826-2.598-0.15-2.598,1.5v12.926C8.568,24.113,9.737,24.789,11.166,23.963z",
+        arrowleft: "M20.834,8.037L9.641,14.5c-1.43,0.824-1.43,2.175,0,3l11.193,6.463c1.429,0.826,2.598,0.15,2.598-1.5V9.537C23.432,7.887,22.263,7.211,20.834,8.037z",
+        arrowup: "M23.963,20.834L17.5,9.64c-0.825-1.429-2.175-1.429-3,0L8.037,20.834c-0.825,1.429-0.15,2.598,1.5,2.598h12.926C24.113,23.432,24.788,22.263,23.963,20.834z",
+        arrowdown: "M8.037,11.166L14.5,22.359c0.825,1.43,2.175,1.43,3,0l6.463-11.194c0.826-1.429,0.15-2.598-1.5-2.598H9.537C7.886,8.568,7.211,9.737,8.037,11.166z",
+        arrowleft2: "M21.871,9.814 15.684,16.001 21.871,22.188 18.335,25.725 8.612,16.001 18.335,6.276z",
+        arrowright2: "M10.129,22.186 16.316,15.999 10.129,9.812 13.665,6.276 23.389,15.999 13.665,25.725z",
+        smile2: "M16,1.466C7.973,1.466,1.466,7.973,1.466,16c0,8.027,6.507,14.534,14.534,14.534c8.027,0,14.534-6.507,14.534-14.534C30.534,7.973,24.027,1.466,16,1.466zM16,29.534C8.539,29.534,2.466,23.462,2.466,16C2.466,8.539,8.539,2.466,16,2.466c7.462,0,13.535,6.072,13.535,13.533C29.534,23.462,23.462,29.534,16,29.534zM11.104,14c0.932,0,1.688-1.483,1.688-3.312s-0.755-3.312-1.688-3.312s-1.688,1.483-1.688,3.312S10.172,14,11.104,14zM20.729,14c0.934,0,1.688-1.483,1.688-3.312s-0.756-3.312-1.688-3.312c-0.932,0-1.688,1.483-1.688,3.312S19.798,14,20.729,14zM8.143,21.189C10.458,24.243,13.148,26,16.021,26c2.969,0,5.745-1.868,8.11-5.109c-2.515,1.754-5.292,2.734-8.215,2.734C13.164,23.625,10.54,22.756,8.143,21.189z",
+        smile: "M16,1.466C7.973,1.466,1.466,7.973,1.466,16c0,8.027,6.507,14.534,14.534,14.534c8.027,0,14.534-6.507,14.534-14.534C30.534,7.973,24.027,1.466,16,1.466zM20.729,7.375c0.934,0,1.688,1.483,1.688,3.312S21.661,14,20.729,14c-0.932,0-1.688-1.483-1.688-3.312S19.798,7.375,20.729,7.375zM11.104,7.375c0.932,0,1.688,1.483,1.688,3.312S12.037,14,11.104,14s-1.688-1.483-1.688-3.312S10.172,7.375,11.104,7.375zM16.021,26c-2.873,0-5.563-1.757-7.879-4.811c2.397,1.564,5.021,2.436,7.774,2.436c2.923,0,5.701-0.98,8.215-2.734C21.766,24.132,18.99,26,16.021,26z",
+        alarm: "M8.179,20.115c-0.478,0.277-0.642,0.889-0.365,1.366c0.275,0.479,0.889,0.642,1.365,0.366c0.479-0.275,0.643-0.888,0.367-1.367C9.27,20.004,8.658,19.84,8.179,20.115zM9.18,12.239c-0.479-0.276-1.09-0.112-1.366,0.366s-0.111,1.09,0.365,1.366c0.479,0.276,1.09,0.113,1.367-0.366C9.821,13.126,9.657,12.516,9.18,12.239zM8.625,17.043c-0.001-0.552-0.448-0.999-1.001-1c-0.553,0-1,0.448-1,1c0,0.553,0.449,1,1,1C8.176,18.043,8.624,17.596,8.625,17.043zM16.312,3.957V3.031h1c0.275,0,0.5-0.225,0.5-0.5v-0.5c0-0.275-0.225-0.5-0.5-0.5h-3.625c-0.275,0-0.5,0.225-0.5,0.5v0.5c0,0.275,0.225,0.5,0.5,0.5h1v0.926C7.819,4.381,2.376,10.068,2.374,17.042C2.376,24.291,8.251,30.166,15.5,30.169c7.249-0.003,13.124-5.878,13.125-13.127C28.624,10.067,23.181,4.38,16.312,3.957zM15.5,27.166C9.909,27.157,5.385,22.633,5.375,17.042C5.385,11.451,9.909,6.927,15.5,6.917c5.59,0.01,10.115,4.535,10.124,10.125C25.615,22.633,21.091,27.157,15.5,27.166zM12.062,22.998c-0.478-0.275-1.089-0.111-1.366,0.367c-0.275,0.479-0.111,1.09,0.366,1.365c0.478,0.277,1.091,0.111,1.365-0.365C12.704,23.887,12.54,23.275,12.062,22.998zM12.062,11.088c0.479-0.276,0.642-0.888,0.366-1.366c-0.276-0.478-0.888-0.642-1.366-0.366s-0.642,0.888-0.366,1.366C10.973,11.2,11.584,11.364,12.062,11.088zM22.822,13.971c0.478-0.275,0.643-0.888,0.366-1.366c-0.275-0.478-0.89-0.642-1.366-0.366c-0.479,0.278-0.642,0.89-0.366,1.367C21.732,14.083,22.344,14.247,22.822,13.971zM15.501,23.92c-0.552,0-1,0.447-1,1c0,0.552,0.448,1,1,1s1-0.448,1-1C16.501,24.367,16.053,23.92,15.501,23.92zM19.938,9.355c-0.477-0.276-1.091-0.111-1.365,0.366c-0.275,0.48-0.111,1.091,0.366,1.367s1.089,0.112,1.366-0.366C20.581,10.245,20.418,9.632,19.938,9.355zM23.378,16.042c-0.554,0.002-1.001,0.45-1.001,1c0.001,0.552,0.448,1,1.001,1c0.551,0,1-0.447,1-1C24.378,16.492,23.929,16.042,23.378,16.042zM22.823,20.115c-0.48-0.275-1.092-0.111-1.367,0.365c-0.275,0.479-0.112,1.091,0.367,1.367c0.477,0.275,1.089,0.112,1.365-0.366C23.464,21.004,23.3,20.391,22.823,20.115zM15.501,8.167c-0.552,0-1,0.448-1,1l-0.466,7.343l-3.004,1.96c-0.478,0.277-0.642,0.889-0.365,1.366c0.275,0.479,0.889,0.642,1.365,0.366l3.305-1.676c0.055,0.006,0.109,0.017,0.166,0.017c0.828,0,1.5-0.672,1.5-1.5l-0.5-7.876C16.501,8.614,16.053,8.167,15.501,8.167zM18.939,22.998c-0.479,0.276-0.643,0.888-0.366,1.367c0.275,0.477,0.888,0.642,1.366,0.365c0.478-0.276,0.642-0.889,0.366-1.365C20.028,22.886,19.417,22.723,18.939,22.998zM11.197,3.593c-0.836-1.04-2.103-1.718-3.541-1.718c-2.52,0-4.562,2.042-4.562,4.562c0,0.957,0.297,1.843,0.8,2.576C5.649,6.484,8.206,4.553,11.197,3.593zM27.106,9.014c0.503-0.733,0.8-1.619,0.8-2.576c0-2.52-2.043-4.562-4.562-4.562c-1.438,0-2.704,0.678-3.541,1.717C22.794,4.553,25.351,6.484,27.106,9.014z",
+        clock: "M15.5,2.374C8.251,2.375,2.376,8.251,2.374,15.5C2.376,22.748,8.251,28.623,15.5,28.627c7.249-0.004,13.124-5.879,13.125-13.127C28.624,8.251,22.749,2.375,15.5,2.374zM15.5,25.623C9.909,25.615,5.385,21.09,5.375,15.5C5.385,9.909,9.909,5.384,15.5,5.374c5.59,0.01,10.115,4.535,10.124,10.125C25.615,21.09,21.091,25.615,15.5,25.623zM8.625,15.5c-0.001-0.552-0.448-0.999-1.001-1c-0.553,0-1,0.448-1,1c0,0.553,0.449,1,1,1C8.176,16.5,8.624,16.053,8.625,15.5zM8.179,18.572c-0.478,0.277-0.642,0.889-0.365,1.367c0.275,0.479,0.889,0.641,1.365,0.365c0.479-0.275,0.643-0.887,0.367-1.367C9.27,18.461,8.658,18.297,8.179,18.572zM9.18,10.696c-0.479-0.276-1.09-0.112-1.366,0.366s-0.111,1.09,0.365,1.366c0.479,0.276,1.09,0.113,1.367-0.366C9.821,11.584,9.657,10.973,9.18,10.696zM22.822,12.428c0.478-0.275,0.643-0.888,0.366-1.366c-0.275-0.478-0.89-0.642-1.366-0.366c-0.479,0.278-0.642,0.89-0.366,1.367C21.732,12.54,22.344,12.705,22.822,12.428zM12.062,21.455c-0.478-0.275-1.089-0.111-1.366,0.367c-0.275,0.479-0.111,1.09,0.366,1.365c0.478,0.277,1.091,0.111,1.365-0.365C12.704,22.344,12.54,21.732,12.062,21.455zM12.062,9.545c0.479-0.276,0.642-0.888,0.366-1.366c-0.276-0.478-0.888-0.642-1.366-0.366s-0.642,0.888-0.366,1.366C10.973,9.658,11.584,9.822,12.062,9.545zM22.823,18.572c-0.48-0.275-1.092-0.111-1.367,0.365c-0.275,0.479-0.112,1.092,0.367,1.367c0.477,0.275,1.089,0.113,1.365-0.365C23.464,19.461,23.3,18.848,22.823,18.572zM19.938,7.813c-0.477-0.276-1.091-0.111-1.365,0.366c-0.275,0.48-0.111,1.091,0.366,1.367s1.089,0.112,1.366-0.366C20.581,8.702,20.418,8.089,19.938,7.813zM23.378,14.5c-0.554,0.002-1.001,0.45-1.001,1c0.001,0.552,0.448,1,1.001,1c0.551,0,1-0.447,1-1C24.378,14.949,23.929,14.5,23.378,14.5zM15.501,6.624c-0.552,0-1,0.448-1,1l-0.466,7.343l-3.004,1.96c-0.478,0.277-0.642,0.889-0.365,1.365c0.275,0.479,0.889,0.643,1.365,0.367l3.305-1.676C15.39,16.99,15.444,17,15.501,17c0.828,0,1.5-0.671,1.5-1.5l-0.5-7.876C16.501,7.072,16.053,6.624,15.501,6.624zM15.501,22.377c-0.552,0-1,0.447-1,1s0.448,1,1,1s1-0.447,1-1S16.053,22.377,15.501,22.377zM18.939,21.455c-0.479,0.277-0.643,0.889-0.366,1.367c0.275,0.477,0.888,0.643,1.366,0.365c0.478-0.275,0.642-0.889,0.366-1.365C20.028,21.344,19.417,21.18,18.939,21.455z",
+        stopwatch: "M27.216,18.533c0-3.636-1.655-6.883-4.253-9.032l0.733-0.998l0.482,0.354c0.198,0.146,0.481,0.104,0.628-0.097l0.442-0.604c0.146-0.198,0.103-0.482-0.097-0.628l-2.052-1.506c-0.199-0.146-0.481-0.103-0.628,0.097L22.03,6.724c-0.146,0.199-0.104,0.482,0.096,0.628l0.483,0.354l-0.736,1.003c-1.28-0.834-2.734-1.419-4.296-1.699c0.847-0.635,1.402-1.638,1.403-2.778h-0.002c0-1.922-1.557-3.48-3.479-3.48c-1.925,0-3.48,1.559-3.48,3.48c0,1.141,0.556,2.144,1.401,2.778c-1.549,0.277-2.99,0.857-4.265,1.68L8.424,7.684l0.484-0.353c0.198-0.145,0.245-0.428,0.098-0.628l-0.44-0.604C8.42,5.899,8.136,5.855,7.937,6.001L5.881,7.5c-0.2,0.146-0.243,0.428-0.099,0.628l0.442,0.604c0.145,0.2,0.428,0.244,0.627,0.099l0.483-0.354l0.729,0.999c-2.615,2.149-4.282,5.407-4.282,9.057c0,6.471,5.245,11.716,11.718,11.716c6.47,0,11.716-5.243,11.718-11.716H27.216zM12.918,4.231c0.002-1.425,1.155-2.58,2.582-2.582c1.426,0.002,2.579,1.157,2.581,2.582c-0.002,1.192-0.812,2.184-1.908,2.482v-1.77h0.6c0.246,0,0.449-0.203,0.449-0.449V3.746c0-0.247-0.203-0.449-0.449-0.449h-2.545c-0.247,0-0.449,0.202-0.449,0.449v0.749c0,0.246,0.202,0.449,0.449,0.449h0.599v1.77C13.729,6.415,12.919,5.424,12.918,4.231zM15.5,27.554c-4.983-0.008-9.015-4.038-9.022-9.021c0.008-4.982,4.039-9.013,9.022-9.022c4.981,0.01,9.013,4.04,9.021,9.022C24.513,23.514,20.481,27.546,15.5,27.554zM15.5,12.138c0.476,0,0.861-0.385,0.861-0.86s-0.386-0.861-0.861-0.861s-0.861,0.386-0.861,0.861S15.024,12.138,15.5,12.138zM15.5,24.927c-0.476,0-0.861,0.386-0.861,0.861s0.386,0.861,0.861,0.861s0.861-0.386,0.861-0.861S15.976,24.927,15.5,24.927zM12.618,11.818c-0.237-0.412-0.764-0.553-1.176-0.315c-0.412,0.238-0.554,0.765-0.315,1.177l2.867,6.722c0.481,0.831,1.543,1.116,2.375,0.637c0.829-0.479,1.114-1.543,0.635-2.374L12.618,11.818zM18.698,24.07c-0.412,0.237-0.555,0.765-0.316,1.176c0.237,0.412,0.764,0.554,1.176,0.315c0.413-0.238,0.553-0.765,0.316-1.176C19.635,23.974,19.108,23.832,18.698,24.07zM8.787,15.65c0.412,0.238,0.938,0.097,1.176-0.315c0.237-0.413,0.097-0.938-0.314-1.176c-0.412-0.239-0.938-0.098-1.177,0.313C8.234,14.886,8.375,15.412,8.787,15.65zM22.215,21.413c-0.412-0.236-0.938-0.096-1.176,0.316c-0.238,0.412-0.099,0.938,0.314,1.176c0.41,0.238,0.937,0.098,1.176-0.314C22.768,22.178,22.625,21.652,22.215,21.413zM9.107,18.531c-0.002-0.476-0.387-0.86-0.861-0.86c-0.477,0-0.862,0.385-0.862,0.86c0.001,0.476,0.386,0.86,0.861,0.861C8.722,19.393,9.106,19.008,9.107,18.531zM21.896,18.531c0,0.477,0.384,0.862,0.859,0.86c0.476,0.002,0.862-0.382,0.862-0.859s-0.387-0.86-0.862-0.862C22.279,17.671,21.896,18.056,21.896,18.531zM8.787,21.413c-0.412,0.238-0.554,0.765-0.316,1.176c0.239,0.412,0.765,0.553,1.177,0.316c0.413-0.239,0.553-0.765,0.315-1.178C9.725,21.317,9.198,21.176,8.787,21.413zM21.352,14.157c-0.411,0.238-0.551,0.764-0.312,1.176c0.237,0.413,0.764,0.555,1.174,0.315c0.412-0.236,0.555-0.762,0.316-1.176C22.29,14.06,21.766,13.921,21.352,14.157zM12.304,24.067c-0.413-0.235-0.939-0.096-1.176,0.315c-0.238,0.413-0.098,0.939,0.312,1.178c0.413,0.236,0.939,0.096,1.178-0.315C12.857,24.832,12.715,24.308,12.304,24.067zM18.698,12.992c0.41,0.238,0.938,0.099,1.174-0.313c0.238-0.411,0.1-0.938-0.314-1.177c-0.414-0.238-0.937-0.097-1.177,0.315C18.144,12.229,18.286,12.755,18.698,12.992z",
+        history: "M10.666,18.292c0.275,0.479,0.889,0.644,1.365,0.367l3.305-1.677C15.39,16.99,15.444,17,15.501,17c0.828,0,1.5-0.671,1.5-1.5l-0.5-7.876c0-0.552-0.448-1-1-1c-0.552,0-1,0.448-1,1l-0.466,7.343l-3.004,1.96C10.553,17.204,10.389,17.816,10.666,18.292zM12.062,9.545c0.479-0.276,0.642-0.888,0.366-1.366c-0.276-0.478-0.888-0.642-1.366-0.366s-0.642,0.888-0.366,1.366C10.973,9.658,11.584,9.822,12.062,9.545zM8.179,18.572c-0.478,0.277-0.642,0.889-0.365,1.367c0.275,0.479,0.889,0.641,1.365,0.365c0.479-0.275,0.643-0.888,0.367-1.367C9.27,18.461,8.658,18.297,8.179,18.572zM9.18,10.696c-0.479-0.276-1.09-0.112-1.366,0.366s-0.111,1.09,0.365,1.366c0.479,0.276,1.09,0.113,1.367-0.366C9.821,11.584,9.657,10.973,9.18,10.696zM6.624,15.5c0,0.553,0.449,1,1,1c0.552,0,1-0.447,1.001-1c-0.001-0.552-0.448-0.999-1.001-1C7.071,14.5,6.624,14.948,6.624,15.5zM14.501,23.377c0,0.553,0.448,1,1,1c0.552,0,1-0.447,1-1s-0.448-1-1-1C14.949,22.377,14.501,22.824,14.501,23.377zM10.696,21.822c-0.275,0.479-0.111,1.09,0.366,1.365c0.478,0.276,1.091,0.11,1.365-0.365c0.277-0.479,0.113-1.09-0.365-1.367C11.584,21.18,10.973,21.344,10.696,21.822zM21.822,10.696c-0.479,0.278-0.643,0.89-0.366,1.367s0.888,0.642,1.366,0.365c0.478-0.275,0.643-0.888,0.365-1.366C22.913,10.584,22.298,10.42,21.822,10.696zM21.456,18.938c-0.274,0.479-0.112,1.092,0.367,1.367c0.477,0.274,1.089,0.112,1.364-0.365c0.276-0.479,0.112-1.092-0.364-1.367C22.343,18.297,21.73,18.461,21.456,18.938zM24.378,15.5c0-0.551-0.448-1-1-1c-0.554,0.002-1.001,0.45-1.001,1c0.001,0.552,0.448,1,1.001,1C23.93,16.5,24.378,16.053,24.378,15.5zM18.573,22.822c0.274,0.477,0.888,0.643,1.366,0.365c0.478-0.275,0.642-0.89,0.365-1.365c-0.277-0.479-0.888-0.643-1.365-0.367C18.46,21.732,18.296,22.344,18.573,22.822zM18.939,9.546c0.477,0.276,1.088,0.112,1.365-0.366c0.276-0.478,0.113-1.091-0.367-1.367c-0.477-0.276-1.09-0.111-1.364,0.366C18.298,8.659,18.462,9.27,18.939,9.546zM28.703,14.364C28.074,7.072,21.654,1.67,14.364,2.295c-3.254,0.281-6.118,1.726-8.25,3.877L4.341,4.681l-1.309,7.364l7.031-2.548L8.427,8.12c1.627-1.567,3.767-2.621,6.194-2.833c5.64-0.477,10.595,3.694,11.089,9.335c0.477,5.64-3.693,10.595-9.333,11.09c-5.643,0.476-10.599-3.694-11.092-9.333c-0.102-1.204,0.019-2.373,0.31-3.478l-3.27,1.186c-0.089,0.832-0.106,1.684-0.031,2.55c0.629,7.29,7.048,12.691,14.341,12.066C23.926,28.074,29.328,21.655,28.703,14.364z",
+        future: "M17.001,15.5l-0.5-7.876c0-0.552-0.448-1-1-1c-0.552,0-1,0.448-1,1l-0.466,7.343l-3.004,1.96c-0.478,0.277-0.642,0.89-0.365,1.365c0.275,0.479,0.889,0.644,1.365,0.367l3.305-1.677C15.39,16.99,15.444,17,15.501,17C16.329,17,17.001,16.329,17.001,15.5zM18.939,21.455c-0.479,0.277-0.644,0.889-0.366,1.367c0.274,0.477,0.888,0.643,1.366,0.365c0.478-0.275,0.642-0.89,0.365-1.365C20.027,21.344,19.417,21.18,18.939,21.455zM19.938,7.813c-0.477-0.276-1.09-0.111-1.364,0.366c-0.275,0.48-0.111,1.091,0.366,1.367c0.477,0.276,1.088,0.112,1.365-0.366C20.581,8.702,20.418,8.089,19.938,7.813zM21.823,20.305c0.477,0.274,1.089,0.112,1.364-0.365c0.276-0.479,0.112-1.092-0.364-1.367c-0.48-0.275-1.093-0.111-1.367,0.365C21.182,19.416,21.344,20.029,21.823,20.305zM22.822,12.428c0.478-0.275,0.643-0.888,0.365-1.366c-0.274-0.478-0.89-0.642-1.365-0.366c-0.479,0.278-0.643,0.89-0.366,1.367S22.344,12.705,22.822,12.428zM24.378,15.5c0-0.551-0.448-1-1-1c-0.554,0.002-1.001,0.45-1.001,1c0.001,0.552,0.448,1,1.001,1C23.93,16.5,24.378,16.053,24.378,15.5zM9.546,12.062c0.275-0.478,0.111-1.089-0.366-1.366c-0.479-0.276-1.09-0.112-1.366,0.366s-0.111,1.09,0.365,1.366C8.658,12.704,9.269,12.541,9.546,12.062zM6.624,15.5c0,0.553,0.449,1,1,1c0.552,0,1-0.447,1.001-1c-0.001-0.552-0.448-0.999-1.001-1C7.071,14.5,6.624,14.948,6.624,15.5zM9.179,20.305c0.479-0.275,0.643-0.888,0.367-1.367c-0.276-0.477-0.888-0.641-1.367-0.365c-0.478,0.277-0.642,0.889-0.365,1.367C8.089,20.418,8.703,20.58,9.179,20.305zM12.062,9.545c0.479-0.276,0.642-0.888,0.366-1.366c-0.276-0.478-0.888-0.642-1.366-0.366s-0.642,0.888-0.366,1.366C10.973,9.658,11.584,9.822,12.062,9.545zM14.501,23.377c0,0.553,0.448,1,1,1c0.552,0,1-0.447,1-1s-0.448-1-1-1C14.949,22.377,14.501,22.824,14.501,23.377zM10.696,21.822c-0.275,0.479-0.111,1.09,0.366,1.365c0.478,0.276,1.091,0.11,1.365-0.365c0.277-0.479,0.113-1.09-0.365-1.367C11.584,21.18,10.973,21.344,10.696,21.822zM28.674,14.087l-3.27-1.186c0.291,1.105,0.41,2.274,0.309,3.478c-0.492,5.639-5.449,9.809-11.091,9.333c-5.639-0.495-9.809-5.45-9.333-11.09c0.494-5.641,5.449-9.812,11.089-9.335c2.428,0.212,4.567,1.266,6.194,2.833l-1.637,1.377l7.031,2.548l-1.309-7.364l-1.771,1.492c-2.133-2.151-4.996-3.597-8.25-3.877C9.346,1.67,2.926,7.072,2.297,14.364c-0.625,7.291,4.777,13.71,12.066,14.339c7.293,0.625,13.713-4.776,14.342-12.066C28.779,15.771,28.762,14.919,28.674,14.087z",
+        globeAlt2: "M16,1.466C7.973,1.466,1.466,7.973,1.466,16c0,8.027,6.507,14.534,14.534,14.534c8.027,0,14.534-6.507,14.534-14.534C30.534,7.973,24.027,1.466,16,1.466zM8.251,7.48c0.122,0.055,0.255,0.104,0.28,0.137C8.57,7.668,8.621,7.823,8.557,7.861C8.492,7.9,8.39,7.887,8.376,7.771c-0.013-0.115-0.026-0.128-0.18-0.18c-0.022-0.007-0.035-0.01-0.051-0.015C8.18,7.544,8.216,7.512,8.251,7.48zM7.733,7.974c0.031,0.087,0.113,0.125,0,0.17C7.673,8.168,7.611,8.172,7.559,8.165C7.617,8.102,7.672,8.035,7.733,7.974zM16,27.533C9.639,27.533,4.466,22.36,4.466,16c0-0.085,0.011-0.168,0.013-0.254c0.004-0.003,0.008-0.006,0.012-0.009c0.129-0.102,0.283-0.359,0.334-0.45c0.052-0.089,0.181-0.154,0.116-0.256c-0.059-0.096-0.292-0.23-0.407-0.261c0.01-0.099,0.032-0.195,0.045-0.294c0.063,0.077,0.137,0.17,0.208,0.194c0.115,0.038,0.501,0.052,0.566,0.052c0.063,0,0.334,0.014,0.386-0.064c0.051-0.077,0.09-0.077,0.154-0.077c0.064,0,0.18,0.231,0.271,0.257c0.089,0.026,0.257,0.013,0.244,0.181c-0.012,0.166,0.077,0.309,0.167,0.321c0.09,0.013,0.296-0.194,0.296-0.194s0,0.322-0.012,0.438C6.846,15.698,7,16.124,7,16.124s0.193,0.397,0.244,0.488c0.052,0.09,0.27,0.36,0.27,0.476c0,0.117,0.026,0.297,0.104,0.297s0.155-0.206,0.244-0.335c0.091-0.128,0.117-0.31,0.155-0.438c0.039-0.129,0.039-0.36,0.039-0.45c0-0.091,0.076-0.168,0.257-0.245c0.181-0.077,0.309-0.296,0.463-0.412c0.155-0.116,0.142-0.309,0.452-0.309c0.308,0,0.282,0,0.36-0.078c0.077-0.077,0.154-0.128,0.192,0.013c0.039,0.142,0.257,0.347,0.296,0.399c0.039,0.052,0.116,0.193,0.104,0.348c-0.013,0.153,0.012,0.334,0.077,0.334c0.064,0,0.193-0.219,0.193-0.219s0.283-0.192,0.27,0.014c-0.014,0.205,0.025,0.425,0.025,0.552c0,0.13,0.232,0.438,0.232,0.362c0-0.079,0.103-0.296,0.103-0.413c0-0.114,0.064-0.063,0.231,0.051c0.167,0.116,0.283,0.349,0.283,0.349s0.168,0.154,0.193,0.219c0.026,0.064,0.206-0.025,0.244-0.104c0.039-0.076,0.065-0.115,0.167-0.141c0.104-0.026,0.231-0.026,0.271-0.168c0.039-0.142,0.154-0.308,0-0.502c-0.154-0.193-0.232-0.321-0.347-0.412c-0.117-0.09-0.206-0.322-0.206-0.322s0.244-0.218,0.321-0.296c0.079-0.077,0.193-0.025,0.207,0.064c0.013,0.091-0.115,0.168-0.141,0.361c-0.026,0.192,0.154,0.257,0.206,0.192c0.051-0.065,0.18-0.219,0.18-0.257c0-0.039-0.089-0.026-0.102-0.167c-0.013-0.142,0.166-0.245,0.23-0.207c0.066,0.039,0.477-0.051,0.67-0.154s0.308-0.322,0.425-0.412c0.116-0.089,0.515-0.386,0.489-0.527c-0.026-0.142,0.012-0.334-0.09-0.515c-0.103-0.18-0.232-0.295-0.283-0.373c-0.051-0.077,0.219-0.09,0.347-0.206c0.129-0.116,0-0.219-0.064-0.206c-0.064,0.013-0.232,0.052-0.296,0.039c-0.064-0.013-0.103-0.077-0.206-0.155c-0.102-0.077,0.026-0.192,0.091-0.179c0.064,0.013,0.23-0.129,0.308-0.193c0.077-0.064,0.193-0.115,0.154-0.051c-0.038,0.064-0.128,0.296-0.026,0.309c0.104,0.013,0.348-0.193,0.388-0.18c0.038,0.013,0.102,0.18,0.064,0.257c-0.039,0.077-0.039,0.206,0.013,0.193c0.051-0.013,0.154-0.129,0.18-0.09c0.027,0.039,0.154,0.116,0.09,0.257c-0.063,0.142-0.193,0.193-0.039,0.284c0.154,0.089,0.206,0.012,0.322-0.052c0.115-0.064,0.193-0.347,0.128-0.438c-0.064-0.09-0.218-0.27-0.218-0.334c0-0.064,0.257-0.064,0.257-0.167s0.09-0.18,0.18-0.219c0.091-0.039,0.206-0.206,0.244-0.154c0.039,0.052,0.271,0.116,0.334,0.039c0.064-0.077,0.4-0.36,0.605-0.515c0.206-0.154,0.283-0.334,0.336-0.515c0.051-0.18,0.128-0.296,0.102-0.437v0c0.077,0.18,0.09,0.309,0.077,0.45c-0.013,0.142,0,0.438,0.026,0.476c0.025,0.039,0.129,0.128,0.192,0.103c0.064-0.025-0.025-0.283-0.025-0.334c0-0.052,0.09-0.129,0.142-0.142c0.052-0.013,0-0.231-0.065-0.322c-0.063-0.09-0.154-0.142-0.102-0.154c0.051-0.013,0.115-0.116,0.077-0.142c-0.039-0.025-0.014-0.116-0.103-0.09c-0.065,0.019-0.241-0.015-0.235,0.095c-0.037-0.11-0.116-0.183-0.216-0.172c-0.116,0.013-0.181,0.077-0.296,0.077s-0.025-0.18-0.077-0.18c-0.051,0-0.168,0.167-0.231,0.077c-0.064-0.09,0.18-0.206,0.373-0.27c0.192-0.064,0.514-0.438,0.644-0.451c0.128-0.013,0.45,0.026,0.733,0.013c0.283-0.013,0.373-0.129,0.463-0.064s0.283,0.142,0.399,0.129c0.116-0.014,0.064,0,0.244-0.129c0.18-0.129,0.348-0.193,0.438-0.296c0.09-0.103,0.335-0.18,0.348-0.077c0.014,0.103-0.026,0.206,0.077,0.206s0.258-0.103,0.386-0.154c0.129-0.051,0.231-0.116,0.231-0.116s-0.527,0.36-0.655,0.438c-0.129,0.077-0.438,0.129-0.567,0.283c-0.128,0.155-0.205,0.206-0.192,0.374c0.014,0.167,0.231,0.386,0.128,0.54c-0.103,0.154-0.141,0.373-0.141,0.373s0.154-0.219,0.373-0.36s0.348-0.334,0.425-0.412s0.309-0.091,0.309-0.181s0.064-0.206,0.104-0.309c0.038-0.103-0.077-0.078,0-0.206c0.076-0.129,0.064-0.232,0.45-0.232s0.257,0.026,0.566,0.013c0.309-0.013,0.424-0.167,0.72-0.245c0.296-0.077,0.527-0.128,0.618-0.089c0.09,0.038,0.232,0.012,0.141-0.078c-0.089-0.09-0.295-0.219-0.193-0.245c0.104-0.026,0.207-0.039,0.246-0.142c0.039-0.103-0.142-0.283-0.039-0.386c0.104-0.103-0.077-0.231-0.207-0.257c-0.128-0.025-0.63,0.026-0.731-0.025c-0.104-0.052-0.271-0.116-0.322-0.078c-0.052,0.039-0.168,0.245-0.168,0.245s-0.09,0.025-0.168-0.09c-0.076-0.116-0.5-0.103-0.629-0.103s-0.271,0.025-0.413,0.039c-0.141,0.013-0.219,0.052-0.322-0.039c-0.102-0.09-0.243-0.129-0.296-0.167c-0.051-0.039-0.334-0.039-0.553-0.012c-0.218,0.025-0.438,0.025-0.438,0.025s-0.104-0.039-0.257-0.129c-0.154-0.09-0.309-0.154-0.361-0.154c-0.051,0-0.449,0.064-0.539,0c-0.091-0.064-0.181-0.103-0.245-0.103s-0.115-0.103-0.038-0.103s0.437-0.103,0.437-0.103s-0.103-0.142-0.231-0.142c-0.128,0-0.359-0.064-0.424-0.064s-0.014,0.064-0.142,0.039c-0.13-0.026-0.258-0.078-0.335-0.026c-0.076,0.051-0.258,0.128-0.064,0.18c0.193,0.052,0.373,0,0.425,0.078c0.052,0.077,0,0.115,0,0.167s-0.103,0.193-0.167,0.219c-0.064,0.025-0.143-0.039-0.27,0.025c-0.129,0.064-0.451,0.013-0.49,0.052c-0.038,0.039-0.115-0.103-0.18-0.077c-0.064,0.025-0.232,0.193-0.322,0.18c-0.089-0.013-0.206-0.103-0.206-0.206s-0.038-0.232-0.077-0.258c-0.038-0.025-0.322-0.039-0.425-0.025c-0.103,0.013-0.424,0.038-0.477,0.09c-0.052,0.052-0.193,0.09-0.283,0.09s-0.167-0.09-0.36-0.116c-0.192-0.026-0.617-0.039-0.669-0.026s-0.218-0.025-0.155-0.077c0.065-0.051,0.257-0.219,0.143-0.295c-0.117-0.078-0.375-0.078-0.489-0.09c-0.117-0.013-0.232-0.039-0.413-0.013c-0.181,0.026-0.219,0.116-0.296,0.039c-0.077-0.077,0.193,0.039-0.077-0.077c-0.27-0.116-0.399-0.103-0.477-0.064c-0.077,0.039,0.013,0.025-0.192,0.103c-0.206,0.078-0.322,0.116-0.374,0.129c-0.051,0.012-0.372-0.065-0.411-0.091c-0.038-0.025-0.181,0.013-0.309,0.064S9.895,7.025,9.767,7C9.638,6.973,9.432,6.973,9.303,7.025C9.174,7.076,9.084,7.076,8.956,7.166c-0.13,0.09-0.373,0.142-0.373,0.142S8.522,7.305,8.448,7.301C10.474,5.541,13.111,4.466,16,4.466c6.361,0,11.534,5.173,11.534,11.534S22.36,27.533,16,27.533zM14.888,19.92c0,0,0.207-0.026,0.207-0.117c0-0.089-0.207-0.205-0.282-0.102c-0.078,0.102-0.219,0.205-0.207,0.296C14.625,20.138,14.888,19.92,14.888,19.92zM14.875,17.023c-0.181,0.233-0.167,0.182-0.296,0.128c-0.128-0.05-0.334,0.116-0.296,0.182c0.039,0.064,0.322-0.014,0.386,0.102c0.065,0.116,0.065,0.129,0.193,0.104c0.128-0.026,0.257-0.205,0.219-0.295C15.043,17.151,14.875,17.023,14.875,17.023zM14.837,18.245c-0.051,0-0.412,0.064-0.451,0.079c-0.039,0.013-0.27-0.025-0.27-0.025c-0.09,0.089-0.026,0.179,0.116,0.166s0.438-0.052,0.502-0.052C14.799,18.413,14.888,18.245,14.837,18.245zM14.284,14.668c-0.19,0.03-0.308,0.438-0.155,0.425C14.284,15.081,14.451,14.643,14.284,14.668zM14.734,16.959c-0.052-0.064-0.181-0.271-0.323-0.219c-0.042,0.017-0.153,0.245-0.012,0.245C14.541,16.985,14.786,17.023,14.734,16.959zM14.85,16.805c0.232-0.013,0.167-0.245-0.013-0.257C14.786,16.544,14.618,16.818,14.85,16.805zM17.591,18.928c-0.193-0.039-0.244-0.102-0.45-0.205c-0.207-0.103-0.67-0.103-0.682-0.039c-0.014,0.064,0,0-0.155-0.05c-0.153-0.054-0.271,0-0.309-0.091c-0.038-0.091-0.128-0.117-0.244-0.002c-0.097,0.097-0.142,0.104,0.078,0.143c0.218,0.039,0.283,0.039,0.192,0.141c-0.09,0.104-0.154,0.233-0.077,0.244c0.077,0.015,0.309-0.05,0.334,0c0.026,0.054-0.051,0.064,0.207,0.105c0.258,0.037,0.309,0.128,0.359,0.178c0.051,0.052,0.206,0.22,0.104,0.22c-0.104,0-0.219,0.128-0.142,0.143c0.077,0.013,0.309-0.039,0.321,0c0.014,0.037,0.143,0.283,0.271,0.271c0.129-0.013,0.206-0.244,0.27-0.31c0.065-0.064,0.322-0.104,0.349,0.012c0.026,0.116,0.104,0.233,0.257,0.311c0.154,0.076,0.335,0.154,0.348,0.089c0.013-0.064-0.077-0.309-0.181-0.346c-0.103-0.041-0.282-0.259-0.282-0.348c0-0.091-0.155-0.117-0.232-0.182C17.849,19.147,17.784,18.967,17.591,18.928zM8.042,17.023c-0.084,0.037-0.155,0.476,0,0.527c0.154,0.052,0.244-0.205,0.193-0.271C8.183,17.218,8.158,16.973,8.042,17.023zM15.429,18.117c-0.118-0.05-0.335,0.424-0.181,0.463C15.403,18.62,15.518,18.156,15.429,18.117zM15.687,13.703c0.077,0,0.18-0.051,0.18-0.193c0-0.142,0.18,0,0.27-0.013s0.141-0.103,0.18-0.206c0.005-0.013,0.008-0.021,0.009-0.027c-0.003,0.024-0.001,0.093,0.095,0.117c0.154,0.038,0.205-0.064,0.205-0.103s0.283-0.103,0.336-0.142c0.051-0.038,0.258-0.103,0.27-0.154c0.013-0.051,0-0.348,0.064-0.373c0.064-0.026,0.154-0.026,0.052-0.206c-0.104-0.181-0.104-0.348-0.232-0.271c-0.095,0.057-0.038,0.284-0.115,0.438s-0.142,0.296-0.193,0.296s-0.321,0.103-0.399,0.18c-0.076,0.077-0.45-0.064-0.501,0c-0.052,0.064-0.154,0.141-0.219,0.193c-0.065,0.051-0.245,0.013-0.207,0.167C15.518,13.562,15.609,13.703,15.687,13.703zM17.449,12.056c0.18-0.013,0.348-0.064,0.348-0.064s0.271,0.013,0.232-0.116c-0.04-0.128-0.322-0.141-0.375-0.128c-0.051,0.013-0.142-0.142-0.244-0.116c-0.096,0.023-0.128,0.155-0.128,0.193c0,0.039-0.36,0.115-0.245,0.219C17.153,12.146,17.27,12.069,17.449,12.056zM13.91,19.058c0.104,0.064,0.296-0.219,0.349-0.13c0.051,0.091-0.013,0.13,0.076,0.246c0.091,0.114,0.258,0.102,0.258,0.102s-0.013-0.309-0.155-0.387c-0.142-0.077-0.232-0.166-0.064-0.141c0.167,0.026,0.257-0.039,0.219-0.114c-0.039-0.078-0.283-0.039-0.361-0.026s-0.193-0.052-0.193-0.052c-0.077,0.024-0.063,0.089-0.09,0.219C13.923,18.902,13.807,18.992,13.91,19.058zM20.924,21.618c-0.231-0.052-0.077,0.039,0,0.154c0.077,0.116,0.232,0.176,0.258,0.05C21.193,21.759,21.155,21.67,20.924,21.618zM21.915,24.744c-0.077,0.064,0,0.091-0.219,0.22c-0.22,0.13-0.49,0.271-0.541,0.386c-0.052,0.116,0.051,0.181,0.258,0.192c0.206,0.013,0.154,0.053,0.296-0.103s0.271-0.244,0.438-0.373c0.168-0.128,0.168-0.322,0.168-0.322s-0.181-0.178-0.193-0.141C22.1,24.665,21.992,24.681,21.915,24.744zM18.504,21.618c0.014-0.116-0.219-0.116-0.334-0.207c-0.116-0.089-0.128-0.359-0.193-0.515c-0.064-0.153-0.192-0.257-0.322-0.397c-0.128-0.143-0.192-0.465-0.23-0.438c-0.039,0.025-0.154,0.399-0.064,0.515c0.09,0.116-0.039,0.348-0.103,0.503c-0.065,0.153-0.22-0.026-0.349-0.104c-0.129-0.078-0.308-0.128-0.398-0.219c-0.09-0.091,0.155-0.335,0.091-0.426c-0.065-0.09-0.412-0.013-0.45-0.013c-0.039,0-0.116-0.128-0.194-0.128c-0.077,0-0.064,0.258-0.064,0.258s-0.078-0.091-0.193-0.207c-0.117-0.115,0.012,0.077-0.103,0.193c-0.117,0.117-0.079,0.078-0.129,0.206c-0.051,0.129-0.167,0.077-0.283-0.052c-0.116-0.128-0.179-0.037-0.258,0c-0.077,0.039-0.141,0.259-0.18,0.309c-0.039,0.052-0.309,0.117-0.374,0.182c-0.064,0.062-0.09,0.27-0.09,0.322c0,0.05-0.271,0.023-0.361,0.089c-0.09,0.064-0.23,0.025-0.321,0.025c-0.09,0-0.399,0.244-0.502,0.308c-0.103,0.066-0.103,0.298-0.051,0.362c0.051,0.063,0.154,0.219,0.09,0.244c-0.064,0.026-0.104,0.206,0.051,0.359c0.154,0.155,0.103,0.194,0.115,0.271c0.014,0.077,0.078,0.104,0.181,0.232c0.102,0.128-0.181,0.231-0.219,0.31c-0.039,0.076,0.091,0.192,0.167,0.257c0.077,0.063,0.271,0.026,0.386-0.013c0.117-0.039,0.245-0.143,0.321-0.155c0.079-0.013,0.438-0.026,0.438-0.026s0.129-0.192,0.219-0.296c0.089-0.102,0.372-0.013,0.372-0.013s0.117-0.076,0.426-0.141c0.309-0.065,0.179,0.064,0.296,0.104c0.115,0.037,0.27,0.062,0.359,0.128c0.09,0.064,0,0.218-0.012,0.283c-0.014,0.064,0.219,0.038,0.23-0.026c0.014-0.064,0.077-0.128,0.207-0.205c0.128-0.078,0.025,0.114,0.076,0.231c0.052,0.116,0.129-0.157,0.129-0.026c0,0.039,0.039,0.078,0.051,0.116c0.014,0.039,0.181,0.052,0.181,0.18c0,0.13,0,0.207,0.039,0.231c0.038,0.026,0.244,0,0.335,0.155c0.089,0.154,0.154,0.013,0.205-0.052c0.052-0.064,0.231,0.026,0.283,0.078c0.052,0.05,0.193-0.104,0.387-0.155c0.192-0.051,0.167-0.039,0.219-0.115c0.051-0.078,0.09-0.283,0.205-0.438c0.115-0.153,0.271-0.424,0.271-0.631c0-0.206-0.014-0.682-0.155-0.899C18.761,21.953,18.492,21.733,18.504,21.618zM18.029,24.77c-0.065-0.013-0.207-0.062-0.207-0.062c-0.142,0.141,0.142,0.141,0.104,0.283c-0.039,0.141,0.193,0.089,0.257,0.064c0.063-0.027,0.22-0.323,0.193-0.399C18.351,24.577,18.093,24.783,18.029,24.77zM22.803,24.178c-0.052,0-0.077,0.064-0.192,0c-0.117-0.063-0.091-0.037-0.168-0.167c-0.077-0.127-0.091-0.296-0.219-0.23c-0.051,0.025,0,0.168,0.051,0.218c0.053,0.052,0.077,0.231,0.064,0.283c-0.012,0.052-0.231,0.116-0.129,0.18c0.104,0.064,0.297,0,0.271,0.078c-0.025,0.077-0.129,0.179-0.013,0.205c0.115,0.025,0.154-0.089,0.207-0.178c0.051-0.093,0.089-0.169,0.179-0.221C22.944,24.294,22.854,24.178,22.803,24.178zM22.815,21.18c0.168,0.064,0.464-0.231,0.347-0.27C23.047,20.871,22.815,21.18,22.815,21.18zM13.923,19.906c-0.029,0.115,0.193,0.167,0.206,0.039C14.141,19.816,13.949,19.803,13.923,19.906zM14.27,16.47c-0.064,0.065-0.257,0.193-0.283,0.31c-0.025,0.115,0.309-0.182,0.399-0.296c0.091-0.117,0.27-0.052,0.308-0.117c0.04-0.063,0.04-0.063,0.04-0.063s-0.142-0.025-0.257-0.063c-0.117-0.039-0.258,0.102-0.193-0.104c0.064-0.206,0.257-0.167,0.219-0.322c-0.039-0.154-0.168-0.193-0.207-0.193c-0.09,0,0.013,0.141-0.116,0.231c-0.128,0.09-0.271,0.128-0.193,0.283C14.064,16.29,14.334,16.405,14.27,16.47zM13.254,19.751c0.013-0.076-0.142-0.192-0.206-0.192c-0.065,0-0.386-0.077-0.386-0.077c-0.058,0.023-0.135,0.045-0.158,0.077c-0.007-0.011-0.022-0.024-0.049-0.039c-0.142-0.075-0.309,0-0.361-0.102c-0.05-0.104-0.127-0.104-0.179-0.039c-0.094,0.117,0.025,0.206,0.063,0.231c0.038,0.024,0.181,0.052,0.309,0.039c0.08-0.008,0.181-0.027,0.21-0.059c0.004,0.014,0.016,0.027,0.035,0.044c0.103,0.092,0.167,0.13,0.321,0.116C13.009,19.74,13.241,19.829,13.254,19.751zM12.881,18.992c0.065,0,0.193,0,0.283,0.026c0.09,0.025,0.386,0.05,0.373-0.064c-0.013-0.115-0.038-0.297,0.089-0.411c0.13-0.117,0.257-0.18,0.193-0.348c-0.063-0.167-0.193-0.271-0.103-0.349c0.09-0.076,0.192-0.102,0.192-0.166c0-0.065-0.217,0.18-0.244-0.246c-0.005-0.091-0.206,0.025-0.219,0.116c-0.012,0.091,0.142,0.167-0.103,0.167c-0.245,0-0.257,0.194-0.309,0.232c-0.052,0.039-0.103,0.051-0.207,0.076c-0.102,0.026-0.127,0.13-0.153,0.194c-0.025,0.063-0.206-0.116-0.257-0.064c-0.051,0.052-0.013,0.296,0.077,0.501C12.585,18.863,12.816,18.992,12.881,18.992zM11.979,18.928c0.065-0.077,0.038-0.192-0.063-0.18c-0.103,0.013-0.193-0.168-0.36-0.283c-0.168-0.114-0.296-0.194-0.451-0.36c-0.154-0.167-0.347-0.271-0.45-0.359c-0.104-0.091-0.257-0.13-0.322-0.116c-0.159,0.032,0.231,0.309,0.271,0.346c0.039,0.041,0.387,0.335,0.387,0.478s0.231,0.476,0.296,0.527c0.064,0.052,0.385,0.244,0.437,0.348c0.052,0.103,0.167,0.13,0.167-0.013C11.89,19.174,11.916,19.006,11.979,18.928zM11.002,17.474c0.064,0.232,0.193,0.464,0.244,0.555c0.052,0.089,0.271,0.217,0.348,0.281c0.077,0.064,0.192-0.024,0.143-0.102c-0.052-0.078-0.155-0.192-0.167-0.283c-0.013-0.091-0.078-0.233-0.181-0.387c-0.102-0.153-0.192-0.192-0.257-0.295c-0.064-0.104-0.296-0.297-0.296-0.297c-0.102,0.013-0.102,0.205-0.051,0.271C10.834,17.28,10.938,17.243,11.002,17.474z",
+        globeAlt: "M16,1.466C7.973,1.466,1.466,7.973,1.466,16c0,8.027,6.507,14.534,14.534,14.534c8.027,0,14.534-6.507,14.534-14.534C30.534,7.973,24.027,1.466,16,1.466zM27.436,17.39c0.001,0.002,0.004,0.002,0.005,0.004c-0.022,0.187-0.054,0.37-0.085,0.554c-0.015-0.012-0.034-0.025-0.047-0.036c-0.103-0.09-0.254-0.128-0.318-0.115c-0.157,0.032,0.229,0.305,0.267,0.342c0.009,0.009,0.031,0.03,0.062,0.058c-1.029,5.312-5.709,9.338-11.319,9.338c-4.123,0-7.736-2.18-9.776-5.441c0.123-0.016,0.24-0.016,0.28-0.076c0.051-0.077,0.102-0.241,0.178-0.331c0.077-0.089,0.165-0.229,0.127-0.292c-0.039-0.064,0.101-0.344,0.088-0.419c-0.013-0.076-0.127-0.256,0.064-0.407s0.394-0.382,0.407-0.444c0.012-0.063,0.166-0.331,0.152-0.458c-0.012-0.127-0.152-0.28-0.24-0.318c-0.09-0.037-0.28-0.05-0.356-0.151c-0.077-0.103-0.292-0.203-0.368-0.178c-0.076,0.025-0.204,0.05-0.305-0.015c-0.102-0.062-0.267-0.139-0.33-0.189c-0.065-0.05-0.229-0.088-0.305-0.088c-0.077,0-0.065-0.052-0.178,0.101c-0.114,0.153,0,0.204-0.204,0.177c-0.204-0.023,0.025-0.036,0.141-0.189c0.113-0.152-0.013-0.242-0.141-0.203c-0.126,0.038-0.038,0.115-0.241,0.153c-0.203,0.036-0.203-0.09-0.076-0.115s0.355-0.139,0.355-0.19c0-0.051-0.025-0.191-0.127-0.191s-0.077-0.126-0.229-0.291c-0.092-0.101-0.196-0.164-0.299-0.204c-0.09-0.579-0.15-1.167-0.15-1.771c0-2.844,1.039-5.446,2.751-7.458c0.024-0.02,0.048-0.034,0.069-0.036c0.084-0.009,0.31-0.025,0.51-0.059c0.202-0.034,0.418-0.161,0.489-0.153c0.069,0.008,0.241,0.008,0.186-0.042C8.417,8.2,8.339,8.082,8.223,8.082S8.215,7.896,8.246,7.896c0.03,0,0.186,0.025,0.178,0.11C8.417,8.091,8.471,8.2,8.625,8.167c0.156-0.034,0.132-0.162,0.102-0.195C8.695,7.938,8.672,7.853,8.642,7.794c-0.031-0.06-0.023-0.136,0.14-0.153C8.944,7.625,9.168,7.708,9.16,7.573s0-0.28,0.046-0.356C9.253,7.142,9.354,7.09,9.299,7.065C9.246,7.04,9.176,7.099,9.121,6.972c-0.054-0.127,0.047-0.22,0.108-0.271c0.02-0.015,0.067-0.06,0.124-0.112C11.234,5.257,13.524,4.466,16,4.466c3.213,0,6.122,1.323,8.214,3.45c-0.008,0.022-0.01,0.052-0.031,0.056c-0.077,0.013-0.166,0.063-0.179-0.051c-0.013-0.114-0.013-0.331-0.102-0.203c-0.089,0.127-0.127,0.127-0.127,0.191c0,0.063,0.076,0.127,0.051,0.241C23.8,8.264,23.8,8.341,23.84,8.341c0.036,0,0.126-0.115,0.239-0.141c0.116-0.025,0.319-0.088,0.332,0.026c0.013,0.115,0.139,0.152,0.013,0.203c-0.128,0.051-0.267,0.026-0.293-0.051c-0.025-0.077-0.114-0.077-0.203-0.013c-0.088,0.063-0.279,0.292-0.279,0.292s-0.306,0.139-0.343,0.114c-0.04-0.025,0.101-0.165,0.203-0.228c0.102-0.064,0.178-0.204,0.14-0.242c-0.038-0.038-0.088-0.279-0.063-0.343c0.025-0.063,0.139-0.152,0.013-0.216c-0.127-0.063-0.217-0.14-0.318-0.178s-0.216,0.152-0.305,0.204c-0.089,0.051-0.076,0.114-0.191,0.127c-0.114,0.013-0.189,0.165,0,0.254c0.191,0.089,0.255,0.152,0.204,0.204c-0.051,0.051-0.267-0.025-0.267-0.025s-0.165-0.076-0.268-0.076c-0.101,0-0.229-0.063-0.33-0.076c-0.102-0.013-0.306-0.013-0.355,0.038c-0.051,0.051-0.179,0.203-0.28,0.152c-0.101-0.051-0.101-0.102-0.241-0.051c-0.14,0.051-0.279-0.038-0.355,0.038c-0.077,0.076-0.013,0.076-0.255,0c-0.241-0.076-0.189,0.051-0.419,0.089s-0.368-0.038-0.432,0.038c-0.064,0.077-0.153,0.217-0.19,0.127c-0.038-0.088,0.126-0.241,0.062-0.292c-0.062-0.051-0.33-0.025-0.367,0.013c-0.039,0.038-0.014,0.178,0.011,0.229c0.026,0.05,0.064,0.254-0.011,0.216c-0.077-0.038-0.064-0.166-0.141-0.152c-0.076,0.013-0.165,0.051-0.203,0.077c-0.038,0.025-0.191,0.025-0.229,0.076c-0.037,0.051,0.014,0.191-0.051,0.203c-0.063,0.013-0.114,0.064-0.254-0.025c-0.14-0.089-0.14-0.038-0.178-0.012c-0.038,0.025-0.216,0.127-0.229,0.012c-0.013-0.114,0.025-0.152-0.089-0.229c-0.115-0.076-0.026-0.076,0.127-0.025c0.152,0.05,0.343,0.075,0.622-0.013c0.28-0.089,0.395-0.127,0.28-0.178c-0.115-0.05-0.229-0.101-0.406-0.127c-0.179-0.025-0.42-0.025-0.7-0.127c-0.279-0.102-0.343-0.14-0.457-0.165c-0.115-0.026-0.813-0.14-1.132-0.089c-0.317,0.051-1.193,0.28-1.245,0.318s-0.128,0.19-0.292,0.318c-0.165,0.127-0.47,0.419-0.712,0.47c-0.241,0.051-0.521,0.254-0.521,0.305c0,0.051,0.101,0.242,0.076,0.28c-0.025,0.038,0.05,0.229,0.191,0.28c0.139,0.05,0.381,0.038,0.393-0.039c0.014-0.076,0.204-0.241,0.217-0.127c0.013,0.115,0.14,0.292,0.114,0.368c-0.025,0.077,0,0.153,0.09,0.14c0.088-0.012,0.559-0.114,0.559-0.114s0.153-0.064,0.127-0.166c-0.026-0.101,0.166-0.241,0.203-0.279c0.038-0.038,0.178-0.191,0.014-0.241c-0.167-0.051-0.293-0.064-0.115-0.216s0.292,0,0.521-0.229c0.229-0.229-0.051-0.292,0.191-0.305c0.241-0.013,0.496-0.025,0.444,0.051c-0.05,0.076-0.342,0.242-0.508,0.318c-0.166,0.077-0.14,0.216-0.076,0.292c0.063,0.076,0.09,0.254,0.204,0.229c0.113-0.025,0.254-0.114,0.38-0.101c0.128,0.012,0.383-0.013,0.42-0.013c0.039,0,0.216,0.178,0.114,0.203c-0.101,0.025-0.229,0.013-0.445,0.025c-0.215,0.013-0.456,0.013-0.456,0.051c0,0.039,0.292,0.127,0.19,0.191c-0.102,0.063-0.203-0.013-0.331-0.026c-0.127-0.012-0.203,0.166-0.241,0.267c-0.039,0.102,0.063,0.28-0.127,0.216c-0.191-0.063-0.331-0.063-0.381-0.038c-0.051,0.025-0.203,0.076-0.331,0.114c-0.126,0.038-0.076-0.063-0.242-0.063c-0.164,0-0.164,0-0.164,0l-0.103,0.013c0,0-0.101-0.063-0.114-0.165c-0.013-0.102,0.05-0.216-0.013-0.241c-0.064-0.026-0.292,0.012-0.33,0.088c-0.038,0.076-0.077,0.216-0.026,0.28c0.052,0.063,0.204,0.19,0.064,0.152c-0.14-0.038-0.317-0.051-0.419,0.026c-0.101,0.076-0.279,0.241-0.279,0.241s-0.318,0.025-0.318,0.102c0,0.077,0,0.178-0.114,0.191c-0.115,0.013-0.268,0.05-0.42,0.076c-0.153,0.025-0.139,0.088-0.317,0.102s-0.204,0.089-0.038,0.114c0.165,0.025,0.418,0.127,0.431,0.241c0.014,0.114-0.013,0.242-0.076,0.356c-0.043,0.079-0.305,0.026-0.458,0.026c-0.152,0-0.456-0.051-0.584,0c-0.127,0.051-0.102,0.305-0.064,0.419c0.039,0.114-0.012,0.178-0.063,0.216c-0.051,0.038-0.065,0.152,0,0.204c0.063,0.051,0.114,0.165,0.166,0.178c0.051,0.013,0.215-0.038,0.279,0.025c0.064,0.064,0.127,0.216,0.165,0.178c0.039-0.038,0.089-0.203,0.153-0.166c0.064,0.039,0.216-0.012,0.331-0.025s0.177-0.14,0.292-0.204c0.114-0.063,0.05-0.063,0.013-0.14c-0.038-0.076,0.114-0.165,0.204-0.254c0.088-0.089,0.253-0.013,0.292-0.115c0.038-0.102,0.051-0.279,0.151-0.267c0.103,0.013,0.243,0.076,0.331,0.076c0.089,0,0.279-0.14,0.332-0.165c0.05-0.025,0.241-0.013,0.267,0.102c0.025,0.114,0.241,0.254,0.292,0.279c0.051,0.025,0.381,0.127,0.433,0.165c0.05,0.038,0.126,0.153,0.152,0.254c0.025,0.102,0.114,0.102,0.128,0.013c0.012-0.089-0.065-0.254,0.025-0.242c0.088,0.013,0.191-0.026,0.191-0.026s-0.243-0.165-0.331-0.203c-0.088-0.038-0.255-0.114-0.331-0.241c-0.076-0.127-0.267-0.153-0.254-0.279c0.013-0.127,0.191-0.051,0.292,0.051c0.102,0.102,0.356,0.241,0.445,0.33c0.088,0.089,0.229,0.127,0.267,0.242c0.039,0.114,0.152,0.241,0.19,0.292c0.038,0.051,0.165,0.331,0.204,0.394c0.038,0.063,0.165-0.012,0.229-0.063c0.063-0.051,0.179-0.076,0.191-0.178c0.013-0.102-0.153-0.178-0.203-0.216c-0.051-0.038,0.127-0.076,0.191-0.127c0.063-0.05,0.177-0.14,0.228-0.063c0.051,0.077,0.026,0.381,0.051,0.432c0.025,0.051,0.279,0.127,0.331,0.191c0.05,0.063,0.267,0.089,0.304,0.051c0.039-0.038,0.242,0.026,0.294,0.038c0.049,0.013,0.202-0.025,0.304-0.05c0.103-0.025,0.204-0.102,0.191,0.063c-0.013,0.165-0.051,0.419-0.179,0.546c-0.127,0.127-0.076,0.191-0.202,0.191c-0.06,0-0.113,0-0.156,0.021c-0.041-0.065-0.098-0.117-0.175-0.097c-0.152,0.038-0.344,0.038-0.47,0.19c-0.128,0.153-0.178,0.165-0.204,0.114c-0.025-0.051,0.369-0.267,0.317-0.331c-0.05-0.063-0.355-0.038-0.521-0.038c-0.166,0-0.305-0.102-0.433-0.127c-0.126-0.025-0.292,0.127-0.418,0.254c-0.128,0.127-0.216,0.038-0.331,0.038c-0.115,0-0.331-0.165-0.331-0.165s-0.216-0.089-0.305-0.089c-0.088,0-0.267-0.165-0.318-0.165c-0.05,0-0.19-0.115-0.088-0.166c0.101-0.05,0.202,0.051,0.101-0.229c-0.101-0.279-0.33-0.216-0.419-0.178c-0.088,0.039-0.724,0.025-0.775,0.025c-0.051,0-0.419,0.127-0.533,0.178c-0.116,0.051-0.318,0.115-0.369,0.14c-0.051,0.025-0.318-0.051-0.433,0.013c-0.151,0.084-0.291,0.216-0.33,0.216c-0.038,0-0.153,0.089-0.229,0.28c-0.077,0.19,0.013,0.355-0.128,0.419c-0.139,0.063-0.394,0.204-0.495,0.305c-0.102,0.101-0.229,0.458-0.355,0.623c-0.127,0.165,0,0.317,0.025,0.419c0.025,0.101,0.114,0.292-0.025,0.471c-0.14,0.178-0.127,0.266-0.191,0.279c-0.063,0.013,0.063,0.063,0.088,0.19c0.025,0.128-0.114,0.255,0.128,0.369c0.241,0.113,0.355,0.217,0.418,0.367c0.064,0.153,0.382,0.407,0.382,0.407s0.229,0.205,0.344,0.293c0.114,0.089,0.152,0.038,0.177-0.05c0.025-0.09,0.178-0.104,0.355-0.104c0.178,0,0.305,0.04,0.483,0.014c0.178-0.025,0.356-0.141,0.42-0.166c0.063-0.025,0.279-0.164,0.443-0.063c0.166,0.103,0.141,0.241,0.23,0.332c0.088,0.088,0.24,0.037,0.355-0.051c0.114-0.09,0.064-0.052,0.203,0.025c0.14,0.075,0.204,0.151,0.077,0.267c-0.128,0.113-0.051,0.293-0.128,0.47c-0.076,0.178-0.063,0.203,0.077,0.278c0.14,0.076,0.394,0.548,0.47,0.638c0.077,0.088-0.025,0.342,0.064,0.495c0.089,0.151,0.178,0.254,0.077,0.331c-0.103,0.075-0.28,0.216-0.292,0.47s0.051,0.431,0.102,0.521s0.177,0.331,0.241,0.419c0.064,0.089,0.14,0.305,0.152,0.445c0.013,0.14-0.024,0.306,0.039,0.381c0.064,0.076,0.102,0.191,0.216,0.292c0.115,0.103,0.152,0.318,0.152,0.318s0.039,0.089,0.051,0.229c0.012,0.14,0.025,0.228,0.152,0.292c0.126,0.063,0.215,0.076,0.28,0.013c0.063-0.063,0.381-0.077,0.546-0.063c0.165,0.013,0.355-0.075,0.521-0.19s0.407-0.419,0.496-0.508c0.089-0.09,0.292-0.255,0.268-0.356c-0.025-0.101-0.077-0.203,0.024-0.254c0.102-0.052,0.344-0.152,0.356-0.229c0.013-0.077-0.09-0.395-0.115-0.457c-0.024-0.064,0.064-0.18,0.165-0.306c0.103-0.128,0.421-0.216,0.471-0.267c0.051-0.053,0.191-0.267,0.217-0.433c0.024-0.167-0.051-0.369,0-0.457c0.05-0.09,0.013-0.165-0.103-0.268c-0.114-0.102-0.089-0.407-0.127-0.457c-0.037-0.051-0.013-0.319,0.063-0.345c0.076-0.023,0.242-0.279,0.344-0.393c0.102-0.114,0.394-0.47,0.534-0.496c0.139-0.025,0.355-0.229,0.368-0.343c0.013-0.115,0.38-0.547,0.394-0.635c0.013-0.09,0.166-0.42,0.102-0.497c-0.062-0.076-0.559,0.115-0.622,0.141c-0.064,0.025-0.241,0.127-0.446,0.113c-0.202-0.013-0.114-0.177-0.127-0.254c-0.012-0.076-0.228-0.368-0.279-0.381c-0.051-0.012-0.203-0.166-0.267-0.317c-0.063-0.153-0.152-0.343-0.254-0.458c-0.102-0.114-0.165-0.38-0.268-0.559c-0.101-0.178-0.189-0.407-0.279-0.572c-0.021-0.041-0.045-0.079-0.067-0.117c0.118-0.029,0.289-0.082,0.31-0.009c0.024,0.088,0.165,0.279,0.19,0.419s0.165,0.089,0.178,0.216c0.014,0.128,0.14,0.433,0.19,0.47c0.052,0.038,0.28,0.242,0.318,0.318c0.038,0.076,0.089,0.178,0.127,0.369c0.038,0.19,0.076,0.444,0.179,0.482c0.102,0.038,0.444-0.064,0.508-0.102s0.482-0.242,0.635-0.255c0.153-0.012,0.179-0.115,0.368-0.152c0.191-0.038,0.331-0.177,0.458-0.28c0.127-0.101,0.28-0.355,0.33-0.444c0.052-0.088,0.179-0.152,0.115-0.253c-0.063-0.103-0.331-0.254-0.433-0.268c-0.102-0.012-0.089-0.178-0.152-0.178s-0.051,0.088-0.178,0.153c-0.127,0.063-0.255,0.19-0.344,0.165s0.026-0.089-0.113-0.203s-0.192-0.14-0.192-0.228c0-0.089-0.278-0.255-0.304-0.382c-0.026-0.127,0.19-0.305,0.254-0.19c0.063,0.114,0.115,0.292,0.279,0.368c0.165,0.076,0.318,0.204,0.395,0.229c0.076,0.025,0.267-0.14,0.33-0.114c0.063,0.024,0.191,0.253,0.306,0.292c0.113,0.038,0.495,0.051,0.559,0.051s0.33,0.013,0.381-0.063c0.051-0.076,0.089-0.076,0.153-0.076c0.062,0,0.177,0.229,0.267,0.254c0.089,0.025,0.254,0.013,0.241,0.179c-0.012,0.164,0.076,0.305,0.165,0.317c0.09,0.012,0.293-0.191,0.293-0.191s0,0.318-0.012,0.433c-0.014,0.113,0.139,0.534,0.139,0.534s0.19,0.393,0.241,0.482s0.267,0.355,0.267,0.47c0,0.115,0.025,0.293,0.103,0.293c0.076,0,0.152-0.203,0.24-0.331c0.091-0.126,0.116-0.305,0.153-0.432c0.038-0.127,0.038-0.356,0.038-0.444c0-0.09,0.075-0.166,0.255-0.242c0.178-0.076,0.304-0.292,0.456-0.407c0.153-0.115,0.141-0.305,0.446-0.305c0.305,0,0.278,0,0.355-0.077c0.076-0.076,0.151-0.127,0.19,0.013c0.038,0.14,0.254,0.343,0.292,0.394c0.038,0.052,0.114,0.191,0.103,0.344c-0.013,0.152,0.012,0.33,0.075,0.33s0.191-0.216,0.191-0.216s0.279-0.189,0.267,0.013c-0.014,0.203,0.025,0.419,0.025,0.545c0,0.053,0.042,0.135,0.088,0.21c-0.005,0.059-0.004,0.119-0.009,0.178C27.388,17.153,27.387,17.327,27.436,17.39zM20.382,12.064c0.076,0.05,0.102,0.127,0.152,0.203c0.052,0.076,0.14,0.05,0.203,0.114c0.063,0.064-0.178,0.14-0.075,0.216c0.101,0.077,0.151,0.381,0.165,0.458c0.013,0.076-0.279,0.114-0.369,0.102c-0.089-0.013-0.354-0.102-0.445-0.127c-0.089-0.026-0.139-0.343-0.025-0.331c0.116,0.013,0.141-0.025,0.267-0.139c0.128-0.115-0.189-0.166-0.278-0.191c-0.089-0.025-0.268-0.305-0.331-0.394c-0.062-0.089-0.014-0.228,0.141-0.331c0.076-0.051,0.279,0.063,0.381,0c0.101-0.063,0.203-0.14,0.241-0.165c0.039-0.025,0.293,0.038,0.33,0.114c0.039,0.076,0.191,0.191,0.141,0.229c-0.052,0.038-0.281,0.076-0.356,0c-0.075-0.077-0.255,0.012-0.268,0.152C20.242,12.115,20.307,12.013,20.382,12.064zM16.875,12.28c-0.077-0.025,0.025-0.178,0.102-0.229c0.075-0.051,0.164-0.178,0.241-0.305c0.076-0.127,0.178-0.14,0.241-0.127c0.063,0.013,0.203,0.241,0.241,0.318c0.038,0.076,0.165-0.026,0.217-0.051c0.05-0.025,0.127-0.102,0.14-0.165s0.127-0.102,0.254-0.102s0.013,0.102-0.076,0.127c-0.09,0.025-0.038,0.077,0.113,0.127c0.153,0.051,0.293,0.191,0.459,0.279c0.165,0.089,0.19,0.267,0.088,0.292c-0.101,0.025-0.406,0.051-0.521,0.038c-0.114-0.013-0.254-0.127-0.419-0.153c-0.165-0.025-0.369-0.013-0.433,0.077s-0.292,0.05-0.395,0.05c-0.102,0-0.228,0.127-0.253,0.077C16.875,12.534,16.951,12.306,16.875,12.28zM17.307,9.458c0.063-0.178,0.419,0.038,0.355,0.127C17.599,9.675,17.264,9.579,17.307,9.458zM17.802,18.584c0.063,0.102-0.14,0.431-0.254,0.407c-0.113-0.027-0.076-0.318-0.038-0.382C17.548,18.545,17.769,18.529,17.802,18.584zM13.189,12.674c0.025-0.051-0.039-0.153-0.127-0.013C13.032,12.71,13.164,12.725,13.189,12.674zM20.813,8.035c0.141,0.076,0.339,0.107,0.433,0.013c0.076-0.076,0.013-0.204-0.05-0.216c-0.064-0.013-0.104-0.115,0.062-0.203c0.165-0.089,0.343-0.204,0.534-0.229c0.19-0.025,0.622-0.038,0.774,0c0.152,0.039,0.382-0.166,0.445-0.254s-0.203-0.152-0.279-0.051c-0.077,0.102-0.444,0.076-0.521,0.051c-0.076-0.025-0.686,0.102-0.812,0.102c-0.128,0-0.179,0.152-0.356,0.229c-0.179,0.076-0.42,0.191-0.509,0.229c-0.088,0.038-0.177,0.19-0.101,0.216C20.509,7.947,20.674,7.959,20.813,8.035zM14.142,12.674c0.064-0.089-0.051-0.217-0.114-0.217c-0.12,0-0.178,0.191-0.103,0.254C14.002,12.776,14.078,12.763,14.142,12.674zM14.714,13.017c0.064,0.025,0.114,0.102,0.165,0.114c0.052,0.013,0.217,0,0.167-0.127s-0.167-0.127-0.204-0.127c-0.038,0-0.203-0.038-0.267,0C14.528,12.905,14.65,12.992,14.714,13.017zM11.308,10.958c0.101,0.013,0.217-0.063,0.305-0.101c0.088-0.038,0.216-0.114,0.216-0.229c0-0.114-0.025-0.216-0.077-0.267c-0.051-0.051-0.14-0.064-0.216-0.051c-0.115,0.02-0.127,0.14-0.203,0.14c-0.076,0-0.165,0.025-0.14,0.114s0.077,0.152,0,0.19C11.117,10.793,11.205,10.946,11.308,10.958zM11.931,10.412c0.127,0.051,0.394,0.102,0.292,0.153c-0.102,0.051-0.28,0.19-0.305,0.267s0.216,0.153,0.216,0.153s-0.077,0.089-0.013,0.114c0.063,0.025,0.102-0.089,0.203-0.089c0.101,0,0.304,0.063,0.406,0.063c0.103,0,0.267-0.14,0.254-0.229c-0.013-0.089-0.14-0.229-0.254-0.28c-0.113-0.051-0.241-0.28-0.317-0.331c-0.076-0.051,0.076-0.178-0.013-0.267c-0.09-0.089-0.153-0.076-0.255-0.14c-0.102-0.063-0.191,0.013-0.254,0.089c-0.063,0.076-0.14-0.013-0.217,0.012c-0.102,0.035-0.063,0.166-0.012,0.229C11.714,10.221,11.804,10.361,11.931,10.412zM24.729,17.198c-0.083,0.037-0.153,0.47,0,0.521c0.152,0.052,0.241-0.202,0.191-0.267C24.868,17.39,24.843,17.147,24.729,17.198zM20.114,20.464c-0.159-0.045-0.177,0.166-0.304,0.306c-0.128,0.141-0.267,0.254-0.317,0.241c-0.052-0.013-0.331,0.089-0.242,0.279c0.089,0.191,0.076,0.382-0.013,0.472c-0.089,0.088,0.076,0.342,0.052,0.482c-0.026,0.139,0.037,0.229,0.215,0.229s0.242-0.064,0.318-0.229c0.076-0.166,0.088-0.331,0.164-0.47c0.077-0.141,0.141-0.434,0.179-0.51c0.038-0.075,0.114-0.316,0.102-0.457C20.254,20.669,20.204,20.489,20.114,20.464zM10.391,8.802c-0.069-0.06-0.229-0.102-0.306-0.11c-0.076-0.008-0.152,0.06-0.321,0.06c-0.168,0-0.279,0.067-0.347,0C9.349,8.684,9.068,8.65,9.042,8.692C9.008,8.749,8.941,8.751,9.008,8.87c0.069,0.118,0.12,0.186,0.179,0.178s0.262-0.017,0.288,0.051C9.5,9.167,9.569,9.226,9.712,9.184c0.145-0.042,0.263-0.068,0.296-0.119c0.033-0.051,0.263-0.059,0.263-0.059S10.458,8.861,10.391,8.802z",
+        globe: "M16,1.466C7.973,1.466,1.466,7.973,1.466,16c0,8.027,6.507,14.534,14.534,14.534c8.027,0,14.534-6.507,14.534-14.534C30.534,7.973,24.027,1.466,16,1.466zM19.158,23.269c-0.079,0.064-0.183,0.13-0.105,0.207c0.078,0.078-0.09,0.131-0.09,0.17s0.104,0.246,0.052,0.336c-0.052,0.092-0.091,0.223-0.13,0.301c-0.039,0.077-0.131,0.155-0.104,0.272c0.025,0.116-0.104,0.077-0.104,0.194c0,0.116,0.116,0.065,0.09,0.208c-0.025,0.144-0.09,0.183-0.09,0.285c0,0.104,0.064,0.247,0.064,0.286s-0.064,0.17-0.155,0.272c-0.092,0.104-0.155,0.17-0.144,0.233c0.014,0.065,0.104,0.144,0.091,0.184c-0.013,0.037-0.129,0.168-0.116,0.259c0.014,0.09,0.129,0.053,0.155,0.116c0.026,0.065-0.155,0.118-0.078,0.183c0.078,0.064,0.183,0.051,0.156,0.208c-0.019,0.112,0.064,0.163,0.126,0.198c-0.891,0.221-1.818,0.352-2.777,0.352C9.639,27.533,4.466,22.36,4.466,16c0-2.073,0.557-4.015,1.518-5.697c0.079-0.042,0.137-0.069,0.171-0.062c0.065,0.013,0.079,0.104,0.183,0.13c0.104,0.026,0.195-0.078,0.26-0.117c0.064-0.039,0.116-0.195,0.051-0.182c-0.065,0.013-0.234,0-0.234,0s0.183-0.104,0.183-0.169s0.025-0.169,0.129-0.208C6.83,9.655,6.83,9.681,6.765,9.837C6.7,9.993,6.896,9.928,6.973,9.863s0.13-0.013,0.272-0.104c0.143-0.091,0.143-0.143,0.221-0.143c0.078,0,0.221,0.143,0.299,0.091c0.077-0.052,0.299,0.065,0.429,0.065c0.129,0,0.545,0.169,0.624,0.169c0.078,0,0.312,0.09,0.325,0.259c0.013,0.169,0.09,0.156,0.168,0.156s0.26,0.065,0.26,0.13c0,0.065-0.052,0.325,0.078,0.39c0.129,0.064,0.247,0.169,0.299,0.143c0.052-0.026,0-0.233-0.064-0.26c-0.065-0.026-0.027-0.117-0.052-0.169c-0.026-0.051,0.078-0.051,0.117,0.039c0.039,0.091,0.143,0.26,0.208,0.26c0.064,0,0.208,0.156,0.168,0.247c-0.039,0.091,0.039,0.221,0.156,0.221c0.116,0,0.26,0.182,0.312,0.195c0.052,0.013,0.117,0.078,0.117,0.117c0,0.04,0.065,0.26,0.065,0.351c0,0.09-0.04,0.454-0.053,0.597s0.104,0.39,0.234,0.52c0.129,0.13,0.246,0.377,0.324,0.429c0.079,0.052,0.13,0.195,0.247,0.182c0.117-0.013,0.195,0.078,0.299,0.26c0.104,0.182,0.208,0.48,0.286,0.506c0.078,0.026,0.208,0.117,0.142,0.182c-0.064,0.064-0.168,0.208-0.051,0.208c0.117,0,0.156-0.065,0.247,0.053c0.09,0.116,0.208,0.181,0.194,0.26c-0.013,0.077,0.104,0.103,0.156,0.116c0.052,0.013,0.169,0.247,0.286,0.143c0.117-0.104-0.155-0.259-0.234-0.326c-0.078-0.064,0-0.207-0.182-0.35c-0.182-0.143-0.156-0.247-0.286-0.351c-0.13-0.104-0.233-0.195-0.104-0.286c0.13-0.091,0.143,0.091,0.195,0.208c0.052,0.116,0.324,0.351,0.441,0.454c0.117,0.104,0.326,0.468,0.39,0.468s0.247,0.208,0.247,0.208s0.103,0.168,0.064,0.22c-0.039,0.052,0.053,0.247,0.144,0.299c0.09,0.052,0.455,0.22,0.507,0.247c0.052,0.027,0.155,0.221,0.299,0.221c0.142,0,0.247,0.014,0.286,0.053c0.039,0.038,0.155,0.194,0.234,0.104c0.078-0.092,0.09-0.131,0.208-0.131c0.117,0,0.168,0.091,0.233,0.156c0.065,0.065,0.247,0.235,0.338,0.222c0.091-0.013,0.208,0.104,0.273,0.064s0.169,0.025,0.22,0.052c0.054,0.026,0.234,0.118,0.222,0.272c-0.013,0.157,0.103,0.195,0.182,0.234c0.078,0.039,0.182,0.13,0.248,0.195c0.064,0.063,0.206,0.077,0.246,0.116c0.039,0.039,0.065,0.117,0.182,0.052c0.116-0.064,0.092-0.181,0.092-0.181s0.129-0.026,0.194,0.026c0.064,0.05,0.104,0.22,0.144,0.246c0.038,0.026,0.115,0.221,0.063,0.362c-0.051,0.145-0.038,0.286-0.091,0.286c-0.052,0-0.116,0.17-0.195,0.209c-0.076,0.039-0.285,0.221-0.272,0.286c0.013,0.063,0.131,0.258,0.104,0.35c-0.025,0.091-0.194,0.195-0.154,0.338c0.038,0.144,0.312,0.183,0.323,0.312c0.014,0.131,0.209,0.417,0.235,0.546c0.025,0.13,0.246,0.272,0.246,0.453c0,0.184,0.312,0.3,0.377,0.312c0.063,0.013,0.182,0.131,0.272,0.17s0.169,0.116,0.233,0.221s0.053,0.261,0.053,0.299c0,0.039-0.039,0.44-0.078,0.674C19.145,23.021,19.235,23.203,19.158,23.269zM10.766,11.188c0.039,0.013,0.117,0.091,0.156,0.091c0.04,0,0.234,0.156,0.286,0.208c0.053,0.052,0.053,0.195-0.013,0.208s-0.104-0.143-0.117-0.208c-0.013-0.065-0.143-0.065-0.208-0.104C10.805,11.344,10.66,11.152,10.766,11.188zM27.51,16.41c-0.144,0.182-0.13,0.272-0.195,0.286c-0.064,0.013,0.065,0.065,0.09,0.194c0.022,0.112-0.065,0.224,0.063,0.327c-0.486,4.619-3.71,8.434-8.016,9.787c-0.007-0.011-0.019-0.025-0.021-0.034c-0.027-0.078-0.027-0.233,0.064-0.285c0.091-0.053,0.312-0.233,0.363-0.272c0.052-0.04,0.13-0.221,0.091-0.247c-0.038-0.026-0.232,0-0.26-0.039c-0.026-0.039-0.026-0.092,0.104-0.182c0.13-0.091,0.195-0.222,0.247-0.26c0.052-0.039,0.155-0.117,0.195-0.209c0.038-0.09-0.041-0.039-0.118-0.039s-0.117-0.142-0.117-0.207s0.195,0.026,0.339,0.052c0.143,0.024,0.077-0.065,0.064-0.142c-0.013-0.078,0.026-0.209,0.105-0.17c0.076,0.039,0.479-0.013,0.531-0.026c0.052-0.013,0.194-0.246,0.246-0.312c0.053-0.065,0.064-0.129,0-0.168c-0.065-0.04-0.143-0.184-0.168-0.221c-0.026-0.041-0.039-0.274-0.013-0.34c0.025-0.063,0,0.377,0.181,0.43c0.183,0.052,0.286,0.078,0.455-0.078c0.169-0.155,0.298-0.26,0.312-0.363c0.013-0.104,0.052-0.209,0.117-0.246c0.065-0.039,0.104,0.103,0.182-0.065c0.078-0.17,0.156-0.157,0.234-0.299c0.077-0.144-0.13-0.325,0.024-0.43c0.157-0.103,0.43-0.233,0.43-0.233s0.078-0.039,0.234-0.078c0.155-0.038,0.324-0.014,0.376-0.09c0.052-0.079,0.104-0.247,0.182-0.338c0.079-0.092,0.169-0.234,0.13-0.299c-0.039-0.065,0.104-0.352,0.091-0.429c-0.013-0.078-0.13-0.261,0.065-0.416s0.402-0.391,0.416-0.454c0.012-0.065,0.169-0.338,0.154-0.469c-0.012-0.129-0.154-0.285-0.245-0.325c-0.092-0.037-0.286-0.05-0.364-0.154s-0.299-0.208-0.377-0.182c-0.077,0.026-0.208,0.051-0.312-0.015c-0.104-0.063-0.272-0.143-0.337-0.194c-0.066-0.051-0.234-0.09-0.312-0.09s-0.065-0.053-0.182,0.103c-0.117,0.157,0,0.209-0.208,0.182c-0.209-0.024,0.025-0.038,0.144-0.194c0.115-0.155-0.014-0.247-0.144-0.207c-0.13,0.039-0.039,0.117-0.247,0.156c-0.207,0.038-0.207-0.092-0.077-0.117c0.13-0.026,0.363-0.143,0.363-0.194c0-0.053-0.026-0.196-0.13-0.196s-0.078-0.129-0.233-0.297c-0.156-0.17-0.351-0.274-0.508-0.249c-0.154,0.026-0.272,0.065-0.35-0.076c-0.078-0.144-0.169-0.17-0.222-0.247c-0.051-0.078-0.182,0-0.221-0.039s-0.039-0.039-0.039-0.039s-0.169,0.039-0.077-0.078c0.09-0.117,0.129-0.338,0.09-0.325c-0.038,0.013-0.104,0.196-0.168,0.183c-0.064-0.013-0.014-0.04-0.144-0.117c-0.13-0.078-0.337-0.013-0.337,0.052c0,0.065-0.065,0.117-0.065,0.117s-0.039-0.038-0.078-0.117c-0.039-0.078-0.221-0.091-0.312-0.013c-0.09,0.078-0.142-0.196-0.207-0.196s-0.194,0.065-0.26,0.184c-0.064,0.116-0.038,0.285-0.092,0.272c-0.05-0.013-0.063-0.233-0.05-0.312c0.012-0.079,0.155-0.208,0.05-0.234c-0.103-0.026-0.259,0.13-0.323,0.143c-0.065,0.013-0.195,0.104-0.273,0.209c-0.077,0.103-0.116,0.168-0.195,0.207c-0.077,0.039-0.193,0-0.167-0.039c0.025-0.039-0.222-0.181-0.261-0.13c-0.04,0.052-0.155,0.091-0.272,0.144c-0.117,0.052-0.222-0.065-0.247-0.117s-0.079-0.064-0.091-0.234c-0.013-0.168,0.027-0.351,0.065-0.454c0.038-0.104-0.195-0.312-0.286-0.3c-0.091,0.015-0.182,0.105-0.272,0.091c-0.092-0.012-0.052-0.038-0.195-0.038c-0.143,0-0.026-0.025,0-0.143c0.025-0.116-0.052-0.273,0.092-0.377c0.142-0.104,0.091-0.351,0-0.363c-0.092-0.014-0.261,0.039-0.377,0.026c-0.116-0.014-0.208,0.091-0.169,0.207c0.039,0.117-0.065,0.195-0.104,0.183c-0.039-0.013-0.09-0.078-0.234,0.026c-0.142,0.103-0.194,0.064-0.337-0.052c-0.143-0.118-0.299-0.234-0.325-0.416c-0.026-0.182-0.04-0.364,0.013-0.468c0.051-0.104,0.051-0.285-0.026-0.312c-0.078-0.025,0.09-0.155,0.181-0.181c0.092-0.026,0.234-0.143,0.26-0.195c0.026-0.052,0.156-0.04,0.298-0.04c0.143,0,0.169,0,0.312,0.078c0.143,0.078,0.169-0.039,0.169-0.078c0-0.039,0.052-0.117,0.208-0.104c0.156,0.013,0.376-0.052,0.416-0.013s0.116,0.195,0.194,0.143c0.079-0.051,0.104-0.143,0.131,0.014c0.025,0.155,0.09,0.39,0.208,0.429c0.116,0.039,0.052,0.194,0.168,0.207c0.115,0.013,0.17-0.246,0.131-0.337c-0.04-0.09-0.118-0.363-0.183-0.428c-0.064-0.065-0.064-0.234,0.064-0.286c0.13-0.052,0.442-0.312,0.532-0.389c0.092-0.079,0.338-0.144,0.261-0.248c-0.078-0.104-0.104-0.168-0.104-0.247s0.078-0.052,0.117,0s0.194-0.078,0.155-0.143c-0.038-0.064-0.026-0.155,0.065-0.143c0.091,0.013,0.116-0.065,0.078-0.117c-0.039-0.052,0.091-0.117,0.182-0.091c0.092,0.026,0.325-0.013,0.364-0.065c0.038-0.052-0.078-0.104-0.078-0.208c0-0.104,0.155-0.195,0.247-0.208c0.091-0.013,0.207,0,0.221-0.039c0.012-0.039,0.143-0.143,0.155-0.052c0.014,0.091,0,0.247,0.104,0.247c0.104,0,0.232-0.117,0.272-0.129c0.038-0.013,0.286-0.065,0.338-0.078c0.052-0.013,0.363-0.039,0.325-0.13c-0.039-0.09-0.078-0.181-0.118-0.22c-0.039-0.039-0.077,0.013-0.13,0.078c-0.051,0.065-0.143,0.065-0.168,0.013c-0.026-0.051,0.012-0.207-0.078-0.156c-0.092,0.052-0.104,0.104-0.157,0.078c-0.052-0.026-0.103-0.117-0.103-0.117s0.129-0.064,0.038-0.182c-0.09-0.117-0.221-0.091-0.35-0.025c-0.13,0.064-0.118,0.051-0.273,0.09s-0.234,0.078-0.234,0.078s0.209-0.129,0.299-0.208c0.091-0.078,0.209-0.117,0.286-0.195c0.078-0.078,0.285,0.039,0.285,0.039s0.105-0.104,0.105-0.039s-0.027,0.234,0.051,0.234c0.079,0,0.299-0.104,0.21-0.131c-0.093-0.026,0.129,0,0.219-0.065c0.092-0.065,0.194-0.065,0.247-0.09c0.052-0.026,0.092-0.143,0.182-0.143c0.092,0,0.13,0.117,0,0.195s-0.143,0.273-0.208,0.325c-0.064,0.052-0.026,0.117,0.078,0.104c0.104-0.013,0.194,0.013,0.286-0.013s0.143,0.026,0.168,0.065c0.026,0.039,0.104-0.039,0.104-0.039s0.169-0.039,0.221,0.026c0.053,0.064,0.092-0.039,0.053-0.104c-0.039-0.064-0.092-0.129-0.13-0.208c-0.039-0.078-0.091-0.104-0.194-0.078c-0.104,0.026-0.13-0.026-0.195-0.064c-0.065-0.04-0.118,0.052-0.065-0.04c0.053-0.09,0.078-0.117,0.117-0.195c0.039-0.078,0.209-0.221,0.039-0.259c-0.169-0.04-0.222-0.065-0.247-0.143c-0.026-0.078-0.221-0.221-0.272-0.221c-0.053,0-0.233,0-0.247-0.065c-0.013-0.065-0.143-0.208-0.208-0.273c-0.064-0.065-0.312-0.351-0.351-0.377c-0.039-0.026-0.091-0.013-0.208,0.143c-0.116,0.157-0.22,0.183-0.312,0.144c-0.091-0.039-0.104-0.026-0.193-0.13c-0.093-0.104,0.09-0.117,0.051-0.182c-0.04-0.064-0.247-0.091-0.377-0.104c-0.13-0.013-0.221-0.156-0.416-0.169c-0.194-0.013-0.428,0.026-0.493,0.026c-0.064,0-0.064,0.091-0.09,0.234c-0.027,0.143,0.09,0.182-0.027,0.208c-0.116,0.026-0.169,0.039-0.052,0.091c0.117,0.052,0.273,0.26,0.273,0.26s0,0.117-0.092,0.182c-0.09,0.065-0.182,0.13-0.233,0.053c-0.053-0.079-0.195-0.065-0.155,0.013c0.038,0.078,0.116,0.117,0.116,0.195c0,0.077,0.117,0.272,0.039,0.337c-0.078,0.065-0.168,0.014-0.233,0.026s-0.131-0.104-0.078-0.13c0.051-0.026-0.014-0.221-0.014-0.221s-0.155,0.221-0.143,0.104c0.014-0.117-0.064-0.13-0.064-0.221c0-0.091-0.079-0.13-0.194-0.104c-0.118,0.026-0.26-0.04-0.482-0.079c-0.22-0.039-0.311-0.064-0.493-0.156c-0.182-0.091-0.247-0.026-0.338-0.013c-0.091,0.013-0.052-0.182-0.169-0.207c-0.116-0.027-0.181,0.025-0.207-0.144c-0.026-0.168,0.039-0.208,0.324-0.39c0.286-0.182,0.247-0.26,0.468-0.286c0.22-0.026,0.325,0.026,0.325-0.039s0.052-0.325,0.052-0.195S16.95,9.109,16.832,9.2c-0.116,0.091-0.052,0.104,0.04,0.104c0.091,0,0.259-0.091,0.259-0.091s0.208-0.091,0.26-0.013c0.053,0.078,0.053,0.156,0.144,0.156s0.285-0.104,0.116-0.195c-0.168-0.091-0.272-0.078-0.376-0.182s-0.078-0.065-0.195-0.039c-0.116,0.026-0.116-0.039-0.156-0.039s-0.104,0.026-0.13-0.026c-0.025-0.052,0.014-0.065,0.145-0.065c0.129,0,0.285,0.039,0.285,0.039s0.155-0.052,0.194-0.065c0.039-0.013,0.247-0.039,0.208-0.155c-0.04-0.117-0.169-0.117-0.208-0.156s0.078-0.09,0.143-0.117c0.065-0.026,0.247,0,0.247,0s0.117,0.013,0.117-0.039S17.897,8.2,17.976,8.239s0,0.156,0.117,0.13c0.116-0.026,0.143,0,0.207,0.039c0.065,0.039-0.013,0.195-0.077,0.221c-0.065,0.025-0.169,0.077-0.026,0.09c0.144,0.014,0.246,0.014,0.246,0.014s0.092-0.091,0.131-0.169c0.038-0.078,0.104-0.026,0.155,0c0.052,0.025,0.247,0.065,0.065,0.117c-0.183,0.052-0.221,0.117-0.26,0.182c-0.038,0.065-0.053,0.104-0.221,0.065c-0.17-0.039-0.26-0.026-0.299,0.039c-0.039,0.064-0.013,0.273,0.053,0.247c0.063-0.026,0.129-0.026,0.207-0.052c0.078-0.026,0.39,0.026,0.467,0.013c0.078-0.013,0.209,0.13,0.248,0.104c0.039-0.026,0.117,0.052,0.194,0.104c0.078,0.052,0.052-0.117,0.194-0.013c0.144,0.104,0.065,0.104,0.144,0.104c0.076,0,0.246,0.013,0.246,0.013s0.014-0.129,0.144-0.104c0.13,0.026,0.245,0.169,0.232,0.064c-0.012-0.103,0.013-0.181-0.09-0.259c-0.104-0.078-0.272-0.13-0.299-0.169c-0.026-0.039-0.052-0.091-0.013-0.117c0.039-0.025,0.221,0.013,0.324,0.079c0.104,0.065,0.195,0.13,0.273,0.078c0.077-0.052,0.17-0.078,0.208-0.117c0.038-0.04,0.13-0.156,0.13-0.156s-0.391-0.051-0.441-0.117c-0.053-0.065-0.235-0.156-0.287-0.156s-0.194,0.091-0.246-0.039s-0.052-0.286-0.105-0.299c-0.05-0.013-0.597-0.091-0.674-0.13c-0.078-0.039-0.39-0.13-0.507-0.195s-0.286-0.156-0.389-0.156c-0.104,0-0.533,0.052-0.611,0.039c-0.078-0.013-0.312,0.026-0.403,0.039c-0.091,0.013,0.117,0.182-0.077,0.221c-0.195,0.039-0.169,0.065-0.13-0.13c0.038-0.195-0.131-0.247-0.299-0.169c-0.169,0.078-0.442,0.13-0.377,0.221c0.065,0.091-0.012,0.157,0.117,0.247c0.13,0.091,0.183,0.117,0.35,0.104c0.17-0.013,0.339,0.025,0.339,0.025s0,0.157-0.064,0.182c-0.065,0.026-0.169,0.026-0.196,0.104c-0.025,0.078-0.155,0.117-0.155,0.078s0.065-0.169-0.026-0.234c-0.09-0.065-0.117-0.078-0.221-0.013c-0.104,0.065-0.116,0.091-0.169-0.013C16.053,8.291,15.897,8.2,15.897,8.2s-0.104-0.129-0.182-0.194c-0.077-0.065-0.22-0.052-0.234,0.013c-0.013,0.064,0.026,0.129,0.078,0.247c0.052,0.117,0.104,0.337,0.013,0.351c-0.091,0.013-0.104,0.026-0.195,0.052c-0.091,0.026-0.13-0.039-0.13-0.143s-0.04-0.195-0.013-0.234c0.026-0.039-0.104,0.027-0.234,0c-0.13-0.025-0.233,0.052-0.104,0.092c0.13,0.039,0.157,0.194,0.039,0.233c-0.117,0.039-0.559,0-0.702,0s-0.35,0.039-0.39-0.039c-0.039-0.078,0.118-0.129,0.208-0.129c0.091,0,0.363,0.012,0.467-0.13c0.104-0.143-0.13-0.169-0.233-0.169c-0.104,0-0.183-0.039-0.299-0.155c-0.118-0.117,0.078-0.195,0.052-0.247c-0.026-0.052-0.156-0.014-0.272-0.014c-0.117,0-0.299-0.09-0.299,0.014c0,0.104,0.143,0.402,0.052,0.337c-0.091-0.064-0.078-0.156-0.143-0.234c-0.065-0.078-0.168-0.065-0.299-0.052c-0.129,0.013-0.35,0.052-0.415,0.039c-0.064-0.013-0.013-0.013-0.156-0.078c-0.142-0.065-0.208-0.052-0.312-0.117C12.091,7.576,12.182,7.551,12,7.538c-0.181-0.013-0.168,0.09-0.35,0.065c-0.182-0.026-0.234,0.013-0.416,0c-0.182-0.013-0.272-0.026-0.299,0.065c-0.025,0.091-0.078,0.247-0.156,0.247c-0.077,0-0.169,0.091,0.078,0.104c0.247,0.013,0.105,0.129,0.325,0.117c0.221-0.013,0.416-0.013,0.468-0.117c0.052-0.104,0.091-0.104,0.117-0.065c0.025,0.039,0.22,0.272,0.22,0.272s0.131,0.104,0.183,0.13c0.051,0.026-0.052,0.143-0.156,0.078c-0.104-0.065-0.299-0.051-0.377-0.116c-0.078-0.065-0.429-0.065-0.52-0.052c-0.09,0.013-0.247-0.039-0.299-0.039c-0.051,0-0.221,0.13-0.221,0.13S10.532,8.252,10.494,8.2c-0.039-0.052-0.104,0.052-0.156,0.065c-0.052,0.013-0.208-0.104-0.364-0.052C9.818,8.265,9.87,8.317,9.649,8.304s-0.272-0.052-0.35-0.039C9.22,8.278,9.22,8.278,9.22,8.278S9.233,8.33,9.143,8.382C9.052,8.434,8.986,8.499,8.921,8.421C8.857,8.343,8.818,8.343,8.779,8.33c-0.04-0.013-0.118-0.078-0.286-0.04C8.324,8.33,8.064,8.239,8.013,8.239c-0.04,0-0.313-0.015-0.491-0.033c2.109-2.292,5.124-3.74,8.478-3.74c2.128,0,4.117,0.589,5.83,1.598c-0.117,0.072-0.319,0.06-0.388,0.023c-0.078-0.043-0.158-0.078-0.475-0.061c-0.317,0.018-0.665,0.122-0.595,0.226c0.072,0.104-0.142,0.165-0.197,0.113c-0.055-0.052-0.309,0.06-0.293,0.165c0.016,0.104-0.039,0.225-0.175,0.199c-0.134-0.027-0.229,0.06-0.237,0.146c-0.007,0.087-0.309,0.147-0.332,0.147c-0.024,0-0.412-0.008-0.27,0.095c0.097,0.069,0.15,0.027,0.27,0.052c0.119,0.026,0.214,0.217,0.277,0.243c0.062,0.026,0.15,0,0.189-0.052c0.04-0.052,0.095-0.234,0.095-0.234s0,0.173,0.097,0.208c0.095,0.035,0.331-0.026,0.395-0.017c0.064,0.008,0.437,0.061,0.538,0.112c0.104,0.052,0.356,0.087,0.428,0.199c0.071,0.113,0.08,0.503,0.119,0.546c0.04,0.043,0.174-0.139,0.205-0.182c0.031-0.044,0.198-0.018,0.254,0.042c0.056,0.061,0.182,0.208,0.175,0.269C21.9,8.365,21.877,8.459,21.83,8.425c-0.048-0.034-0.127-0.025-0.096-0.095c0.032-0.069,0.048-0.217-0.015-0.217c-0.064,0-0.119,0-0.119,0s-0.12-0.035-0.199,0.095s-0.015,0.26,0.04,0.26s0.184,0,0.184,0.034c0,0.035-0.136,0.139-0.128,0.2c0.009,0.061,0.11,0.268,0.144,0.312c0.031,0.043,0.197,0.086,0.244,0.096c0.049,0.008-0.111,0.017-0.07,0.077c0.04,0.061,0.102,0.208,0.189,0.243c0.087,0.035,0.333,0.19,0.363,0.26c0.032,0.069,0.222-0.052,0.262-0.061c0.04-0.008,0.032,0.182,0.143,0.191c0.11,0.008,0.15-0.018,0.245-0.096s0.072-0.182,0.079-0.26c0.009-0.078,0-0.138,0.104-0.113c0.104,0.026,0.158-0.018,0.15-0.104c-0.008-0.087-0.095-0.191,0.07-0.217c0.167-0.026,0.254-0.138,0.357-0.138c0.103,0,0.389,0.043,0.419,0c0.032-0.043,0.167-0.243,0.254-0.251c0.067-0.007,0.224-0.021,0.385-0.042c1.582,1.885,2.561,4.284,2.673,6.905c-0.118,0.159-0.012,0.305,0.021,0.408c0.001,0.03,0.005,0.058,0.005,0.088c0,0.136-0.016,0.269-0.021,0.404C27.512,16.406,27.512,16.408,27.51,16.41zM17.794,12.084c-0.064,0.013-0.169-0.052-0.169-0.143s-0.091,0.169-0.04,0.247c0.053,0.078-0.104,0.169-0.155,0.169s-0.091-0.116-0.078-0.233c0.014-0.117-0.077-0.221-0.221-0.208c-0.143,0.014-0.208,0.13-0.259,0.169c-0.053,0.039-0.053,0.259-0.04,0.312s0.013,0.235-0.116,0.221c-0.118-0.013-0.092-0.233-0.079-0.312c0.014-0.078-0.039-0.273,0.014-0.376c0.053-0.104,0.207-0.143,0.312-0.156s0.324,0.065,0.363,0.052c0.04-0.014,0.222-0.014,0.312,0C17.729,11.837,17.858,12.071,17.794,12.084zM18.027,12.123c0.04,0.026,0.311-0.039,0.364,0.026c0.051,0.065-0.054,0.078-0.183,0.13c-0.129,0.052-0.169,0.039-0.221,0.104s-0.221,0.09-0.299,0.168c-0.078,0.079-0.217,0.125-0.246,0.065c-0.04-0.078,0.013-0.039,0.025-0.078c0.013-0.039,0.245-0.129,0.245-0.129S17.988,12.097,18.027,12.123zM16.988,11.668c-0.038,0.013-0.182-0.026-0.3-0.026c-0.116,0-0.091-0.078-0.143-0.064c-0.051,0.013-0.168,0.039-0.247,0.078c-0.078,0.039-0.208,0.03-0.208-0.04c0-0.104,0.052-0.078,0.221-0.143c0.169-0.065,0.352-0.247,0.429-0.169c0.078,0.078,0.221,0.169,0.312,0.182C17.144,11.5,17.026,11.655,16.988,11.668zM15.659,7.637c-0.079,0.026-0.347,0.139-0.321,0.199c0.01,0.023,0.078,0.069,0.19,0.052c0.113-0.018,0.276-0.035,0.355-0.043c0.078-0.009,0.095-0.139,0.009-0.147C15.805,7.689,15.736,7.611,15.659,7.637zM14.698,7.741c-0.061,0.026-0.243-0.043-0.338,0.018c-0.061,0.038-0.026,0.164,0.07,0.172c0.095,0.009,0.259-0.06,0.276-0.008c0.018,0.052,0.078,0.286,0.234,0.208c0.156-0.078,0.147-0.147,0.19-0.156c0.043-0.009-0.008-0.199-0.078-0.243C14.983,7.689,14.758,7.715,14.698,7.741zM14.385,7.005c0.017,0.044-0.008,0.078,0.113,0.095c0.121,0.018,0.173,0.035,0.243,0.035c0.069,0,0.042-0.113-0.018-0.19c-0.061-0.078-0.043-0.069-0.199-0.113c-0.156-0.043-0.312-0.043-0.416-0.035c-0.104,0.009-0.217-0.017-0.243,0.104c-0.013,0.062,0.07,0.112,0.174,0.112S14.368,6.962,14.385,7.005zM14.611,7.481c0.043,0.095,0.043,0.051,0.165,0.061C14.896,7.551,14.991,7.421,15,7.378c0.009-0.044-0.061-0.13-0.225-0.113c-0.165,0.017-0.667-0.026-0.736,0.034c-0.066,0.058,0,0.233-0.026,0.251c-0.026,0.017,0.009,0.095,0.077,0.078c0.069-0.017,0.104-0.182,0.157-0.182C14.299,7.447,14.568,7.386,14.611,7.481zM12.982,7.126c0.052,0.043,0.183,0.008,0.173-0.035c-0.008-0.043,0.053-0.217-0.051-0.225C13,6.858,12.854,6.962,12.697,7.014c-0.101,0.033-0.078,0.13-0.009,0.13S12.931,7.083,12.982,7.126zM13.72,7.282c-0.087,0.043-0.114,0.069-0.191,0.052c-0.078-0.017-0.078-0.156-0.217-0.13c-0.138,0.026-0.164,0.104-0.207,0.139s-0.139,0.061-0.173,0.043c-0.034-0.017-0.234-0.129-0.234-0.129s-0.416-0.018-0.433-0.07c-0.017-0.052-0.086-0.138-0.277-0.121s-0.52,0.13-0.572,0.13c-0.052,0,0.062,0.104-0.009,0.104c-0.069,0-0.155-0.008-0.181,0.069c-0.018,0.053,0.078,0.052,0.189,0.052c0.112,0,0.295,0,0.347-0.026c0.052-0.026,0.312-0.087,0.303-0.009c-0.009,0.079,0.104,0.199,0.164,0.182c0.061-0.017,0.183-0.13,0.243-0.086c0.061,0.043,0.07,0.146,0.13,0.173c0.061,0.025,0.226,0.025,0.304,0c0.077-0.027,0.294-0.027,0.389-0.009c0.095,0.018,0.373,0.069,0.399,0.018c0.026-0.053,0.104-0.061,0.112-0.113s0.051-0.216,0.051-0.216S13.806,7.239,13.72,7.282zM18.105,16.239c-0.119,0.021-0.091,0.252,0.052,0.21C18.3,16.407,18.223,16.217,18.105,16.239zM19.235,15.929c-0.104-0.026-0.221,0-0.299,0.013c-0.078,0.013-0.299,0.208-0.299,0.208s0.143,0.026,0.233,0.026c0.092,0,0.144,0.051,0.221,0.09c0.078,0.04,0.221-0.052,0.272-0.052c0.053,0,0.118,0.156,0.131-0.013C19.508,16.032,19.339,15.955,19.235,15.929zM15.616,7.507c-0.043-0.104-0.259-0.139-0.304-0.035C15.274,7.563,15.659,7.611,15.616,7.507zM18.093,15.292c0.143-0.026,0.064-0.144-0.053-0.13C17.922,15.175,17.949,15.318,18.093,15.292zM19.82,16.095c-0.119,0.022-0.092,0.253,0.051,0.211C20.015,16.264,19.937,16.074,19.82,16.095zM18.247,15.708c-0.09,0.013-0.285-0.09-0.389-0.182c-0.104-0.091-0.299-0.091-0.377-0.091c-0.077,0-0.39,0.091-0.39,0.091c-0.013,0.13,0.117,0.091,0.273,0.091s0.429-0.026,0.479,0.039c0.053,0.064,0.286,0.168,0.352,0.221c0.064,0.052,0.272,0.065,0.285,0.013S18.338,15.695,18.247,15.708zM16.698,7.412c-0.13-0.009-0.295-0.009-0.399,0c-0.104,0.008-0.182-0.069-0.26-0.113c-0.077-0.043-0.251-0.182-0.354-0.199c-0.104-0.017-0.086-0.017-0.303-0.069c-0.11-0.027-0.294-0.061-0.294-0.086c0-0.026-0.052,0.121,0.043,0.165c0.095,0.043,0.251,0.121,0.363,0.164c0.114,0.043,0.329,0.052,0.399,0.139c0.069,0.086,0.303,0.156,0.303,0.156l0.277,0.026c0,0,0.191-0.043,0.39-0.026c0.199,0.017,0.493,0.043,0.659,0.035c0.163-0.008,0.189-0.061,0.208-0.095c0.016-0.035-0.304-0.104-0.383-0.095C17.271,7.42,16.827,7.42,16.698,7.412zM17.182,9.404c-0.034,0.039,0.157,0.095,0.191,0.043C17.407,9.396,17.271,9.309,17.182,9.404zM17.764,9.585c0.086-0.035,0.043-0.139-0.079-0.104C17.547,9.521,17.676,9.62,17.764,9.585z",
+        warning: "M29.225,23.567l-3.778-6.542c-1.139-1.972-3.002-5.2-4.141-7.172l-3.778-6.542c-1.14-1.973-3.003-1.973-4.142,0L9.609,9.853c-1.139,1.972-3.003,5.201-4.142,7.172L1.69,23.567c-1.139,1.974-0.207,3.587,2.071,3.587h23.391C29.432,27.154,30.363,25.541,29.225,23.567zM16.536,24.58h-2.241v-2.151h2.241V24.58zM16.428,20.844h-2.023l-0.201-9.204h2.407L16.428,20.844z",
+        code: "M8.982,7.107L0.322,15.77l8.661,8.662l3.15-3.15L6.621,15.77l5.511-5.511L8.982,7.107zM21.657,7.107l-3.148,3.151l5.511,5.511l-5.511,5.511l3.148,3.15l8.662-8.662L21.657,7.107z",
+        pensil: "M25.31,2.872l-3.384-2.127c-0.854-0.536-1.979-0.278-2.517,0.576l-1.334,2.123l6.474,4.066l1.335-2.122C26.42,4.533,26.164,3.407,25.31,2.872zM6.555,21.786l6.474,4.066L23.581,9.054l-6.477-4.067L6.555,21.786zM5.566,26.952l-0.143,3.819l3.379-1.787l3.14-1.658l-6.246-3.925L5.566,26.952z",
+        pen: "M13.587,12.074c-0.049-0.074-0.11-0.147-0.188-0.202c-0.333-0.243-0.803-0.169-1.047,0.166c-0.244,0.336-0.167,0.805,0.167,1.048c0.303,0.22,0.708,0.167,0.966-0.091l-7.086,9.768l-2.203,7.997l6.917-4.577L26.865,4.468l-4.716-3.42l-1.52,2.096c-0.087-0.349-0.281-0.676-0.596-0.907c-0.73-0.529-1.751-0.369-2.28,0.363C14.721,6.782,16.402,7.896,13.587,12.074zM10.118,25.148L6.56,27.503l1.133-4.117L10.118,25.148zM14.309,11.861c2.183-3.225,1.975-4.099,3.843-6.962c0.309,0.212,0.664,0.287,1.012,0.269L14.309,11.861z",
+        plus: "M25.979,12.896 19.312,12.896 19.312,6.229 12.647,6.229 12.647,12.896 5.979,12.896 5.979,19.562 12.647,19.562 12.647,26.229 19.312,26.229 19.312,19.562 25.979,19.562z",
+        minus: "M25.979,12.896,5.979,12.896,5.979,19.562,25.979,19.562z",
+        tshirt: "M20.1,4.039c-0.681,1.677-2.32,2.862-4.24,2.862c-1.921,0-3.56-1.185-4.24-2.862L1.238,8.442l2.921,6.884l3.208-1.361V28h17.099V14.015l3.093,1.312l2.922-6.884L20.1,4.039z",
+        sticker: "M15.5,1.999c-1.042,0-1.916,0.377-2.57,1.088L2.895,13.138C2.302,13.784,1.999,14.58,1.999,15.5C1.999,22.943,8.057,29,15.5,29S29,22.943,29,15.5S22.943,1.999,15.5,1.999zM15.5,28C8.596,28,3,22.404,3,15.5c0-3.452,5.239-2.737,7.501-4.999C12.762,8.239,12.048,3,15.5,3C22.404,3,28,8.597,28,15.5S22.404,28,15.5,28z",
+        page2: "M23.024,5.673c-1.744-1.694-3.625-3.051-5.168-3.236c-0.084-0.012-0.171-0.019-0.263-0.021H7.438c-0.162,0-0.322,0.063-0.436,0.18C6.889,2.71,6.822,2.87,6.822,3.033v25.75c0,0.162,0.063,0.317,0.18,0.435c0.117,0.116,0.271,0.179,0.436,0.179h18.364c0.162,0,0.317-0.062,0.434-0.179c0.117-0.117,0.182-0.272,0.182-0.435V11.648C26.382,9.659,24.824,7.49,23.024,5.673zM22.157,6.545c0.805,0.786,1.529,1.676,2.069,2.534c-0.468-0.185-0.959-0.322-1.42-0.431c-1.015-0.228-2.008-0.32-2.625-0.357c0.003-0.133,0.004-0.283,0.004-0.446c0-0.869-0.055-2.108-0.356-3.2c-0.003-0.01-0.005-0.02-0.009-0.03C20.584,5.119,21.416,5.788,22.157,6.545zM25.184,28.164H8.052V3.646h9.542v0.002c0.416-0.025,0.775,0.386,1.05,1.326c0.25,0.895,0.313,2.062,0.312,2.871c0.002,0.593-0.027,0.991-0.027,0.991l-0.049,0.652l0.656,0.007c0.003,0,1.516,0.018,3,0.355c1.426,0.308,2.541,0.922,2.645,1.617c0.004,0.062,0.005,0.124,0.004,0.182V28.164z",
+        page: "M23.024,5.673c-1.744-1.694-3.625-3.051-5.168-3.236c-0.084-0.012-0.171-0.019-0.263-0.021H7.438c-0.162,0-0.322,0.063-0.436,0.18C6.889,2.71,6.822,2.87,6.822,3.033v25.75c0,0.162,0.063,0.317,0.18,0.435c0.117,0.116,0.271,0.179,0.436,0.179h18.364c0.162,0,0.317-0.062,0.434-0.179c0.117-0.117,0.182-0.272,0.182-0.435V11.648C26.382,9.659,24.824,7.49,23.024,5.673zM25.184,28.164H8.052V3.646h9.542v0.002c0.416-0.025,0.775,0.386,1.05,1.326c0.25,0.895,0.313,2.062,0.312,2.871c0.002,0.593-0.027,0.991-0.027,0.991l-0.049,0.652l0.656,0.007c0.003,0,1.516,0.018,3,0.355c1.426,0.308,2.541,0.922,2.645,1.617c0.004,0.062,0.005,0.124,0.004,0.182V28.164z",
+        landscape1: "M19.883,5.71H2.746c-0.163,0-0.319,0.071-0.435,0.188c-0.118,0.117-0.18,0.272-0.18,0.435v18.364c0,0.164,0.063,0.318,0.18,0.436c0.123,0.117,0.287,0.18,0.435,0.18h25.75c0.164,0,0.324-0.066,0.438-0.18c0.118-0.114,0.182-0.273,0.182-0.436V14.551c-0.002-0.102-0.01-0.188-0.021-0.271c-0.186-1.543-1.543-3.424-3.236-5.168C24.039,7.31,21.869,5.753,19.883,5.71zM26.914,12.314c-0.008-0.005-0.019-0.007-0.029-0.01c-1.092-0.293-2.33-0.355-3.199-0.355c-0.162,0-0.312,0.002-0.445,0.004c-0.037-0.604-0.129-1.604-0.356-2.625c-0.11-0.461-0.246-0.94-0.433-1.42c0.857,0.541,1.748,1.264,2.535,2.068C25.74,10.718,26.41,11.551,26.914,12.314zM3.365,6.947h16.517c0.058,0,0.12,0,0.183,0.004c0.694,0.105,1.307,1.221,1.616,2.646c0.335,1.484,0.354,2.997,0.354,3l0.007,0.656l0.651-0.051c0,0,0.398-0.027,0.99-0.025c0.809,0,1.977,0.062,2.871,0.312c0.939,0.275,1.352,0.635,1.326,1.051h0.002v9.542H3.365V6.951V6.947z",
+        landscape2: "M19.883,5.71H2.746c-0.163,0-0.319,0.071-0.435,0.188c-0.118,0.117-0.18,0.272-0.18,0.435v18.364c0,0.164,0.063,0.318,0.18,0.436c0.123,0.117,0.287,0.18,0.435,0.18h25.75c0.164,0,0.324-0.066,0.438-0.18c0.118-0.114,0.182-0.273,0.182-0.436V14.551c-0.002-0.102-0.01-0.188-0.021-0.271c-0.186-1.543-1.543-3.424-3.236-5.168C24.039,7.31,21.869,5.753,19.883,5.71zM3.365,6.947h16.517c0.058,0,0.12,0,0.183,0.004c0.694,0.105,1.307,1.221,1.616,2.646c0.335,1.484,0.354,2.997,0.354,3l0.007,0.656l0.651-0.051c0,0,0.398-0.027,0.99-0.025c0.809,0,1.977,0.062,2.871,0.312c0.939,0.275,1.352,0.635,1.326,1.051h0.002v9.542H3.365V6.951V6.947z",
+        plugin: "M26.33,15.836l-3.893-1.545l3.136-7.9c0.28-0.705-0.064-1.505-0.771-1.785c-0.707-0.28-1.506,0.065-1.785,0.771l-3.136,7.9l-4.88-1.937l3.135-7.9c0.281-0.706-0.064-1.506-0.77-1.786c-0.706-0.279-1.506,0.065-1.785,0.771l-3.136,7.9L8.554,8.781l-1.614,4.066l2.15,0.854l-2.537,6.391c-0.61,1.54,0.143,3.283,1.683,3.895l1.626,0.646L8.985,26.84c-0.407,1.025,0.095,2.188,1.122,2.596l0.93,0.369c1.026,0.408,2.188-0.095,2.596-1.121l0.877-2.207l1.858,0.737c1.54,0.611,3.284-0.142,3.896-1.682l2.535-6.391l1.918,0.761L26.33,15.836z",
+        bookmark: "M17.396,1.841L6.076,25.986l7.341-4.566l1.186,8.564l11.32-24.146L17.396,1.841zM19.131,9.234c-0.562-0.264-0.805-0.933-0.541-1.495c0.265-0.562,0.934-0.805,1.496-0.541s0.805,0.934,0.541,1.496S19.694,9.498,19.131,9.234z",
+        hammer: "M7.831,29.354c0.685,0.353,1.62,1.178,2.344,0.876c0.475-0.195,0.753-1.301,1.048-1.883c2.221-4.376,4.635-9.353,6.392-13.611c0-0.19,0.101-0.337-0.049-0.595c0.983-1.6,1.65-3.358,2.724-5.138c0.34-0.566,0.686-1.351,1.163-1.577l0.881-0.368c1.12-0.288,1.938-0.278,2.719,0.473c0.396,0.383,0.578,1.015,0.961,1.395c0.259,0.26,1.246,0.899,1.613,0.8c0.285-0.077,0.52-0.364,0.72-0.728l0.696-1.286c0.195-0.366,0.306-0.718,0.215-0.999c-0.117-0.362-1.192-0.84-1.552-0.915c-0.528-0.113-1.154,0.081-1.692-0.041c-1.057-0.243-1.513-0.922-1.883-2.02c-2.608-1.533-6.119-2.53-10.207-1.244c-1.109,0.349-2.172,0.614-2.901,1.323c-0.146,0.412,0.143,0.494,0.446,0.489c-0.237,0.216-0.62,0.341-0.399,0.848c2.495-1.146,7.34-1.542,7.669,0.804c0.072,0.522-0.395,1.241-0.682,1.835c-0.905,1.874-2.011,3.394-2.813,5.091c-0.298,0.017-0.366,0.18-0.525,0.287c-2.604,3.8-5.451,8.541-7.9,12.794c-0.326,0.566-1.098,1.402-1.002,1.906C5.961,28.641,7.146,29,7.831,29.354z",
+        users: "M21.053,20.8c-1.132-0.453-1.584-1.698-1.584-1.698s-0.51,0.282-0.51-0.51s0.51,0.51,1.02-2.548c0,0,1.414-0.397,1.132-3.68h-0.34c0,0,0.849-3.51,0-4.699c-0.85-1.189-1.189-1.981-3.058-2.548s-1.188-0.454-2.547-0.396c-1.359,0.057-2.492,0.792-2.492,1.188c0,0-0.849,0.057-1.188,0.397c-0.34,0.34-0.906,1.924-0.906,2.321s0.283,3.058,0.566,3.624l-0.337,0.113c-0.283,3.283,1.132,3.68,1.132,3.68c0.509,3.058,1.019,1.756,1.019,2.548s-0.51,0.51-0.51,0.51s-0.452,1.245-1.584,1.698c-1.132,0.452-7.416,2.886-7.927,3.396c-0.511,0.511-0.453,2.888-0.453,2.888h26.947c0,0,0.059-2.377-0.452-2.888C28.469,23.686,22.185,21.252,21.053,20.8zM8.583,20.628c-0.099-0.18-0.148-0.31-0.148-0.31s-0.432,0.239-0.432-0.432s0.432,0.432,0.864-2.159c0,0,1.199-0.336,0.959-3.119H9.538c0,0,0.143-0.591,0.237-1.334c-0.004-0.308,0.006-0.636,0.037-0.996l0.038-0.426c-0.021-0.492-0.107-0.939-0.312-1.226C8.818,9.619,8.53,8.947,6.947,8.467c-1.583-0.48-1.008-0.385-2.159-0.336C3.636,8.179,2.676,8.802,2.676,9.139c0,0-0.72,0.048-1.008,0.336c-0.271,0.271-0.705,1.462-0.757,1.885v0.281c0.047,0.653,0.258,2.449,0.469,2.872l-0.286,0.096c-0.239,2.783,0.959,3.119,0.959,3.119c0.432,2.591,0.864,1.488,0.864,2.159s-0.432,0.432-0.432,0.432s-0.383,1.057-1.343,1.439c-0.061,0.024-0.139,0.056-0.232,0.092v5.234h0.575c-0.029-1.278,0.077-2.927,0.746-3.594C2.587,23.135,3.754,22.551,8.583,20.628zM30.913,11.572c-0.04-0.378-0.127-0.715-0.292-0.946c-0.719-1.008-1.008-1.679-2.59-2.159c-1.584-0.48-1.008-0.385-2.16-0.336C24.72,8.179,23.76,8.802,23.76,9.139c0,0-0.719,0.048-1.008,0.336c-0.271,0.272-0.709,1.472-0.758,1.891h0.033l0.08,0.913c0.02,0.231,0.022,0.436,0.027,0.645c0.09,0.666,0.21,1.35,0.33,1.589l-0.286,0.096c-0.239,2.783,0.96,3.119,0.96,3.119c0.432,2.591,0.863,1.488,0.863,2.159s-0.432,0.432-0.432,0.432s-0.053,0.142-0.163,0.338c4.77,1.9,5.927,2.48,6.279,2.834c0.67,0.667,0.775,2.315,0.746,3.594h0.48v-5.306c-0.016-0.006-0.038-0.015-0.052-0.021c-0.959-0.383-1.343-1.439-1.343-1.439s-0.433,0.239-0.433-0.432s0.433,0.432,0.864-2.159c0,0,0.804-0.229,0.963-1.841v-1.227c-0.001-0.018-0.001-0.033-0.003-0.051h-0.289c0,0,0.215-0.89,0.292-1.861V11.572z",
+        user: "M20.771,12.364c0,0,0.849-3.51,0-4.699c-0.85-1.189-1.189-1.981-3.058-2.548s-1.188-0.454-2.547-0.396c-1.359,0.057-2.492,0.792-2.492,1.188c0,0-0.849,0.057-1.188,0.397c-0.34,0.34-0.906,1.924-0.906,2.321s0.283,3.058,0.566,3.624l-0.337,0.113c-0.283,3.283,1.132,3.68,1.132,3.68c0.509,3.058,1.019,1.756,1.019,2.548s-0.51,0.51-0.51,0.51s-0.452,1.245-1.584,1.698c-1.132,0.452-7.416,2.886-7.927,3.396c-0.511,0.511-0.453,2.888-0.453,2.888h26.947c0,0,0.059-2.377-0.452-2.888c-0.512-0.511-6.796-2.944-7.928-3.396c-1.132-0.453-1.584-1.698-1.584-1.698s-0.51,0.282-0.51-0.51s0.51,0.51,1.02-2.548c0,0,1.414-0.397,1.132-3.68H20.771z",
+        customer: "M28.523,23.813c-0.518-0.51-6.795-2.938-7.934-3.396c-1.132-0.451-1.584-1.697-1.584-1.697s-0.51,0.282-0.51-0.51c0-0.793,0.51,0.51,1.021-2.548c0,0,1.414-0.397,1.133-3.68l-0.338,0.001c0,0,0.85-3.511,0-4.699c-0.854-1.188-1.188-1.981-3.062-2.548c-1.869-0.567-1.188-0.454-2.547-0.396c-1.359,0.057-2.492,0.793-2.492,1.188c0,0-0.849,0.057-1.188,0.397c-0.34,0.34-0.906,1.924-0.906,2.32s0.283,3.059,0.566,3.624l-0.337,0.112c-0.283,3.283,1.132,3.681,1.132,3.681c0.509,3.058,1.019,1.755,1.019,2.548c0,0.792-0.51,0.51-0.51,0.51s-0.452,1.246-1.584,1.697c-1.132,0.453-7.416,2.887-7.927,3.396c-0.511,0.521-0.453,2.896-0.453,2.896h12.036l0.878-3.459l-0.781-0.781l1.344-1.344l1.344,1.344l-0.781,0.781l0.879,3.459h12.035C28.977,26.709,29.039,24.332,28.523,23.813z",
+        employee: "M28.523,23.813c-0.518-0.51-6.795-2.938-7.934-3.396c-1.132-0.451-1.584-1.697-1.584-1.697s-0.51,0.282-0.51-0.51c0-0.793,0.51,0.51,1.021-2.548c0,0,1.414-0.397,1.133-3.68l-0.338,0.001c0,0,0.85-3.511,0-4.699c-0.854-1.188-1.188-1.981-3.062-2.548c-1.869-0.567-1.188-0.454-2.547-0.396c-1.359,0.057-2.492,0.793-2.492,1.188c0,0-0.849,0.057-1.188,0.397c-0.34,0.34-0.906,1.924-0.906,2.32s0.283,3.059,0.566,3.624l-0.337,0.112c-0.283,3.283,1.132,3.681,1.132,3.681c0.509,3.058,1.019,1.755,1.019,2.548c0,0.792-0.51,0.51-0.51,0.51s-0.452,1.246-1.584,1.697c-1.132,0.453-7.416,2.887-7.927,3.396c-0.511,0.521-0.453,2.896-0.453,2.896h26.954C28.977,26.709,29.039,24.332,28.523,23.813zM22.188,26.062h-4.562v-1.25h4.562V26.062z",
+        anonymous: "M28.523,23.813c-0.518-0.51-6.795-2.938-7.934-3.396c-1.132-0.451-1.584-1.697-1.584-1.697s-0.51,0.282-0.51-0.51c0-0.793,0.51,0.51,1.021-2.548c0,0,1.414-0.397,1.133-3.68l-0.338,0.001c0,0,0.85-3.511,0-4.699c-0.854-1.188-1.188-1.981-3.062-2.548c-1.869-0.567-1.188-0.454-2.547-0.396c-1.359,0.057-2.492,0.793-2.492,1.188c0,0-0.849,0.057-1.188,0.397c-0.34,0.34-0.906,1.924-0.906,2.32s0.283,3.059,0.566,3.624l-0.337,0.112c-0.283,3.283,1.132,3.681,1.132,3.681c0.509,3.058,1.019,1.755,1.019,2.548c0,0.792-0.51,0.51-0.51,0.51s-0.452,1.246-1.584,1.697c-1.132,0.453-7.416,2.887-7.927,3.396c-0.511,0.521-0.453,2.896-0.453,2.896h26.954C28.977,26.709,29.039,24.332,28.523,23.813zM16.618,13.693c-0.398-0.251-0.783-1.211-0.783-1.64c0-0.133,0-0.236,0-0.236c-0.105-0.106-0.574-0.096-0.67,0c0,0,0,0.104,0,0.236c0,0.429-0.385,1.389-0.783,1.64c-0.399,0.251-1.611,0.237-2.084-0.236c-0.473-0.473-0.524-1.663-0.643-1.78c-0.118-0.119-0.185-0.185-0.185-0.185l0.029-0.414c0,0,0.842-0.207,1.699-0.207s1.803,0.502,1.803,0.502c0.231-0.074,0.784-0.083,0.996,0c0,0,0.945-0.502,1.803-0.502s1.699,0.207,1.699,0.207l0.029,0.414c0,0-0.066,0.066-0.185,0.185c-0.118,0.118-0.169,1.308-0.643,1.78C18.229,13.93,17.018,13.944,16.618,13.693z",
+        skull: "M25.947,11.14c0-5.174-3.979-9.406-10.613-9.406c-6.633,0-10.282,4.232-10.282,9.406c0,5.174,1.459,4.511,1.459,7.43c0,1.095-1.061,0.564-1.061,2.919c0,2.587,3.615,2.223,4.677,3.283c1.061,1.062,0.961,3.019,0.961,3.019s0.199,0.796,0.564,0.563c0,0,0.232,0.564,0.498,0.232c0,0,0.265,0.563,0.531,0.1c0,0,0.265,0.631,0.696,0.166c0,0,0.431,0.63,0.929,0.133c0,0,0.564,0.53,1.194,0.133c0.63,0.397,1.194-0.133,1.194-0.133c0.497,0.497,0.929-0.133,0.929-0.133c0.432,0.465,0.695-0.166,0.695-0.166c0.268,0.464,0.531-0.1,0.531-0.1c0.266,0.332,0.498-0.232,0.498-0.232c0.365,0.232,0.564-0.563,0.564-0.563s-0.1-1.957,0.961-3.019c1.062-1.061,4.676-0.696,4.676-3.283c0-2.354-1.061-1.824-1.061-2.919C24.488,15.651,25.947,16.314,25.947,11.14zM10.333,20.992c-1.783,0.285-2.59-0.215-2.785-1.492c-0.508-3.328,2.555-3.866,4.079-3.683c0.731,0.088,1.99,0.862,1.99,1.825C13.617,20.229,11.992,20.727,10.333,20.992zM16.461,25.303c-0.331,0-0.862-0.431-0.895-1.227c-0.033,0.796-0.63,1.227-0.961,1.227c-0.332,0-0.83-0.331-0.863-1.127c-0.033-0.796,1.028-4.013,1.792-4.013c0.762,0,1.824,3.217,1.791,4.013S16.794,25.303,16.461,25.303zM23.361,19.5c-0.195,1.277-1.004,1.777-2.787,1.492c-1.658-0.266-3.283-0.763-3.283-3.35c0-0.963,1.258-1.737,1.99-1.825C20.805,15.634,23.869,16.172,23.361,19.5z",
+        mail: "M28.516,7.167H3.482l12.517,7.108L28.516,7.167zM16.74,17.303C16.51,17.434,16.255,17.5,16,17.5s-0.51-0.066-0.741-0.197L2.5,10.06v14.773h27V10.06L16.74,17.303z",
+        picture: "M2.5,4.833v22.334h27V4.833H2.5zM25.25,25.25H6.75V6.75h18.5V25.25zM11.25,14c1.426,0,2.583-1.157,2.583-2.583c0-1.427-1.157-2.583-2.583-2.583c-1.427,0-2.583,1.157-2.583,2.583C8.667,12.843,9.823,14,11.25,14zM24.251,16.25l-4.917-4.917l-6.917,6.917L10.5,16.333l-2.752,2.752v5.165h16.503V16.25z",
+        bubble: "M16,5.333c-7.732,0-14,4.701-14,10.5c0,1.982,0.741,3.833,2.016,5.414L2,25.667l5.613-1.441c2.339,1.317,5.237,2.107,8.387,2.107c7.732,0,14-4.701,14-10.5C30,10.034,23.732,5.333,16,5.333z",
+        codetalk: "M16,4.938c-7.732,0-14,4.701-14,10.5c0,1.981,0.741,3.833,2.016,5.414L2,25.272l5.613-1.44c2.339,1.316,5.237,2.106,8.387,2.106c7.732,0,14-4.701,14-10.5S23.732,4.938,16,4.938zM13.704,19.47l-2.338,2.336l-6.43-6.431l6.429-6.432l2.339,2.341l-4.091,4.091L13.704,19.47zM20.775,21.803l-2.337-2.339l4.092-4.09l-4.092-4.092l2.337-2.339l6.43,6.426L20.775,21.803z",
+        talkq: "M16,4.938c-7.732,0-14,4.701-14,10.5c0,1.981,0.741,3.833,2.016,5.414L2,25.272l5.613-1.44c2.339,1.316,5.237,2.106,8.387,2.106c7.732,0,14-4.701,14-10.5S23.732,4.938,16,4.938zM16.868,21.375h-1.969v-1.889h1.969V21.375zM16.772,18.094h-1.777l-0.176-8.083h2.113L16.772,18.094z",
+        talke: "M16,4.938c-7.732,0-14,4.701-14,10.5c0,1.981,0.741,3.833,2.016,5.414L2,25.272l5.613-1.44c2.339,1.316,5.237,2.106,8.387,2.106c7.732,0,14-4.701,14-10.5S23.732,4.938,16,4.938zM16.982,21.375h-1.969v-1.889h1.969V21.375zM16.982,17.469v0.625h-1.969v-0.769c0-2.321,2.641-2.689,2.641-4.337c0-0.752-0.672-1.329-1.553-1.329c-0.912,0-1.713,0.672-1.713,0.672l-1.12-1.393c0,0,1.104-1.153,3.009-1.153c1.81,0,3.49,1.121,3.49,3.009C19.768,15.437,16.982,15.741,16.982,17.469z",
+        home: "M27.812,16l-3.062-3.062V5.625h-2.625v4.688L16,4.188L4.188,16L7,15.933v11.942h17.875V16H27.812zM16,26.167h-5.833v-7H16V26.167zM21.667,23.167h-3.833v-4.042h3.833V23.167z",
+        lock: "M24.875,15.334v-4.876c0-4.894-3.981-8.875-8.875-8.875s-8.875,3.981-8.875,8.875v4.876H5.042v15.083h21.916V15.334H24.875zM10.625,10.458c0-2.964,2.411-5.375,5.375-5.375s5.375,2.411,5.375,5.375v4.876h-10.75V10.458zM18.272,26.956h-4.545l1.222-3.667c-0.782-0.389-1.324-1.188-1.324-2.119c0-1.312,1.063-2.375,2.375-2.375s2.375,1.062,2.375,2.375c0,0.932-0.542,1.73-1.324,2.119L18.272,26.956z",
+        unlock: "M24.875,15.334v-4.876c0-4.894-3.981-8.875-8.875-8.875s-8.875,3.981-8.875,8.875v0.375h3.5v-0.375c0-2.964,2.411-5.375,5.375-5.375s5.375,2.411,5.375,5.375v4.876H5.042v15.083h21.916V15.334H24.875zM18.272,26.956h-4.545l1.222-3.667c-0.782-0.389-1.324-1.188-1.324-2.119c0-1.312,1.063-2.375,2.375-2.375s2.375,1.062,2.375,2.375c0,0.932-0.542,1.73-1.324,2.119L18.272,26.956z",
+        clip: "M23.898,6.135c-1.571-1.125-3.758-0.764-4.884,0.808l-8.832,12.331c-0.804,1.122-0.546,2.684,0.577,3.488c1.123,0.803,2.684,0.545,3.488-0.578l6.236-8.706l-0.813-0.583l-6.235,8.707h0c-0.483,0.672-1.42,0.828-2.092,0.347c-0.673-0.481-0.827-1.419-0.345-2.093h0l8.831-12.33l0.001-0.001l-0.002-0.001c0.803-1.119,2.369-1.378,3.489-0.576c1.12,0.803,1.379,2.369,0.577,3.489v-0.001l-9.68,13.516l0.001,0.001c-1.124,1.569-3.316,1.931-4.885,0.808c-1.569-1.125-1.93-3.315-0.807-4.885l7.035-9.822l-0.813-0.582l-7.035,9.822c-1.447,2.02-0.982,4.83,1.039,6.277c2.021,1.448,4.831,0.982,6.278-1.037l9.68-13.516C25.83,9.447,25.47,7.261,23.898,6.135z",
+        star: "M16,22.375L7.116,28.83l3.396-10.438l-8.883-6.458l10.979,0.002L16.002,1.5l3.391,10.434h10.981l-8.886,6.457l3.396,10.439L16,22.375L16,22.375z",
+        staroff: "M16,22.375L7.116,28.83l3.396-10.438l-8.883-6.458l10.979,0.002L16.002,1.5l3.391,10.434h10.981l-8.886,6.457l3.396,10.439L16,22.375L16,22.375zM22.979,26.209l-2.664-8.205l6.979-5.062h-8.627L16,4.729l-2.666,8.206H4.708l6.979,5.07l-2.666,8.203L16,21.146L22.979,26.209L22.979,26.209z",
+        star2: "M14.615,4.928c0.487-0.986,1.284-0.986,1.771,0l2.249,4.554c0.486,0.986,1.775,1.923,2.864,2.081l5.024,0.73c1.089,0.158,1.335,0.916,0.547,1.684l-3.636,3.544c-0.788,0.769-1.28,2.283-1.095,3.368l0.859,5.004c0.186,1.085-0.459,1.553-1.433,1.041l-4.495-2.363c-0.974-0.512-2.567-0.512-3.541,0l-4.495,2.363c-0.974,0.512-1.618,0.044-1.432-1.041l0.858-5.004c0.186-1.085-0.307-2.6-1.094-3.368L3.93,13.977c-0.788-0.768-0.542-1.525,0.547-1.684l5.026-0.73c1.088-0.158,2.377-1.095,2.864-2.081L14.615,4.928z",
+        star2off: "M26.522,12.293l-5.024-0.73c-1.089-0.158-2.378-1.095-2.864-2.081l-2.249-4.554c-0.487-0.986-1.284-0.986-1.771,0l-2.247,4.554c-0.487,0.986-1.776,1.923-2.864,2.081l-5.026,0.73c-1.088,0.158-1.334,0.916-0.547,1.684l3.637,3.544c0.788,0.769,1.28,2.283,1.094,3.368l-0.858,5.004c-0.186,1.085,0.458,1.553,1.432,1.041l4.495-2.363c0.974-0.512,2.566-0.512,3.541,0l4.495,2.363c0.974,0.512,1.618,0.044,1.433-1.041l-0.859-5.004c-0.186-1.085,0.307-2.6,1.095-3.368l3.636-3.544C27.857,13.209,27.611,12.452,26.522,12.293zM22.037,16.089c-1.266,1.232-1.966,3.394-1.67,5.137l0.514,2.984l-2.679-1.409c-0.757-0.396-1.715-0.612-2.702-0.612s-1.945,0.216-2.7,0.61l-2.679,1.409l0.511-2.982c0.297-1.743-0.404-3.905-1.671-5.137l-2.166-2.112l2.995-0.435c1.754-0.255,3.592-1.591,4.373-3.175L15.5,7.652l1.342,2.716c0.781,1.583,2.617,2.92,4.369,3.173l2.992,0.435L22.037,16.089z",
+        star3: "M22.441,28.181c-0.419,0-0.835-0.132-1.189-0.392l-5.751-4.247L9.75,27.789c-0.354,0.26-0.771,0.392-1.189,0.392c-0.412,0-0.824-0.128-1.175-0.384c-0.707-0.511-1-1.422-0.723-2.25l2.26-6.783l-5.815-4.158c-0.71-0.509-1.009-1.416-0.74-2.246c0.268-0.826,1.037-1.382,1.904-1.382c0.004,0,0.01,0,0.014,0l7.15,0.056l2.157-6.816c0.262-0.831,1.035-1.397,1.906-1.397s1.645,0.566,1.906,1.397l2.155,6.816l7.15-0.056c0.004,0,0.01,0,0.015,0c0.867,0,1.636,0.556,1.903,1.382c0.271,0.831-0.028,1.737-0.739,2.246l-5.815,4.158l2.263,6.783c0.276,0.826-0.017,1.737-0.721,2.25C23.268,28.053,22.854,28.181,22.441,28.181L22.441,28.181z",
+        star3off: "M28.631,12.359c-0.268-0.826-1.036-1.382-1.903-1.382h-0.015l-7.15,0.056l-2.155-6.816c-0.262-0.831-1.035-1.397-1.906-1.397s-1.645,0.566-1.906,1.397l-2.157,6.816l-7.15-0.056H4.273c-0.868,0-1.636,0.556-1.904,1.382c-0.27,0.831,0.029,1.737,0.74,2.246l5.815,4.158l-2.26,6.783c-0.276,0.828,0.017,1.739,0.723,2.25c0.351,0.256,0.763,0.384,1.175,0.384c0.418,0,0.834-0.132,1.189-0.392l5.751-4.247l5.751,4.247c0.354,0.26,0.771,0.392,1.189,0.392c0.412,0,0.826-0.128,1.177-0.384c0.704-0.513,0.997-1.424,0.721-2.25l-2.263-6.783l5.815-4.158C28.603,14.097,28.901,13.19,28.631,12.359zM19.712,17.996l2.729,8.184l-6.94-5.125L8.56,26.18l2.729-8.184l-7.019-5.018l8.627,0.066L15.5,4.82l2.603,8.225l8.627-0.066L19.712,17.996z",
+        chat: "M15.985,5.972c-7.563,0-13.695,4.077-13.695,9.106c0,2.877,2.013,5.44,5.147,7.108c-0.446,1.479-1.336,3.117-3.056,4.566c0,0,4.015-0.266,6.851-3.143c0.163,0.04,0.332,0.07,0.497,0.107c-0.155-0.462-0.246-0.943-0.246-1.443c0-3.393,3.776-6.05,8.599-6.05c3.464,0,6.379,1.376,7.751,3.406c1.168-1.34,1.847-2.892,1.847-4.552C29.68,10.049,23.548,5.972,15.985,5.972zM27.68,22.274c0-2.79-3.401-5.053-7.599-5.053c-4.196,0-7.599,2.263-7.599,5.053c0,2.791,3.403,5.053,7.599,5.053c0.929,0,1.814-0.116,2.637-0.319c1.573,1.597,3.801,1.744,3.801,1.744c-0.954-0.804-1.447-1.713-1.695-2.534C26.562,25.293,27.68,23.871,27.68,22.274z",
+        quote: "M14.505,5.873c-3.937,2.52-5.904,5.556-5.904,9.108c0,1.104,0.192,1.656,0.576,1.656l0.396-0.107c0.312-0.12,0.563-0.18,0.756-0.18c1.128,0,2.07,0.411,2.826,1.229c0.756,0.82,1.134,1.832,1.134,3.037c0,1.157-0.408,2.14-1.224,2.947c-0.816,0.807-1.801,1.211-2.952,1.211c-1.608,0-2.935-0.661-3.979-1.984c-1.044-1.321-1.565-2.98-1.565-4.977c0-2.259,0.443-4.327,1.332-6.203c0.888-1.875,2.243-3.57,4.067-5.085c1.824-1.514,2.988-2.272,3.492-2.272c0.336,0,0.612,0.162,0.828,0.486c0.216,0.324,0.324,0.606,0.324,0.846L14.505,5.873zM27.465,5.873c-3.937,2.52-5.904,5.556-5.904,9.108c0,1.104,0.192,1.656,0.576,1.656l0.396-0.107c0.312-0.12,0.563-0.18,0.756-0.18c1.104,0,2.04,0.411,2.808,1.229c0.769,0.82,1.152,1.832,1.152,3.037c0,1.157-0.408,2.14-1.224,2.947c-0.816,0.807-1.801,1.211-2.952,1.211c-1.608,0-2.935-0.661-3.979-1.984c-1.044-1.321-1.565-2.98-1.565-4.977c0-2.284,0.449-4.369,1.35-6.256c0.9-1.887,2.256-3.577,4.068-5.067c1.812-1.49,2.97-2.236,3.474-2.236c0.336,0,0.612,0.162,0.828,0.486c0.216,0.324,0.324,0.606,0.324,0.846L27.465,5.873z",
+        gear: "M26.974,16.514l3.765-1.991c-0.074-0.738-0.217-1.454-0.396-2.157l-4.182-0.579c-0.362-0.872-0.84-1.681-1.402-2.423l1.594-3.921c-0.524-0.511-1.09-0.977-1.686-1.406l-3.551,2.229c-0.833-0.438-1.73-0.77-2.672-0.984l-1.283-3.976c-0.364-0.027-0.728-0.056-1.099-0.056s-0.734,0.028-1.099,0.056l-1.271,3.941c-0.967,0.207-1.884,0.543-2.738,0.986L7.458,4.037C6.863,4.466,6.297,4.932,5.773,5.443l1.55,3.812c-0.604,0.775-1.11,1.629-1.49,2.55l-4.05,0.56c-0.178,0.703-0.322,1.418-0.395,2.157l3.635,1.923c0.041,1.013,0.209,1.994,0.506,2.918l-2.742,3.032c0.319,0.661,0.674,1.303,1.085,1.905l4.037-0.867c0.662,0.72,1.416,1.351,2.248,1.873l-0.153,4.131c0.663,0.299,1.352,0.549,2.062,0.749l2.554-3.283C15.073,26.961,15.532,27,16,27c0.507,0,1.003-0.046,1.491-0.113l2.567,3.301c0.711-0.2,1.399-0.45,2.062-0.749l-0.156-4.205c0.793-0.513,1.512-1.127,2.146-1.821l4.142,0.889c0.411-0.602,0.766-1.243,1.085-1.905l-2.831-3.131C26.778,18.391,26.93,17.467,26.974,16.514zM20.717,21.297l-1.785,1.162l-1.098-1.687c-0.571,0.22-1.186,0.353-1.834,0.353c-2.831,0-5.125-2.295-5.125-5.125c0-2.831,2.294-5.125,5.125-5.125c2.83,0,5.125,2.294,5.125,5.125c0,1.414-0.573,2.693-1.499,3.621L20.717,21.297z",
+		smallgear: "M31.229,17.736c0.064-0.571,0.104-1.148,0.104-1.736s-0.04-1.166-0.104-1.737l-4.377-1.557c-0.218-0.716-0.504-1.401-0.851-2.05l1.993-4.192c-0.725-0.91-1.549-1.734-2.458-2.459l-4.193,1.994c-0.647-0.347-1.334-0.632-2.049-0.849l-1.558-4.378C17.165,0.708,16.588,0.667,16,0.667s-1.166,0.041-1.737,0.105L12.707,5.15c-0.716,0.217-1.401,0.502-2.05,0.849L6.464,4.005C5.554,4.73,4.73,5.554,4.005,6.464l1.994,4.192c-0.347,0.648-0.632,1.334-0.849,2.05l-4.378,1.557C0.708,14.834,0.667,15.412,0.667,16s0.041,1.165,0.105,1.736l4.378,1.558c0.217,0.715,0.502,1.401,0.849,2.049l-1.994,4.193c0.725,0.909,1.549,1.733,2.459,2.458l4.192-1.993c0.648,0.347,1.334,0.633,2.05,0.851l1.557,4.377c0.571,0.064,1.148,0.104,1.737,0.104c0.588,0,1.165-0.04,1.736-0.104l1.558-4.377c0.715-0.218,1.399-0.504,2.049-0.851l4.193,1.993c0.909-0.725,1.733-1.549,2.458-2.458l-1.993-4.193c0.347-0.647,0.633-1.334,0.851-2.049L31.229,17.736zM16,20.871c-2.69,0-4.872-2.182-4.872-4.871c0-2.69,2.182-4.872,4.872-4.872c2.689,0,4.871,2.182,4.871,4.872C20.871,18.689,18.689,20.871,16,20.871z",
+        wrench: "M26.834,14.693c1.816-2.088,2.181-4.938,1.193-7.334l-3.646,4.252l-3.594-0.699L19.596,7.45l3.637-4.242c-2.502-0.63-5.258,0.13-7.066,2.21c-1.907,2.193-2.219,5.229-1.039,7.693L5.624,24.04c-1.011,1.162-0.888,2.924,0.274,3.935c1.162,1.01,2.924,0.888,3.935-0.274l9.493-10.918C21.939,17.625,24.918,16.896,26.834,14.693z",
+        wrench2: "M24.946,9.721l-2.872-0.768l-0.771-2.874l3.188-3.231c-1.992-0.653-4.268-0.192-5.848,1.391c-1.668,1.668-2.095,4.111-1.279,6.172l-3.476,3.478l-3.478,3.478c-2.062-0.816-4.504-0.391-6.173,1.277c-1.583,1.581-2.043,3.856-1.39,5.849l3.231-3.188l2.874,0.77l0.769,2.872l-3.239,3.197c1.998,0.665,4.288,0.207,5.876-1.384c1.678-1.678,2.1-4.133,1.271-6.202l3.463-3.464l3.464-3.463c2.069,0.828,4.523,0.406,6.202-1.272c1.592-1.589,2.049-3.878,1.384-5.876L24.946,9.721z",
+        wrench3: "M27.839,6.775l-3.197,3.239L21.77,9.246l-0.771-2.874l3.188-3.231c-1.992-0.653-4.268-0.192-5.848,1.391c-1.668,1.668-2.095,4.111-1.279,6.172L7.42,20.344c-0.204-0.032-0.408-0.062-0.621-0.062c-2.173,0-3.933,1.759-3.933,3.933c0,2.173,1.76,3.933,3.933,3.933c2.171,0,3.931-1.76,3.933-3.933c0-0.24-0.03-0.473-0.071-0.7l9.592-9.59c2.069,0.828,4.523,0.406,6.202-1.272C28.047,11.062,28.504,8.772,27.839,6.775zM6.799,25.146c-0.517,0-0.933-0.418-0.935-0.933c0.002-0.515,0.418-0.933,0.935-0.933c0.514,0,0.932,0.418,0.932,0.933S7.313,25.146,6.799,25.146z",
+        // wrench4: "M8.829,27.945c0,0,8.189-12.872,9.627-14.736c0.93-1.205,2.377-1.88,3.473-2.24c0.5,0.876,0.973,1.704,0.973,1.704c1.246-3.411,3.513-4.619,2.484-6.36l-3.322,1.962L20.408,5.47c0,0-0.185-0.643,0.228-0.885c0.41-0.243,2.809-1.561,2.809-1.561s-1.733-1.531-4.828,0.296c-2.031,1.2-0.297,4.687-2.43,8.034S5.678,25.468,5.678,25.468c-0.4,0.621-0.445,1.439-0.045,2.117c0.566,0.957,1.8,1.276,2.758,0.711C8.557,28.197,8.703,28.079,8.829,27.945zM19.613,11.615c-0.403,0.238-0.929,0.102-1.167-0.301l-0.562-0.95c-0.237-0.403-0.104-0.929,0.3-1.167l1.434-0.847c0.403-0.238,0.93-0.103,1.168,0.3l0.561,0.95c0.238,0.403,0.104,0.93-0.301,1.168L19.613,11.615zM6.119,27.308c-0.419-0.71-0.184-1.625,0.526-2.043c0.71-0.42,1.625-0.186,2.044,0.525c0.419,0.709,0.184,1.624-0.527,2.044C7.453,28.253,6.538,28.018,6.119,27.308z",
+        screwdriver: "M19.387,14.373c2.119-2.619,5.322-6.77,5.149-7.75c-0.128-0.729-0.882-1.547-1.763-2.171c-0.883-0.625-1.916-1.044-2.645-0.915c-0.98,0.173-3.786,4.603-5.521,7.49c-0.208,0.344,0.328,1.177,0.156,1.468c-0.172,0.292-1.052,0.042-1.18,0.261c-0.263,0.451-0.417,0.722-0.417,0.722s-0.553,0.823,1.163,2.163l-5.233,7.473c-0.267,0.381-1.456,0.459-1.456,0.459l-1.184,3.312l0.859,0.602l2.708-2.246c0,0-0.334-1.143-0.068-1.523l5.242-7.489c1.719,1,2.377,0.336,2.377,0.336s0.201-0.238,0.536-0.639c0.161-0.194-0.374-0.936-0.159-1.197C18.169,14.467,19.133,14.685,19.387,14.373z",
+        hammerandscrewdriver: "M28.537,9.859c-0.473-0.259-1.127-0.252-1.609-0.523c-0.943-0.534-1.186-1.316-1.226-2.475c-2.059-2.215-5.138-4.176-9.424-4.114c-1.162,0.017-2.256-0.035-3.158,0.435c-0.258,0.354-0.004,0.516,0.288,0.599c-0.29,0.138-0.692,0.147-0.626,0.697c2.72-0.383,7.475,0.624,7.116,2.966c-0.08,0.521-0.735,1.076-1.179,1.563c-1.263,1.382-2.599,2.45-3.761,3.667l0.336,0.336c0.742-0.521,1.446-0.785,2.104-0.785c0.707,0,1.121,0.297,1.276,0.433c0.575-0.618,1.166-1.244,1.839-1.853c0.488-0.444,1.047-1.099,1.566-1.178l0.949-0.101c1.156,0.047,1.937,0.29,2.471,1.232c0.27,0.481,0.262,1.139,0.521,1.613c0.175,0.324,0.937,1.218,1.316,1.228c0.294,0.009,0.603-0.199,0.899-0.49l1.033-1.034c0.291-0.294,0.501-0.6,0.492-0.896C29.754,10.801,28.861,10.035,28.537,9.859zM13.021,15.353l-0.741-0.741c-3.139,2.643-6.52,5.738-9.531,8.589c-0.473,0.443-1.452,1.021-1.506,1.539c-0.083,0.781,0.95,1.465,1.506,2c0.556,0.533,1.212,1.602,1.994,1.51c0.509-0.043,1.095-1.029,1.544-1.502c2.255-2.374,4.664-4.976,6.883-7.509c-0.312-0.371-0.498-0.596-0.498-0.596C12.535,18.451,11.779,17.272,13.021,15.353zM20.64,15.643c-0.366-0.318-1.466,0.143-1.777-0.122c-0.311-0.266,0.171-1.259-0.061-1.455c-0.482-0.406-0.77-0.646-0.77-0.646s-0.862-0.829-2.812,0.928L7.44,6.569C7.045,6.173,7.203,4.746,7.203,4.746L3.517,2.646L2.623,3.541l2.1,3.686c0,0,1.428-0.158,1.824,0.237l7.792,7.793c-1.548,1.831-0.895,2.752-0.895,2.752s0.238,0.288,0.646,0.771c0.196,0.23,1.188-0.249,1.455,0.061c0.264,0.312-0.196,1.41,0.12,1.777c2.666,3.064,6.926,7.736,8.125,7.736c0.892,0,2.021-0.724,2.948-1.64c0.925-0.917,1.639-2.055,1.639-2.947C28.377,22.567,23.704,18.309,20.64,15.643z",
+        magic: "M23.043,4.649l-0.404-2.312l-1.59,1.727l-2.323-0.33l1.151,2.045l-1.032,2.108l2.302-0.463l1.686,1.633l0.271-2.332l2.074-1.099L23.043,4.649zM26.217,18.198l-0.182-1.25l-0.882,0.905l-1.245-0.214l0.588,1.118l-0.588,1.118l1.245-0.214l0.882,0.905l0.182-1.25l1.133-0.56L26.217,18.198zM4.92,7.672L5.868,7.3l0.844,0.569L6.65,6.853l0.802-0.627L6.467,5.97L6.118,5.013L5.571,5.872L4.553,5.908l0.647,0.786L4.92,7.672zM10.439,10.505l1.021-1.096l1.481,0.219l-0.727-1.31l0.667-1.341l-1.47,0.287l-1.069-1.048L10.16,7.703L8.832,8.396l1.358,0.632L10.439,10.505zM17.234,12.721c-0.588-0.368-1.172-0.618-1.692-0.729c-0.492-0.089-1.039-0.149-1.425,0.374L2.562,30.788h6.68l9.669-15.416c0.303-0.576,0.012-1.041-0.283-1.447C18.303,13.508,17.822,13.09,17.234,12.721zM13.613,21.936c-0.254-0.396-0.74-0.857-1.373-1.254c-0.632-0.396-1.258-0.634-1.726-0.69l4.421-7.052c0.064-0.013,0.262-0.021,0.543,0.066c0.346,0.092,0.785,0.285,1.225,0.562c0.504,0.313,0.908,0.677,1.133,0.97c0.113,0.145,0.178,0.271,0.195,0.335c0.002,0.006,0.004,0.011,0.004,0.015L13.613,21.936z",
+        download: "M16,1.466C7.973,1.466,1.466,7.973,1.466,16c0,8.027,6.507,14.534,14.534,14.534c8.027,0,14.534-6.507,14.534-14.534C30.534,7.973,24.027,1.466,16,1.466zM16,28.792c-1.549,0-2.806-1.256-2.806-2.806s1.256-2.806,2.806-2.806c1.55,0,2.806,1.256,2.806,2.806S17.55,28.792,16,28.792zM16,21.087l-7.858-6.562h3.469V5.747h8.779v8.778h3.468L16,21.087z",
+        view: "M16,8.286C8.454,8.286,2.5,16,2.5,16s5.954,7.715,13.5,7.715c5.771,0,13.5-7.715,13.5-7.715S21.771,8.286,16,8.286zM16,20.807c-2.649,0-4.807-2.157-4.807-4.807s2.158-4.807,4.807-4.807s4.807,2.158,4.807,4.807S18.649,20.807,16,20.807zM16,13.194c-1.549,0-2.806,1.256-2.806,2.806c0,1.55,1.256,2.806,2.806,2.806c1.55,0,2.806-1.256,2.806-2.806C18.806,14.451,17.55,13.194,16,13.194z",
+        noview: "M11.478,17.568c-0.172-0.494-0.285-1.017-0.285-1.568c0-2.65,2.158-4.807,4.807-4.807c0.552,0,1.074,0.113,1.568,0.285l2.283-2.283C18.541,8.647,17.227,8.286,16,8.286C8.454,8.286,2.5,16,2.5,16s2.167,2.791,5.53,5.017L11.478,17.568zM23.518,11.185l-3.056,3.056c0.217,0.546,0.345,1.138,0.345,1.76c0,2.648-2.158,4.807-4.807,4.807c-0.622,0-1.213-0.128-1.76-0.345l-2.469,2.47c1.327,0.479,2.745,0.783,4.229,0.783c5.771,0,13.5-7.715,13.5-7.715S26.859,13.374,23.518,11.185zM25.542,4.917L4.855,25.604L6.27,27.02L26.956,6.332L25.542,4.917z",
+        cloud: "M24.345,13.904c0.019-0.195,0.03-0.392,0.03-0.591c0-3.452-2.798-6.25-6.25-6.25c-2.679,0-4.958,1.689-5.847,4.059c-0.589-0.646-1.429-1.059-2.372-1.059c-1.778,0-3.219,1.441-3.219,3.219c0,0.21,0.023,0.415,0.062,0.613c-2.372,0.391-4.187,2.436-4.187,4.918c0,2.762,2.239,5,5,5h15.875c2.762,0,5-2.238,5-5C28.438,16.362,26.672,14.332,24.345,13.904z",
+        cloud2: "M7.562,24.812c-3.313,0-6-2.687-6-6l0,0c0.002-2.659,1.734-4.899,4.127-5.684l0,0c0.083-2.26,1.937-4.064,4.216-4.066l0,0c0.73,0,1.415,0.19,2.01,0.517l0,0c1.266-2.105,3.57-3.516,6.208-3.517l0,0c3.947,0.002,7.157,3.155,7.248,7.079l0,0c2.362,0.804,4.062,3.034,4.064,5.671l0,0c0,3.313-2.687,6-6,6l0,0H7.562L7.562,24.812zM24.163,14.887c-0.511-0.095-0.864-0.562-0.815-1.079l0,0c0.017-0.171,0.027-0.336,0.027-0.497l0,0c-0.007-2.899-2.352-5.245-5.251-5.249l0,0c-2.249-0.002-4.162,1.418-4.911,3.41l0,0c-0.122,0.323-0.406,0.564-0.748,0.63l0,0c-0.34,0.066-0.694-0.052-0.927-0.309l0,0c-0.416-0.453-0.986-0.731-1.633-0.731l0,0c-1.225,0.002-2.216,0.993-2.22,2.218l0,0c0,0.136,0.017,0.276,0.045,0.424l0,0c0.049,0.266-0.008,0.54-0.163,0.762l0,0c-0.155,0.223-0.392,0.371-0.657,0.414l0,0c-1.9,0.313-3.352,1.949-3.35,3.931l0,0c0.004,2.209,1.792,3.995,4.001,4.001l0,0h15.874c2.209-0.006,3.994-1.792,3.999-4.001l0,0C27.438,16.854,26.024,15.231,24.163,14.887L24.163,14.887",
+        cloudDown: "M24.345,13.904c0.019-0.195,0.03-0.392,0.03-0.591c0-3.452-2.798-6.25-6.25-6.25c-2.679,0-4.958,1.689-5.847,4.059c-0.589-0.646-1.429-1.059-2.372-1.059c-1.778,0-3.219,1.441-3.219,3.219c0,0.21,0.023,0.415,0.062,0.613c-2.372,0.391-4.187,2.436-4.187,4.918c0,2.762,2.239,5,5,5h3.404l-0.707-0.707c-0.377-0.377-0.585-0.879-0.585-1.413c0-0.533,0.208-1.035,0.585-1.412l0.556-0.557c0.4-0.399,0.937-0.628,1.471-0.628c0.027,0,0.054,0,0.08,0.002v-0.472c0-1.104,0.898-2.002,2-2.002h3.266c1.103,0,2,0.898,2,2.002v0.472c0.027-0.002,0.054-0.002,0.081-0.002c0.533,0,1.07,0.229,1.47,0.63l0.557,0.552c0.78,0.781,0.78,2.05,0,2.828l-0.706,0.707h2.403c2.762,0,5-2.238,5-5C28.438,16.362,26.672,14.332,24.345,13.904z M21.033,20.986l-0.556-0.555c-0.39-0.389-0.964-0.45-1.276-0.137c-0.312,0.312-0.568,0.118-0.568-0.432v-1.238c0-0.55-0.451-1-1-1h-3.265c-0.55,0-1,0.45-1,1v1.238c0,0.55-0.256,0.744-0.569,0.432c-0.312-0.313-0.887-0.252-1.276,0.137l-0.556,0.555c-0.39,0.389-0.39,1.024-0.001,1.413l4.328,4.331c0.194,0.194,0.451,0.291,0.707,0.291s0.512-0.097,0.707-0.291l4.327-4.331C21.424,22.011,21.423,21.375,21.033,20.986z",
+        cloudUp: "M24.345,13.904c0.019-0.195,0.03-0.392,0.03-0.591c0-3.452-2.798-6.25-6.25-6.25c-2.679,0-4.958,1.689-5.847,4.059c-0.589-0.646-1.429-1.059-2.372-1.059c-1.778,0-3.219,1.441-3.219,3.219c0,0.21,0.023,0.415,0.062,0.613c-2.372,0.391-4.187,2.436-4.187,4.918c0,2.762,2.239,5,5,5h2.312c-0.126-0.266-0.2-0.556-0.2-0.859c0-0.535,0.208-1.04,0.587-1.415l4.325-4.329c0.375-0.377,0.877-0.585,1.413-0.585c0.54,0,1.042,0.21,1.417,0.587l4.323,4.329c0.377,0.373,0.585,0.878,0.585,1.413c0,0.304-0.073,0.594-0.2,0.859h1.312c2.762,0,5-2.238,5-5C28.438,16.362,26.672,14.332,24.345,13.904z M16.706,17.916c-0.193-0.195-0.45-0.291-0.706-0.291s-0.512,0.096-0.707,0.291l-4.327,4.33c-0.39,0.389-0.389,1.025,0.001,1.414l0.556,0.555c0.39,0.389,0.964,0.449,1.276,0.137s0.568-0.119,0.568,0.432v1.238c0,0.549,0.451,1,1,1h3.265c0.551,0,1-0.451,1-1v-1.238c0-0.551,0.256-0.744,0.569-0.432c0.312,0.312,0.887,0.252,1.276-0.137l0.556-0.555c0.39-0.389,0.39-1.025,0.001-1.414L16.706,17.916z",
+        location: "M16,3.5c-4.142,0-7.5,3.358-7.5,7.5c0,4.143,7.5,18.121,7.5,18.121S23.5,15.143,23.5,11C23.5,6.858,20.143,3.5,16,3.5z M16,14.584c-1.979,0-3.584-1.604-3.584-3.584S14.021,7.416,16,7.416S19.584,9.021,19.584,11S17.979,14.584,16,14.584z",
+		loaction2: "M15.834,29.084 15.834,16.166 2.917,16.166 29.083,2.917z",
+        volume0: "M4.998,12.127v7.896h4.495l6.729,5.526l0.004-18.948l-6.73,5.526H4.998z",
+        volume1: "M4.998,12.127v7.896h4.495l6.729,5.526l0.004-18.948l-6.73,5.526H4.998z M18.806,11.219c-0.393-0.389-1.024-0.389-1.415,0.002c-0.39,0.391-0.39,1.024,0.002,1.416v-0.002c0.863,0.864,1.395,2.049,1.395,3.366c0,1.316-0.531,2.497-1.393,3.361c-0.394,0.389-0.394,1.022-0.002,1.415c0.195,0.195,0.451,0.293,0.707,0.293c0.257,0,0.513-0.098,0.708-0.293c1.222-1.22,1.98-2.915,1.979-4.776C20.788,14.136,20.027,12.439,18.806,11.219z",
+        volume2: "M4.998,12.127v7.896h4.495l6.729,5.526l0.004-18.948l-6.73,5.526H4.998z M18.806,11.219c-0.393-0.389-1.024-0.389-1.415,0.002c-0.39,0.391-0.39,1.024,0.002,1.416v-0.002c0.863,0.864,1.395,2.049,1.395,3.366c0,1.316-0.531,2.497-1.393,3.361c-0.394,0.389-0.394,1.022-0.002,1.415c0.195,0.195,0.451,0.293,0.707,0.293c0.257,0,0.513-0.098,0.708-0.293c1.222-1.22,1.98-2.915,1.979-4.776C20.788,14.136,20.027,12.439,18.806,11.219z M21.101,8.925c-0.393-0.391-1.024-0.391-1.413,0c-0.392,0.391-0.392,1.025,0,1.414c1.45,1.451,2.344,3.447,2.344,5.661c0,2.212-0.894,4.207-2.342,5.659c-0.392,0.39-0.392,1.023,0,1.414c0.195,0.195,0.451,0.293,0.708,0.293c0.256,0,0.512-0.098,0.707-0.293c1.808-1.809,2.929-4.315,2.927-7.073C24.033,13.24,22.912,10.732,21.101,8.925z",
+        volume3: "M4.998,12.127v7.896h4.495l6.729,5.526l0.004-18.948l-6.73,5.526H4.998z M18.806,11.219c-0.393-0.389-1.024-0.389-1.415,0.002c-0.39,0.391-0.39,1.024,0.002,1.416v-0.002c0.863,0.864,1.395,2.049,1.395,3.366c0,1.316-0.531,2.497-1.393,3.361c-0.394,0.389-0.394,1.022-0.002,1.415c0.195,0.195,0.451,0.293,0.707,0.293c0.257,0,0.513-0.098,0.708-0.293c1.222-1.22,1.98-2.915,1.979-4.776C20.788,14.136,20.027,12.439,18.806,11.219z M21.101,8.925c-0.393-0.391-1.024-0.391-1.413,0c-0.392,0.391-0.392,1.025,0,1.414c1.45,1.451,2.344,3.447,2.344,5.661c0,2.212-0.894,4.207-2.342,5.659c-0.392,0.39-0.392,1.023,0,1.414c0.195,0.195,0.451,0.293,0.708,0.293c0.256,0,0.512-0.098,0.707-0.293c1.808-1.809,2.929-4.315,2.927-7.073C24.033,13.24,22.912,10.732,21.101,8.925z M23.28,6.746c-0.393-0.391-1.025-0.389-1.414,0.002c-0.391,0.389-0.391,1.023,0.002,1.413h-0.002c2.009,2.009,3.248,4.773,3.248,7.839c0,3.063-1.239,5.828-3.246,7.838c-0.391,0.39-0.391,1.023,0.002,1.415c0.194,0.194,0.45,0.291,0.706,0.291s0.513-0.098,0.708-0.293c2.363-2.366,3.831-5.643,3.829-9.251C27.115,12.389,25.647,9.111,23.28,6.746z",
+		bell: "M24.264,20.958c-2.484-4.226-2.168-13.199-6.143-15.486c0.254-0.395,0.404-0.861,0.404-1.366c0-1.396-1.129-2.526-2.526-2.526c-1.396,0-2.527,1.131-2.527,2.526c0,0.505,0.151,0.973,0.406,1.367C9.905,7.76,10.221,16.732,7.736,20.958C5.585,21.523,4.25,22.311,4.25,23.18v1.125c0,1.604,3.877,2.938,9.077,3.283c-0.003,0.048-0.015,0.096-0.015,0.145c0,1.483,1.203,2.688,2.688,2.688c1.484,0,2.688-1.203,2.688-2.688c0-0.049-0.012-0.097-0.015-0.145c5.199-0.349,9.077-1.688,9.077-3.283V23.18C27.75,22.311,26.415,21.523,24.264,20.958zM14.472,4.105c0.002-0.843,0.685-1.525,1.527-1.527c0.843,0.002,1.526,0.685,1.528,1.527c-0.002,0.372-0.144,0.708-0.361,0.974c-0.359-0.096-0.745-0.15-1.166-0.15s-0.807,0.055-1.167,0.15C14.612,4.814,14.473,4.478,14.472,4.105z",
+		mute: "M21.328,8.956c-0.605-1.545-1.4-2.809-2.572-3.484c0.254-0.395,0.404-0.861,0.404-1.366c0-1.396-1.129-2.526-2.526-2.526c-1.396,0-2.526,1.131-2.526,2.526c0,0.505,0.15,0.973,0.405,1.367C10.54,7.76,10.856,16.732,8.371,20.958c-2.151,0.565-3.486,1.353-3.486,2.222v1.125c0,0.271,0.117,0.525,0.322,0.774L21.328,8.956zM16.635,2.578c0.844,0.002,1.525,0.685,1.527,1.527c0,0.372-0.139,0.708-0.36,0.974c-0.358-0.096-0.745-0.15-1.165-0.15c-0.422,0-0.808,0.055-1.167,0.15c-0.221-0.265-0.359-0.602-0.36-0.974C15.109,3.263,15.792,2.58,16.635,2.578zM24.898,20.958c-1.125-1.914-1.678-4.802-2.312-7.602L9.065,26.878c1.395,0.338,3.061,0.587,4.896,0.71c-0.003,0.048-0.015,0.096-0.015,0.145c0,1.483,1.203,2.688,2.688,2.688c1.485,0,2.688-1.203,2.688-2.688c0-0.049-0.012-0.097-0.016-0.145c5.188-0.349,9.062-1.688,9.062-3.283V23.18C28.385,22.311,27.05,21.523,24.898,20.958zM26.677,5.021L3.615,28.083l1.415,1.416L28.091,6.436L26.677,5.021z",
+        key: "M18.386,16.009l0.009-0.006l-0.58-0.912c1.654-2.226,1.876-5.319,0.3-7.8c-2.043-3.213-6.303-4.161-9.516-2.118c-3.212,2.042-4.163,6.302-2.12,9.517c1.528,2.402,4.3,3.537,6.944,3.102l0.424,0.669l0.206,0.045l0.779-0.447l-0.305,1.377l2.483,0.552l-0.296,1.325l1.903,0.424l-0.68,3.06l1.406,0.313l-0.424,1.906l4.135,0.918l0.758-3.392L18.386,16.009z M10.996,8.944c-0.685,0.436-1.593,0.233-2.029-0.452C8.532,7.807,8.733,6.898,9.418,6.463s1.594-0.233,2.028,0.452C11.883,7.6,11.68,8.509,10.996,8.944z",
+        ruler: "M6.63,21.796l-5.122,5.121h25.743V1.175L6.63,21.796zM18.702,10.48c0.186-0.183,0.48-0.183,0.664,0l1.16,1.159c0.184,0.183,0.186,0.48,0.002,0.663c-0.092,0.091-0.213,0.137-0.332,0.137c-0.121,0-0.24-0.046-0.33-0.137l-1.164-1.159C18.519,10.96,18.519,10.664,18.702,10.48zM17.101,12.084c0.184-0.183,0.48-0.183,0.662,0l2.156,2.154c0.184,0.183,0.184,0.48,0.002,0.661c-0.092,0.092-0.213,0.139-0.334,0.139s-0.24-0.046-0.33-0.137l-2.156-2.154C16.917,12.564,16.917,12.267,17.101,12.084zM15.497,13.685c0.184-0.183,0.48-0.183,0.664,0l1.16,1.161c0.184,0.183,0.182,0.48-0.002,0.663c-0.092,0.092-0.211,0.138-0.33,0.138c-0.121,0-0.24-0.046-0.332-0.138l-1.16-1.16C15.314,14.166,15.314,13.868,15.497,13.685zM13.896,15.288c0.184-0.183,0.48-0.181,0.664,0.002l1.158,1.159c0.183,0.184,0.183,0.48,0,0.663c-0.092,0.092-0.212,0.138-0.332,0.138c-0.119,0-0.24-0.046-0.332-0.138l-1.158-1.161C13.713,15.767,13.713,15.471,13.896,15.288zM12.293,16.892c0.183-0.184,0.479-0.184,0.663,0l2.154,2.153c0.184,0.184,0.184,0.481,0,0.665c-0.092,0.092-0.211,0.138-0.33,0.138c-0.121,0-0.242-0.046-0.334-0.138l-2.153-2.155C12.11,17.371,12.11,17.075,12.293,16.892zM10.302,24.515c-0.091,0.093-0.212,0.139-0.332,0.139c-0.119,0-0.238-0.045-0.33-0.137l-2.154-2.153c-0.184-0.183-0.184-0.479,0-0.663s0.479-0.184,0.662,0l2.154,2.153C10.485,24.036,10.485,24.332,10.302,24.515zM10.912,21.918c-0.093,0.093-0.214,0.139-0.333,0.139c-0.12,0-0.24-0.045-0.33-0.137l-1.162-1.161c-0.184-0.183-0.184-0.479,0-0.66c0.184-0.185,0.48-0.187,0.664-0.003l1.161,1.162C11.095,21.438,11.095,21.735,10.912,21.918zM12.513,20.316c-0.092,0.092-0.211,0.138-0.332,0.138c-0.119,0-0.239-0.046-0.331-0.138l-1.159-1.16c-0.184-0.184-0.184-0.48,0-0.664s0.48-0.182,0.663,0.002l1.159,1.161C12.696,19.838,12.696,20.135,12.513,20.316zM22.25,21.917h-8.67l8.67-8.67V21.917zM22.13,10.7c-0.09,0.092-0.211,0.138-0.33,0.138c-0.121,0-0.242-0.046-0.334-0.138l-1.16-1.159c-0.184-0.183-0.184-0.479,0-0.663c0.182-0.183,0.479-0.183,0.662,0l1.16,1.159C22.312,10.221,22.313,10.517,22.13,10.7zM24.726,10.092c-0.092,0.092-0.213,0.137-0.332,0.137s-0.24-0.045-0.33-0.137l-2.154-2.154c-0.184-0.183-0.184-0.481,0-0.664s0.482-0.181,0.664,0.002l2.154,2.154C24.911,9.613,24.909,9.91,24.726,10.092z",
+        power: "M25.542,8.354c-1.47-1.766-2.896-2.617-3.025-2.695c-0.954-0.565-2.181-0.241-2.739,0.724c-0.556,0.961-0.24,2.194,0.705,2.763c0,0,0.001,0,0.002,0.001c0.001,0,0.002,0.001,0.003,0.002c0.001,0,0.003,0.001,0.004,0.001c0.102,0.062,1.124,0.729,2.08,1.925c1.003,1.261,1.933,3.017,1.937,5.438c-0.001,2.519-1.005,4.783-2.64,6.438c-1.637,1.652-3.877,2.668-6.368,2.669c-2.491-0.001-4.731-1.017-6.369-2.669c-1.635-1.654-2.639-3.919-2.64-6.438c0.005-2.499,0.995-4.292,2.035-5.558c0.517-0.625,1.043-1.098,1.425-1.401c0.191-0.152,0.346-0.263,0.445-0.329c0.049-0.034,0.085-0.058,0.104-0.069c0.005-0.004,0.009-0.006,0.012-0.008s0.004-0.002,0.004-0.002l0,0c0.946-0.567,1.262-1.802,0.705-2.763c-0.559-0.965-1.785-1.288-2.739-0.724c-0.128,0.079-1.555,0.93-3.024,2.696c-1.462,1.751-2.974,4.511-2.97,8.157C2.49,23.775,8.315,29.664,15.5,29.667c7.186-0.003,13.01-5.892,13.012-13.155C28.516,12.864,27.005,10.105,25.542,8.354zM15.5,17.523c1.105,0,2.002-0.907,2.002-2.023h-0.001V3.357c0-1.118-0.896-2.024-2.001-2.024s-2.002,0.906-2.002,2.024V15.5C13.498,16.616,14.395,17.523,15.5,17.523z",
+        flag: "M9.5,3v10c8,0,8,4,16,4V7C17.5,7,17.5,3,9.5,3z M6.5,29h2V3h-2V29z",
+		"flag-alt": "M19.562,10.75C21.74,8.572,25.5,7,25.5,7c-8,0-8-4-16-4v10c8,0,8,4,16,4C25.5,17,21.75,14,19.562,10.75zM6.5,29h2V3h-2V29z",
+        tag: "M14.263,2.826H7.904L2.702,8.028v6.359L18.405,30.09l11.561-11.562L14.263,2.826zM6.495,8.859c-0.619-0.619-0.619-1.622,0-2.24C7.114,6,8.117,6,8.736,6.619c0.62,0.62,0.619,1.621,0,2.241C8.117,9.479,7.114,9.479,6.495,8.859z",
+        search: "M29.772,26.433l-7.126-7.126c0.96-1.583,1.523-3.435,1.524-5.421C24.169,8.093,19.478,3.401,13.688,3.399C7.897,3.401,3.204,8.093,3.204,13.885c0,5.789,4.693,10.481,10.484,10.481c1.987,0,3.839-0.563,5.422-1.523l7.128,7.127L29.772,26.433zM7.203,13.885c0.006-3.582,2.903-6.478,6.484-6.486c3.579,0.008,6.478,2.904,6.484,6.486c-0.007,3.58-2.905,6.476-6.484,6.484C10.106,20.361,7.209,17.465,7.203,13.885z",
+        zoomout: "M22.646,19.307c0.96-1.583,1.523-3.435,1.524-5.421C24.169,8.093,19.478,3.401,13.688,3.399C7.897,3.401,3.204,8.093,3.204,13.885c0,5.789,4.693,10.481,10.484,10.481c1.987,0,3.839-0.563,5.422-1.523l7.128,7.127l3.535-3.537L22.646,19.307zM13.688,20.369c-3.582-0.008-6.478-2.904-6.484-6.484c0.006-3.582,2.903-6.478,6.484-6.486c3.579,0.008,6.478,2.904,6.484,6.486C20.165,17.465,17.267,20.361,13.688,20.369zM8.854,11.884v4.001l9.665-0.001v-3.999L8.854,11.884z",
+        zoomin: "M22.646,19.307c0.96-1.583,1.523-3.435,1.524-5.421C24.169,8.093,19.478,3.401,13.688,3.399C7.897,3.401,3.204,8.093,3.204,13.885c0,5.789,4.693,10.481,10.484,10.481c1.987,0,3.839-0.563,5.422-1.523l7.128,7.127l3.535-3.537L22.646,19.307zM13.688,20.369c-3.582-0.008-6.478-2.904-6.484-6.484c0.006-3.582,2.903-6.478,6.484-6.486c3.579,0.008,6.478,2.904,6.484,6.486C20.165,17.465,17.267,20.361,13.688,20.369zM15.687,9.051h-4v2.833H8.854v4.001h2.833v2.833h4v-2.834h2.832v-3.999h-2.833V9.051z",
+        cross: "M24.778,21.419 19.276,15.917 24.777,10.415 21.949,7.585 16.447,13.087 10.945,7.585 8.117,10.415 13.618,15.917 8.116,21.419 10.946,24.248 16.447,18.746 21.948,24.248z",
+        check: "M2.379,14.729 5.208,11.899 12.958,19.648 25.877,6.733 28.707,9.561 12.958,25.308z",
+        settings: "M16.015,12.03c-2.156,0-3.903,1.747-3.903,3.903c0,2.155,1.747,3.903,3.903,3.903c0.494,0,0.962-0.102,1.397-0.27l0.836,1.285l1.359-0.885l-0.831-1.276c0.705-0.706,1.142-1.681,1.142-2.757C19.918,13.777,18.171,12.03,16.015,12.03zM16,1.466C7.973,1.466,1.466,7.973,1.466,16c0,8.027,6.507,14.534,14.534,14.534c8.027,0,14.534-6.507,14.534-14.534C30.534,7.973,24.027,1.466,16,1.466zM26.174,20.809c-0.241,0.504-0.513,0.99-0.826,1.45L22.19,21.58c-0.481,0.526-1.029,0.994-1.634,1.385l0.119,3.202c-0.507,0.23-1.028,0.421-1.569,0.57l-1.955-2.514c-0.372,0.051-0.75,0.086-1.136,0.086c-0.356,0-0.706-0.029-1.051-0.074l-1.945,2.5c-0.541-0.151-1.065-0.342-1.57-0.569l0.117-3.146c-0.634-0.398-1.208-0.88-1.712-1.427L6.78,22.251c-0.313-0.456-0.583-0.944-0.826-1.448l2.088-2.309c-0.226-0.703-0.354-1.451-0.385-2.223l-2.768-1.464c0.055-0.563,0.165-1.107,0.301-1.643l3.084-0.427c0.29-0.702,0.675-1.352,1.135-1.942L8.227,7.894c0.399-0.389,0.83-0.744,1.283-1.07l2.663,1.672c0.65-0.337,1.349-0.593,2.085-0.75l0.968-3.001c0.278-0.021,0.555-0.042,0.837-0.042c0.282,0,0.56,0.022,0.837,0.042l0.976,3.028c0.72,0.163,1.401,0.416,2.036,0.75l2.704-1.697c0.455,0.326,0.887,0.681,1.285,1.07l-1.216,2.986c0.428,0.564,0.793,1.181,1.068,1.845l3.185,0.441c0.135,0.535,0.247,1.081,0.302,1.643l-2.867,1.516c-0.034,0.726-0.15,1.43-0.355,2.1L26.174,20.809z",
+        settingsalt: "M16,1.466C7.973,1.466,1.466,7.973,1.466,16c0,8.027,6.507,14.534,14.534,14.534c8.027,0,14.534-6.507,14.534-14.534C30.534,7.973,24.027,1.466,16,1.466zM24.386,14.968c-1.451,1.669-3.706,2.221-5.685,1.586l-7.188,8.266c-0.766,0.88-2.099,0.97-2.979,0.205s-0.973-2.099-0.208-2.979l7.198-8.275c-0.893-1.865-0.657-4.164,0.787-5.824c1.367-1.575,3.453-2.151,5.348-1.674l-2.754,3.212l0.901,2.621l2.722,0.529l2.761-3.22C26.037,11.229,25.762,13.387,24.386,14.968z",
+        feed: "M4.135,16.762c3.078,0,5.972,1.205,8.146,3.391c2.179,2.187,3.377,5.101,3.377,8.202h4.745c0-9.008-7.299-16.335-16.269-16.335V16.762zM4.141,8.354c10.973,0,19.898,8.975,19.898,20.006h4.743c0-13.646-11.054-24.749-24.642-24.749V8.354zM10.701,25.045c0,1.815-1.471,3.287-3.285,3.287s-3.285-1.472-3.285-3.287c0-1.813,1.471-3.285,3.285-3.285S10.701,23.231,10.701,25.045z",
+        bug: "M28.589,10.903l-5.828,1.612c-0.534-1.419-1.338-2.649-2.311-3.628l3.082-5.44c0.271-0.48,0.104-1.092-0.38-1.365c-0.479-0.271-1.09-0.102-1.36,0.377l-2.924,5.162c-0.604-0.383-1.24-0.689-1.9-0.896c-0.416-1.437-1.652-2.411-3.058-2.562c-0.001-0.004-0.002-0.008-0.003-0.012c-0.061-0.242-0.093-0.46-0.098-0.65c-0.005-0.189,0.012-0.351,0.046-0.479c0.037-0.13,0.079-0.235,0.125-0.317c0.146-0.26,0.34-0.43,0.577-0.509c0.023,0.281,0.142,0.482,0.352,0.601c0.155,0.088,0.336,0.115,0.546,0.086c0.211-0.031,0.376-0.152,0.496-0.363c0.105-0.186,0.127-0.389,0.064-0.607c-0.064-0.219-0.203-0.388-0.414-0.507c-0.154-0.087-0.314-0.131-0.482-0.129c-0.167,0.001-0.327,0.034-0.481,0.097c-0.153,0.063-0.296,0.16-0.429,0.289c-0.132,0.129-0.241,0.271-0.33,0.426c-0.132,0.234-0.216,0.496-0.25,0.783c-0.033,0.286-0.037,0.565-0.009,0.84c0.017,0.16,0.061,0.301,0.094,0.449c-0.375-0.021-0.758,0.002-1.14,0.108c-0.482,0.133-0.913,0.36-1.28,0.653c-0.052-0.172-0.098-0.344-0.18-0.518c-0.116-0.249-0.263-0.486-0.438-0.716c-0.178-0.229-0.384-0.41-0.618-0.543C9.904,3.059,9.737,2.994,9.557,2.951c-0.18-0.043-0.352-0.052-0.516-0.027s-0.318,0.08-0.463,0.164C8.432,3.172,8.318,3.293,8.23,3.445C8.111,3.656,8.08,3.873,8.136,4.092c0.058,0.221,0.181,0.384,0.367,0.49c0.21,0.119,0.415,0.138,0.611,0.056C9.31,4.556,9.451,4.439,9.539,4.283c0.119-0.21,0.118-0.443-0.007-0.695c0.244-0.055,0.497-0.008,0.757,0.141c0.081,0.045,0.171,0.115,0.27,0.208c0.097,0.092,0.193,0.222,0.286,0.388c0.094,0.166,0.179,0.368,0.251,0.608c0.013,0.044,0.023,0.098,0.035,0.146c-0.911,0.828-1.357,2.088-1.098,3.357c-0.582,0.584-1.072,1.27-1.457,2.035l-5.16-2.926c-0.48-0.271-1.092-0.102-1.364,0.377C1.781,8.404,1.95,9.016,2.43,9.289l5.441,3.082c-0.331,1.34-0.387,2.807-0.117,4.297l-5.828,1.613c-0.534,0.147-0.846,0.699-0.698,1.231c0.147,0.53,0.697,0.843,1.231,0.694l5.879-1.627c0.503,1.057,1.363,2.28,2.371,3.443l-3.194,5.639c-0.272,0.481-0.104,1.092,0.378,1.363c0.239,0.137,0.512,0.162,0.758,0.094c0.248-0.068,0.469-0.229,0.604-0.471l2.895-5.109c2.7,2.594,5.684,4.123,5.778,1.053c1.598,2.56,3.451-0.338,4.502-3.976l5.203,2.947c0.24,0.138,0.514,0.162,0.762,0.094c0.246-0.067,0.467-0.229,0.603-0.471c0.272-0.479,0.104-1.091-0.377-1.362l-5.701-3.229c0.291-1.505,0.422-2.983,0.319-4.138l5.886-1.627c0.53-0.147,0.847-0.697,0.696-1.229C29.673,11.068,29.121,10.756,28.589,10.903z",
+        link: "M16.45,18.085l-2.47,2.471c0.054,1.023-0.297,2.062-1.078,2.846c-1.465,1.459-3.837,1.459-5.302-0.002c-1.461-1.465-1.46-3.836-0.001-5.301c0.783-0.781,1.824-1.131,2.847-1.078l2.469-2.469c-2.463-1.057-5.425-0.586-7.438,1.426c-2.634,2.637-2.636,6.907,0,9.545c2.638,2.637,6.909,2.635,9.545,0l0.001,0.002C17.033,23.511,17.506,20.548,16.45,18.085zM14.552,12.915l2.467-2.469c-0.053-1.023,0.297-2.062,1.078-2.848C19.564,6.139,21.934,6.137,23.4,7.6c1.462,1.465,1.462,3.837,0,5.301c-0.783,0.783-1.822,1.132-2.846,1.079l-2.469,2.468c2.463,1.057,5.424,0.584,7.438-1.424c2.634-2.639,2.633-6.91,0-9.546c-2.639-2.636-6.91-2.637-9.545-0.001C13.967,7.489,13.495,10.451,14.552,12.915zM18.152,10.727l-7.424,7.426c-0.585,0.584-0.587,1.535,0,2.121c0.585,0.584,1.536,0.584,2.121-0.002l7.425-7.424c0.584-0.586,0.584-1.535,0-2.121C19.687,10.141,18.736,10.142,18.152,10.727z",
+        calendar: "M22,4.582h-2v3.335h2V4.582zM25.416,5.748H23v3.17h-4v-3.17h-6v3.168H9.002V5.748H6.583v21.555h18.833V5.748zM24.418,26.303H7.584V13.988h16.833V26.303zM12,4.582h-2v3.335h2V4.582zM19.428,23.962h1.568v-7.788h-1.277c0,0.067-0.021,0.172-0.061,0.312c-0.066,0.232-0.168,0.419-0.299,0.559c-0.193,0.204-0.443,0.34-0.75,0.408c-0.193,0.043-0.531,0.075-1.014,0.097v1.042h1.832V23.962zM13.673,22.909c-0.489,0-0.827-0.188-1.013-0.564c-0.101-0.203-0.15-0.461-0.15-0.773h-1.504c0.025,0.62,0.15,1.121,0.376,1.504c0.429,0.721,1.194,1.08,2.296,1.08c0.895,0,1.569-0.25,2.026-0.749c0.455-0.5,0.684-1.079,0.684-1.737c0-0.627-0.195-1.121-0.586-1.482c-0.261-0.24-0.461-0.36-0.602-0.36c0.187-0.071,0.365-0.206,0.537-0.403c0.272-0.314,0.408-0.701,0.408-1.16c0-0.647-0.228-1.164-0.684-1.549c-0.456-0.386-1.056-0.578-1.8-0.578c-0.4,0-0.738,0.049-1.014,0.146c-0.276,0.097-0.514,0.236-0.714,0.419c-0.269,0.258-0.465,0.539-0.591,0.843c-0.117,0.348-0.184,0.715-0.198,1.102h1.429c-0.007-0.384,0.074-0.689,0.244-0.919c0.169-0.229,0.435-0.344,0.795-0.344c0.314,0,0.559,0.094,0.731,0.279c0.174,0.187,0.26,0.428,0.26,0.726c0,0.458-0.169,0.763-0.508,0.913c-0.196,0.09-0.543,0.138-1.039,0.145v1.096c0.507,0,0.878,0.049,1.114,0.146c0.414,0.172,0.621,0.514,0.621,1.026c0,0.387-0.112,0.683-0.335,0.889C14.234,22.807,13.973,22.909,13.673,22.909z",
+		calendar2: "M22,4.582h-2v3.335h2V4.582zM12,4.582h-2v3.335h2V4.582zM25.416,5.748H23v3.17h-4v-3.17h-6v3.168H9.002V5.748H6.583v21.555h18.833V5.748zM11.033,26.303H7.584v-3.44h3.449V26.303zM11.033,21.862H7.584v-3.434h3.449V21.862zM11.033,17.429H7.584v-3.441h3.449V17.429zM15.501,26.303h-3.468v-3.44h3.468V26.303zM15.501,21.862h-3.468v-3.434h3.468V21.862zM15.501,17.429h-3.468v-3.441h3.468V17.429zM19.97,26.303h-3.469v-3.44h3.469V26.303zM19.97,21.862h-3.469v-3.434h3.469V21.862zM19.97,17.429h-3.469v-3.441h3.469V17.429zM24.418,26.303H20.97v-3.44h3.448V26.303zM24.418,21.862H20.97v-3.434h3.448V21.862zM24.418,17.429H20.97v-3.441h3.448V17.429z",
+        picker: "M22.221,10.853c-0.111-0.414-0.261-0.412,0.221-1.539l1.66-3.519c0.021-0.051,0.2-0.412,0.192-0.946c0.015-0.529-0.313-1.289-1.119-1.642c-1.172-0.555-1.17-0.557-2.344-1.107c-0.784-0.396-1.581-0.171-1.979,0.179c-0.42,0.333-0.584,0.7-0.609,0.75L16.58,6.545c-0.564,1.084-0.655,0.97-1.048,1.147c-0.469,0.129-1.244,0.558-1.785,1.815c-1.108,2.346-1.108,2.346-1.108,2.346l-0.276,0.586l1.17,0.553l-3.599,7.623c-0.38,0.828-0.166,1.436-0.166,2.032c0.01,0.627-0.077,1.509-0.876,3.21l-0.276,0.586l3.517,1.661l0.276-0.585c0.808-1.699,1.431-2.326,1.922-2.717c0.46-0.381,1.066-0.6,1.465-1.42l3.599-7.618l1.172,0.554l0.279-0.589c0,0,0,0,1.105-2.345C22.578,12.166,22.419,11.301,22.221,10.853zM14.623,22.83c-0.156,0.353-0.413,0.439-1.091,0.955c-0.577,0.448-1.264,1.172-2.009,2.6l-1.191-0.562c0.628-1.48,0.75-2.474,0.73-3.203c-0.031-0.851-0.128-1.104,0.045-1.449l3.599-7.621l3.517,1.662L14.623,22.83z",
+        no: "M16,3.667C9.189,3.667,3.667,9.188,3.667,16S9.189,28.333,16,28.333c6.812,0,12.333-5.521,12.333-12.333S22.812,3.667,16,3.667zM16,6.667c1.851,0,3.572,0.548,5.024,1.48L8.147,21.024c-0.933-1.452-1.48-3.174-1.48-5.024C6.667,10.854,10.854,6.667,16,6.667zM16,25.333c-1.85,0-3.572-0.548-5.024-1.48l12.876-12.877c0.933,1.452,1.48,3.174,1.48,5.024C25.333,21.146,21.146,25.333,16,25.333z",
+        commandline: "M2.021,9.748L2.021,9.748V9.746V9.748zM2.022,9.746l5.771,5.773l-5.772,5.771l2.122,2.123l7.894-7.895L4.143,7.623L2.022,9.746zM12.248,23.269h14.419V20.27H12.248V23.269zM16.583,17.019h10.084V14.02H16.583V17.019zM12.248,7.769v3.001h14.419V7.769H12.248z",
+        photo: "M24.25,10.25H20.5v-1.5h-9.375v1.5h-3.75c-1.104,0-2,0.896-2,2v10.375c0,1.104,0.896,2,2,2H24.25c1.104,0,2-0.896,2-2V12.25C26.25,11.146,25.354,10.25,24.25,10.25zM15.812,23.499c-3.342,0-6.06-2.719-6.06-6.061c0-3.342,2.718-6.062,6.06-6.062s6.062,2.72,6.062,6.062C21.874,20.78,19.153,23.499,15.812,23.499zM15.812,13.375c-2.244,0-4.062,1.819-4.062,4.062c0,2.244,1.819,4.062,4.062,4.062c2.244,0,4.062-1.818,4.062-4.062C19.875,15.194,18.057,13.375,15.812,13.375z",
+        printer: "M24.569,12.125h-2.12c-0.207-1.34-1.247-2.759-2.444-3.967c-1.277-1.24-2.654-2.234-3.784-2.37c-0.062-0.008-0.124-0.014-0.198-0.015H8.594c-0.119,0-0.235,0.047-0.319,0.132c-0.083,0.083-0.132,0.2-0.132,0.32v5.9H6.069c-1.104,0-2,0.896-2,2V23h4.074v2.079c0,0.118,0.046,0.23,0.132,0.318c0.086,0.085,0.199,0.131,0.319,0.131h13.445c0.118,0,0.232-0.046,0.318-0.131s0.138-0.199,0.138-0.318V23h4.074v-8.875C26.569,13.021,25.674,12.125,24.569,12.125zM21.589,24.626H9.043V21.5h12.546V24.626zM21.589,13.921c0-0.03,0-0.063-0.003-0.096c-0.015-0.068-0.062-0.135-0.124-0.2H9.043v-6.95h6.987v0.001c0.305-0.019,0.567,0.282,0.769,0.971c0.183,0.655,0.229,1.509,0.229,2.102c0.001,0.433-0.019,0.725-0.019,0.725l-0.037,0.478l0.48,0.005c0.002,0,1.109,0.014,2.196,0.26c1.044,0.226,1.86,0.675,1.938,1.184c0.003,0.045,0.003,0.091,0.003,0.133V13.921z",
+        "export": "M24.086,20.904c-1.805,3.113-5.163,5.212-9.023,5.219c-5.766-0.01-10.427-4.672-10.438-10.435C4.636,9.922,9.297,5.261,15.063,5.25c3.859,0.007,7.216,2.105,9.022,5.218l3.962,2.284l0.143,0.082C26.879,6.784,21.504,2.25,15.063,2.248C7.64,2.25,1.625,8.265,1.624,15.688c0.002,7.42,6.017,13.435,13.439,13.437c6.442-0.002,11.819-4.538,13.127-10.589l-0.141,0.081L24.086,20.904zM28.4,15.688l-7.15-4.129v2.297H10.275v3.661H21.25v2.297L28.4,15.688z",
+        "import": "M15.067,2.25c-5.979,0-11.035,3.91-12.778,9.309h3.213c1.602-3.705,5.271-6.301,9.565-6.309c5.764,0.01,10.428,4.674,10.437,10.437c-0.009,5.764-4.673,10.428-10.437,10.438c-4.294-0.007-7.964-2.605-9.566-6.311H2.289c1.744,5.399,6.799,9.31,12.779,9.312c7.419-0.002,13.437-6.016,13.438-13.438C28.504,8.265,22.486,2.252,15.067,2.25zM10.918,19.813l7.15-4.126l-7.15-4.129v2.297H-0.057v3.661h10.975V19.813z",
+        run: "M17.41,20.395l-0.778-2.723c0.228-0.2,0.442-0.414,0.644-0.643l2.721,0.778c0.287-0.418,0.534-0.862,0.755-1.323l-2.025-1.96c0.097-0.288,0.181-0.581,0.241-0.883l2.729-0.684c0.02-0.252,0.039-0.505,0.039-0.763s-0.02-0.51-0.039-0.762l-2.729-0.684c-0.061-0.302-0.145-0.595-0.241-0.883l2.026-1.96c-0.222-0.46-0.469-0.905-0.756-1.323l-2.721,0.777c-0.201-0.228-0.416-0.442-0.644-0.643l0.778-2.722c-0.418-0.286-0.863-0.534-1.324-0.755l-1.96,2.026c-0.287-0.097-0.581-0.18-0.883-0.241l-0.683-2.73c-0.253-0.019-0.505-0.039-0.763-0.039s-0.51,0.02-0.762,0.039l-0.684,2.73c-0.302,0.061-0.595,0.144-0.883,0.241l-1.96-2.026C7.048,3.463,6.604,3.71,6.186,3.997l0.778,2.722C6.736,6.919,6.521,7.134,6.321,7.361L3.599,6.583C3.312,7.001,3.065,7.446,2.844,7.907l2.026,1.96c-0.096,0.288-0.18,0.581-0.241,0.883l-2.73,0.684c-0.019,0.252-0.039,0.505-0.039,0.762s0.02,0.51,0.039,0.763l2.73,0.684c0.061,0.302,0.145,0.595,0.241,0.883l-2.026,1.96c0.221,0.46,0.468,0.905,0.755,1.323l2.722-0.778c0.2,0.229,0.415,0.442,0.643,0.643l-0.778,2.723c0.418,0.286,0.863,0.533,1.323,0.755l1.96-2.026c0.288,0.097,0.581,0.181,0.883,0.241l0.684,2.729c0.252,0.02,0.505,0.039,0.763,0.039s0.51-0.02,0.763-0.039l0.683-2.729c0.302-0.061,0.596-0.145,0.883-0.241l1.96,2.026C16.547,20.928,16.992,20.681,17.41,20.395zM11.798,15.594c-1.877,0-3.399-1.522-3.399-3.399s1.522-3.398,3.399-3.398s3.398,1.521,3.398,3.398S13.675,15.594,11.798,15.594zM27.29,22.699c0.019-0.547-0.06-1.104-0.23-1.654l1.244-1.773c-0.188-0.35-0.4-0.682-0.641-0.984l-2.122,0.445c-0.428-0.364-0.915-0.648-1.436-0.851l-0.611-2.079c-0.386-0.068-0.777-0.105-1.173-0.106l-0.974,1.936c-0.279,0.054-0.558,0.128-0.832,0.233c-0.257,0.098-0.497,0.22-0.727,0.353L17.782,17.4c-0.297,0.262-0.568,0.545-0.813,0.852l0.907,1.968c-0.259,0.495-0.437,1.028-0.519,1.585l-1.891,1.06c0.019,0.388,0.076,0.776,0.164,1.165l2.104,0.519c0.231,0.524,0.541,0.993,0.916,1.393l-0.352,2.138c0.32,0.23,0.66,0.428,1.013,0.6l1.715-1.32c0.536,0.141,1.097,0.195,1.662,0.15l1.452,1.607c0.2-0.057,0.399-0.118,0.596-0.193c0.175-0.066,0.34-0.144,0.505-0.223l0.037-2.165c0.455-0.339,0.843-0.747,1.152-1.206l2.161-0.134c0.152-0.359,0.279-0.732,0.368-1.115L27.29,22.699zM23.127,24.706c-1.201,0.458-2.545-0.144-3.004-1.345s0.143-2.546,1.344-3.005c1.201-0.458,2.547,0.144,3.006,1.345C24.931,22.902,24.328,24.247,23.127,24.706z",
+        magnet: "M20.812,19.5h5.002v-6.867c-0.028-1.706-0.61-3.807-2.172-5.841c-1.539-2.014-4.315-3.72-7.939-3.687C12.076,3.073,9.3,4.779,7.762,6.792C6.2,8.826,5.617,10.928,5.588,12.634V19.5h5v-6.866c-0.027-0.377,0.303-1.789,1.099-2.748c0.819-0.979,1.848-1.747,4.014-1.778c2.165,0.032,3.195,0.799,4.013,1.778c0.798,0.959,1.126,2.372,1.099,2.748V19.5L20.812,19.5zM25.814,25.579c0,0,0-2.354,0-5.079h-5.002c0,2.727,0,5.08,0,5.08l5.004-0.001H25.814zM5.588,25.58h5c0,0,0-2.354,0-5.08h-5C5.588,23.227,5.588,25.58,5.588,25.58z",
+        nomagnet: "M10.59,17.857v-5.225c-0.027-0.376,0.303-1.789,1.099-2.748c0.819-0.979,1.849-1.748,4.014-1.778c1.704,0.026,2.699,0.508,3.447,1.189l3.539-3.539c-1.616-1.526-4.01-2.679-6.986-2.652C12.077,3.073,9.3,4.779,7.762,6.793C6.2,8.826,5.617,10.928,5.59,12.634V19.5h3.357L10.59,17.857zM5.59,20.5v2.357L7.947,20.5H5.59zM20.812,13.29v6.21h5.002v-6.866c-0.021-1.064-0.252-2.283-0.803-3.542L20.812,13.29zM25.339,4.522L4.652,25.209l1.415,1.416L26.753,5.937L25.339,4.522zM20.812,25.58h5.002c0,0,0-2.354,0-5.08h-5.002C20.812,23.227,20.812,25.58,20.812,25.58zM10.59,25.58c0,0,0-0.827,0-2.064L8.525,25.58H10.59z",
+        reflecth: "M15.57,20.273h0.854v-1.705H15.57V20.273zM15.57,23.686h0.854V21.98H15.57V23.686zM15.57,27.096h0.854v-1.705H15.57V27.096zM15.57,29.689h0.854V28.8H15.57V29.689zM15.57,16.865h0.854V15.16H15.57V16.865zM15.57,3.225h0.854V1.52H15.57V3.225zM15.57,6.635h0.854V4.93H15.57V6.635zM15.57,10.045h0.854V8.34H15.57V10.045zM15.57,13.455h0.854V11.75H15.57V13.455zM18.41,3.327V25.46h12.015L18.41,3.327zM19.264,6.68l9.729,17.93h-9.729V6.68zM13.535,25.46V3.327L1.521,25.46H13.535z",
+        reflectv: "M20.643,16.008v-0.854h-1.705v0.854H20.643zM24.053,16.008v-0.854h-1.705v0.854H24.053zM27.463,16.008v-0.854h-1.705v0.854H27.463zM30.059,16.008v-0.854h-0.891v0.854H30.059zM17.232,16.008v-0.854h-1.709v0.854H17.232zM3.593,16.008v-0.854H1.888v0.854H3.593zM7.003,16.008v-0.854H5.298v0.854H7.003zM10.414,16.008v-0.854H8.709v0.854H10.414zM13.824,16.008v-0.854h-1.705v0.854H13.824zM3.694,13.167h22.134V1.152L3.694,13.167zM7.048,12.314l17.929-9.729v9.729H7.048zM25.828,18.042H3.694l22.134,12.015V18.042z",
+        resize2: "M1.999,2.332v26.499H28.5V2.332H1.999zM26.499,26.832H4V12.5h8.167V4.332h14.332V26.832zM15.631,17.649l5.468,5.469l-1.208,1.206l5.482,1.469l-1.47-5.481l-1.195,1.195l-5.467-5.466l1.209-1.208l-5.482-1.469l1.468,5.48L15.631,17.649z",
+        rotate: "M15.5,5.27c1.914,0,3.666,0.629,5.089,1.686l-1.781,1.783l8.428,2.256l-2.26-8.427l-1.889,1.89C21.016,2.781,18.371,1.77,15.5,1.77C8.827,1.773,3.418,7.181,3.417,13.855c0.001,4.063,2.012,7.647,5.084,9.838v-4.887c-0.993-1.4-1.583-3.105-1.585-4.952C6.923,9.114,10.759,5.278,15.5,5.27zM9.5,29.23h12V12.355h-12V29.23z",
+        connect: "M25.06,13.719c-0.944-5.172-5.461-9.094-10.903-9.094v4c3.917,0.006,7.085,3.176,7.094,7.094c-0.009,3.917-3.177,7.085-7.094,7.093v4.002c5.442-0.004,9.959-3.926,10.903-9.096h4.69v-3.999H25.06zM20.375,15.719c0-3.435-2.784-6.219-6.219-6.219c-2.733,0-5.05,1.766-5.884,4.218H1.438v4.001h6.834c0.833,2.452,3.15,4.219,5.884,4.219C17.591,21.938,20.375,19.153,20.375,15.719z",
+        disconnect: "M9.219,9.5c-2.733,0-5.05,1.766-5.884,4.218H1.438v4.001h1.897c0.833,2.452,3.15,4.219,5.884,4.219c3.435,0,6.219-2.784,6.219-6.219S12.653,9.5,9.219,9.5zM27.685,13.719c-0.944-5.172-5.461-9.094-10.903-9.094v4c3.917,0.006,7.085,3.176,7.094,7.094c-0.009,3.917-3.177,7.085-7.094,7.093v4.002c5.442-0.004,9.959-3.926,10.903-9.096h2.065v-3.999H27.685z",
+        folder: "M28.625,26.75h-26.5V8.375h1.124c1.751,0,0.748-3.125,3-3.125c3.215,0,1.912,0,5.126,0c2.251,0,1.251,3.125,3.001,3.125h14.25V26.75z",
+        man: "M21.021,16.349c-0.611-1.104-1.359-1.998-2.109-2.623c-0.875,0.641-1.941,1.031-3.103,1.031c-1.164,0-2.231-0.391-3.105-1.031c-0.75,0.625-1.498,1.519-2.111,2.623c-1.422,2.563-1.578,5.192-0.35,5.874c0.55,0.307,1.127,0.078,1.723-0.496c-0.105,0.582-0.166,1.213-0.166,1.873c0,2.932,1.139,5.307,2.543,5.307c0.846,0,1.265-0.865,1.466-2.189c0.201,1.324,0.62,2.189,1.463,2.189c1.406,0,2.545-2.375,2.545-5.307c0-0.66-0.061-1.291-0.168-1.873c0.598,0.574,1.174,0.803,1.725,0.496C22.602,21.541,22.443,18.912,21.021,16.349zM15.808,13.757c2.362,0,4.278-1.916,4.278-4.279s-1.916-4.279-4.278-4.279c-2.363,0-4.28,1.916-4.28,4.279S13.445,13.757,15.808,13.757z",
+        woman: "M21.022,16.349c-0.611-1.104-1.359-1.998-2.109-2.623c-0.875,0.641-1.941,1.031-3.104,1.031c-1.164,0-2.231-0.391-3.105-1.031c-0.75,0.625-1.498,1.519-2.111,2.623c-1.422,2.563-1.579,5.192-0.351,5.874c0.55,0.307,1.127,0.078,1.723-0.496c-0.105,0.582-0.167,1.213-0.167,1.873c0,2.932,1.139,5.307,2.543,5.307c0.846,0,1.265-0.865,1.466-2.189c0.201,1.324,0.62,2.189,1.464,2.189c1.406,0,2.545-2.375,2.545-5.307c0-0.66-0.061-1.291-0.168-1.873c0.598,0.574,1.174,0.803,1.725,0.496C22.603,21.541,22.444,18.912,21.022,16.349zM15.808,13.757c2.363,0,4.279-1.916,4.279-4.279s-1.916-4.279-4.279-4.279c-2.363,0-4.28,1.916-4.28,4.279S13.445,13.757,15.808,13.757zM18.731,4.974c1.235,0.455,0.492-0.725,0.492-1.531s0.762-1.792-0.492-1.391c-1.316,0.422-2.383,0.654-2.383,1.461S17.415,4.489,18.731,4.974zM15.816,4.4c0.782,0,0.345-0.396,0.345-0.884c0-0.488,0.438-0.883-0.345-0.883s-0.374,0.396-0.374,0.883C15.442,4.005,15.034,4.4,15.816,4.4zM12.884,4.974c1.316-0.484,2.383-0.654,2.383-1.461S14.2,2.474,12.884,2.052c-1.254-0.402-0.492,0.584-0.492,1.391S11.648,5.428,12.884,4.974z",
+		speaker: "M12.558,15.254c2.362,0,4.277-1.916,4.277-4.279s-1.916-4.279-4.277-4.279c-2.363,0-4.28,1.916-4.28,4.279S10.194,15.254,12.558,15.254zM15.662,15.224c-0.875,0.641-1.941,1.031-3.103,1.031c-1.164,0-2.231-0.391-3.105-1.031c-0.75,0.625-1.498,1.519-2.111,2.623c-1.422,2.563-1.578,5.192-0.35,5.874c0.55,0.312,1.127,0.078,1.723-0.496c-0.105,0.582-0.166,1.213-0.166,1.873c0,2.938,1.139,5.312,2.543,5.312c0.846,0,1.265-0.865,1.466-2.188c0.201,1.311,0.62,2.188,1.462,2.188c1.396,0,2.544-2.375,2.544-5.312c0-0.66-0.062-1.291-0.167-1.873c0.598,0.574,1.174,0.812,1.725,0.496c1.228-0.682,1.069-3.311-0.353-5.874C17.159,16.742,16.412,15.849,15.662,15.224zM19.821,3.711l-1.414,1.414c1.499,1.499,2.428,3.569,2.428,5.851c0,2.283-0.929,4.353-2.428,5.853l1.413,1.412c1.861-1.86,3.015-4.43,3.015-7.265C22.835,8.142,21.683,5.572,19.821,3.711zM16.288,14.707l1.413,1.414c1.318-1.318,2.135-3.138,2.135-5.145c0-2.007-0.816-3.827-2.134-5.145l-1.414,1.414c0.956,0.956,1.547,2.275,1.547,3.731S17.243,13.751,16.288,14.707zM21.941,1.59l-1.413,1.414c2.042,2.042,3.307,4.862,3.307,7.971c0,3.11-1.265,5.93-3.308,7.972l1.413,1.414c2.405-2.404,3.895-5.725,3.895-9.386C25.835,7.315,24.346,3.995,21.941,1.59z",
+        people: "M21.066,20.667c1.227-0.682,1.068-3.311-0.354-5.874c-0.611-1.104-1.359-1.998-2.109-2.623c-0.875,0.641-1.941,1.031-3.102,1.031c-1.164,0-2.231-0.391-3.104-1.031c-0.75,0.625-1.498,1.519-2.111,2.623c-1.422,2.563-1.578,5.192-0.35,5.874c0.549,0.312,1.127,0.078,1.723-0.496c-0.105,0.582-0.166,1.213-0.166,1.873c0,2.938,1.139,5.312,2.543,5.312c0.846,0,1.265-0.865,1.466-2.188c0.2,1.314,0.62,2.188,1.461,2.188c1.396,0,2.545-2.375,2.545-5.312c0-0.66-0.062-1.291-0.168-1.873C19.939,20.745,20.516,20.983,21.066,20.667zM15.5,12.201c2.361,0,4.277-1.916,4.277-4.279S17.861,3.644,15.5,3.644c-2.363,0-4.28,1.916-4.28,4.279S13.137,12.201,15.5,12.201zM24.094,14.914c1.938,0,3.512-1.573,3.512-3.513c0-1.939-1.573-3.513-3.512-3.513c-1.94,0-3.513,1.573-3.513,3.513C20.581,13.341,22.153,14.914,24.094,14.914zM28.374,17.043c-0.502-0.907-1.116-1.641-1.732-2.154c-0.718,0.526-1.594,0.846-2.546,0.846c-0.756,0-1.459-0.207-2.076-0.55c0.496,1.093,0.803,2.2,0.861,3.19c0.093,1.516-0.381,2.641-1.329,3.165c-0.204,0.117-0.426,0.183-0.653,0.224c-0.056,0.392-0.095,0.801-0.095,1.231c0,2.412,0.935,4.361,2.088,4.361c0.694,0,1.039-0.71,1.204-1.796c0.163,1.079,0.508,1.796,1.199,1.796c1.146,0,2.09-1.95,2.09-4.361c0-0.542-0.052-1.06-0.139-1.538c0.492,0.472,0.966,0.667,1.418,0.407C29.671,21.305,29.541,19.146,28.374,17.043zM6.906,14.914c1.939,0,3.512-1.573,3.512-3.513c0-1.939-1.573-3.513-3.512-3.513c-1.94,0-3.514,1.573-3.514,3.513C3.392,13.341,4.966,14.914,6.906,14.914zM9.441,21.536c-1.593-0.885-1.739-3.524-0.457-6.354c-0.619,0.346-1.322,0.553-2.078,0.553c-0.956,0-1.832-0.321-2.549-0.846c-0.616,0.513-1.229,1.247-1.733,2.154c-1.167,2.104-1.295,4.262-0.287,4.821c0.451,0.257,0.925,0.064,1.414-0.407c-0.086,0.479-0.136,0.996-0.136,1.538c0,2.412,0.935,4.361,2.088,4.361c0.694,0,1.039-0.71,1.204-1.796c0.165,1.079,0.509,1.796,1.201,1.796c1.146,0,2.089-1.95,2.089-4.361c0-0.432-0.04-0.841-0.097-1.233C9.874,21.721,9.651,21.656,9.441,21.536z",
+        parent: "M14.423,12.17c-0.875,0.641-1.941,1.031-3.102,1.031c-1.164,0-2.231-0.391-3.104-1.031c-0.75,0.625-1.498,1.519-2.111,2.623c-1.422,2.563-1.578,5.192-0.35,5.874c0.549,0.312,1.127,0.078,1.723-0.496c-0.105,0.582-0.166,1.213-0.166,1.873c0,2.938,1.139,5.312,2.543,5.312c0.846,0,1.265-0.865,1.466-2.188c0.2,1.314,0.62,2.188,1.461,2.188c1.396,0,2.545-2.375,2.545-5.312c0-0.66-0.062-1.291-0.168-1.873c0.6,0.574,1.176,0.812,1.726,0.496c1.227-0.682,1.068-3.311-0.354-5.874C15.921,13.689,15.173,12.795,14.423,12.17zM11.32,12.201c2.361,0,4.277-1.916,4.277-4.279s-1.916-4.279-4.277-4.279c-2.363,0-4.28,1.916-4.28,4.279S8.957,12.201,11.32,12.201zM21.987,17.671c1.508,0,2.732-1.225,2.732-2.735c0-1.51-1.225-2.735-2.732-2.735c-1.511,0-2.736,1.225-2.736,2.735C19.251,16.446,20.477,17.671,21.987,17.671zM25.318,19.327c-0.391-0.705-0.869-1.277-1.349-1.677c-0.56,0.41-1.24,0.659-1.982,0.659c-0.744,0-1.426-0.25-1.983-0.659c-0.479,0.399-0.958,0.972-1.35,1.677c-0.909,1.638-1.009,3.318-0.224,3.754c0.351,0.2,0.721,0.05,1.101-0.317c-0.067,0.372-0.105,0.775-0.105,1.197c0,1.878,0.728,3.396,1.625,3.396c0.54,0,0.808-0.553,0.937-1.398c0.128,0.841,0.396,1.398,0.934,1.398c0.893,0,1.627-1.518,1.627-3.396c0-0.422-0.04-0.825-0.107-1.197c0.383,0.367,0.752,0.52,1.104,0.317C26.328,22.646,26.227,20.965,25.318,19.327z",
+        notebook: "M24.875,1.375H8c-1.033,0-1.874,0.787-1.979,1.792h1.604c1.102,0,2,0.898,2,2c0,1.102-0.898,2-2,2H6v0.999h1.625c1.104,0,2.002,0.898,2.002,2.002c0,1.104-0.898,2.001-2.002,2.001H6v0.997h1.625c1.102,0,2,0.898,2,2c0,1.104-0.898,2.004-2,2.004H6v0.994h1.625c1.102,0,2,0.898,2,2.002s-0.898,2.002-2,2.002H6v0.997h1.624c1.104,0,2.002,0.897,2.002,2.001c0,1.104-0.898,2.002-2.002,2.002H6.004C6.027,28.252,6.91,29.125,8,29.125h16.875c1.104,0,2-0.896,2-2V3.375C26.875,2.271,25.979,1.375,24.875,1.375zM25.25,8.375c0,0.552-0.447,1-1,1H14c-0.553,0-1-0.448-1-1V4c0-0.552,0.447-1,1-1h10.25c0.553,0,1,0.448,1,1V8.375zM8.625,25.166c0-0.554-0.449-1.001-1-1.001h-3.25c-0.552,0-1,0.447-1,1.001c0,0.552,0.449,1,1,1h3.25C8.176,26.166,8.625,25.718,8.625,25.166zM4.375,6.166h3.251c0.551,0,0.999-0.448,0.999-0.999c0-0.555-0.448-1-0.999-1H4.375c-0.553,0-1,0.445-1,1C3.374,5.718,3.822,6.166,4.375,6.166zM4.375,11.167h3.25c0.553,0,1-0.448,1-1s-0.448-1-1-1h-3.25c-0.553,0-1,0.448-1,1S3.822,11.167,4.375,11.167zM4.375,16.167h3.25c0.551,0,1-0.448,1-1.001s-0.448-0.999-1-0.999h-3.25c-0.553,0-1.001,0.446-1.001,0.999S3.822,16.167,4.375,16.167zM3.375,20.165c0,0.553,0.446,1.002,1,1.002h3.25c0.551,0,1-0.449,1-1.002c0-0.552-0.448-1-1-1h-3.25C3.821,19.165,3.375,19.613,3.375,20.165z",
+        diagram: "M6.812,17.202l7.396-3.665v-2.164h-0.834c-0.414,0-0.808-0.084-1.167-0.237v1.159l-7.396,3.667v2.912h2V17.202zM26.561,18.875v-2.913l-7.396-3.666v-1.158c-0.358,0.152-0.753,0.236-1.166,0.236h-0.832l-0.001,2.164l7.396,3.666v1.672H26.561zM16.688,18.875v-7.501h-2v7.501H16.688zM27.875,19.875H23.25c-1.104,0-2,0.896-2,2V26.5c0,1.104,0.896,2,2,2h4.625c1.104,0,2-0.896,2-2v-4.625C29.875,20.771,28.979,19.875,27.875,19.875zM8.125,19.875H3.5c-1.104,0-2,0.896-2,2V26.5c0,1.104,0.896,2,2,2h4.625c1.104,0,2-0.896,2-2v-4.625C10.125,20.771,9.229,19.875,8.125,19.875zM13.375,10.375H18c1.104,0,2-0.896,2-2V3.75c0-1.104-0.896-2-2-2h-4.625c-1.104,0-2,0.896-2,2v4.625C11.375,9.479,12.271,10.375,13.375,10.375zM18,19.875h-4.625c-1.104,0-2,0.896-2,2V26.5c0,1.104,0.896,2,2,2H18c1.104,0,2-0.896,2-2v-4.625C20,20.771,19.104,19.875,18,19.875z",
+        barchart: "M21.25,8.375V28h6.5V8.375H21.25zM12.25,28h6.5V4.125h-6.5V28zM3.25,28h6.5V12.625h-6.5V28z",
+        piechart: "M15.583,15.917l1.648-10.779C16.692,5.056,16.145,5,15.583,5C9.554,5,4.666,9.888,4.666,15.917c0,6.029,4.888,10.917,10.917,10.917S26.5,21.946,26.5,15.917c0-0.256-0.021-0.507-0.038-0.759L15.583,15.917zM19.437,3.127l-1.648,10.779l10.879-0.759C28.313,8.026,24.436,3.886,19.437,3.127z",
+        linechart: "M3.625,25.062c-0.539-0.115-0.885-0.646-0.77-1.187l0,0L6.51,6.584l2.267,9.259l1.923-5.188l3.581,3.741l3.883-13.103l2.934,11.734l1.96-1.509l5.271,11.74c0.226,0.504,0,1.095-0.505,1.321l0,0c-0.505,0.227-1.096,0-1.322-0.504l0,0l-4.23-9.428l-2.374,1.826l-1.896-7.596l-2.783,9.393l-3.754-3.924L8.386,22.66l-1.731-7.083l-1.843,8.711c-0.101,0.472-0.515,0.794-0.979,0.794l0,0C3.765,25.083,3.695,25.076,3.625,25.062L3.625,25.062z",
+        apps: "M24.359,18.424l-2.326,1.215c0.708,1.174,1.384,2.281,1.844,3.033l2.043-1.066C25.538,20.822,24.966,19.652,24.359,18.424zM19.143,14.688c0.445,0.84,1.342,2.367,2.274,3.926l2.414-1.261c-0.872-1.769-1.72-3.458-2.087-4.122c-0.896-1.621-1.982-3.108-3.454-5.417c-1.673-2.625-3.462-5.492-4.052-4.947c-1.194,0.384,1.237,4.094,1.876,5.715C16.73,10.147,17.991,12.512,19.143,14.688zM26.457,22.673l-1.961,1.022l1.982,4.598c0,0,0.811,0.684,1.92,0.213c1.104-0.469,0.81-1.706,0.81-1.706L26.457,22.673zM24.35,15.711c0.168,0.339,2.924,5.93,2.924,5.93h1.983v-5.93H24.35zM18.34,15.704h-4.726l-3.424,5.935h11.66C21.559,21.159,18.771,16.479,18.34,15.704zM3.231,21.613l3.437-5.902H2.083v5.93h1.133L3.231,21.613zM15.048,10.145c0-0.93-0.754-1.685-1.685-1.685c-0.661,0-1.231,0.381-1.507,0.936l2.976,1.572C14.97,10.725,15.048,10.444,15.048,10.145zM14.343,12.06l-3.188-1.684L9.62,13.012l3.197,1.689L14.343,12.06zM3.192,26.886l-0.384,1.108v0.299l0.298-0.128l0.725-0.896l2.997-2.354l-3.137-1.651L3.192,26.886zM9.02,14.044l-4.757,8.17l3.23,1.706l4.728-8.186L9.02,14.044z",
+        locked: "M26.711,14.085L16.914,4.29c-0.778-0.778-2.051-0.778-2.829,0L4.29,14.086c-0.778,0.778-0.778,2.05,0,2.829l9.796,9.796c0.778,0.777,2.051,0.777,2.829,0l9.797-9.797C27.488,16.136,27.488,14.863,26.711,14.085zM8.218,16.424c-0.4-0.153-0.687-0.533-0.687-0.987s0.287-0.834,0.687-0.987V16.424zM8.969,16.424v-1.974c0.4,0.152,0.687,0.533,0.687,0.987S9.369,16.272,8.969,16.424zM13.5,19.188l1.203-3.609c-0.689-0.306-1.172-0.994-1.172-1.797c0-1.087,0.881-1.969,1.969-1.969c1.087,0,1.969,0.881,1.969,1.969c0,0.803-0.482,1.491-1.172,1.797l1.203,3.609H13.5zM22.03,16.549c-0.399-0.152-0.687-0.533-0.687-0.986s0.287-0.834,0.687-0.987V16.549zM22.781,16.549v-1.973c0.4,0.152,0.688,0.533,0.688,0.987S23.182,16.397,22.781,16.549z",
+        ppt: "M16.604,1.914c0-0.575-0.466-1.041-1.041-1.041s-1.041,0.466-1.041,1.041v1.04h2.082V1.914zM16.604,22.717h-2.082v3.207c0,0.574-4.225,4.031-4.225,4.031l2.468-0.003l2.807-2.673l3.013,2.693l2.272-0.039l-4.254-4.011V22.717L16.604,22.717zM28.566,7.113c0.86,0,1.56-0.698,1.56-1.56c0-0.861-0.698-1.56-1.56-1.56H2.561c-0.861,0-1.56,0.699-1.56,1.56c0,0.862,0.699,1.56,1.56,1.56h1.583v12.505l-0.932-0.022c-0.861,0-1.213,0.467-1.213,1.04c0,0.576,0.352,1.041,1.213,1.041h24.597c0.86,0,1.299-0.465,1.299-1.041c0-1.094-1.299-1.04-1.299-1.04l-0.804,0.109V7.113H28.566zM11.435,17.516c-3.771,0-4.194-4.191-4.194-4.191c0-4.096,4.162-4.161,4.162-4.161v4.161h4.193C15.596,17.516,11.435,17.516,11.435,17.516zM18.716,13.388h-1.071v-1.073h1.071V13.388zM18.716,10.267h-1.071V9.194h1.071V10.267zM23.314,13.388H20.26c-0.296,0-0.535-0.24-0.535-0.536c0-0.297,0.239-0.537,0.535-0.537h3.057c0.297,0,0.535,0.24,0.535,0.537C23.852,13.147,23.611,13.388,23.314,13.388zM23.314,10.267H20.26c-0.296,0-0.535-0.239-0.535-0.535c0-0.297,0.239-0.537,0.535-0.537h3.057c0.297,0,0.535,0.24,0.535,0.537C23.852,10.027,23.611,10.267,23.314,10.267z",
+        lab: "M22.121,24.438l-3.362-7.847c-0.329-0.769-0.599-2.081-0.599-2.917s0.513-1.521,1.14-1.521s1.141-0.513,1.141-1.14s-0.685-1.14-1.521-1.14h-6.84c-0.836,0-1.52,0.513-1.52,1.14s0.513,1.14,1.14,1.14s1.14,0.685,1.14,1.521s-0.269,2.148-0.599,2.917l-3.362,7.847C8.55,25.206,8.28,26.177,8.28,26.595s0.342,1.103,0.76,1.521s1.444,0.76,2.28,0.76h8.359c0.836,0,1.862-0.342,2.28-0.76s0.76-1.103,0.76-1.521S22.45,25.206,22.121,24.438zM16.582,7.625c0,0.599,0.484,1.083,1.083,1.083s1.083-0.484,1.083-1.083s-0.484-1.084-1.083-1.084S16.582,7.026,16.582,7.625zM13.667,7.792c0.276,0,0.5-0.224,0.5-0.5s-0.224-0.5-0.5-0.5s-0.5,0.224-0.5,0.5S13.391,7.792,13.667,7.792zM15.584,5.292c0.874,0,1.583-0.709,1.583-1.583c0-0.875-0.709-1.584-1.583-1.584C14.709,2.125,14,2.834,14,3.709C14,4.583,14.709,5.292,15.584,5.292z",
+        umbrella: "M14.784,26.991c0,1.238-1.329,1.696-1.835,1.696c-0.504,0-1.536-0.413-1.65-1.812c0-0.354-0.288-0.642-0.644-0.642c-0.354,0-0.641,0.287-0.641,0.642c0.045,1.056,0.756,3.052,2.935,3.052c2.432,0,3.166-1.882,3.166-3.144v-8.176l-1.328-0.024C14.787,18.584,14.784,25.889,14.784,26.991zM15.584,9.804c-6.807,0-11.084,4.859-11.587,8.326c0.636-0.913,1.694-1.51,2.89-1.51c1.197,0,2.22,0.582,2.855,1.495c0.638-0.904,1.69-1.495,2.88-1.495c1.2,0,2.26,0.6,2.896,1.517c0.635-0.917,1.83-1.517,3.03-1.517c1.19,0,2.241,0.591,2.879,1.495c0.636-0.913,1.659-1.495,2.855-1.495c1.197,0,2.254,0.597,2.89,1.51C26.669,14.663,22.393,9.804,15.584,9.804zM14.733,7.125v2.081h1.323V7.125c0-0.365-0.296-0.661-0.661-0.661C15.029,6.464,14.733,6.76,14.733,7.125z",
+        dry: "M14.784,26.991c0,1.238-1.329,1.696-1.835,1.696c-0.504,0-1.536-0.413-1.65-1.812c0-0.354-0.288-0.642-0.644-0.642c-0.354,0-0.641,0.287-0.641,0.642c0.045,1.056,0.756,3.052,2.935,3.052c2.432,0,3.166-1.882,3.166-3.144v-8.176l-1.328-0.024C14.787,18.584,14.784,25.889,14.784,26.991zM15.584,9.804c-6.807,0-11.084,4.859-11.587,8.326c0.636-0.913,1.694-1.51,2.89-1.51c1.197,0,2.22,0.582,2.855,1.495c0.638-0.904,1.69-1.495,2.88-1.495c1.2,0,2.26,0.6,2.896,1.517c0.635-0.917,1.83-1.517,3.03-1.517c1.19,0,2.241,0.591,2.879,1.495c0.636-0.913,1.659-1.495,2.855-1.495c1.197,0,2.254,0.597,2.89,1.51C26.669,14.663,22.393,9.804,15.584,9.804zM14.733,7.125v2.081h1.323V7.125c0-0.365-0.296-0.661-0.661-0.661C15.029,6.464,14.733,6.76,14.733,7.125zM7.562,6.015c0.54,0.312,1.229,0.128,1.54-0.412c0.109-0.189,0.157-0.398,0.15-0.602L9.251,3.09L7.59,4.047c-0.178,0.095-0.333,0.24-0.441,0.428C6.837,5.015,7.022,5.703,7.562,6.015zM5.572,11.717c0.109-0.19,0.158-0.398,0.151-0.602L5.721,9.203l-1.66,0.957c-0.178,0.096-0.333,0.241-0.441,0.429c-0.311,0.539-0.127,1.229,0.413,1.539C4.571,12.44,5.26,12.256,5.572,11.717zM10.523,9.355c0.539,0.312,1.229,0.126,1.541-0.412c0.109-0.189,0.156-0.398,0.15-0.603L12.214,6.43l-1.662,0.956c-0.177,0.097-0.332,0.241-0.441,0.43C9.799,8.354,9.984,9.044,10.523,9.355zM15.251,3.998c0.539,0.312,1.229,0.126,1.54-0.412c0.11-0.19,0.157-0.398,0.15-0.603L16.94,1.072l-1.661,0.956c-0.178,0.097-0.332,0.242-0.441,0.43C14.526,2.998,14.711,3.687,15.251,3.998zM19.348,8.914c0.539,0.312,1.228,0.128,1.541-0.412c0.109-0.189,0.156-0.398,0.149-0.602h-0.001V5.988l-1.661,0.957c-0.178,0.096-0.332,0.241-0.441,0.429C18.623,7.914,18.809,8.603,19.348,8.914zM23.633,5.196c0.54,0.312,1.23,0.126,1.542-0.413c0.109-0.189,0.156-0.398,0.149-0.602h-0.001V2.27l-1.662,0.957c-0.177,0.096-0.331,0.24-0.44,0.43C22.909,4.195,23.094,4.885,23.633,5.196zM27.528,8.51l-1.659,0.956c-0.18,0.097-0.334,0.242-0.443,0.43c-0.312,0.539-0.127,1.229,0.413,1.54c0.539,0.312,1.229,0.127,1.541-0.412c0.109-0.19,0.158-0.398,0.151-0.603L27.528,8.51z",
+        ipad: "M25.221,1.417H6.11c-0.865,0-1.566,0.702-1.566,1.566v25.313c0,0.865,0.701,1.565,1.566,1.565h19.111c0.865,0,1.565-0.7,1.565-1.565V2.984C26.787,2.119,26.087,1.417,25.221,1.417zM15.666,29.299c-0.346,0-0.626-0.279-0.626-0.625s0.281-0.627,0.626-0.627c0.346,0,0.627,0.281,0.627,0.627S16.012,29.299,15.666,29.299zM24.376,26.855c0,0.174-0.142,0.312-0.313,0.312H7.27c-0.173,0-0.313-0.142-0.313-0.312V4.3c0-0.173,0.14-0.313,0.313-0.313h16.792c0.172,0,0.312,0.14,0.312,0.313L24.376,26.855L24.376,26.855z",
+        iphone: "M20.755,1H10.62C9.484,1,8.562,1.921,8.562,3.058v24.385c0,1.136,0.921,2.058,2.058,2.058h10.135c1.136,0,2.058-0.922,2.058-2.058V3.058C22.812,1.921,21.891,1,20.755,1zM14.659,3.264h2.057c0.101,0,0.183,0.081,0.183,0.18c0,0.1-0.082,0.18-0.183,0.18h-2.057c-0.1,0-0.181-0.081-0.181-0.18C14.478,3.344,14.559,3.264,14.659,3.264zM13.225,3.058c0.199,0,0.359,0.162,0.359,0.36c0,0.198-0.161,0.36-0.359,0.36c-0.2,0-0.36-0.161-0.36-0.36S13.025,3.058,13.225,3.058zM15.688,28.473c-0.796,0-1.44-0.646-1.44-1.438c0-0.799,0.645-1.439,1.44-1.439s1.44,0.646,1.44,1.439S16.483,28.473,15.688,28.473zM22.041,24.355c0,0.17-0.139,0.309-0.309,0.309H9.642c-0.17,0-0.308-0.139-0.308-0.309V6.042c0-0.17,0.138-0.309,0.308-0.309h12.09c0.17,0,0.309,0.138,0.309,0.309V24.355z",
+        jigsaw: "M3.739,13.619c0,0,3.516-4.669,5.592-3.642c2.077,1.027-0.414,2.795,1.598,3.719c2.011,0.924,5.048-0.229,4.376-2.899c-0.672-2.67-1.866-0.776-2.798-2.208c-0.934-1.432,4.586-4.59,4.586-4.59s3.361,6.651,4.316,4.911c1.157-2.105,3.193-4.265,5.305-1.025c0,0,1.814,2.412,0.246,3.434s-2.917,0.443-3.506,1.553c-0.586,1.112,3.784,4.093,3.784,4.093s-2.987,4.81-4.926,3.548c-1.939-1.262,0.356-3.364-2.599-3.989c-1.288-0.23-3.438,0.538-3.818,2.34c-0.13,2.709,1.604,2.016,2.797,3.475c1.191,1.457-4.484,4.522-4.484,4.522s-1.584-3.923-3.811-4.657c-2.227-0.735-0.893,2.135-2.917,2.531c-2.024,0.396-4.816-2.399-3.46-4.789c1.358-2.391,3.275-0.044,3.441-1.951C7.629,16.087,3.739,13.619,3.739,13.619z",
+        lamp: "M15.5,2.833c-3.866,0-7,3.134-7,7c0,3.859,3.945,4.937,4.223,9.499h5.553c0.278-4.562,4.224-5.639,4.224-9.499C22.5,5.968,19.366,2.833,15.5,2.833zM15.5,28.166c1.894,0,2.483-1.027,2.667-1.666h-5.334C13.017,27.139,13.606,28.166,15.5,28.166zM12.75,25.498h5.5v-5.164h-5.5V25.498z",
+        lamp_alt: "M12.75,25.498h5.5v-5.164h-5.5V25.498zM15.5,28.166c1.894,0,2.483-1.027,2.667-1.666h-5.334C13.017,27.139,13.606,28.166,15.5,28.166zM15.5,2.833c-3.866,0-7,3.134-7,7c0,3.859,3.945,4.937,4.223,9.499h1.271c-0.009-0.025-0.024-0.049-0.029-0.078L11.965,8.256c-0.043-0.245,0.099-0.485,0.335-0.563c0.237-0.078,0.494,0.026,0.605,0.25l0.553,1.106l0.553-1.106c0.084-0.17,0.257-0.277,0.446-0.277c0.189,0,0.362,0.107,0.446,0.277l0.553,1.106l0.553-1.106c0.084-0.17,0.257-0.277,0.448-0.277c0.189,0,0.36,0.107,0.446,0.277l0.554,1.106l0.553-1.106c0.111-0.224,0.368-0.329,0.604-0.25s0.377,0.318,0.333,0.563l-1.999,10.998c-0.005,0.029-0.02,0.053-0.029,0.078h1.356c0.278-4.562,4.224-5.639,4.224-9.499C22.5,5.968,19.366,2.833,15.5,2.833zM17.458,10.666c-0.191,0-0.364-0.107-0.446-0.275l-0.554-1.106l-0.553,1.106c-0.086,0.168-0.257,0.275-0.446,0.275c-0.191,0-0.364-0.107-0.449-0.275l-0.553-1.106l-0.553,1.106c-0.084,0.168-0.257,0.275-0.446,0.275c-0.012,0-0.025,0-0.037-0.001l1.454,8.001h1.167l1.454-8.001C17.482,10.666,17.47,10.666,17.458,10.666z",
+        video: "M27.188,4.875v1.094h-4.5V4.875H8.062v1.094h-4.5V4.875h-1v21.25h1v-1.094h4.5v1.094h14.625v-1.094h4.5v1.094h1.25V4.875H27.188zM8.062,23.719h-4.5v-3.125h4.5V23.719zM8.062,19.281h-4.5v-3.125h4.5V19.281zM8.062,14.844h-4.5v-3.125h4.5V14.844zM8.062,10.406h-4.5V7.281h4.5V10.406zM11.247,20.59V9.754l9.382,5.418L11.247,20.59zM27.188,23.719h-4.5v-3.125h4.5V23.719zM27.188,19.281h-4.5v-3.125h4.5V19.281zM27.188,14.844h-4.5v-3.125h4.5V14.844zM27.188,10.406h-4.5V7.281h4.5V10.406z",
+        palm: "M14.296,27.885v-2.013c0,0-0.402-1.408-1.073-2.013c-0.671-0.604-1.274-1.274-1.409-1.61c0,0-0.268,0.135-0.737-0.335s-1.812-2.616-1.812-2.616l-0.671-0.872c0,0-0.47-0.671-1.275-1.342c-0.805-0.672-0.938-0.067-1.476-0.738s0.604-1.275,1.006-1.409c0.403-0.134,1.946,0.134,2.684,0.872c0.738,0.738,0.738,0.738,0.738,0.738l1.073,1.141l0.537,0.201l0.671-1.073l-0.269-2.281c0,0-0.604-2.55-0.737-4.764c-0.135-2.214-0.47-5.703,1.006-5.837s1.007,2.55,1.073,3.489c0.067,0.938,0.806,5.232,1.208,5.568c0.402,0.335,0.671,0.066,0.671,0.066l0.402-7.514c0,0-0.479-2.438,1.073-2.549c0.939-0.067,0.872,1.543,0.872,2.147c0,0.604,0.269,7.514,0.269,7.514l0.537,0.135c0,0,0.402-2.214,0.604-3.153s0.604-2.416,0.537-3.087c-0.067-0.671-0.135-2.348,1.006-2.348s0.872,1.812,0.939,2.415s-0.134,3.153-0.134,3.757c0,0.604-0.738,3.623-0.537,3.824s2.08-2.817,2.349-3.958c0.268-1.141,0.201-3.02,1.408-2.885c1.208,0.134,0.47,2.817,0.402,3.086c-0.066,0.269-0.671,2.349-0.872,2.952s-0.805,1.476-1.006,2.013s0.402,2.349,0,4.629c-0.402,2.281-1.61,5.166-1.61,5.166l0.604,2.08c0,0-1.744,0.671-3.824,0.805C16.443,28.221,14.296,27.885,14.296,27.885z",
+        fave: "M24.132,7.971c-2.203-2.205-5.916-2.098-8.25,0.235L15.5,8.588l-0.382-0.382c-2.334-2.333-6.047-2.44-8.25-0.235c-2.204,2.203-2.098,5.916,0.235,8.249l8.396,8.396l8.396-8.396C26.229,13.887,26.336,10.174,24.132,7.971z",
+        help: "M4.834,4.834L4.833,4.833c-5.889,5.892-5.89,15.443,0.001,21.334s15.44,5.888,21.33-0.002c5.891-5.891,5.893-15.44,0.002-21.33C20.275-1.056,10.725-1.056,4.834,4.834zM25.459,5.542c0.833,0.836,1.523,1.757,2.104,2.726l-4.08,4.08c-0.418-1.062-1.053-2.06-1.912-2.918c-0.859-0.859-1.857-1.494-2.92-1.913l4.08-4.08C23.7,4.018,24.622,4.709,25.459,5.542zM10.139,20.862c-2.958-2.968-2.959-7.758-0.001-10.725c2.966-2.957,7.756-2.957,10.725,0c2.954,2.965,2.955,7.757-0.001,10.724C17.896,23.819,13.104,23.817,10.139,20.862zM5.542,25.459c-0.833-0.837-1.524-1.759-2.105-2.728l4.081-4.081c0.418,1.063,1.055,2.06,1.914,2.919c0.858,0.859,1.855,1.494,2.917,1.913l-4.081,4.081C7.299,26.982,6.379,26.292,5.542,25.459zM8.268,3.435l4.082,4.082C11.288,7.935,10.29,8.571,9.43,9.43c-0.858,0.859-1.494,1.855-1.912,2.918L3.436,8.267c0.58-0.969,1.271-1.89,2.105-2.727C6.377,4.707,7.299,4.016,8.268,3.435zM22.732,27.563l-4.082-4.082c1.062-0.418,2.061-1.053,2.919-1.912c0.859-0.859,1.495-1.857,1.913-2.92l4.082,4.082c-0.58,0.969-1.271,1.891-2.105,2.728C24.623,26.292,23.701,26.983,22.732,27.563z",
+        crop: "M24.303,21.707V8.275l4.48-4.421l-2.021-2.048l-4.126,4.07H8.761V2.083H5.882v3.793H1.8v2.877h4.083v15.832h15.542v4.609h2.878v-4.609H29.2v-2.878H24.303zM19.72,8.753L8.761,19.565V8.753H19.72zM10.688,21.706l10.735-10.591l0.001,10.592L10.688,21.706z",
+        biohazard: "M26.154,13.988c-0.96-0.554-1.982-0.892-3.019-1.032c0.396-0.966,0.616-2.023,0.616-3.131c0-4.399-3.438-8.001-7.772-8.264c3.245,0.258,5.803,2.979,5.803,6.292c0,3.373-2.653,6.123-5.983,6.294v1.292c0.908,0.144,1.605,0.934,1.605,1.883c0,0.232-0.043,0.454-0.118,0.66l1.181,0.683c1.826-2.758,5.509-3.658,8.41-1.981c2.896,1.672,3.965,5.299,2.506,8.254C31.386,21.038,29.992,16.204,26.154,13.988zM4.122,16.587c2.92-1.686,6.628-0.764,8.442,2.034l1.141-0.657c-0.072-0.2-0.109-0.417-0.109-0.642c0-0.909,0.638-1.67,1.489-1.859v-1.319c-3.3-0.202-5.92-2.94-5.92-6.292c0-3.297,2.532-6.007,5.757-6.286c-4.312,0.285-7.729,3.875-7.729,8.258c0,1.078,0.206,2.106,0.581,3.05c-1.004,0.147-1.999,0.481-2.931,1.02c-3.812,2.201-5.209,6.985-3.264,10.87C0.174,21.823,1.251,18.244,4.122,16.587zM11.15,11.452c0.114,0.139,0.235,0.271,0.362,0.398c0.126,0.126,0.259,0.247,0.397,0.361c0.102,0.084,0.211,0.16,0.318,0.236c0.93-0.611,2.045-0.969,3.244-0.969c1.201,0,2.312,0.357,3.242,0.969c0.107-0.077,0.217-0.152,0.318-0.236c0.139-0.114,0.271-0.235,0.397-0.361c0.127-0.127,0.248-0.259,0.362-0.398c0.113-0.138,0.222-0.283,0.323-0.431c-1.307-0.956-2.908-1.528-4.643-1.528c-0.042,0-0.083-0.001-0.124,0c-0.019,0-0.04-0.001-0.06,0c-1.666,0.038-3.201,0.605-4.462,1.528C10.929,11.17,11.037,11.314,11.15,11.452zM9.269,16.787c-0.168-0.062-0.338-0.117-0.512-0.164c-0.173-0.047-0.348-0.083-0.525-0.113c-0.177-0.03-0.355-0.053-0.535-0.065c-0.175,1.609,0.13,3.282,0.998,4.786c0.868,1.503,2.164,2.606,3.645,3.259c0.079-0.162,0.15-0.328,0.212-0.496c0.063-0.169,0.118-0.338,0.164-0.512c0.047-0.173,0.087-0.349,0.115-0.525c0.022-0.13,0.034-0.262,0.046-0.394c-0.993-0.5-1.86-1.286-2.461-2.325c-0.6-1.04-0.847-2.182-0.783-3.294C9.512,16.889,9.392,16.833,9.269,16.787zM18.122,22.657c0.014,0.132,0.024,0.263,0.046,0.394c0.03,0.177,0.067,0.352,0.113,0.524c0.047,0.174,0.102,0.346,0.165,0.514c0.062,0.169,0.132,0.333,0.212,0.495c1.48-0.653,2.777-1.755,3.644-3.257c0.868-1.504,1.176-3.179,1.001-4.788c-0.18,0.013-0.358,0.035-0.535,0.065c-0.177,0.029-0.353,0.067-0.525,0.113s-0.345,0.101-0.513,0.163c-0.124,0.047-0.241,0.105-0.362,0.16c0.063,1.11-0.183,2.253-0.784,3.292C19.984,21.373,19.116,22.157,18.122,22.657zM20.569,27.611c-2.92-1.687-3.977-5.358-2.46-8.329l-1.192-0.689c-0.349,0.389-0.854,0.634-1.417,0.634c-0.571,0-1.086-0.254-1.436-0.653l-1.146,0.666c1.475,2.96,0.414,6.598-2.488,8.272c-2.888,1.668-6.552,0.791-8.386-1.935c2.38,3.667,7.249,4.87,11.079,2.658c0.929-0.535,1.711-1.227,2.339-2.018c0.64,0.832,1.45,1.554,2.416,2.112c3.835,2.213,8.709,1.006,11.086-2.671C27.132,28.396,23.463,29.282,20.569,27.611z",
+        wheelchair: "M20.373,19.85c0,4.079-3.318,7.397-7.398,7.397c-4.079,0-7.398-3.318-7.398-7.397c0-2.466,1.213-4.652,3.073-5.997l-0.251-2.21c-2.875,1.609-4.825,4.684-4.825,8.207c0,5.184,4.217,9.4,9.401,9.4c4.395,0,8.093-3.031,9.117-7.111L20.37,19.73C20.37,19.771,20.373,19.81,20.373,19.85zM11.768,6.534c1.321,0,2.392-1.071,2.392-2.392c0-1.321-1.071-2.392-2.392-2.392c-1.321,0-2.392,1.071-2.392,2.392C9.375,5.463,10.446,6.534,11.768,6.534zM27.188,22.677l-5.367-7.505c-0.28-0.393-0.749-0.579-1.226-0.538c-0.035-0.003-0.071-0.006-0.106-0.006h-6.132l-0.152-1.335h4.557c0.53,0,0.96-0.429,0.96-0.959c0-0.53-0.43-0.959-0.96-0.959h-4.776l-0.25-2.192c-0.146-1.282-1.303-2.203-2.585-2.057C9.869,7.271,8.948,8.428,9.094,9.71l0.705,6.19c0.136,1.197,1.154,2.078,2.332,2.071c0.004,0,0.007,0.001,0.012,0.001h8.023l4.603,6.436c0.439,0.615,1.338,0.727,2.007,0.248C27.442,24.178,27.628,23.292,27.188,22.677z",
+        mic: "M15.5,21.125c2.682,0,4.875-2.25,4.875-5V5.875c0-2.75-2.193-5-4.875-5s-4.875,2.25-4.875,5v10.25C10.625,18.875,12.818,21.125,15.5,21.125zM21.376,11v5.125c0,3.308-2.636,6-5.876,6s-5.875-2.691-5.875-6V11H6.626v5.125c0,4.443,3.194,8.132,7.372,8.861v2.139h-3.372v3h9.749v-3h-3.376v-2.139c4.181-0.727,7.375-4.418,7.375-8.861V11H21.376z",
+        micmute: "M10.121,18.529c-0.317-0.736-0.496-1.549-0.496-2.404V11H6.626v5.125c0,1.693,0.466,3.275,1.272,4.627L10.121,18.529zM20.375,8.276V5.875c0-2.75-2.193-5-4.875-5s-4.875,2.25-4.875,5v10.25c0,0.568,0.113,1.105,0.285,1.615L20.375,8.276zM21.376,12.931v3.195c0,3.308-2.636,6-5.876,6c-0.958,0-1.861-0.24-2.661-0.657l-2.179,2.179c0.995,0.659,2.123,1.128,3.338,1.34v2.139h-3.372v3h9.749v-3h-3.376v-2.139c4.181-0.727,7.375-4.418,7.375-8.861V11h-1.068L21.376,12.931zM20.375,16.125v-2.194l-6.788,6.788c0.588,0.26,1.234,0.405,1.913,0.405C18.182,21.125,20.375,18.875,20.375,16.125zM25.542,4.522L4.855,25.209l1.415,1.416L26.956,5.937L25.542,4.522z",
+        imac: "M28.936,2.099H2.046c-0.506,0-0.919,0.414-0.919,0.92v21.097c0,0.506,0.413,0.919,0.919,0.919h17.062v-0.003h9.828c0.506,0,0.92-0.413,0.92-0.921V3.019C29.854,2.513,29.439,2.099,28.936,2.099zM28.562,20.062c0,0.412-0.338,0.75-0.75,0.75H3.062c-0.413,0-0.75-0.338-0.75-0.75v-16c0-0.413,0.337-0.75,0.75-0.75h24.75c0.412,0,0.75,0.337,0.75,0.75V20.062zM20.518,28.4c-0.033-0.035-0.062-0.055-0.068-0.062l-0.01-0.004l-0.008-0.004c0,0-0.046-0.021-0.119-0.062c-0.108-0.056-0.283-0.144-0.445-0.237c-0.162-0.097-0.32-0.199-0.393-0.271c-0.008-0.014-0.035-0.079-0.058-0.17c-0.083-0.32-0.161-0.95-0.22-1.539h-7.5c-0.023,0.23-0.048,0.467-0.076,0.691c-0.035,0.272-0.073,0.524-0.113,0.716c-0.02,0.096-0.039,0.175-0.059,0.23c-0.009,0.025-0.018,0.05-0.024,0.062c-0.003,0.006-0.005,0.01-0.007,0.013c-0.094,0.096-0.34,0.246-0.553,0.36c-0.107,0.062-0.209,0.11-0.283,0.146c-0.074,0.037-0.119,0.062-0.119,0.062l-0.007,0.004l-0.008,0.004c-0.01,0.009-0.038,0.022-0.07,0.062c-0.031,0.037-0.067,0.103-0.067,0.185c0.002,0.002-0.004,0.037-0.006,0.088c0,0.043,0.007,0.118,0.068,0.185c0.061,0.062,0.143,0.08,0.217,0.08h9.716c0.073,0,0.153-0.021,0.215-0.08c0.062-0.063,0.068-0.142,0.068-0.185c-0.001-0.051-0.008-0.086-0.007-0.088C20.583,28.503,20.548,28.439,20.518,28.4z",
+        pc: "M29.249,3.14h-9.188l-0.459,0.459v18.225l0.33,2.389H19.57v0.245h-0.307v-0.306h-0.611v0.244h-0.311v-0.367h-0.486v0.307h-1.104l-2.022-0.367v-0.92h0.858l0.302-1.47h2.728c0.188,0,0.339-0.152,0.339-0.339V7.828c0-0.187-0.149-0.338-0.339-0.338H1.591c-0.187,0-0.339,0.152-0.339,0.338V21.24c0,0.187,0.152,0.339,0.339,0.339h3.016l0.199,1.47h1.409l-3.4,3.4L2.11,27.951c0,0,2.941,1.102,6.678,1.102c3.737,0,9.679-0.857,10.476-0.857s4.84,0,4.84,0v-1.225l-0.137-1.068h1.744c-0.2,0.106-0.322,0.244-0.322,0.396v0.979c0,0.341,0.604,0.613,1.352,0.613c0.742,0,1.348-0.272,1.348-0.613v-0.979c0-0.339-0.604-0.611-1.348-0.611c-0.188,0-0.364,0.019-0.525,0.049v-0.17h-2.29l-0.055-0.432h5.382L29.249,3.14L29.249,3.14zM2.478,20.17V8.714h15.07V20.17H2.478z",
+        cube: "M15.5,3.029l-10.8,6.235L4.7,21.735L15.5,27.971l10.8-6.235V9.265L15.5,3.029zM24.988,10.599L16,15.789v10.378c0,0.275-0.225,0.5-0.5,0.5s-0.5-0.225-0.5-0.5V15.786l-8.987-5.188c-0.239-0.138-0.321-0.444-0.183-0.683c0.138-0.238,0.444-0.321,0.683-0.183l8.988,5.189l8.988-5.189c0.238-0.138,0.545-0.055,0.684,0.184C25.309,10.155,25.227,10.461,24.988,10.599z",
+        fullcube: "M15.5,3.029l-10.8,6.235L4.7,21.735L15.5,27.971l10.8-6.235V9.265L15.5,3.029zM15.5,7.029l6.327,3.652L15.5,14.334l-6.326-3.652L15.5,7.029zM24.988,10.599L16,15.789v10.378c0,0.275-0.225,0.5-0.5,0.5s-0.5-0.225-0.5-0.5V15.786l-8.987-5.188c-0.239-0.138-0.321-0.444-0.183-0.683c0.138-0.238,0.444-0.321,0.683-0.183l8.988,5.189l8.988-5.189c0.238-0.138,0.545-0.055,0.684,0.184C25.309,10.155,25.227,10.461,24.988,10.599z",
+        font: "M22.255,19.327l-1.017,0.131c-0.609,0.081-1.067,0.208-1.375,0.382c-0.521,0.293-0.779,0.76-0.779,1.398c0,0.484,0.178,0.867,0.532,1.146c0.354,0.28,0.774,0.421,1.262,0.421c0.593,0,1.164-0.138,1.72-0.412c0.938-0.453,1.4-1.188,1.4-2.229v-1.354c-0.205,0.131-0.469,0.229-0.792,0.328C22.883,19.229,22.564,19.29,22.255,19.327zM8.036,18.273h4.309l-2.113-6.063L8.036,18.273zM28.167,7.75H3.168c-0.552,0-1,0.448-1,1v16.583c0,0.553,0.448,1,1,1h24.999c0.554,0,1-0.447,1-1V8.75C29.167,8.198,28.721,7.75,28.167,7.75zM14.305,23.896l-1.433-4.109H7.488L6,23.896H4.094L9.262,10.17h2.099l4.981,13.727H14.305L14.305,23.896zM26.792,23.943c-0.263,0.074-0.461,0.121-0.599,0.141c-0.137,0.02-0.323,0.027-0.562,0.027c-0.579,0-0.999-0.204-1.261-0.615c-0.138-0.219-0.231-0.525-0.29-0.926c-0.344,0.449-0.834,0.839-1.477,1.169c-0.646,0.329-1.354,0.493-2.121,0.493c-0.928,0-1.688-0.28-2.273-0.844c-0.589-0.562-0.884-1.271-0.884-2.113c0-0.928,0.29-1.646,0.868-2.155c0.578-0.511,1.34-0.824,2.279-0.942l2.682-0.336c0.388-0.05,0.646-0.211,0.775-0.484c0.063-0.146,0.104-0.354,0.104-0.646c0-0.575-0.203-0.993-0.604-1.252c-0.408-0.26-0.99-0.389-1.748-0.389c-0.877,0-1.5,0.238-1.865,0.713c-0.205,0.263-0.34,0.654-0.399,1.174H17.85c0.031-1.237,0.438-2.097,1.199-2.582c0.77-0.484,1.659-0.726,2.674-0.726c1.176,0,2.131,0.225,2.864,0.673c0.729,0.448,1.093,1.146,1.093,2.093v5.766c0,0.176,0.035,0.313,0.106,0.422c0.071,0.104,0.223,0.156,0.452,0.156c0.076,0,0.16-0.005,0.254-0.015c0.093-0.011,0.191-0.021,0.299-0.041L26.792,23.943L26.792,23.943z",
+        trash: "M20.826,5.75l0.396,1.188c1.54,0.575,2.589,1.44,2.589,2.626c0,2.405-4.308,3.498-8.312,3.498c-4.003,0-8.311-1.093-8.311-3.498c0-1.272,1.21-2.174,2.938-2.746l0.388-1.165c-2.443,0.648-4.327,1.876-4.327,3.91v2.264c0,1.224,0.685,2.155,1.759,2.845l0.396,9.265c0,1.381,3.274,2.5,7.312,2.5c4.038,0,7.313-1.119,7.313-2.5l0.405-9.493c0.885-0.664,1.438-1.521,1.438-2.617V9.562C24.812,7.625,23.101,6.42,20.826,5.75zM11.093,24.127c-0.476-0.286-1.022-0.846-1.166-1.237c-1.007-2.76-0.73-4.921-0.529-7.509c0.747,0.28,1.58,0.491,2.45,0.642c-0.216,2.658-0.43,4.923,0.003,7.828C11.916,24.278,11.567,24.411,11.093,24.127zM17.219,24.329c-0.019,0.445-0.691,0.856-1.517,0.856c-0.828,0-1.498-0.413-1.517-0.858c-0.126-2.996-0.032-5.322,0.068-8.039c0.418,0.022,0.835,0.037,1.246,0.037c0.543,0,1.097-0.02,1.651-0.059C17.251,18.994,17.346,21.325,17.219,24.329zM21.476,22.892c-0.143,0.392-0.69,0.95-1.165,1.235c-0.474,0.284-0.817,0.151-0.754-0.276c0.437-2.93,0.214-5.209-0.005-7.897c0.881-0.174,1.708-0.417,2.44-0.731C22.194,17.883,22.503,20.076,21.476,22.892zM11.338,9.512c0.525,0.173,1.092-0.109,1.268-0.633h-0.002l0.771-2.316h4.56l0.771,2.316c0.14,0.419,0.53,0.685,0.949,0.685c0.104,0,0.211-0.017,0.316-0.052c0.524-0.175,0.808-0.742,0.633-1.265l-1.002-3.001c-0.136-0.407-0.518-0.683-0.945-0.683h-6.002c-0.428,0-0.812,0.275-0.948,0.683l-1,2.999C10.532,8.77,10.815,9.337,11.338,9.512z",
+        newwindow: "M5.896,5.333V21.25h23.417V5.333H5.896zM26.312,18.25H8.896V8.334h17.417V18.25L26.312,18.25zM4.896,9.542H1.687v15.917h23.417V22.25H4.896V9.542z",
+        dockright: "M3.083,7.333v16.334h24.833V7.333H3.083z M19.333,20.668H6.083V10.332h13.25V20.668z",
+        dockleft: "M3.084,7.333v16.334h24.832V7.333H3.084z M11.667,10.332h13.251v10.336H11.667V10.332z",
+        dockbottom: "M3.083,7.333v16.334h24.833V7.333H3.083zM24.915,16.833H6.083v-6.501h18.833L24.915,16.833L24.915,16.833z",
+        docktop: "M27.916,23.667V7.333H3.083v16.334H27.916zM24.915,20.668H6.083v-6.501h18.833L24.915,20.668L24.915,20.668z",
+        pallete: "M15.653,7.25c-3.417,0-8.577,0.983-8.577,3.282c0,1.91,2.704,3.229,1.691,3.889c-1.02,0.666-2.684-1.848-4.048-1.848c-1.653,0-2.815,1.434-2.815,2.926c0,4.558,6.326,8.25,13.749,8.25c7.424,0,13.443-3.692,13.443-8.25C29.096,10.944,23.077,7.25,15.653,7.25zM10.308,13.521c0-0.645,0.887-1.166,1.98-1.166c1.093,0,1.979,0.521,1.979,1.166c0,0.644-0.886,1.166-1.979,1.166C11.195,14.687,10.308,14.164,10.308,13.521zM14.289,22.299c-1.058,0-1.914-0.68-1.914-1.518s0.856-1.518,1.914-1.518c1.057,0,1.914,0.68,1.914,1.518S15.346,22.299,14.289,22.299zM19.611,21.771c-1.057,0-1.913-0.681-1.913-1.519c0-0.84,0.856-1.521,1.913-1.521c1.059,0,1.914,0.681,1.914,1.521C21.525,21.092,20.67,21.771,19.611,21.771zM20.075,10.66c0-0.838,0.856-1.518,1.914-1.518s1.913,0.68,1.913,1.518c0,0.839-0.855,1.518-1.913,1.518C20.934,12.178,20.075,11.499,20.075,10.66zM24.275,19.482c-1.057,0-1.914-0.681-1.914-1.519s0.857-1.518,1.914-1.518c1.059,0,1.914,0.68,1.914,1.518S25.334,19.482,24.275,19.482zM25.286,15.475c-1.058,0-1.914-0.68-1.914-1.519c0-0.838,0.856-1.518,1.914-1.518c1.057,0,1.913,0.68,1.913,1.518C27.199,14.795,26.343,15.475,25.286,15.475z",
+        cart: "M29.02,11.754L8.416,9.473L7.16,4.716C7.071,4.389,6.772,4.158,6.433,4.158H3.341C3.114,3.866,2.775,3.667,2.377,3.667c-0.686,0-1.242,0.556-1.242,1.242c0,0.686,0.556,1.242,1.242,1.242c0.399,0,0.738-0.201,0.965-0.493h2.512l5.23,19.8c-0.548,0.589-0.891,1.373-0.891,2.242c0,1.821,1.473,3.293,3.293,3.293c1.82,0,3.294-1.472,3.297-3.293c0-0.257-0.036-0.504-0.093-0.743h5.533c-0.056,0.239-0.092,0.486-0.092,0.743c0,1.821,1.475,3.293,3.295,3.293s3.295-1.472,3.295-3.293c0-1.82-1.473-3.295-3.295-3.297c-0.951,0.001-1.801,0.409-2.402,1.053h-7.136c-0.601-0.644-1.451-1.052-2.402-1.053c-0.379,0-0.738,0.078-1.077,0.196l-0.181-0.685H26.81c1.157-0.027,2.138-0.83,2.391-1.959l1.574-7.799c0.028-0.145,0.041-0.282,0.039-0.414C30.823,12.733,30.051,11.86,29.02,11.754zM25.428,27.994c-0.163,0-0.295-0.132-0.297-0.295c0.002-0.165,0.134-0.297,0.297-0.297s0.295,0.132,0.297,0.297C25.723,27.862,25.591,27.994,25.428,27.994zM27.208,20.499l0.948-0.948l-0.318,1.578L27.208,20.499zM12.755,11.463l1.036,1.036l-1.292,1.292l-1.292-1.292l1.087-1.087L12.755,11.463zM17.253,11.961l0.538,0.538l-1.292,1.292l-1.292-1.292l0.688-0.688L17.253,11.961zM9.631,14.075l0.868-0.868l1.292,1.292l-1.292,1.292l-0.564-0.564L9.631,14.075zM9.335,12.956l-0.328-1.24L9.792,12.5L9.335,12.956zM21.791,16.499l-1.292,1.292l-1.292-1.292l1.292-1.292L21.791,16.499zM21.207,14.5l1.292-1.292l1.292,1.292l-1.292,1.292L21.207,14.5zM18.5,15.791l-1.293-1.292l1.292-1.292l1.292,1.292L18.5,15.791zM17.791,16.499L16.5,17.791l-1.292-1.292l1.292-1.292L17.791,16.499zM14.499,15.791l-1.292-1.292l1.292-1.292l1.292,1.292L14.499,15.791zM13.791,16.499l-1.292,1.291l-1.292-1.291l1.292-1.292L13.791,16.499zM10.499,17.207l1.292,1.292l-0.785,0.784l-0.54-2.044L10.499,17.207zM11.302,20.404l1.197-1.197l1.292,1.292L12.5,21.791l-1.131-1.13L11.302,20.404zM13.208,18.499l1.291-1.292l1.292,1.292L14.5,19.791L13.208,18.499zM16.5,19.207l1.292,1.292L16.5,21.79l-1.292-1.291L16.5,19.207zM17.208,18.499l1.292-1.292l1.291,1.292L18.5,19.79L17.208,18.499zM20.499,19.207l1.292,1.292L20.5,21.79l-1.292-1.292L20.499,19.207zM21.207,18.499l1.292-1.292l1.292,1.292l-1.292,1.292L21.207,18.499zM23.207,16.499l1.292-1.292l1.292,1.292l-1.292,1.292L23.207,16.499zM25.207,14.499l1.292-1.292L27.79,14.5l-1.291,1.292L25.207,14.499zM24.499,13.792l-1.156-1.156l2.082,0.23L24.499,13.792zM21.791,12.5l-1.292,1.292L19.207,12.5l0.29-0.29l2.253,0.25L21.791,12.5zM14.5,11.791l-0.152-0.152l0.273,0.03L14.5,11.791zM10.5,11.792l-0.65-0.65l1.171,0.129L10.5,11.792zM14.5,21.207l1.205,1.205h-2.409L14.5,21.207zM18.499,21.207l1.206,1.206h-2.412L18.499,21.207zM22.499,21.207l1.208,1.207l-2.414-0.001L22.499,21.207zM23.207,20.499l1.292-1.292l1.292,1.292l-1.292,1.292L23.207,20.499zM25.207,18.499l1.292-1.291l1.291,1.291l-1.291,1.292L25.207,18.499zM28.499,17.791l-1.291-1.292l1.291-1.291l0.444,0.444l-0.429,2.124L28.499,17.791zM29.001,13.289l-0.502,0.502l-0.658-0.658l1.016,0.112C28.911,13.253,28.956,13.271,29.001,13.289zM13.487,27.994c-0.161,0-0.295-0.132-0.295-0.295c0-0.165,0.134-0.297,0.295-0.297c0.163,0,0.296,0.132,0.296,0.297C13.783,27.862,13.651,27.994,13.487,27.994zM26.81,22.414h-1.517l1.207-1.207l0.93,0.93C27.243,22.306,27.007,22.428,26.81,22.414z",
+        glasses: "M14.075,9.531c0,0-2.705-1.438-5.158-1.438c-2.453,0-4.862,0.593-4.862,0.593L3.971,9.869c0,0,0.19,0.19,0.528,0.53c0.338,0.336,0.486,3.741,1.838,5.094c1.353,1.354,4.82,1.396,5.963,0.676c1.14-0.718,2.241-3.466,2.241-4.693c0-0.38,0-0.676,0-0.676c0.274-0.275,1.615-0.303,1.917,0c0,0,0,0.296,0,0.676c0,1.227,1.101,3.975,2.241,4.693c1.144,0.72,4.611,0.678,5.963-0.676c1.355-1.353,1.501-4.757,1.839-5.094c0.338-0.34,0.528-0.53,0.528-0.53l-0.084-1.183c0,0-2.408-0.593-4.862-0.593c-2.453,0-5.158,1.438-5.158,1.438C16.319,9.292,14.737,9.32,14.075,9.531z",
+        "package": "M17.078,22.004l-1.758-4.129l-2.007,4.752l-7.519-3.289l0.174,3.905l9.437,4.374l10.909-5.365l-0.149-4.989L17.078,22.004zM29.454,6.619L18.521,3.383l-3.006,2.671l-3.091-2.359L1.546,8.199l3.795,3.048l-3.433,5.302l10.879,4.757l2.53-5.998l2.257,5.308l11.393-5.942l-3.105-4.709L29.454,6.619zM15.277,14.579l-9.059-3.83l9.275-4.101l9.608,3.255L15.277,14.579z",
+        book: "M25.754,4.626c-0.233-0.161-0.536-0.198-0.802-0.097L12.16,9.409c-0.557,0.213-1.253,0.316-1.968,0.316c-0.997,0.002-2.029-0.202-2.747-0.48C7.188,9.148,6.972,9.04,6.821,8.943c0.056-0.024,0.12-0.05,0.193-0.075L18.648,4.43l1.733,0.654V3.172c0-0.284-0.14-0.554-0.374-0.714c-0.233-0.161-0.538-0.198-0.802-0.097L6.414,7.241c-0.395,0.142-0.732,0.312-1.02,0.564C5.111,8.049,4.868,8.45,4.872,8.896c0,0.012,0.004,0.031,0.004,0.031v17.186c0,0.008-0.003,0.015-0.003,0.021c0,0.006,0.003,0.01,0.003,0.016v0.017h0.002c0.028,0.601,0.371,0.983,0.699,1.255c1.034,0.803,2.769,1.252,4.614,1.274c0.874,0,1.761-0.116,2.583-0.427l12.796-4.881c0.337-0.128,0.558-0.448,0.558-0.809V5.341C26.128,5.057,25.988,4.787,25.754,4.626zM5.672,11.736c0.035,0.086,0.064,0.176,0.069,0.273l0.004,0.054c0.016,0.264,0.13,0.406,0.363,0.611c0.783,0.626,2.382,1.08,4.083,1.093c0.669,0,1.326-0.083,1.931-0.264v1.791c-0.647,0.143-1.301,0.206-1.942,0.206c-1.674-0.026-3.266-0.353-4.509-1.053V11.736zM10.181,24.588c-1.674-0.028-3.266-0.354-4.508-1.055v-2.712c0.035,0.086,0.065,0.176,0.07,0.275l0.002,0.053c0.018,0.267,0.13,0.408,0.364,0.613c0.783,0.625,2.381,1.079,4.083,1.091c0.67,0,1.327-0.082,1.932-0.262v1.789C11.476,24.525,10.821,24.588,10.181,24.588z",
+        books: "M26.679,7.858c-0.176-0.138-0.404-0.17-0.606-0.083l-9.66,4.183c-0.42,0.183-0.946,0.271-1.486,0.271c-0.753,0.002-1.532-0.173-2.075-0.412c-0.194-0.083-0.356-0.176-0.471-0.259c0.042-0.021,0.09-0.042,0.146-0.064l8.786-3.804l1.31,0.561V6.612c0-0.244-0.106-0.475-0.283-0.612c-0.176-0.138-0.406-0.17-0.605-0.083l-9.66,4.183c-0.298,0.121-0.554,0.268-0.771,0.483c-0.213,0.208-0.397,0.552-0.394,0.934c0,0.01,0.003,0.027,0.003,0.027v14.73c0,0.006-0.002,0.012-0.002,0.019c0,0.005,0.002,0.007,0.002,0.012v0.015h0.002c0.021,0.515,0.28,0.843,0.528,1.075c0.781,0.688,2.091,1.073,3.484,1.093c0.66,0,1.33-0.1,1.951-0.366l9.662-4.184c0.255-0.109,0.422-0.383,0.422-0.692V8.471C26.961,8.227,26.855,7.996,26.679,7.858zM20.553,5.058c-0.017-0.221-0.108-0.429-0.271-0.556c-0.176-0.138-0.404-0.17-0.606-0.083l-9.66,4.183C9.596,8.784,9.069,8.873,8.53,8.873C7.777,8.874,6.998,8.699,6.455,8.46C6.262,8.378,6.099,8.285,5.984,8.202C6.026,8.181,6.075,8.16,6.13,8.138l8.787-3.804l1.309,0.561V3.256c0-0.244-0.106-0.475-0.283-0.612c-0.176-0.138-0.407-0.17-0.606-0.083l-9.66,4.183C5.379,6.864,5.124,7.011,4.907,7.227C4.693,7.435,4.51,7.779,4.513,8.161c0,0.011,0.003,0.027,0.003,0.027v14.73c0,0.006-0.001,0.013-0.001,0.019c0,0.005,0.001,0.007,0.001,0.012v0.016h0.002c0.021,0.515,0.28,0.843,0.528,1.075c0.781,0.688,2.091,1.072,3.485,1.092c0.376,0,0.754-0.045,1.126-0.122V11.544c-0.01-0.7,0.27-1.372,0.762-1.856c0.319-0.315,0.708-0.564,1.19-0.756L20.553,5.058z",
+        icons: "M4.083,14H14V4.083H4.083V14zM17,4.083V14h9.917V4.083H17zM17,26.917h9.917v-9.918H17V26.917zM4.083,26.917H14v-9.918H4.083V26.917z",
+        list: "M4.082,4.083v2.999h22.835V4.083H4.082zM4.082,20.306h22.835v-2.999H4.082V20.306zM4.082,13.694h22.835v-2.999H4.082V13.694zM4.082,26.917h22.835v-2.999H4.082V26.917z",
+        db: "M15.499,23.438c-3.846,0-7.708-0.987-9.534-3.117c-0.054,0.236-0.09,0.48-0.09,0.737v3.877c0,3.435,4.988,4.998,9.625,4.998s9.625-1.563,9.625-4.998v-3.877c0-0.258-0.036-0.501-0.09-0.737C23.209,22.451,19.347,23.438,15.499,23.438zM15.499,15.943c-3.846,0-7.708-0.987-9.533-3.117c-0.054,0.236-0.091,0.479-0.091,0.736v3.877c0,3.435,4.988,4.998,9.625,4.998s9.625-1.563,9.625-4.998v-3.877c0-0.257-0.036-0.501-0.09-0.737C23.209,14.956,19.347,15.943,15.499,15.943zM15.5,1.066c-4.637,0-9.625,1.565-9.625,5.001v3.876c0,3.435,4.988,4.998,9.625,4.998s9.625-1.563,9.625-4.998V6.067C25.125,2.632,20.137,1.066,15.5,1.066zM15.5,9.066c-4.211,0-7.625-1.343-7.625-3c0-1.656,3.414-3,7.625-3s7.625,1.344,7.625,3C23.125,7.724,19.711,9.066,15.5,9.066z",
+        paper: "M28.916,8.009L15.953,1.888c-0.251-0.119-0.548-0.115-0.798,0.008c-0.25,0.125-0.433,0.357-0.491,0.629c-0.002,0.01-1.04,4.83-2.578,9.636c-0.526,1.646-1.114,3.274-1.728,4.704l1.665,0.786c2-4.643,3.584-11.052,4.181-13.614l11.264,5.316c-0.346,1.513-1.233,5.223-2.42,8.927c-0.767,2.399-1.665,4.797-2.585,6.532c-0.889,1.79-1.958,2.669-2.197,2.552c-1.419,0.03-2.418-1.262-3.09-2.918c-0.32-0.803-0.53-1.63-0.657-2.246c-0.127-0.618-0.166-1.006-0.168-1.006c-0.034-0.317-0.232-0.597-0.52-0.731l-12.962-6.12c-0.301-0.142-0.654-0.11-0.925,0.081c-0.27,0.193-0.416,0.518-0.38,0.847c0.008,0.045,0.195,1.848,0.947,3.736c0.521,1.321,1.406,2.818,2.845,3.575l12.956,6.131l0.006-0.013c0.562,0.295,1.201,0.487,1.947,0.496c1.797-0.117,2.777-1.668,3.818-3.525c3-5.69,5.32-16.602,5.338-16.642C29.512,8.615,29.302,8.19,28.916,8.009z",
+        takeoff: "M10.27,19.267c0,0,9.375-1.981,16.074-8.681c0,0,1.395-1.339-1.338-1.339c-2.305,0-5.6,2.438-5.6,2.438l-9.137-1.42l-1.769,1.769l4.983,2.411l-3.001,2.035l-2.571-1.285L6.09,16.052C6.09,16.052,8.02,18.062,10.27,19.267zM3.251,23.106v1.998h24.498v-1.998H3.251z",
+        landing: "M23.322,19.491c0,0,1.903,0.342,0.299-1.869c-1.353-1.866-5.261-3.104-5.261-3.104l-4.213-8.229l-2.47-0.394l0.973,5.449L9.241,10.11L8.772,7.273L7.008,6.302c0,0-0.496,2.742-0.149,5.271C6.859,11.573,13.965,17.999,23.322,19.491zM3.251,23.106v1.998h24.498v-1.998H3.251zM14,17.94c0,0.414,0.336,0.75,0.75,0.75s0.75-0.336,0.75-0.75s-0.336-0.75-0.75-0.75S14,17.526,14,17.94z",
+        plane: "M19.671,8.11l-2.777,2.777l-3.837-0.861c0.362-0.505,0.916-1.683,0.464-2.135c-0.518-0.517-1.979,0.278-2.305,0.604l-0.913,0.913L7.614,8.804l-2.021,2.021l2.232,1.061l-0.082,0.082l1.701,1.701l0.688-0.687l3.164,1.504L9.571,18.21H6.413l-1.137,1.138l3.6,0.948l1.83,1.83l0.947,3.598l1.137-1.137V21.43l3.725-3.725l1.504,3.164l-0.687,0.687l1.702,1.701l0.081-0.081l1.062,2.231l2.02-2.02l-0.604-2.689l0.912-0.912c0.326-0.326,1.121-1.789,0.604-2.306c-0.452-0.452-1.63,0.101-2.135,0.464l-0.861-3.838l2.777-2.777c0.947-0.947,3.599-4.862,2.62-5.839C24.533,4.512,20.618,7.163,19.671,8.11z",
+        phone: "M22.065,18.53c-0.467-0.29-1.167-0.21-1.556,0.179l-3.093,3.092c-0.389,0.389-1.025,0.389-1.414,0L9.05,14.848c-0.389-0.389-0.389-1.025,0-1.414l2.913-2.912c0.389-0.389,0.447-1.075,0.131-1.524L6.792,1.485C6.476,1.036,5.863,0.948,5.433,1.29c0,0-4.134,3.281-4.134,6.295c0,12.335,10,22.334,22.334,22.334c3.015,0,5.948-5.533,5.948-5.533c0.258-0.486,0.087-1.122-0.38-1.412L22.065,18.53z",
+        hangup: "M28.563,10.494c-7.35-7.349-19.265-7.348-26.612,0.001c-1.796,1.796-0.247,6.84-0.247,6.84c0.135,0.443,0.616,0.72,1.067,0.614l6.898-1.604c0.451-0.105,0.82-0.57,0.82-1.033l0.001-3.685c0-0.463,0.379-0.842,0.842-0.842h8.285c0.464,0,0.843,0.379,0.843,0.842l-0.001,3.471c0.001,0.462,0.375,0.907,0.83,0.986l7.635,1.316c0.456,0.08,0.873-0.232,0.926-0.692C29.851,16.708,30.359,12.29,28.563,10.494zM17.264,14.072h-3.501v4.39h-2.625l4.363,7.556l4.363-7.556h-2.6V14.072z",
+		music: "M12.751,8.042v6.041v9.862c-0.677-0.45-1.636-0.736-2.708-0.736c-2.048,0-3.708,1.025-3.708,2.292c0,1.265,1.66,2.291,3.708,2.291s3.708-1.026,3.708-2.291V13.786l10.915-3.24v9.565c-0.678-0.45-1.635-0.736-2.708-0.736c-2.048,0-3.708,1.025-3.708,2.292c0,1.265,1.66,2.291,3.708,2.291s3.708-1.026,3.708-2.291V10.249V4.208L12.751,8.042z",
+		roadmap: "M23.188,3.735c0-0.975-0.789-1.766-1.766-1.766s-1.766,0.791-1.766,1.766s1.766,4.267,1.766,4.267S23.188,4.71,23.188,3.735zM20.578,3.734c0-0.466,0.378-0.843,0.844-0.843c0.467,0,0.844,0.377,0.844,0.844c0,0.466-0.377,0.843-0.844,0.843C20.956,4.578,20.578,4.201,20.578,3.734zM25.281,18.496c-0.562,0-1.098,0.046-1.592,0.122L11.1,13.976c0.199-0.181,0.312-0.38,0.312-0.59c0-0.108-0.033-0.213-0.088-0.315l8.41-2.239c0.459,0.137,1.023,0.221,1.646,0.221c1.521,0,2.75-0.485,2.75-1.083c0-0.599-1.229-1.083-2.75-1.083s-2.75,0.485-2.75,1.083c0,0.069,0.021,0.137,0.054,0.202L9.896,12.2c-0.633-0.188-1.411-0.303-2.265-0.303c-2.088,0-3.781,0.667-3.781,1.49c0,0.823,1.693,1.489,3.781,1.489c0.573,0,1.11-0.054,1.597-0.144l11.99,4.866c-0.19,0.192-0.306,0.401-0.306,0.623c0,0.188,0.096,0.363,0.236,0.532L8.695,25.415c-0.158-0.005-0.316-0.011-0.477-0.011c-3.241,0-5.87,1.037-5.87,2.312c0,1.276,2.629,2.312,5.87,2.312c3.241,0,5.87-1.034,5.87-2.312c0-0.22-0.083-0.432-0.229-0.633l10.265-5.214c0.37,0.04,0.753,0.066,1.155,0.066c2.414,0,4.371-0.771,4.371-1.723C29.65,19.268,27.693,18.496,25.281,18.496z",
+		brush: "M8.125,29.178l1.311-1.5l1.315,1.5l1.311-1.5l1.311,1.5l1.315-1.5l1.311,1.5l1.312-1.5l1.314,1.5l1.312-1.5l1.312,1.5l1.314-1.5l1.312,1.5v-8.521H8.125V29.178zM23.375,17.156c-0.354,0-5.833-0.166-5.833-2.917s0.75-8.834,0.75-8.834S18.542,2.822,16,2.822s-2.292,2.583-2.292,2.583s0.75,6.083,0.75,8.834s-5.479,2.917-5.833,2.917c-0.5,0-0.5,1.166-0.5,1.166v1.271h15.75v-1.271C23.875,18.322,23.875,17.156,23.375,17.156zM16,8.031c-0.621,0-1.125-2.191-1.125-2.812S15.379,4.094,16,4.094s1.125,0.504,1.125,1.125S16.621,8.031,16,8.031z",
+		bucket: "M21.589,6.787c-0.25-0.152-0.504-0.301-0.76-0.445c-3.832-2.154-8.234-3.309-9.469-1.319c-1.225,2.103,2.314,5.798,6.293,8.222c0.082,0.051,0.167,0.098,0.25,0.146c5.463-0.402,9.887,0.204,9.989,1.402c0.009,0.105-0.026,0.211-0.083,0.318c0.018-0.025,0.041-0.045,0.057-0.07C29.146,12.943,25.585,9.222,21.589,6.787zM10.337,7.166l-0.722,1.52c-4.339,2.747-6.542,6.193-5.484,8.625c0.19,0.438,0.482,0.812,0.846,1.137l0.456-0.959c-0.156-0.178-0.292-0.365-0.384-0.577c-0.732-1.682,0.766-4.188,3.707-6.417l-3.323,6.994c1.492,1.689,5.748,1.748,10.276,0.154c-0.037-0.354,0.032-0.722,0.232-1.049c0.485-0.796,1.523-1.048,2.319-0.563c0.795,0.486,1.048,1.522,0.562,2.319c-0.484,0.795-1.523,1.047-2.319,0.562c-0.154-0.094-0.281-0.213-0.394-0.344c-4.354,1.559-8.372,1.643-10.553,0.314c-0.214-0.131-0.403-0.279-0.58-0.436l-0.124,0.26c-1.088,1.785,1.883,4.916,5.23,6.957c3.347,2.039,7.493,3.246,8.552,1.502l7.77-10.204c-2.48,0.384-6.154-0.963-9.272-2.864C14.014,12.197,11.131,9.546,10.337,7.166z",
+		terminal: "M3.25,6.469v19.062h25.5V6.469H3.25zM10.345,11.513l-4.331,1.926V12.44l3.124-1.288v-0.018L6.014,9.848v-1l4.331,1.927V11.513zM16.041,14.601h-5.05v-0.882h5.05V14.601z",
+		edit: "M27.87,7.863L23.024,4.82l-7.889,12.566l4.842,3.04L27.87,7.863zM14.395,21.25l-0.107,2.855l2.527-1.337l2.349-1.24l-4.672-2.936L14.395,21.25zM29.163,3.239l-2.532-1.591c-0.638-0.401-1.479-0.208-1.882,0.43l-0.998,1.588l4.842,3.042l0.999-1.586C29.992,4.481,29.802,3.639,29.163,3.239zM25.198,27.062c0,0.275-0.225,0.5-0.5,0.5h-19c-0.276,0-0.5-0.225-0.5-0.5v-19c0-0.276,0.224-0.5,0.5-0.5h13.244l1.884-3H5.698c-1.93,0-3.5,1.57-3.5,3.5v19c0,1.93,1.57,3.5,3.5,3.5h19c1.93,0,3.5-1.57,3.5-3.5V11.097l-3,4.776V27.062z",
+		paint: "M25.541,5.772V2.208H3.292v8.083h22.249v-3.52c1.211,0.113,2.167,1.174,2.167,2.478v1.375c0,1.398-1.164,2.784-2.541,3.025l-7.882,1.381c-1.857,0.326-3.369,2.125-3.369,4.011v0.385c-0.742,0.366-1.292,1.507-1.292,2.865v4.5c0,1.65,0.807,3,1.792,3s1.792-1.35,1.792-3v-4.5c0-1.358-0.55-2.499-1.292-2.865v-0.385c0-1.398,1.164-2.784,2.541-3.025l7.882-1.381c1.857-0.326,3.369-2.125,3.369-4.01V9.25C28.708,7.394,27.304,5.886,25.541,5.772z",
+		car: "M28.59,10.781h-2.242c-0.129,0-0.244,0.053-0.333,0.133c-0.716-1.143-1.457-2.058-2.032-2.633c-2-2-14-2-16,0C7.41,8.854,6.674,9.763,5.961,10.898c-0.086-0.069-0.19-0.117-0.309-0.117H3.41c-0.275,0-0.5,0.225-0.5,0.5v1.008c0,0.275,0.221,0.542,0.491,0.594l1.359,0.259c-1.174,2.619-1.866,5.877-0.778,9.14v1.938c0,0.553,0.14,1,0.313,1h2.562c0.173,0,0.313-0.447,0.313-1v-1.584c2.298,0.219,5.551,0.459,8.812,0.459c3.232,0,6.521-0.235,8.814-0.453v1.578c0,0.553,0.141,1,0.312,1h2.562c0.172,0,0.312-0.447,0.312-1l-0.002-1.938c1.087-3.261,0.397-6.516-0.775-9.134l1.392-0.265c0.271-0.052,0.491-0.318,0.491-0.594v-1.008C29.09,11.006,28.865,10.781,28.59,10.781zM7.107,18.906c-1.001,0-1.812-0.812-1.812-1.812s0.812-1.812,1.812-1.812s1.812,0.812,1.812,1.812S8.108,18.906,7.107,18.906zM5.583,13.716c0.96-2.197,2.296-3.917,3.106-4.728c0.585-0.585,3.34-1.207,7.293-1.207c3.953,0,6.708,0.622,7.293,1.207c0.811,0.811,2.146,2.53,3.106,4.728c-2.133,0.236-6.286-0.31-10.399-0.31S7.716,13.952,5.583,13.716zM24.857,18.906c-1.001,0-1.812-0.812-1.812-1.812s0.812-1.812,1.812-1.812s1.812,0.812,1.812,1.812S25.858,18.906,24.857,18.906z",
+		taxi: "M28.59,10.781h-2.242c-0.129,0-0.244,0.053-0.333,0.133c-0.716-1.143-1.457-2.058-2.032-2.633c-0.575-0.575-1.979-0.984-3.732-1.229V5.03c-1.541-0.198-3.099-0.249-4.268-0.249c-1.16,0-2.703,0.05-4.233,0.245v2.022C9.98,7.292,8.562,7.702,7.982,8.281C7.41,8.854,6.674,9.763,5.961,10.898c-0.086-0.069-0.19-0.117-0.309-0.117H3.41c-0.275,0-0.5,0.225-0.5,0.5v1.008c0,0.275,0.221,0.542,0.491,0.594l1.359,0.259c-1.174,2.619-1.866,5.877-0.778,9.14v1.938c0,0.553,0.14,1,0.313,1h2.562c0.173,0,0.313-0.447,0.313-1v-1.584c2.298,0.219,5.551,0.459,8.812,0.459c3.232,0,6.521-0.235,8.814-0.453v1.578c0,0.553,0.141,1,0.312,1h2.562c0.172,0,0.312-0.447,0.312-1l-0.002-1.938c1.087-3.261,0.397-6.516-0.775-9.134l1.392-0.265c0.271-0.052,0.491-0.318,0.491-0.594v-1.008C29.09,11.006,28.865,10.781,28.59,10.781zM7.107,18.906c-1.001,0-1.812-0.812-1.812-1.812s0.812-1.812,1.812-1.812s1.812,0.812,1.812,1.812S8.108,18.906,7.107,18.906zM5.583,13.716c0.96-2.197,2.296-3.917,3.106-4.728c0.585-0.585,3.34-1.207,7.293-1.207c3.953,0,6.708,0.622,7.293,1.207c0.811,0.811,2.146,2.53,3.106,4.728c-2.133,0.236-6.286-0.31-10.399-0.31S7.716,13.952,5.583,13.716zM24.857,18.906c-1.001,0-1.812-0.812-1.812-1.812s0.812-1.812,1.812-1.812s1.812,0.812,1.812,1.812S25.858,18.906,24.857,18.906z",
+		bus: "M30.171,7.314c-0.025-0.274-0.215-0.498-0.421-0.498s-0.375-0.169-0.375-0.375s-0.222-0.337-0.493-0.292L27.41,6.399C27.114,4.607,26.67,3.486,26,2.816c-2-2-18-2-20,0C5.331,3.486,4.886,4.607,4.589,6.399L3.118,6.15C2.847,6.104,2.625,6.235,2.625,6.441S2.456,6.816,2.25,6.816S1.854,7.041,1.829,7.314l-0.47,5.066c-0.025,0.274,0.179,0.498,0.454,0.498h1.062c0.275,0,0.521-0.224,0.546-0.498l0.393-4.232c0.025-0.274,0.268-0.46,0.54-0.415l0.054,0.009C4.007,11.396,4,29.684,4,29.684c0,0.553,0.14,1,0.313,1h2.562c0.173,0,0.313-0.447,0.313-1v-1.893c4.643,0.698,12.982,0.698,17.625,0v1.889c0,0.553,0.141,1,0.312,1h2.562c0.172,0,0.312-0.447,0.312-1c0,0-0.007-18.283-0.407-21.937l0.054-0.009c0.271-0.046,0.514,0.141,0.539,0.415l0.394,4.232c0.025,0.274,0.271,0.498,0.546,0.498h1.062c0.275,0,0.479-0.224,0.454-0.498L30.171,7.314zM7.125,23.371c-1.001,0-1.812-0.812-1.812-1.812s0.812-1.812,1.812-1.812s1.812,0.812,1.812,1.812S8.126,23.371,7.125,23.371zM5.042,15.977C5.143,8.542,5.491,4.739,6.707,3.523C7.194,3.037,10.484,2.316,16,2.316c5.516,0,8.806,0.72,9.293,1.207c1.217,1.216,1.564,5.02,1.665,12.455c-1.175,0.473-4.904,1.025-10.958,1.025C9.951,17.004,6.222,16.452,5.042,15.977zM23.062,21.559c0-1.001,0.812-1.812,1.812-1.812s1.812,0.812,1.812,1.812s-0.812,1.812-1.812,1.812S23.062,22.56,23.062,21.559z",
+		train: "M25.781,21.382c0.69-0.691,0.607-4.311,0.607-4.311c0-2.21-0.663-10.334-1.602-12.103c-0.94-1.768-6.19-3.26-8.787-3.26s-7.847,1.492-8.786,3.26c-0.939,1.769-1.603,9.893-1.603,12.103c0,0-0.083,3.619,0.607,4.311c0.455,0.455,2.205,1.581,3.663,2.423l-3.744,6.486h2.31l0.673-1.166h13.759l0.673,1.166h2.311l-3.744-6.486C23.576,22.963,25.326,21.837,25.781,21.382zM23.819,16.795c-0.473,0-0.856-0.384-0.856-0.856s0.384-0.856,0.856-0.856c0.474,0,0.856,0.384,0.856,0.856S24.293,16.795,23.819,16.795zM20.421,6.959h3.768c0.326,1.565,0.616,3.98,0.807,6.134h-4.574V6.959zM14.417,3.125h3.166v1.333h-3.166V3.125zM7.812,6.959h3.768v6.134H7.005C7.195,10.939,7.485,8.524,7.812,6.959zM8.181,16.795c-0.474,0-0.856-0.384-0.856-0.856s0.383-0.856,0.856-0.856c0.473,0,0.856,0.384,0.856,0.856S8.653,16.795,8.181,16.795zM9.341,15.938c0-0.473,0.384-0.856,0.856-0.856c0.474,0,0.856,0.384,0.856,0.856s-0.383,0.856-0.856,0.856C9.725,16.795,9.341,16.411,9.341,15.938zM10.275,27.125l0.99-1.715h9.469l0.99,1.715H10.275zM20.946,15.938c0-0.473,0.383-0.856,0.856-0.856c0.473,0,0.856,0.384,0.856,0.856s-0.384,0.856-0.856,0.856C21.329,16.795,20.946,16.411,20.946,15.938z",
+		scissors: "M11.108,10.271c1.083-1.876,0.159-4.443-2.059-5.725C8.231,4.074,7.326,3.825,6.433,3.825c-1.461,0-2.721,0.673-3.373,1.801C2.515,6.57,2.452,7.703,2.884,8.814C3.287,9.85,4.081,10.751,5.12,11.35c0.817,0.473,1.722,0.723,2.616,0.723c0.673,0,1.301-0.149,1.849-0.414c0.669,0.387,1.566,0.904,2.4,1.386c1.583,0.914,0.561,3.861,5.919,6.955c5.357,3.094,11.496,1.535,11.496,1.535L10.75,10.767C10.882,10.611,11.005,10.449,11.108,10.271zM9.375,9.271c-0.506,0.878-2.033,1.055-3.255,0.347C5.474,9.245,4.986,8.702,4.749,8.09C4.541,7.555,4.556,7.035,4.792,6.626c0.293-0.509,0.892-0.801,1.64-0.801c0.543,0,1.102,0.157,1.616,0.454C9.291,6.996,9.898,8.366,9.375,9.271zM17.246,15.792c0,0.483-0.392,0.875-0.875,0.875c-0.037,0-0.068-0.017-0.104-0.021l0.667-1.511C17.121,15.296,17.246,15.526,17.246,15.792zM16.371,14.917c0.037,0,0.068,0.017,0.104,0.021l-0.666,1.51c-0.188-0.16-0.312-0.39-0.312-0.656C15.496,15.309,15.887,14.917,16.371,14.917zM29.4,10.467c0,0-6.139-1.559-11.496,1.535c-0.537,0.311-0.995,0.618-1.415,0.924l4.326,2.497L29.4,10.467zM13.171,17.097c-0.352,0.851-0.575,1.508-1.187,1.859c-0.833,0.481-1.73,0.999-2.399,1.386c-0.549-0.265-1.176-0.414-1.85-0.414c-0.894,0-1.798,0.249-2.616,0.721c-2.218,1.282-3.143,3.851-2.06,5.726c0.651,1.127,1.912,1.801,3.373,1.801c0.894,0,1.799-0.25,2.616-0.722c1.04-0.601,1.833-1.501,2.236-2.536c0.432-1.112,0.368-2.245-0.178-3.189c-0.103-0.178-0.226-0.34-0.356-0.494l3.982-2.3C14.044,18.295,13.546,17.676,13.171,17.097zM9.42,24.192c-0.238,0.612-0.725,1.155-1.371,1.528c-1.221,0.706-2.75,0.532-3.257-0.347C4.27,24.47,4.878,23.099,6.12,22.381c0.514-0.297,1.072-0.453,1.615-0.453c0.749,0,1.346,0.291,1.64,0.8C9.612,23.138,9.628,23.657,9.42,24.192z",
+		coffee: "M7.845,9.983l2.034,17.353c0,0.977,2.741,1.769,6.121,1.769c3.381,0,6.121-0.792,6.121-1.769l2.377-17.485c-2.455,1.023-6.812,1.133-8.498,1.133C14.39,10.984,10.345,10.883,7.845,9.983zM24.13,5.752l-0.376-1.678c0-0.651-3.472-1.179-7.754-1.179S8.246,3.424,8.246,4.075L7.871,5.752C7.156,6.036,6.75,6.36,6.75,6.705v1.284c0,1.102,4.142,1.995,9.25,1.995s9.25-0.894,9.25-1.995V6.705C25.25,6.36,24.844,6.036,24.13,5.752z",
+		filter: "M26.834,6.958c0-2.094-4.852-3.791-10.834-3.791c-5.983,0-10.833,1.697-10.833,3.791c0,0.429,0.213,0.84,0.588,1.224l8.662,15.002v4.899c0,0.414,0.709,0.75,1.583,0.75c0.875,0,1.584-0.336,1.584-0.75v-4.816l8.715-15.093h-0.045C26.625,7.792,26.834,7.384,26.834,6.958zM16,9.75c-6.363,0-9.833-1.845-9.833-2.792S9.637,4.167,16,4.167c6.363,0,9.834,1.844,9.834,2.791S22.363,9.75,16,9.75z",
+		"low-battery": "M27.271,13.501h-1.104v-1.417c0-0.553-0.447-1-1-1H5.25c-0.552,0-1,0.447-1,1v7.832c0,0.553,0.448,1,1,1h19.917c0.553,0,1-0.447,1-1v-1.417h1.104c0.265,0,0.479-0.447,0.479-1v-2.998C27.75,13.948,27.536,13.501,27.271,13.501zM24.167,18.916H6.25v-5.832h17.917V18.916zM9.167,14.084H7.25v3.832h1.917V14.084z",
+		"full-battery": "M27.271,13.501h-1.104v-1.417c0-0.553-0.447-1-1-1H5.25c-0.552,0-1,0.447-1,1v7.832c0,0.553,0.448,1,1,1h19.917c0.553,0,1-0.447,1-1v-1.417h1.104c0.265,0,0.479-0.447,0.479-1v-2.998C27.75,13.948,27.536,13.501,27.271,13.501zM24.167,18.916H6.25v-5.832h17.917V18.916zM23.167,14.084H7.25v3.832h15.917V14.084z",
+		charging: "M27.271,13.501h-1.104v-1.417c0-0.553-0.447-1-1-1H5.25c-0.552,0-1,0.447-1,1v7.832c0,0.553,0.448,1,1,1h19.917c0.553,0,1-0.447,1-1v-1.417h1.104c0.265,0,0.479-0.447,0.479-1v-2.998C27.75,13.948,27.536,13.501,27.271,13.501zM18.525,16.842l-6.733,3.366l3.366-3.366l-1.683-1.684l6.733-3.366l-3.366,3.366L18.525,16.842z",
+		ticket: "M20.338,6.713c-1.002-0.468-1.434-1.658-0.967-2.658L16.578,2.75L6.21,24.948l2.793,1.305c0.468-1.001,1.658-1.434,2.659-0.966s1.434,1.657,0.966,2.658l2.793,1.305L25.789,7.052l-2.793-1.305C22.529,6.748,21.338,7.181,20.338,6.713z",
+		checkbox: "M26,27.5H6c-0.829,0-1.5-0.672-1.5-1.5V6c0-0.829,0.671-1.5,1.5-1.5h20c0.828,0,1.5,0.671,1.5,1.5v20C27.5,26.828,26.828,27.5,26,27.5zM7.5,24.5h17v-17h-17V24.5z",
+		checked: "M29.548,3.043c-1.081-0.859-2.651-0.679-3.513,0.401L16,16.066l-3.508-4.414c-0.859-1.081-2.431-1.26-3.513-0.401c-1.081,0.859-1.261,2.432-0.401,3.513l5.465,6.875c0.474,0.598,1.195,0.944,1.957,0.944c0.762,0,1.482-0.349,1.957-0.944L29.949,6.556C30.809,5.475,30.629,3.902,29.548,3.043zM24.5,24.5h-17v-17h12.756l2.385-3H6C5.171,4.5,4.5,5.171,4.5,6v20c0,0.828,0.671,1.5,1.5,1.5h20c0.828,0,1.5-0.672,1.5-1.5V12.851l-3,3.773V24.5z",
+		inbox: "M24,5H8L4,19v8h24v-8L24,5zM27,26H5v-7h8.75c0,1.242,1.007,2.25,2.25,2.25c1.242,0,2.25-1.008,2.25-2.25H27V26z",
+		crown: "M16,8.087c1.007,0,1.826-0.819,1.826-1.826c0-1.007-0.819-1.826-1.826-1.826s-1.826,0.819-1.826,1.826C14.174,7.268,14.993,8.087,16,8.087zM16,5.043c0.673,0,1.218,0.545,1.218,1.217S16.673,7.479,16,7.479s-1.217-0.545-1.217-1.218S15.327,5.043,16,5.043zM4.923,13.292c0.812,2.612,1.132,6.646,1.257,9.412c0.027-0.001,0.053-0.009,0.081-0.009h19.479c0.027,0,0.054,0.008,0.081,0.009c0.124-2.766,0.444-6.8,1.256-9.412c-0.449-0.229-0.813-0.591-1.05-1.038c-2.401,2.048-5.157,6.18-5.157,6.18s-3.026-6.058-4.305-9.812C16.383,8.667,16.196,8.696,16,8.696s-0.383-0.029-0.565-0.073c-1.278,3.754-4.305,9.812-4.305,9.812s-2.756-4.132-5.157-6.18C5.738,12.701,5.373,13.063,4.923,13.292zM5.652,11.13c0-1.007-0.819-1.826-1.826-1.826S2,10.124,2,11.13s0.819,1.826,1.826,1.826S5.652,12.137,5.652,11.13zM3.826,12.348c-0.673,0-1.217-0.545-1.217-1.217s0.544-1.217,1.217-1.217s1.217,0.545,1.217,1.217S4.499,12.348,3.826,12.348zM25.739,23.913H6.261c-1.009,0-1.826,0.818-1.826,1.826s0.817,1.826,1.826,1.826h19.479c1.008,0,1.826-0.818,1.826-1.826S26.747,23.913,25.739,23.913zM28.174,9.304c-1.007,0-1.826,0.819-1.826,1.826s0.819,1.826,1.826,1.826S30,12.137,30,11.13S29.181,9.304,28.174,9.304zM28.174,12.348c-0.673,0-1.218-0.545-1.218-1.217s0.545-1.217,1.218-1.217s1.218,0.545,1.218,1.217S28.847,12.348,28.174,12.348z",
+		green: "M24.485,2c0,8-18,4-18,20c0,6,2,8,2,8h2c0,0-3-2-3-8c0-4,9-8,9-8s-7.981,4.328-7.981,8.436C21.239,24.431,28.288,9.606,24.485,2z",
+		bolt: "M22.727,18.242L4.792,27.208l8.966-8.966l-4.483-4.484l17.933-8.966l-8.966,8.966L22.727,18.242z",
+        // logos
+        slideshare: "M28.952,12.795c-0.956,1.062-5.073,2.409-5.604,2.409h-4.513c-0.749,0-1.877,0.147-2.408,0.484c0.061,0.054,0.122,0.108,0.181,0.163c0.408,0.379,1.362,0.913,2.206,0.913c0.397,0,0.723-0.115,1-0.354c1.178-1.007,1.79-1.125,2.145-1.125c0.421,0,0.783,0.193,0.996,0.531c0.4,0.626,0.106,1.445-0.194,2.087c-0.718,1.524-3.058,3.171-5.595,3.171c-0.002,0-0.002,0-0.004,0c-0.354,0-0.701-0.033-1.033-0.099v3.251c0,0.742,1.033,2.533,4.167,2.533s3.955-3.701,3.955-4.338v-4.512c2.23-1.169,4.512-1.805,5.604-3.895C30.882,12.05,29.907,11.733,28.952,12.795zM21.942,17.521c0.796-1.699-0.053-1.699-1.54-0.425s-3.665,0.105-4.408-0.585c-0.743-0.689-1.486-1.22-2.814-1.167c-1.328,0.053-4.46-0.161-6.267-0.585c-1.805-0.425-4.895-3-5.15-2.335c-0.266,0.69,0.211,1.168,1.168,2.335c0.955,1.169,5.075,2.778,5.075,2.778s0,3.453,0,4.886c0,1.435,2.973,3.61,4.512,3.61s2.708-1.062,2.708-1.806v-4.512C17.775,21.045,21.146,19.221,21.942,17.521zM20.342,13.73c1.744,0,3.159-1.414,3.159-3.158c0-1.745-1.415-3.159-3.159-3.159s-3.158,1.414-3.158,3.159C17.184,12.316,18.598,13.73,20.342,13.73zM12.019,13.73c1.744,0,3.158-1.414,3.158-3.158c0-1.745-1.414-3.159-3.158-3.159c-1.745,0-3.159,1.414-3.159,3.159C8.86,12.316,10.273,13.73,12.019,13.73z",
+        twitter: "M23.295,22.567h-7.213c-2.125,0-4.103-2.215-4.103-4.736v-1.829h11.232c1.817,0,3.291-1.469,3.291-3.281c0-1.813-1.474-3.282-3.291-3.282H11.979V6.198c0-1.835-1.375-3.323-3.192-3.323c-1.816,0-3.29,1.488-3.29,3.323v11.633c0,6.23,4.685,11.274,10.476,11.274h7.211c1.818,0,3.318-1.463,3.318-3.298S25.112,22.567,23.295,22.567z",
+        twitterbird: "M26.492,9.493c-0.771,0.343-1.602,0.574-2.473,0.678c0.89-0.533,1.562-1.376,1.893-2.382c-0.832,0.493-1.753,0.852-2.734,1.044c-0.785-0.837-1.902-1.359-3.142-1.359c-2.377,0-4.306,1.928-4.306,4.306c0,0.337,0.039,0.666,0.112,0.979c-3.578-0.18-6.75-1.894-8.874-4.499c-0.371,0.636-0.583,1.375-0.583,2.165c0,1.494,0.76,2.812,1.915,3.583c-0.706-0.022-1.37-0.216-1.95-0.538c0,0.018,0,0.036,0,0.053c0,2.086,1.484,3.829,3.454,4.222c-0.361,0.099-0.741,0.147-1.134,0.147c-0.278,0-0.547-0.023-0.81-0.076c0.548,1.711,2.138,2.955,4.022,2.99c-1.474,1.146-3.33,1.842-5.347,1.842c-0.348,0-0.69-0.021-1.027-0.062c1.905,1.225,4.168,1.938,6.6,1.938c7.919,0,12.248-6.562,12.248-12.25c0-0.187-0.002-0.372-0.01-0.557C25.186,11.115,25.915,10.356,26.492,9.493z",
+        skype: "M28.777,18.438c0.209-0.948,0.318-1.934,0.318-2.944c0-7.578-6.144-13.722-13.724-13.722c-0.799,0-1.584,0.069-2.346,0.2C11.801,1.199,10.35,0.75,8.793,0.75c-4.395,0-7.958,3.562-7.958,7.958c0,1.47,0.399,2.845,1.094,4.024c-0.183,0.893-0.277,1.814-0.277,2.76c0,7.58,6.144,13.723,13.722,13.723c0.859,0,1.699-0.078,2.515-0.23c1.119,0.604,2.399,0.945,3.762,0.945c4.395,0,7.957-3.562,7.957-7.959C29.605,20.701,29.309,19.502,28.777,18.438zM22.412,22.051c-0.635,0.898-1.573,1.609-2.789,2.115c-1.203,0.5-2.646,0.754-4.287,0.754c-1.971,0-3.624-0.346-4.914-1.031C9.5,23.391,8.74,22.717,8.163,21.885c-0.583-0.842-0.879-1.676-0.879-2.479c0-0.503,0.192-0.939,0.573-1.296c0.375-0.354,0.857-0.532,1.432-0.532c0.471,0,0.878,0.141,1.209,0.422c0.315,0.269,0.586,0.662,0.805,1.174c0.242,0.558,0.508,1.027,0.788,1.397c0.269,0.355,0.656,0.656,1.151,0.89c0.497,0.235,1.168,0.354,1.992,0.354c1.135,0,2.064-0.241,2.764-0.721c0.684-0.465,1.016-1.025,1.016-1.711c0-0.543-0.173-0.969-0.529-1.303c-0.373-0.348-0.865-0.621-1.465-0.807c-0.623-0.195-1.47-0.404-2.518-0.623c-1.424-0.306-2.634-0.668-3.596-1.076c-0.984-0.419-1.777-1-2.357-1.727c-0.59-0.736-0.889-1.662-0.889-2.75c0-1.036,0.314-1.971,0.933-2.776c0.613-0.8,1.51-1.423,2.663-1.849c1.139-0.422,2.494-0.635,4.027-0.635c1.225,0,2.303,0.141,3.201,0.421c0.904,0.282,1.668,0.662,2.267,1.13c0.604,0.472,1.054,0.977,1.335,1.5c0.284,0.529,0.43,1.057,0.43,1.565c0,0.49-0.189,0.937-0.563,1.324c-0.375,0.391-0.851,0.589-1.408,0.589c-0.509,0-0.905-0.124-1.183-0.369c-0.258-0.227-0.523-0.58-0.819-1.09c-0.342-0.65-0.756-1.162-1.229-1.523c-0.463-0.351-1.232-0.529-2.292-0.529c-0.984,0-1.784,0.197-2.379,0.588c-0.572,0.375-0.85,0.805-0.85,1.314c0,0.312,0.09,0.574,0.273,0.799c0.195,0.238,0.471,0.447,0.818,0.621c0.36,0.182,0.732,0.326,1.104,0.429c0.382,0.106,1.021,0.263,1.899,0.466c1.11,0.238,2.131,0.506,3.034,0.793c0.913,0.293,1.703,0.654,2.348,1.072c0.656,0.429,1.178,0.979,1.547,1.635c0.369,0.658,0.558,1.471,0.558,2.416C23.371,20.119,23.049,21.148,22.412,22.051z",
+        windows: "M20.023,17.484c-1.732-0.205-3.022-0.908-4.212-1.701l0,0l-0.559,0.279l-2.578,8.924l0,0c1.217,0.805,2.905,1.707,4.682,1.914c2.686,0.312,5.56-0.744,6.391-1.195l2.617-9.061l-0.559-0.279C25.805,16.365,23.193,17.857,20.023,17.484zM14.424,14.825c-1.267-0.87-2.578-1.652-4.375-1.816c-0.318-0.029-0.627-0.042-0.925-0.042c-3.011,0-4.948,1.347-4.948,1.347l-2.565,8.877l0,0l0.526,0.281c0.981-0.476,2.78-1.145,5.09-0.984c1.665,0.113,2.92,0.781,4.117,1.531l0.507-0.26l0,0L14.424,14.825zM10.201,12.094c1.664,0.114,2.921,0.78,4.117,1.533l0.509-0.26l0,0L17.4,4.431c-1.27-0.87-2.579-1.653-4.377-1.816c-0.318-0.029-0.626-0.042-0.924-0.042C9.088,2.573,7.15,3.92,7.15,3.92l-2.566,8.878L5.11,13.08C6.092,12.604,7.891,11.936,10.201,12.094zM28.779,5.971L28.779,5.971c0,0.001-2.609,1.492-5.779,1.119c-1.734-0.204-3.023-0.907-4.213-1.701L18.227,5.67l-2.576,8.923l0,0c1.215,0.803,2.906,1.709,4.68,1.915c2.687,0.312,5.558-0.745,6.392-1.197l2.615-9.059L28.779,5.971z",
+        apple: "M24.32,10.85c-1.743,1.233-2.615,2.719-2.615,4.455c0,2.079,1.078,3.673,3.232,4.786c-0.578,1.677-1.416,3.134-2.514,4.375c-1.097,1.241-2.098,1.862-3.004,1.862c-0.427,0-1.009-0.143-1.748-0.423l-0.354-0.138c-0.725-0.281-1.363-0.423-1.92-0.423c-0.525,0-1.1,0.11-1.725,0.331l-0.445,0.16l-0.56,0.229c-0.441,0.176-0.888,0.264-1.337,0.264c-1.059,0-2.228-0.872-3.507-2.616c-1.843-2.498-2.764-5.221-2.764-8.167c0-2.095,0.574-3.781,1.725-5.061c1.149-1.279,2.673-1.92,4.568-1.92c0.709,0,1.371,0.13,1.988,0.389l0.423,0.172l0.445,0.183c0.396,0.167,0.716,0.251,0.959,0.251c0.312,0,0.659-0.072,1.04-0.217l0.582-0.229l0.435-0.16c0.693-0.251,1.459-0.377,2.297-0.377C21.512,8.576,23.109,9.334,24.32,10.85zM19.615,3.287c0.021,0.267,0.033,0.473,0.033,0.617c0,1.317-0.479,2.473-1.438,3.467s-2.075,1.49-3.347,1.49c-0.038-0.297-0.058-0.51-0.058-0.639c0-1.12,0.445-2.171,1.337-3.153c0.891-0.982,1.922-1.558,3.096-1.725C19.32,3.329,19.447,3.311,19.615,3.287z",
+        linux: "M11.791,25.229c1.027-0.104,1.162-1.191,0.68-1.666c-0.398-0.392-2.598-2.022-3.171-2.664C9.033,20.6,8.673,20.454,8.52,20.12c-0.352-0.771-0.598-1.869-0.151-2.658c0.081-0.144,0.133-0.078,0.071,0.22c-0.351,1.684,0.746,3.059,0.986,2.354c0.167-0.487,0.013-1.358,0.102-2.051c0.158-1.226,1.273-3.577,1.763-3.712c-0.755-1.398,0.886-2.494,0.866-3.723c-0.014-0.798,0.701,0.982,1.419,1.359c0.802,0.422,1.684-0.794,2.936-1.41c0.354-0.176,0.809-0.376,0.776-0.524c-0.146-0.718-1.644,0.886-2.979,0.939c-0.61,0.024-0.837-0.12-1.072-0.347c-0.712-0.689,0.073-0.115,1.132-0.307c0.471-0.085,0.629-0.163,1.128-0.365c0.5-0.201,1.069-0.5,1.636-0.654c0.395-0.106,0.361-0.402,0.208-0.491c-0.088-0.051-0.219-0.046-0.321,0.133c-0.244,0.419-1.383,0.661-1.74,0.771c-0.457,0.14-0.962,0.271-1.634,0.243c-1.021-0.042-0.782-0.509-1.513-0.928c-0.213-0.122-0.156-0.444,0.129-0.729c0.148-0.148,0.557-0.232,0.76-0.572c0.028-0.047,0.289-0.32,0.494-0.461c0.07-0.049,0.076-1.295-0.562-1.32c-0.543-0.021-0.697,0.398-0.675,0.818c0.022,0.419,0.245,0.765,0.393,0.764c0.285-0.004,0.019,0.311-0.138,0.361c-0.237,0.078-0.562-0.934-0.525-1.418c0.039-0.506,0.303-1.4,0.942-1.383c0.576,0.016,0.993,0.737,0.973,1.983c-0.003,0.211,0.935-0.101,1.247,0.229c0.224,0.236-0.767-2.207,1.438-2.375c0.582,0.111,1.14,0.305,1.371,1.641c-0.086,0.139,0.146,1.07-0.215,1.182c-0.438,0.135-0.707-0.02-0.453-0.438c0.172-0.418,0.004-1.483-0.882-1.42c-0.887,0.064-0.769,1.637-0.526,1.668c0.243,0.031,0.854,0.465,1.282,0.549c1.401,0.271,0.371,1.075,0.555,2.048c0.205,1.099,0.929,0.809,1.578,3.717c0.137,0.177,0.676,0.345,1.199,2.579c0.473,2.011-0.195,3.473,0.938,3.353c0.256-0.026,0.629-0.1,0.792-0.668c0.425-1.489-0.213-3.263-0.855-4.46c-0.375-0.698-0.729-1.174-0.916-1.337c0.738,0.436,1.683,1.829,1.898,2.862c0.286,1.358,0.49,1.934,0.059,3.37c0.25,0.125,0.871,0.39,0.871,0.685c-0.647-0.53-2.629-0.625-2.68,0.646c-0.338,0.008-0.594,0.034-0.811,0.293c-0.797,0.944-0.059,2.842-0.139,3.859c-0.07,0.896-0.318,1.783-0.46,2.683c-0.474-0.019-0.428-0.364-0.274-0.852c0.135-0.431,0.351-0.968,0.365-1.484c0.012-0.467-0.039-0.759-0.156-0.831c-0.118-0.072-0.303,0.074-0.559,0.485c-0.543,0.875-1.722,1.261-2.821,1.397c-1.099,0.138-2.123,0.028-2.664-0.578c-0.186-0.207-0.492,0.058-0.529,0.111c-0.049,0.074,0.18,0.219,0.352,0.533c0.251,0.461,0.49,1.159-0.105,1.479C12.83,26.314,12.316,26.221,11.791,25.229L11.791,25.229zM11.398,25.188c0.395,0.621,1.783,3.232-0.652,3.571c-0.814,0.114-2.125-0.474-3.396-0.784c-1.142-0.279-2.301-0.444-2.949-0.627c-0.391-0.108-0.554-0.25-0.588-0.414c-0.091-0.434,0.474-1.041,0.503-1.555c0.028-0.514-0.188-0.779-0.364-1.199c-0.177-0.42-0.224-0.734-0.081-0.914c0.109-0.141,0.334-0.199,0.698-0.164c0.462,0.047,1.02-0.049,1.319-0.23c0.505-0.309,0.742-0.939,0.516-1.699c0,0.744-0.244,1.025-0.855,1.366c-0.577,0.319-1.467,0.062-1.875,0.416c-0.492,0.427,0.175,1.528,0.12,2.338c-0.042,0.622-0.69,1.322-0.401,1.946c0.291,0.627,1.648,0.695,3.064,0.99c2.012,0.422,3.184,1.153,4.113,1.188c1.356,0.05,1.564-1.342,3.693-1.36c0.621-0.033,1.229-0.052,1.835-0.06c0.688-0.009,1.375-0.003,2.079,0.014c1.417,0.034,0.931,0.773,1.851,1.246c0.774,0.397,2.17,0.241,2.504-0.077c0.451-0.431,1.662-1.467,2.592-1.935c1.156-0.583,3.876-1.588,1.902-2.812c-0.461-0.285-1.547-0.588-1.639-2.676c-0.412,0.366-0.365,2.312,0.784,2.697c1.283,0.431,2.085,1.152-0.301,1.969c-1.58,0.54-1.849,0.706-3.099,1.747c-1.267,1.054-3.145,0.636-2.815-1.582c0.171-1.155,0.269-2.11-0.019-3.114c-0.142-0.49-0.211-1.119-0.114-1.562c0.187-0.858,0.651-1.117,1.106-0.293c0.285,0.519,0.385,1.122,1.408,1.171c1.607,0.077,1.926-1.553,2.439-1.627c0.343-0.05,0.686-1.02,0.425-2.589c-0.28-1.681-1.269-4.332-2.536-5.677c-1.053-1.118-1.717-2.098-2.135-3.497c-0.352-1.175-0.547-2.318-0.475-3.412c0.094-1.417-0.691-3.389-1.943-4.316c-0.782-0.581-2.011-0.893-3.122-0.88c-0.623,0.007-1.21,0.099-1.661,0.343c-1.855,1.008-2.113,2.445-2.086,4.088c0.025,1.543,0.078,3.303,0.254,4.977c-0.208,0.77-1.288,2.227-1.979,3.114C8.59,14.233,8.121,16.01,7.52,17.561c-0.321,0.828-0.862,1.2-0.908,2.265C6.6,20.122,6.61,20.891,6.894,20.672C7.98,19.829,9.343,21.95,11.398,25.188L11.398,25.188zM17.044,2.953c-0.06,0.176-0.3,0.321-0.146,0.443c0.152,0.123,0.24-0.171,0.549-0.281c0.08-0.028,0.449,0.012,0.519-0.164c0.03-0.077-0.19-0.164-0.321-0.291c-0.133-0.125-0.262-0.236-0.386-0.229C16.938,2.451,17.096,2.798,17.044,2.953L17.044,2.953zM18.934,9.35c0.115-0.121,0.174,0.207,0.483,0.402c0.244,0.154,0.481,0.04,0.545,0.354c0.044,0.225-0.097,0.467-0.284,0.436C19.35,10.486,18.596,9.705,18.934,9.35L18.934,9.35zM13.832,7.375c-0.508-0.037-0.543,0.33-0.375,0.324C13.629,7.693,13.523,7.408,13.832,7.375L13.832,7.375zM12.96,6.436c0.06-0.013,0.146,0.09,0.119,0.233c-0.037,0.199-0.021,0.324,0.117,0.325c0.022,0,0.048-0.005,0.056-0.057c0.066-0.396-0.14-0.688-0.225-0.711C12.834,6.178,12.857,6.458,12.96,6.436L12.96,6.436zM16.663,6.268c0.129,0.039,0.253,0.262,0.28,0.504c0.002,0.021,0.168-0.035,0.17-0.088c0.011-0.389-0.321-0.571-0.408-0.562C16.506,6.139,16.562,6.238,16.663,6.268L16.663,6.268zM14.765,7.423c0.463-0.214,0.625,0.118,0.465,0.171C15.066,7.648,15.065,7.345,14.765,7.423L14.765,7.423zM9.178,15.304c-0.219-0.026,0.063-0.19,0.184-0.397c0.131-0.227,0.105-0.511,0.244-0.469s0.061,0.2-0.033,0.461C9.491,15.121,9.258,15.313,9.178,15.304L9.178,15.304z",
+        nodejs: "M4.783,4.458L2.59,3.196C2.553,3.174,2.511,3.163,2.469,3.161H2.447C2.405,3.163,2.363,3.174,2.326,3.196L0.133,4.458C0.051,4.505,0,4.593,0,4.688l0.005,3.398c0,0.047,0.024,0.092,0.066,0.114c0.041,0.024,0.091,0.024,0.132,0l1.303-0.746c0.083-0.049,0.132-0.136,0.132-0.229V5.637c0-0.095,0.05-0.183,0.132-0.229l0.555-0.32c0.041-0.023,0.086-0.035,0.132-0.035c0.045,0,0.092,0.012,0.132,0.035l0.555,0.32c0.082,0.047,0.133,0.135,0.133,0.229v1.588c0,0.094,0.051,0.182,0.132,0.229l1.303,0.746c0.041,0.024,0.092,0.024,0.132,0c0.041-0.022,0.066-0.067,0.066-0.114l0.004-3.398C4.915,4.593,4.865,4.505,4.783,4.458zM17.93,0.745l-1.305-0.729c-0.042-0.023-0.091-0.022-0.132,0.001c-0.041,0.024-0.065,0.067-0.065,0.114v3.365c0,0.033-0.018,0.064-0.046,0.081s-0.064,0.017-0.093,0l-0.549-0.316c-0.082-0.047-0.183-0.047-0.265,0l-2.193,1.266c-0.082,0.047-0.133,0.135-0.133,0.229V7.29c0,0.095,0.051,0.182,0.132,0.229l2.194,1.267c0.082,0.048,0.183,0.048,0.265,0l2.194-1.267c0.082-0.048,0.133-0.135,0.133-0.229V0.977C18.066,0.88,18.014,0.792,17.93,0.745zM16.421,6.458c0,0.023-0.013,0.045-0.033,0.057l-0.753,0.435c-0.021,0.012-0.045,0.012-0.066,0l-0.753-0.435c-0.021-0.012-0.033-0.034-0.033-0.057v-0.87c0-0.023,0.013-0.045,0.033-0.058l0.753-0.435c0.021-0.012,0.045-0.012,0.066,0l0.753,0.435c0.021,0.012,0.033,0.034,0.033,0.058V6.458zM24.473,4.493l-2.18-1.266c-0.082-0.047-0.183-0.048-0.265,0l-2.193,1.266c-0.082,0.047-0.132,0.135-0.132,0.229v2.532c0,0.096,0.051,0.184,0.133,0.23l2.18,1.242c0.08,0.045,0.179,0.046,0.26,0.001l1.318-0.732c0.042-0.023,0.067-0.067,0.068-0.115c0-0.048-0.025-0.092-0.066-0.116l-2.207-1.266c-0.041-0.023-0.066-0.067-0.066-0.115V5.59c0-0.047,0.025-0.091,0.065-0.115l0.688-0.396c0.041-0.024,0.091-0.024,0.132,0l0.688,0.396c0.041,0.023,0.066,0.067,0.066,0.115v0.625c0,0.047,0.025,0.091,0.066,0.114c0.041,0.024,0.092,0.024,0.132,0l1.314-0.764c0.081-0.047,0.132-0.135,0.132-0.229V4.722C24.605,4.628,24.555,4.541,24.473,4.493zM11.363,4.48L9.169,3.214c-0.082-0.047-0.183-0.047-0.265,0L6.711,4.48C6.629,4.527,6.579,4.615,6.579,4.709v2.534c0,0.095,0.051,0.182,0.133,0.229l2.193,1.267c0.082,0.048,0.183,0.048,0.265,0l2.193-1.267c0.082-0.048,0.132-0.135,0.132-0.229V4.709C11.495,4.615,11.445,4.527,11.363,4.48zM31.019,4.382L28.95,3.187c-0.13-0.074-0.304-0.074-0.435,0l-2.068,1.195c-0.135,0.077-0.218,0.222-0.218,0.377v2.386c0,0.156,0.083,0.301,0.218,0.378l0.542,0.312c0.263,0.13,0.356,0.13,0.477,0.13c0.389,0,0.612-0.236,0.612-0.646V4.962c0-0.033-0.027-0.06-0.06-0.06h-0.263c-0.033,0-0.061,0.026-0.061,0.06v2.356c0,0.182-0.188,0.363-0.495,0.209l-0.566-0.326c-0.021-0.012-0.033-0.033-0.033-0.057V4.759c0-0.023,0.013-0.045,0.033-0.057l2.067-1.193c0.019-0.011,0.044-0.011,0.063,0l2.067,1.193c0.02,0.012,0.032,0.034,0.032,0.057v2.386c0,0.023-0.013,0.046-0.032,0.057l-2.068,1.193c-0.018,0.012-0.045,0.012-0.063,0l-0.53-0.314c-0.017-0.01-0.036-0.013-0.052-0.004c-0.146,0.083-0.175,0.094-0.312,0.143c-0.034,0.012-0.084,0.031,0.019,0.09l0.691,0.408c0.065,0.038,0.141,0.059,0.217,0.059s0.151-0.021,0.218-0.059l2.068-1.194c0.134-0.078,0.217-0.222,0.217-0.378V4.759C31.235,4.604,31.152,4.459,31.019,4.382zM29.371,6.768c-0.548,0-0.668-0.138-0.708-0.41c-0.005-0.029-0.029-0.051-0.06-0.051h-0.268c-0.033,0-0.06,0.026-0.06,0.06c0,0.349,0.189,0.765,1.095,0.765c0.655,0,1.031-0.259,1.031-0.709c0-0.447-0.302-0.566-0.938-0.65c-0.643-0.085-0.708-0.128-0.708-0.279c0-0.125,0.056-0.29,0.531-0.29c0.425,0,0.581,0.091,0.646,0.378c0.006,0.027,0.03,0.047,0.059,0.047h0.269c0.017,0,0.032-0.007,0.044-0.019c0.011-0.013,0.017-0.029,0.016-0.046c-0.042-0.493-0.37-0.723-1.032-0.723c-0.59,0-0.941,0.249-0.941,0.666c0,0.453,0.35,0.578,0.916,0.634c0.677,0.066,0.729,0.166,0.729,0.298C29.992,6.669,29.807,6.768,29.371,6.768zM22.128,5.446l-0.42,0.243c-0.016,0.009-0.025,0.026-0.025,0.044v0.486c0,0.019,0.01,0.035,0.025,0.044l0.42,0.243c0.016,0.009,0.035,0.009,0.052,0l0.421-0.243c0.016-0.009,0.025-0.025,0.025-0.044V5.733c0-0.018-0.01-0.035-0.025-0.044L22.18,5.446C22.163,5.438,22.144,5.438,22.128,5.446z",
+        jquery: "M10.322,23.041C4.579,18.723,2.777,11.07,5.494,4.583c-0.254,0.291-0.502,0.59-0.739,0.904c-5.177,6.887-4.008,16.505,2.613,21.482c6.62,4.979,16.184,3.432,21.362-3.455c0.237-0.314,0.454-0.635,0.663-0.959C23.915,26.963,16.064,27.357,10.322,23.041zM13.662,18.598c4.765,3.582,11.604,2.564,15.567-2.198c-3.609,2.641-9.09,2.475-13.361-0.736S9.916,7.231,11.451,3.03C7.976,8.161,8.897,15.015,13.662,18.598zM18.642,11.976c3.254,2.447,8.146,1.438,10.967-2.242c-2.604,1.921-6.341,1.955-9.157-0.164c-2.819-2.118-3.826-5.718-2.701-8.754C14.998,4.549,15.387,9.528,18.642,11.976z",
+        sencha: "M18.265,22.734c1.365,0.662,2.309,2.062,2.309,3.682c0,1.566-0.881,2.928-2.176,3.615l1.922-0.98c3.16-1.58,5.332-4.846,5.332-8.617c0-3.719-2.109-6.945-5.195-8.547l-6.272-3.144c-1.366-0.662-2.308-2.062-2.308-3.682c0-1.567,0.881-2.928,2.175-3.614L12.13,2.428c-3.161,1.578-5.332,4.843-5.332,8.616c0,3.718,2.108,6.944,5.195,8.546L18.265,22.734z",
+        vim: "M25.012,10.44l4.571-4.645c0.11-0.113,0.173-0.264,0.173-0.423V3.134c0-0.159-0.064-0.314-0.177-0.427l-0.604-0.602c-0.111-0.112-0.261-0.176-0.42-0.177l-9.646-0.086C18.71,1.84,18.523,1.935,18.41,2.099L17.807,2.96c-0.033,0.047-0.059,0.099-0.076,0.154l-2.144-2.156l0,0l-1.646,1.666l-0.447-0.497c-0.112-0.125-0.27-0.197-0.438-0.199L3.324,1.756c-0.163-0.003-0.322,0.06-0.437,0.176L2.284,2.535C2.171,2.647,2.107,2.803,2.107,2.962v2.325c0,0.164,0.066,0.32,0.183,0.434l0.657,0.635C3.056,6.461,3.2,6.521,3.352,6.525l0.285,0.007l0.007,6.512l-2.527,2.557l2.533,2.533l0.008,8.084c0,0.159,0.065,0.314,0.177,0.427l0.861,0.861c0.112,0.111,0.268,0.176,0.427,0.176h2.67c0.161,0,0.317-0.064,0.43-0.181l2.378-2.417l4.9,4.9l14.47-14.558L25.012,10.44zM9.747,24.232l-2.208,2.242H5.372l-0.509-0.509L4.856,19.34l-0.008-7.515L4.842,5.943c0-0.328-0.261-0.594-0.588-0.603L3.617,5.326L3.313,5.031v-1.82l0.245-0.245l9.215,0.163l0.319,0.354l0.126,0.141v1.419l-0.352,0.362H12.26c-0.331,0-0.6,0.266-0.603,0.597l-0.076,7.203c-0.002,0.244,0.141,0.463,0.365,0.56c0.224,0.096,0.482,0.049,0.657-0.12l7.495-7.235c0.174-0.171,0.23-0.432,0.139-0.66c-0.09-0.228-0.312-0.377-0.56-0.377h-0.479l-0.296-0.379V3.496l0.312-0.445l9.083,0.081l0.252,0.252v1.743l-4.388,4.458L9.747,24.232z",
+        inkscape: "M20.402,17.626c0.84-0.772,2.468-0.381,5.979-1.853c1.716-0.72,1.572-1.265,1.566-1.928c-0.001-0.014,0-0.027,0-0.041h-0.005c-0.012-0.667-0.291-1.332-0.846-1.845L17.049,2.684c-0.566-0.522-1.304-0.782-2.042-0.782V1.898c-0.738,0-1.475,0.261-2.04,0.783l-10.05,9.276c-0.554,0.512-0.832,1.176-0.843,1.844H2.07c0,0,0.003,0.011,0.004,0.011c0,0.012-0.004,0.024-0.004,0.034h0.017c0.193,0.676,5.164,1.536,5.718,2.049c0.838,0.774-3.211,1.339-2.374,2.114c0.838,0.773,5.062,1.496,5.898,2.271c0.838,0.771-1.711,1.596-0.874,2.366c0.837,0.773,3.651-0.191,3.142,1.822c1.13,1.045,3.49,0.547,5.071-0.498c0.837-0.771-1.607-0.703-0.77-1.477c0.836-0.774,2.949-0.777,4.73-2.627C21.913,18.838,19.566,18.398,20.402,17.626zM10.973,16.868l-0.42-0.504c1.497,0.358,3.162,0.827,4.498,0.837l0.058,0.554C13.964,17.646,11.544,17.137,10.973,16.868zM18.161,8.58l-1.396-0.74L14.53,9.594l-1.067-3.192l-1.177,2.545L8.998,9.25l0.036-1.352c0-0.324,1.895-2.596,3.05-3.136l2.112-1.401c0.312-0.186,0.53-0.261,0.727-0.257c0.327,0.011,0.593,0.239,1.112,0.55l4.748,3.25c0.357,0.215,0.619,0.522,0.626,0.898l-2.813-1.254L18.161,8.58zM26.434,19.594c-0.313-0.07-1.688-0.691-2.035,0.165c0.968,0.981,2.645,2.181,3.316,1.482C28.391,20.543,27.102,19.745,26.434,19.594zM4.663,21.566c-0.315,0.074-1.842,0.115-1.719,1.021c1.351,0.451,3.438,0.792,3.684-0.113C6.873,21.566,5.33,21.414,4.663,21.566zM17.877,26.396c-0.232,0.209-1.53,0.953-0.929,1.681c1.413-0.236,3.403-0.914,3.12-1.812C19.786,25.369,18.37,25.953,17.877,26.396z",
+        aumade: "M14.513,24.52c-0.131-0.217-0.14-0.481-0.022-0.711l1.987-3.844l0,0c0.186-0.357,0.625-0.497,0.981-0.312c0.357,0.188,0.498,0.625,0.312,0.982l-1.801,3.48l2.228,3.699h12.269l-14.8-25.631L6.433,18.178c0.434,0.242,0.909,0.479,1.391,0.654c0.571,0.211,1.148,0.342,1.658,0.342c0.276,0,0.579-0.078,0.916-0.238c0.337-0.158,0.7-0.396,1.073-0.688c0.749-0.582,1.527-1.354,2.334-2.021c0.539-0.442,1.091-0.844,1.706-1.099c0.352-0.145,0.729-0.239,1.128-0.239c0.622,0,1.174,0.214,1.622,0.5c0.449,0.287,0.813,0.646,1.11,0.995c0.59,0.697,0.902,1.359,0.924,1.394l0,0c0.18,0.361,0.021,0.801-0.341,0.977c-0.356,0.176-0.798,0.021-0.978-0.34c0-0.002-0.002-0.004-0.004-0.007c-0.002-0.011-0.008-0.021-0.018-0.034c-0.018-0.033-0.043-0.082-0.078-0.146c-0.07-0.125-0.179-0.305-0.312-0.496c-0.271-0.391-0.668-0.845-1.092-1.104c-0.281-0.178-0.561-0.272-0.844-0.272c-0.216,0-0.479,0.069-0.788,0.229c-0.309,0.153-0.653,0.396-1.016,0.688c-0.727,0.584-1.511,1.362-2.351,2.033c-0.562,0.445-1.15,0.853-1.809,1.103c-0.375,0.143-0.776,0.229-1.195,0.229c-0.749,0-1.48-0.181-2.164-0.433c-0.58-0.219-1.125-0.482-1.613-0.764L0.86,27.816h15.63L14.513,24.52zM18.214,22.242c0.222-0.557,0.537-1.217,0.963-1.848c0.427-0.627,0.957-1.232,1.646-1.646c0.379-0.229,0.812-0.391,1.282-0.438l-0.604-0.934l0,0c-0.22-0.339-0.123-0.789,0.215-1.009c0.341-0.219,0.789-0.123,1.013,0.216l1.545,2.391c0.184,0.274,0.147,0.646-0.075,0.893c-0.228,0.247-0.591,0.305-0.886,0.145c-0.354-0.191-0.646-0.258-0.901-0.258c-0.291,0-0.562,0.084-0.845,0.25c-0.277,0.164-0.562,0.414-0.813,0.719c-0.519,0.607-0.937,1.422-1.185,2.055c-0.111,0.285-0.387,0.466-0.678,0.466c-0.092,0-0.183-0.021-0.271-0.056C18.249,23.039,18.064,22.615,18.214,22.242z",
+        firefox: "M28.4,22.469c0.479-0.964,0.851-1.991,1.095-3.066c0.953-3.661,0.666-6.854,0.666-6.854l-0.327,2.104c0,0-0.469-3.896-1.044-5.353c-0.881-2.231-1.273-2.214-1.274-2.21c0.542,1.379,0.494,2.169,0.483,2.288c-0.01-0.016-0.019-0.032-0.027-0.047c-0.131-0.324-0.797-1.819-2.225-2.878c-2.502-2.481-5.943-4.014-9.745-4.015c-4.056,0-7.705,1.745-10.238,4.525C5.444,6.5,5.183,5.938,5.159,5.317c0,0-0.002,0.002-0.006,0.005c0-0.011-0.003-0.021-0.003-0.031c0,0-1.61,1.247-1.436,4.612c-0.299,0.574-0.56,1.172-0.777,1.791c-0.375,0.817-0.75,2.004-1.059,3.746c0,0,0.133-0.422,0.399-0.988c-0.064,0.482-0.103,0.971-0.116,1.467c-0.09,0.845-0.118,1.865-0.039,3.088c0,0,0.032-0.406,0.136-1.021c0.834,6.854,6.667,12.165,13.743,12.165l0,0c1.86,0,3.636-0.37,5.256-1.036C24.938,27.771,27.116,25.196,28.4,22.469zM16.002,3.356c2.446,0,4.73,0.68,6.68,1.86c-2.274-0.528-3.433-0.261-3.423-0.248c0.013,0.015,3.384,0.589,3.981,1.411c0,0-1.431,0-2.856,0.41c-0.065,0.019,5.242,0.663,6.327,5.966c0,0-0.582-1.213-1.301-1.42c0.473,1.439,0.351,4.17-0.1,5.528c-0.058,0.174-0.118-0.755-1.004-1.155c0.284,2.037-0.018,5.268-1.432,6.158c-0.109,0.07,0.887-3.189,0.201-1.93c-4.093,6.276-8.959,2.539-10.934,1.208c1.585,0.388,3.267,0.108,4.242-0.559c0.982-0.672,1.564-1.162,2.087-1.047c0.522,0.117,0.87-0.407,0.464-0.872c-0.405-0.466-1.392-1.105-2.725-0.757c-0.94,0.247-2.107,1.287-3.886,0.233c-1.518-0.899-1.507-1.63-1.507-2.095c0-0.366,0.257-0.88,0.734-1.028c0.58,0.062,1.044,0.214,1.537,0.466c0.005-0.135,0.006-0.315-0.001-0.519c0.039-0.077,0.015-0.311-0.047-0.596c-0.036-0.287-0.097-0.582-0.19-0.851c0.01-0.002,0.017-0.007,0.021-0.021c0.076-0.344,2.147-1.544,2.299-1.659c0.153-0.114,0.55-0.378,0.506-1.183c-0.015-0.265-0.058-0.294-2.232-0.286c-0.917,0.003-1.425-0.894-1.589-1.245c0.222-1.231,0.863-2.11,1.919-2.704c0.02-0.011,0.015-0.021-0.008-0.027c0.219-0.127-2.524-0.006-3.76,1.604C9.674,8.045,9.219,7.95,8.71,7.95c-0.638,0-1.139,0.07-1.603,0.187c-0.05,0.013-0.122,0.011-0.208-0.001C6.769,8.04,6.575,7.88,6.365,7.672c0.161-0.18,0.324-0.356,0.495-0.526C9.201,4.804,12.43,3.357,16.002,3.356z",
+        ie: "M27.998,2.266c-2.12-1.91-6.925,0.382-9.575,1.93c-0.76-0.12-1.557-0.185-2.388-0.185c-3.349,0-6.052,0.985-8.106,2.843c-2.336,2.139-3.631,4.94-3.631,8.177c0,0.028,0.001,0.056,0.001,0.084c3.287-5.15,8.342-7.79,9.682-8.487c0.212-0.099,0.338,0.155,0.141,0.253c-0.015,0.042-0.015,0,0,0c-2.254,1.35-6.434,5.259-9.146,10.886l-0.003-0.007c-1.717,3.547-3.167,8.529-0.267,10.358c2.197,1.382,6.13-0.248,9.295-2.318c0.764,0.108,1.567,0.165,2.415,0.165c5.84,0,9.937-3.223,11.399-7.924l-8.022-0.014c-0.337,1.661-1.464,2.548-3.223,2.548c-2.21,0-3.729-1.211-3.828-4.012l15.228-0.014c0.028-0.578-0.042-0.985-0.042-1.436c0-5.251-3.143-9.355-8.255-10.663c2.081-1.294,5.974-3.209,7.848-1.681c1.407,1.14,0.633,3.533,0.295,4.518c-0.056,0.254,0.24,0.296,0.296,0.057C28.814,5.573,29.026,3.194,27.998,2.266zM13.272,25.676c-2.469,1.475-5.873,2.539-7.539,1.289c-1.243-0.935-0.696-3.468,0.398-5.938c0.664,0.992,1.495,1.886,2.473,2.63C9.926,24.651,11.479,25.324,13.272,25.676zM12.714,13.046c0.042-2.435,1.787-3.49,3.617-3.49c1.928,0,3.49,1.112,3.49,3.49H12.714z",
+        ie9: "M27.751,17.887c0.054-0.434,0.081-0.876,0.081-1.324c0-1.744-0.413-3.393-1.146-4.854c1.133-2.885,1.155-5.369-0.201-6.777c-1.756-1.822-5.391-1.406-9.433,0.721c-0.069-0.001-0.138-0.003-0.206-0.003c-6.069,0-10.988,4.888-10.988,10.917c0,0.183,0.005,0.354,0.014,0.529c-2.688,4.071-3.491,7.967-1.688,9.838c1.557,1.613,4.691,1.344,8.2-0.392c1.363,0.604,2.873,0.938,4.462,0.938c4.793,0,8.867-3.049,10.369-7.299H21.26c-0.814,1.483-2.438,2.504-4.307,2.504c-2.688,0-4.867-2.104-4.867-4.688c0-0.036,0.002-0.071,0.003-0.106h15.662V17.887zM26.337,6.099c0.903,0.937,0.806,2.684-0.087,4.818c-1.27-2.083-3.221-3.71-5.546-4.576C23.244,5.217,25.324,5.047,26.337,6.099zM16.917,10.372c2.522,0,4.585,1.991,4.748,4.509h-9.496C12.333,12.363,14.396,10.372,16.917,10.372zM5.687,26.501c-1.103-1.146-0.712-3.502,0.799-6.298c0.907,2.546,2.736,4.658,5.09,5.938C8.92,27.368,6.733,27.587,5.687,26.501z",
+        opera: "M15.954,2.046c-7.489,0-12.872,5.432-12.872,13.581c0,7.25,5.234,13.835,12.873,13.835c7.712,0,12.974-6.583,12.974-13.835C28.929,7.413,23.375,2.046,15.954,2.046zM15.952,26.548L15.952,26.548c-2.289,0-3.49-1.611-4.121-3.796c-0.284-1.037-0.458-2.185-0.563-3.341c-0.114-1.374-0.129-2.773-0.129-4.028c0-0.993,0.018-1.979,0.074-2.926c0.124-1.728,0.386-3.431,0.89-4.833c0.694-1.718,1.871-2.822,3.849-2.822c2.5,0,3.763,1.782,4.385,4.322c0.429,1.894,0.56,4.124,0.56,6.274c0,2.299-0.103,5.153-0.763,7.442C19.473,24.979,18.242,26.548,15.952,26.548z",
+        chrome: "M15.318,7.677c0.071-0.029,0.148-0.046,0.229-0.046h11.949c-2.533-3.915-6.938-6.506-11.949-6.506c-5.017,0-9.428,2.598-11.959,6.522l4.291,7.431C8.018,11.041,11.274,7.796,15.318,7.677zM28.196,8.84h-8.579c2.165,1.357,3.605,3.763,3.605,6.506c0,1.321-0.334,2.564-0.921,3.649c-0.012,0.071-0.035,0.142-0.073,0.209l-5.973,10.347c7.526-0.368,13.514-6.587,13.514-14.205C29.77,13.002,29.201,10.791,28.196,8.84zM15.547,23.022c-2.761,0-5.181-1.458-6.533-3.646c-0.058-0.046-0.109-0.103-0.149-0.171L2.89,8.855c-1,1.946-1.565,4.153-1.565,6.492c0,7.624,5.999,13.846,13.534,14.205l4.287-7.425C18.073,22.698,16.848,23.022,15.547,23.022zM9.08,15.347c0,1.788,0.723,3.401,1.894,4.573c1.172,1.172,2.785,1.895,4.573,1.895c1.788,0,3.401-0.723,4.573-1.895s1.895-2.785,1.895-4.573c0-1.788-0.723-3.4-1.895-4.573c-1.172-1.171-2.785-1.894-4.573-1.894c-1.788,0-3.401,0.723-4.573,1.894C9.803,11.946,9.081,13.559,9.08,15.347z",
+        safari: "M16.154,5.135c-0.504,0-1,0.031-1.488,0.089l-0.036-0.18c-0.021-0.104-0.06-0.198-0.112-0.283c0.381-0.308,0.625-0.778,0.625-1.306c0-0.927-0.751-1.678-1.678-1.678s-1.678,0.751-1.678,1.678c0,0.745,0.485,1.376,1.157,1.595c-0.021,0.105-0.021,0.216,0,0.328l0.033,0.167C7.645,6.95,3.712,11.804,3.712,17.578c0,6.871,5.571,12.441,12.442,12.441c6.871,0,12.441-5.57,12.441-12.441C28.596,10.706,23.025,5.135,16.154,5.135zM16.369,8.1c4.455,0,8.183,3.116,9.123,7.287l-0.576,0.234c-0.148-0.681-0.755-1.191-1.48-1.191c-0.837,0-1.516,0.679-1.516,1.516c0,0.075,0.008,0.148,0.018,0.221l-2.771-0.028c-0.054-0.115-0.114-0.226-0.182-0.333l3.399-5.11l0.055-0.083l-4.766,4.059c-0.352-0.157-0.74-0.248-1.148-0.256l0.086-0.018l-1.177-2.585c0.64-0.177,1.111-0.763,1.111-1.459c0-0.837-0.678-1.515-1.516-1.515c-0.075,0-0.147,0.007-0.219,0.018l0.058-0.634C15.357,8.141,15.858,8.1,16.369,8.1zM12.146,3.455c0-0.727,0.591-1.318,1.318-1.318c0.727,0,1.318,0.591,1.318,1.318c0,0.425-0.203,0.802-0.516,1.043c-0.183-0.123-0.413-0.176-0.647-0.13c-0.226,0.045-0.413,0.174-0.535,0.349C12.542,4.553,12.146,4.049,12.146,3.455zM7.017,17.452c0-4.443,3.098-8.163,7.252-9.116l0.297,0.573c-0.61,0.196-1.051,0.768-1.051,1.442c0,0.837,0.678,1.516,1.515,1.516c0.068,0,0.135-0.006,0.2-0.015l-0.058,2.845l0.052-0.011c-0.442,0.204-0.824,0.513-1.116,0.895l0.093-0.147l-1.574-0.603l1.172,1.239l0.026-0.042c-0.19,0.371-0.306,0.788-0.324,1.229l-0.003-0.016l-2.623,1.209c-0.199-0.604-0.767-1.041-1.438-1.041c-0.837,0-1.516,0.678-1.516,1.516c0,0.064,0.005,0.128,0.013,0.191l-0.783-0.076C7.063,18.524,7.017,17.994,7.017,17.452zM16.369,26.805c-4.429,0-8.138-3.078-9.106-7.211l0.691-0.353c0.146,0.686,0.753,1.2,1.482,1.2c0.837,0,1.515-0.679,1.515-1.516c0-0.105-0.011-0.207-0.031-0.307l2.858,0.03c0.045,0.095,0.096,0.187,0.15,0.276l-3.45,5.277l0.227-0.195l4.529-3.92c0.336,0.153,0.705,0.248,1.094,0.266l-0.019,0.004l1.226,2.627c-0.655,0.166-1.142,0.76-1.142,1.468c0,0.837,0.678,1.515,1.516,1.515c0.076,0,0.151-0.007,0.225-0.018l0.004,0.688C17.566,26.746,16.975,26.805,16.369,26.805zM18.662,26.521l-0.389-0.6c0.661-0.164,1.152-0.759,1.152-1.47c0-0.837-0.68-1.516-1.516-1.516c-0.066,0-0.13,0.005-0.193,0.014v-2.86l-0.025,0.004c0.409-0.185,0.77-0.459,1.055-0.798l1.516,0.659l-1.104-1.304c0.158-0.335,0.256-0.704,0.278-1.095l2.552-1.164c0.19,0.618,0.766,1.068,1.447,1.068c0.838,0,1.516-0.679,1.516-1.516c0-0.069-0.006-0.137-0.016-0.204l0.65,0.12c0.089,0.517,0.136,1.049,0.136,1.591C25.722,21.826,22.719,25.499,18.662,26.521z",
+        linkedin: "M27.25,3.125h-22c-1.104,0-2,0.896-2,2v22c0,1.104,0.896,2,2,2h22c1.104,0,2-0.896,2-2v-22C29.25,4.021,28.354,3.125,27.25,3.125zM11.219,26.781h-4v-14h4V26.781zM9.219,11.281c-1.383,0-2.5-1.119-2.5-2.5s1.117-2.5,2.5-2.5s2.5,1.119,2.5,2.5S10.602,11.281,9.219,11.281zM25.219,26.781h-4v-8.5c0-0.4-0.403-1.055-0.687-1.213c-0.375-0.211-1.261-0.229-1.665-0.034l-1.648,0.793v8.954h-4v-14h4v0.614c1.583-0.723,3.78-0.652,5.27,0.184c1.582,0.886,2.73,2.864,2.73,4.702V26.781z",
+        flickr: "M21.77,8.895c-2.379,0-4.479,1.174-5.77,2.969c-1.289-1.795-3.39-2.969-5.77-2.969c-3.924,0-7.105,3.181-7.105,7.105c0,3.924,3.181,7.105,7.105,7.105c2.379,0,4.48-1.175,5.77-2.97c1.29,1.795,3.391,2.97,5.77,2.97c3.925,0,7.105-3.182,7.105-7.105C28.875,12.075,25.694,8.895,21.77,8.895zM21.769,21.822c-3.211,0-5.821-2.61-5.821-5.821c0-3.213,2.61-5.824,5.821-5.824c3.213,0,5.824,2.611,5.824,5.824C27.593,19.212,24.981,21.822,21.769,21.822z",
+        github: "M28.436,15.099c-1.201-0.202-2.451-0.335-3.466-0.371l-0.179-0.006c0.041-0.09,0.072-0.151,0.082-0.16c0.022-0.018,0.04-0.094,0.042-0.168c0-0.041,0.018-0.174,0.046-0.35c0.275,0.01,0.64,0.018,1.038,0.021c1.537,0.012,3.145,0.136,4.248,0.331c0.657,0.116,0.874,0.112,0.389-0.006c-0.491-0.119-1.947-0.294-3.107-0.37c-0.779-0.053-1.896-0.073-2.554-0.062c0.019-0.114,0.041-0.241,0.064-0.371c0.093-0.503,0.124-1.009,0.126-2.016c0.002-1.562-0.082-1.992-0.591-3.025c-0.207-0.422-0.441-0.78-0.724-1.104c0.247-0.729,0.241-1.858-0.015-2.848c-0.211-0.812-0.285-0.864-1.021-0.708C22.19,4.019,21.69,4.2,21.049,4.523c-0.303,0.153-0.721,0.391-1.024,0.578c-0.79-0.278-1.607-0.462-2.479-0.561c-0.884-0.1-3.051-0.044-3.82,0.098c-0.752,0.139-1.429,0.309-2.042,0.511c-0.306-0.189-0.75-0.444-1.067-0.604C9.973,4.221,9.473,4.041,8.847,3.908c-0.734-0.157-0.81-0.104-1.02,0.708c-0.26,1.003-0.262,2.151-0.005,2.878C7.852,7.577,7.87,7.636,7.877,7.682c-1.042,1.312-1.382,2.78-1.156,4.829c0.059,0.534,0.15,1.024,0.277,1.473c-0.665-0.004-1.611,0.02-2.294,0.064c-1.162,0.077-2.618,0.25-3.109,0.369c-0.484,0.118-0.269,0.122,0.389,0.007c1.103-0.194,2.712-0.32,4.248-0.331c0.29-0.001,0.561-0.007,0.794-0.013c0.07,0.237,0.15,0.463,0.241,0.678L7.26,14.759c-1.015,0.035-2.264,0.168-3.465,0.37c-0.901,0.151-2.231,0.453-2.386,0.54c-0.163,0.091-0.03,0.071,0.668-0.106c1.273-0.322,2.928-0.569,4.978-0.741l0.229-0.02c0.44,1.022,1.118,1.802,2.076,2.41c0.586,0.373,1.525,0.756,1.998,0.816c0.13,0.016,0.508,0.094,0.84,0.172c0.333,0.078,0.984,0.195,1.446,0.262h0.011c-0.009,0.006-0.017,0.01-0.025,0.016c-0.56,0.291-0.924,0.744-1.169,1.457c-0.11,0.033-0.247,0.078-0.395,0.129c-0.529,0.18-0.735,0.217-1.271,0.221c-0.556,0.004-0.688-0.02-1.02-0.176c-0.483-0.225-0.933-0.639-1.233-1.133c-0.501-0.826-1.367-1.41-2.089-1.41c-0.617,0-0.734,0.25-0.288,0.615c0.672,0.549,1.174,1.109,1.38,1.537c0.116,0.24,0.294,0.611,0.397,0.824c0.109,0.227,0.342,0.535,0.564,0.748c0.522,0.498,1.026,0.736,1.778,0.848c0.504,0.074,0.628,0.074,1.223-0.002c0.287-0.035,0.529-0.076,0.746-0.127c0,0.244,0,0.525,0,0.855c0,1.766-0.021,2.334-0.091,2.5c-0.132,0.316-0.428,0.641-0.716,0.787c-0.287,0.146-0.376,0.307-0.255,0.455c0.067,0.08,0.196,0.094,0.629,0.066c0.822-0.051,1.403-0.355,1.699-0.891c0.095-0.172,0.117-0.518,0.147-2.318c0.032-1.953,0.046-2.141,0.173-2.42c0.077-0.166,0.188-0.346,0.25-0.395c0.104-0.086,0.111,0.084,0.111,2.42c-0.001,2.578-0.027,2.889-0.285,3.385c-0.058,0.113-0.168,0.26-0.245,0.33c-0.135,0.123-0.192,0.438-0.098,0.533c0.155,0.154,0.932-0.088,1.356-0.422c0.722-0.572,0.808-1.045,0.814-4.461l0.003-2.004l0.219,0.021l0.219,0.02l0.036,2.621c0.041,2.951,0.047,2.994,0.549,3.564c0.285,0.322,0.572,0.5,1.039,0.639c0.625,0.188,0.813-0.102,0.393-0.605c-0.457-0.547-0.479-0.756-0.454-3.994c0.017-2.076,0.017-2.076,0.151-1.955c0.282,0.256,0.336,0.676,0.336,2.623c0,2.418,0.069,2.648,0.923,3.07c0.399,0.195,0.511,0.219,1.022,0.221c0.544,0.002,0.577-0.006,0.597-0.148c0.017-0.115-0.05-0.193-0.304-0.348c-0.333-0.205-0.564-0.467-0.709-0.797c-0.055-0.127-0.092-0.959-0.117-2.672c-0.036-2.393-0.044-2.502-0.193-2.877c-0.201-0.504-0.508-0.902-0.897-1.166c-0.101-0.066-0.202-0.121-0.333-0.162c0.161-0.016,0.317-0.033,0.468-0.055c1.572-0.209,2.403-0.383,3.07-0.641c1.411-0.543,2.365-1.445,2.882-2.724c0.046-0.114,0.092-0.222,0.131-0.309l0.398,0.033c2.051,0.173,3.706,0.42,4.979,0.743c0.698,0.177,0.831,0.198,0.668,0.105C30.666,15.551,29.336,15.25,28.436,15.099zM22.422,15.068c-0.233,0.512-0.883,1.17-1.408,1.428c-0.518,0.256-1.33,0.451-2.25,0.544c-0.629,0.064-4.137,0.083-4.716,0.026c-1.917-0.188-2.991-0.557-3.783-1.296c-0.75-0.702-1.1-1.655-1.039-2.828c0.039-0.734,0.216-1.195,0.679-1.755c0.421-0.51,0.864-0.825,1.386-0.985c0.437-0.134,1.778-0.146,3.581-0.03c0.797,0.051,1.456,0.051,2.252,0c1.886-0.119,3.145-0.106,3.61,0.038c0.731,0.226,1.397,0.834,1.797,1.644c0.18,0.362,0.215,0.516,0.241,1.075C22.808,13.699,22.675,14.517,22.422,15.068zM12.912,11.762c-1.073-0.188-1.686,1.649-0.863,2.587c0.391,0.445,0.738,0.518,1.172,0.248c0.402-0.251,0.62-0.72,0.62-1.328C13.841,12.458,13.472,11.862,12.912,11.762zM19.425,11.872c-1.073-0.188-1.687,1.647-0.864,2.586c0.392,0.445,0.738,0.519,1.173,0.247c0.401-0.25,0.62-0.72,0.62-1.328C20.354,12.569,19.985,11.971,19.425,11.872zM16.539,15.484c-0.023,0.074-0.135,0.184-0.248,0.243c-0.286,0.147-0.492,0.096-0.794-0.179c-0.187-0.169-0.272-0.258-0.329-0.081c-0.053,0.164,0.28,0.493,0.537,0.594c0.236,0.094,0.405,0.097,0.661-0.01c0.254-0.106,0.476-0.391,0.476-0.576C16.842,15.303,16.595,15.311,16.539,15.484zM16.222,14.909c0.163-0.144,0.2-0.44,0.044-0.597s-0.473-0.133-0.597,0.043c-0.144,0.206-0.067,0.363,0.036,0.53C15.865,15.009,16.08,15.034,16.222,14.909z",
+        githubalt: "M23.356,17.485c-0.004,0.007-0.007,0.013-0.01,0.021l0.162,0.005c0.107,0.004,0.218,0.01,0.33,0.016c-0.046-0.004-0.09-0.009-0.136-0.013L23.356,17.485zM15.5,1.249C7.629,1.25,1.25,7.629,1.249,15.5C1.25,23.371,7.629,29.75,15.5,29.751c7.871-0.001,14.25-6.38,14.251-14.251C29.75,7.629,23.371,1.25,15.5,1.249zM3.771,17.093c0.849-0.092,1.833-0.148,2.791-0.156c0.262,0,0.507-0.006,0.717-0.012c0.063,0.213,0.136,0.419,0.219,0.613H7.492c-0.918,0.031-2.047,0.152-3.134,0.335c-0.138,0.023-0.288,0.051-0.441,0.08C3.857,17.67,3.81,17.383,3.771,17.093zM12.196,22.224c-0.1,0.028-0.224,0.07-0.357,0.117c-0.479,0.169-0.665,0.206-1.15,0.206c-0.502,0.015-0.621-0.019-0.921-0.17C9.33,22.171,8.923,21.8,8.651,21.353c-0.453-0.746-1.236-1.275-1.889-1.275c-0.559,0-0.664,0.227-0.261,0.557c0.608,0.496,1.062,0.998,1.248,1.385c0.105,0.215,0.266,0.546,0.358,0.744c0.099,0.206,0.311,0.474,0.511,0.676c0.472,0.441,0.928,0.659,1.608,0.772c0.455,0.06,0.567,0.06,1.105-0.004c0.26-0.03,0.479-0.067,0.675-0.118v0.771c0,1.049-0.008,1.628-0.031,1.945c-1.852-0.576-3.507-1.595-4.848-2.934c-1.576-1.578-2.706-3.592-3.195-5.848c0.952-0.176,2.073-0.32,3.373-0.43l0.208-0.018c0.398,0.925,1.011,1.631,1.876,2.179c0.53,0.337,1.38,0.685,1.808,0.733c0.118,0.02,0.46,0.09,0.76,0.16c0.302,0.066,0.89,0.172,1.309,0.236h0.009c-0.007,0.018-0.014,0.02-0.022,0.02C12.747,21.169,12.418,21.579,12.196,22.224zM13.732,27.207c-0.168-0.025-0.335-0.056-0.5-0.087c0.024-0.286,0.038-0.785,0.054-1.723c0.028-1.767,0.041-1.94,0.156-2.189c0.069-0.15,0.17-0.32,0.226-0.357c0.095-0.078,0.101,0.076,0.101,2.188C13.769,26.143,13.763,26.786,13.732,27.207zM15.5,27.339c-0.148,0-0.296-0.006-0.443-0.012c0.086-0.562,0.104-1.428,0.106-2.871l0.003-1.82l0.197,0.019l0.199,0.02l0.032,2.365c0.017,1.21,0.027,1.878,0.075,2.296C15.613,27.335,15.558,27.339,15.5,27.339zM17.006,27.24c-0.039-0.485-0.037-1.243-0.027-2.553c0.019-1.866,0.019-1.866,0.131-1.769c0.246,0.246,0.305,0.623,0.305,2.373c0,0.928,0.011,1.497,0.082,1.876C17.334,27.196,17.17,27.22,17.006,27.24zM27.089,17.927c-0.155-0.029-0.307-0.057-0.446-0.08c-0.96-0.162-1.953-0.275-2.804-0.32c1.25,0.108,2.327,0.248,3.246,0.418c-0.479,2.289-1.618,4.33-3.214,5.928c-1.402,1.4-3.15,2.448-5.106,3.008c-0.034-0.335-0.058-1.048-0.066-2.212c-0.03-2.167-0.039-2.263-0.17-2.602c-0.181-0.458-0.47-0.811-0.811-1.055c-0.094-0.057-0.181-0.103-0.301-0.14c0.145-0.02,0.282-0.021,0.427-0.057c1.418-0.188,2.168-0.357,2.772-0.584c1.263-0.492,2.129-1.301,2.606-2.468c0.044-0.103,0.088-0.2,0.123-0.279l0.011,0.001c0.032-0.07,0.057-0.118,0.064-0.125c0.02-0.017,0.036-0.085,0.038-0.151c0-0.037,0.017-0.157,0.041-0.317c0.249,0.01,0.58,0.018,0.938,0.02c0.959,0.008,1.945,0.064,2.794,0.156C27.194,17.356,27.148,17.644,27.089,17.927zM25.823,16.87c-0.697-0.049-1.715-0.064-2.311-0.057c0.02-0.103,0.037-0.218,0.059-0.336c0.083-0.454,0.111-0.912,0.113-1.823c0.002-1.413-0.074-1.801-0.534-2.735c-0.188-0.381-0.399-0.705-0.655-0.998c0.225-0.659,0.207-1.68-0.02-2.575c-0.19-0.734-0.258-0.781-0.924-0.64c-0.563,0.12-1.016,0.283-1.598,0.576c-0.274,0.138-0.652,0.354-0.923,0.522c-0.715-0.251-1.451-0.419-2.242-0.508c-0.799-0.092-2.759-0.04-3.454,0.089c-0.681,0.126-1.293,0.28-1.848,0.462c-0.276-0.171-0.678-0.4-0.964-0.547C9.944,8.008,9.491,7.846,8.925,7.727c-0.664-0.144-0.732-0.095-0.922,0.64c-0.235,0.907-0.237,1.945-0.004,2.603c0.026,0.075,0.043,0.129,0.05,0.17c-0.942,1.187-1.25,2.515-1.046,4.367c0.053,0.482,0.136,0.926,0.251,1.333c-0.602-0.004-1.457,0.018-2.074,0.057c-0.454,0.031-0.957,0.076-1.418,0.129c-0.063-0.5-0.101-1.008-0.101-1.524c0-3.273,1.323-6.225,3.468-8.372c2.146-2.144,5.099-3.467,8.371-3.467c3.273,0,6.226,1.323,8.371,3.467c2.145,2.147,3.468,5.099,3.468,8.372c0,0.508-0.036,1.008-0.098,1.499C26.78,16.946,26.276,16.899,25.823,16.87z",
+        raphael: "M27.777,18.941c0.584-0.881,0.896-1.914,0.896-2.998c0-1.457-0.567-2.826-1.598-3.854l-6.91-6.911l-0.003,0.002c-0.985-0.988-2.35-1.6-3.851-1.6c-1.502,0-2.864,0.612-3.85,1.6H12.46l-6.911,6.911c-1.031,1.029-1.598,2.398-1.598,3.854c0,1.457,0.567,2.826,1.598,3.854l6.231,6.229c0.25,0.281,0.512,0.544,0.789,0.785c1.016,0.961,2.338,1.49,3.743,1.49c1.456,0,2.825-0.565,3.854-1.598l6.723-6.725c0.021-0.019,0.034-0.032,0.051-0.051l0.14-0.138c0.26-0.26,0.487-0.54,0.688-0.838c0.004-0.008,0.01-0.015,0.014-0.021L27.777,18.941zM26.658,15.946c0,0.678-0.197,1.326-0.561,1.879c-0.222,0.298-0.447,0.559-0.684,0.784L25.4,18.625c-1.105,1.052-2.354,1.35-3.414,1.35c-0.584,0-1.109-0.09-1.523-0.195c-2.422-0.608-5.056-2.692-6.261-5.732c0.649,0.274,1.362,0.426,2.11,0.426c2.811,0,5.129-2.141,5.415-4.877l3.924,3.925C26.301,14.167,26.658,15.029,26.658,15.946zM16.312,5.6c1.89,0,3.426,1.538,3.426,3.427c0,1.89-1.536,3.427-3.426,3.427c-1.889,0-3.426-1.537-3.426-3.427C12.886,7.138,14.423,5.6,16.312,5.6zM6.974,18.375c-0.649-0.648-1.007-1.512-1.007-2.429c0-0.917,0.357-1.78,1.007-2.428l2.655-2.656c-0.693,2.359-0.991,4.842-0.831,7.221c0.057,0.854,0.175,1.677,0.345,2.46L6.974,18.375zM11.514,11.592c0.583,4.562,4.195,9.066,8.455,10.143c0.693,0.179,1.375,0.265,2.033,0.265c0.01,0,0.02,0,0.027,0l-3.289,3.289c-0.648,0.646-1.512,1.006-2.428,1.006c-0.638,0-1.248-0.177-1.779-0.5l0.001-0.002c-0.209-0.142-0.408-0.295-0.603-0.461c-0.015-0.019-0.031-0.026-0.046-0.043l-0.665-0.664c-1.367-1.567-2.227-3.903-2.412-6.671C10.669,15.856,10.921,13.673,11.514,11.592z",
+        graphael: "M28.833,15.709c0-1.477-0.574-2.862-1.617-3.904l-7.002-7.001l-0.003,0.002c-1.027-1.03-2.445-1.62-3.9-1.62c-1.455,0-2.871,0.59-3.9,1.621l-0.002-0.002l-7,7C4.376,12.836,3.79,14.25,3.79,15.709s0.586,2.873,1.619,3.902l6.312,6.312c0.253,0.285,0.519,0.556,0.8,0.8c1.049,0.989,2.463,1.534,3.908,1.51c1.417-0.021,2.783-0.604,3.785-1.604l6.812-6.812c0.021-0.021,0.035-0.029,0.062-0.062l0.143-0.146c0.271-0.271,0.484-0.562,0.725-0.86l-0.012-0.002C28.516,17.85,28.833,16.805,28.833,15.709zM18.77,25.17c-1.121,1.119-2.917,1.336-4.271,0.514l0.002-0.002c-0.213-0.145-0.414-0.303-0.61-0.471c-0.016-0.016-7.04-7.041-7.04-7.041c-1.34-1.34-1.342-3.584,0-4.92l7-6.998c1.121-1.121,2.908-1.338,4.259-0.512v0.002c0.213,0.141,0.414,0.299,0.604,0.467c0.021,0.016,7.053,7.043,7.053,7.043c0.396,0.388,0.655,0.852,0.818,1.348l-2.607,0.006c-0.537-3.754-3.769-6.641-7.667-6.641c-4.277,0-7.744,3.468-7.745,7.746c0.001,4.277,3.468,7.744,7.745,7.744c3.917,0,7.156-2.91,7.668-6.688l2.638-0.021c-0.16,0.521-0.441,1.02-0.849,1.412L18.77,25.17zM16.312,16.789c0.002,0,0.002,0,0.004,0l5.476-0.02c-0.5,2.562-2.76,4.518-5.48,4.521c-3.084-0.004-5.578-2.5-5.584-5.582c0.006-3.084,2.5-5.58,5.584-5.584c2.708,0.004,4.959,1.929,5.472,4.484l-5.476,0.018c-0.596,0.002-1.078,0.488-1.076,1.084C15.233,16.308,15.715,16.789,16.312,16.789z",
+        svg: "M31.274,15.989c0-2.473-2.005-4.478-4.478-4.478l0,0c0.81-0.811,1.312-1.93,1.312-3.167c0-2.474-2.005-4.479-4.479-4.479c-1.236,0-2.356,0.501-3.167,1.312c0-2.473-2.005-4.478-4.478-4.478c-2.474,0-4.479,2.005-4.479,4.478c-0.811-0.81-1.93-1.312-3.167-1.312c-2.474,0-4.479,2.005-4.479,4.479c0,1.236,0.501,2.356,1.312,3.166c-2.474,0-4.479,2.005-4.479,4.479c0,2.474,2.005,4.479,4.479,4.479c-0.811,0.81-1.312,1.93-1.312,3.167c0,2.473,2.005,4.478,4.479,4.478c1.236,0,2.356-0.501,3.167-1.312c0,2.473,2.005,4.479,4.479,4.479c2.473,0,4.478-2.006,4.478-4.479l0,0c0.811,0.811,1.931,1.312,3.167,1.312c2.474,0,4.478-2.005,4.478-4.478c0-1.237-0.501-2.357-1.312-3.168c0.001,0,0.001,0,0.001,0C29.27,20.467,31.274,18.463,31.274,15.989zM23.583,21.211c0.016,0,0.031-0.001,0.047-0.001c1.339,0,2.424,1.085,2.424,2.425c0,1.338-1.085,2.424-2.424,2.424s-2.424-1.086-2.424-2.424c0-0.017,0.001-0.031,0.001-0.047l-3.541-3.542v5.009c0.457,0.44,0.743,1.06,0.743,1.746c0,1.339-1.086,2.424-2.424,2.424c-1.339,0-2.425-1.085-2.425-2.424c0-0.687,0.286-1.306,0.743-1.746v-5.009l-3.541,3.542c0,0.016,0.001,0.031,0.001,0.047c0,1.338-1.085,2.424-2.424,2.424s-2.424-1.086-2.424-2.424c0-1.34,1.085-2.425,2.424-2.425c0.015,0,0.031,0.001,0.046,0.001l3.542-3.541H6.919c-0.44,0.458-1.06,0.743-1.746,0.743c-1.339,0-2.424-1.085-2.424-2.424s1.085-2.424,2.424-2.424c0.686,0,1.305,0.285,1.746,0.744h5.008l-3.542-3.542c-0.015,0-0.031,0.001-0.046,0.001c-1.339,0-2.424-1.085-2.424-2.424S7.001,5.92,8.34,5.92s2.424,1.085,2.424,2.424c0,0.015-0.001,0.031-0.001,0.046l3.541,3.542V6.924c-0.457-0.441-0.743-1.06-0.743-1.746c0-1.339,1.086-2.425,2.425-2.425c1.338,0,2.424,1.085,2.424,2.425c0,0.686-0.286,1.305-0.743,1.746v5.008l3.541-3.542c0-0.015-0.001-0.031-0.001-0.046c0-1.339,1.085-2.424,2.424-2.424s2.424,1.085,2.424,2.424c0,1.339-1.085,2.424-2.424,2.424c-0.016,0-0.031-0.001-0.047-0.001l-3.541,3.542h5.008c0.441-0.458,1.061-0.744,1.747-0.744c1.338,0,2.423,1.085,2.423,2.424s-1.085,2.424-2.423,2.424c-0.687,0-1.306-0.285-1.747-0.743h-5.008L23.583,21.211z",
+        usb: "M15.5,1.667L13.745,4.74h1.252v15.709L11.8,17.391c-0.205-0.26-0.351-0.601-0.358-0.952c0-1.417-0.001-2.258-0.001-2.568c0.592-0.21,1.02-0.774,1.02-1.444c0-0.849-0.682-1.538-1.521-1.538c-0.84,0-1.521,0.689-1.521,1.538c0,0.67,0.427,1.234,1.019,1.444l-0.001,2.539c0,0.688,0.373,1.409,0.812,1.868c-0.013-0.013-0.027-0.025,0,0c0.011,0.01,3.392,3.245,3.392,3.245c0.205,0.26,0.35,0.6,0.357,0.951v1.776c-1.161,0.236-2.036,1.272-2.036,2.517c0,1.418,1.137,2.566,2.539,2.566c1.403,0,2.54-1.148,2.54-2.566c0-1.244-0.875-2.28-2.038-2.517v-1.746c0-0.005,0-0.009,0-0.014v-3.861c0.008-0.35,0.152-0.689,0.358-0.949c0,0,3.38-3.234,3.392-3.245c0.027-0.026,0.012-0.013,0,0c0.438-0.459,0.811-1.181,0.811-1.869V10.12h1.02V7.046h-3.041v3.075h1.018c0,0-0.002,0.644-0.002,2.476c-0.008,0.351-0.152,0.692-0.357,0.952l-3.198,3.06V4.74h1.254L15.5,1.667z",
+        ethernet: "M22.5,8.5v3.168l3.832,3.832L22.5,19.332V22.5l7-7L22.5,8.5zM8.5,22.5v-3.168L4.667,15.5L8.5,11.668V8.5l-7,7L8.5,22.5zM15.5,14.101c-0.928,0-1.68,0.751-1.68,1.68c0,0.927,0.752,1.681,1.68,1.681c0.927,0,1.68-0.754,1.68-1.681C17.18,14.852,16.427,14.101,15.5,14.101zM10.46,14.101c-0.928,0-1.68,0.751-1.68,1.68c0,0.927,0.752,1.681,1.68,1.681s1.68-0.754,1.68-1.681C12.14,14.852,11.388,14.101,10.46,14.101zM20.541,14.101c-0.928,0-1.682,0.751-1.682,1.68c0,0.927,0.754,1.681,1.682,1.681s1.68-0.754,1.68-1.681C22.221,14.852,21.469,14.101,20.541,14.101z",
+		js: "M1,1v30h30V1H1zM17.326,24.398c0,2.92-1.712,4.248-4.209,4.248c-2.255,0-3.564-1.168-4.229-2.576l0,0l0,0l0,0l2.296-1.391c0.443,0.777,0.846,1.442,1.812,1.442c0.926,0,1.511-0.354,1.511-1.771V14.77h2.819V24.398zM23.992,28.646c-2.618,0-4.311-1.248-5.135-2.879l2.295-1.328c0.604,0.979,1.39,1.711,2.779,1.711c1.168,0,1.904-0.584,1.904-1.396c0-0.966-0.766-1.311-2.054-1.865L23.08,22.58c-2.034-0.865-3.383-1.953-3.383-4.249c0-2.114,1.604-3.726,4.128-3.726c1.792,0,3.081,0.625,4.008,2.254l-2.19,1.406c-0.479-0.861-1.006-1.209-1.812-1.209c-0.825,0-1.353,0.521-1.353,1.209c0,0.852,0.521,1.188,1.729,1.711l0.704,0.309c2.396,1.021,3.746,2.07,3.746,4.43C28.664,27.259,26.671,28.646,23.992,28.646z",
+		dribbble: "M16,1.667C8.084,1.667,1.667,8.084,1.667,16S8.084,30.333,16,30.333S30.333,23.916,30.333,16S23.916,1.667,16,1.667zM25.534,8.232c1.7,2.084,2.731,4.732,2.767,7.618c-3.232-0.656-6.14-0.783-8.777-0.38c-0.362-0.825-0.738-1.631-1.125-2.412C22.43,11.542,24.497,9.781,25.534,8.232zM23.955,6.624c-0.877,1.658-3.191,3.232-6.564,4.476c-1.533-2.86-3.115-5.299-4.388-7.033c0.96-0.241,1.964-0.37,2.997-0.37C19.031,3.696,21.809,4.8,23.955,6.624zM10.846,4.831c1.09,1.441,2.751,3.91,4.415,6.967c-3.687,1.073-8.032,1.677-11.282,1.585C4.806,9.581,7.395,6.431,10.846,4.831zM3.696,16c0-0.147,0.006-0.293,0.011-0.439c0.312,0.013,0.632,0.019,0.96,0.019c3.464,0,7.754-0.646,11.484-1.765c0.048-0.015,0.093-0.029,0.14-0.044c0.354,0.704,0.697,1.431,1.033,2.175c-0.516,0.146-1.022,0.314-1.518,0.507c-3.547,1.375-6.512,3.895-9.031,7.678C4.861,21.96,3.696,19.114,3.696,16zM8.388,25.656c2.31-3.574,5.002-5.924,8.209-7.167c0.516-0.2,1.049-0.369,1.594-0.513c1.205,2.996,2.166,6.205,2.559,9.373c-1.462,0.613-3.066,0.953-4.749,0.953C13.128,28.305,10.484,27.312,8.388,25.656zM22.802,26.246c-0.446-2.939-1.321-5.895-2.413-8.686c2.316-0.279,4.881-0.117,7.742,0.485C27.557,21.46,25.574,24.398,22.802,26.246z",
+		"500px": "M24.902,13.033c-2.57,0-4.65,2.998-4.65,2.998s-2.141-2.998-4.772-2.998c-2.63,0-3.793,2.691-3.793,2.691s-1.04-2.141-3.365-2.141c-2.095,0-2.351,0.842-2.381,1.009l0.424-2.783h5.077v-2.08H4.529l-1.392,6.865l2.432,0.049c0,0,0.917-1.346,1.896-1.346s1.958,0.917,1.958,2.264c0,1.348-1.04,2.555-2.019,2.555s-1.958-1.023-1.958-1.76H3v0.308c0,2.08,1.835,3.608,4.344,3.608c2.508,0,4.343-1.896,4.343-2.691c0,0,0.795,2.691,3.916,2.691c3.122,0,4.588-2.691,4.588-2.691s2.142,2.691,4.711,2.691c2.568,0,4.099-2.143,4.099-4.771C29,14.868,27.104,13.033,24.902,13.033zM15.511,19.578c-1.285,0-1.958-1.284-1.958-1.957s0.428-1.958,1.896-1.958c1.469,0,2.998,1.958,2.998,1.958S16.795,19.578,15.511,19.578zM24.779,19.578c-1.285,0-2.938-1.957-2.938-1.957s1.531-1.958,2.998-1.958c1.47,0,1.896,1.285,1.896,1.958S26.064,19.578,24.779,19.578z",
+		instagram: "M16,9.904c-3.366,0-6.096,2.729-6.096,6.096c0,3.366,2.729,6.096,6.096,6.096s6.096-2.729,6.096-6.096S19.366,9.904,16,9.904zM16,20.48c-2.475,0-4.48-2.006-4.48-4.48c0-2.474,2.006-4.48,4.48-4.48c2.475,0,4.48,2.006,4.48,4.48C20.48,18.475,18.475,20.48,16,20.48zM24.576,2.321H7.423c-2.848,0-5.156,2.309-5.156,5.157v17.043c0,2.849,2.309,5.155,5.156,5.155h17.153c2.849,0,5.156-2.309,5.156-5.155V7.479C29.732,4.63,27.425,2.321,24.576,2.321zM22.236,5.394c0-0.605,0.49-1.097,1.097-1.097h3.219c0.605,0,1.097,0.491,1.097,1.097v3.219c0,0.605-0.489,1.097-1.097,1.097h-3.219c-0.604,0-1.097-0.491-1.097-1.097V5.394zM28.637,24.521c0,2.237-1.82,4.06-4.061,4.06H7.423c-2.238,0-4.06-1.82-4.06-4.06V10.879H4.19c0.102-0.5,0.544-0.877,1.075-0.877h3.438c0.53,0,0.974,0.377,1.074,0.877h1.498c1.242-1.146,2.9-1.847,4.724-1.847s3.481,0.701,4.724,1.847h7.912v13.643H28.637L28.637,24.521z",
+		android: "M6.13,11.126c-0.894,0-1.624,0.731-1.624,1.624v6.496c0,0.895,0.73,1.624,1.624,1.624c0.893,0,1.624-0.729,1.624-1.624V12.75C7.754,11.856,7.023,11.126,6.13,11.126zM19.516,4.96l1.32-2.035c0.074-0.113,0.042-0.264-0.07-0.338c-0.113-0.074-0.266-0.041-0.34,0.072l-1.367,2.106c-0.93-0.36-1.966-0.561-3.059-0.561c-1.094,0-2.13,0.201-3.058,0.561l-1.368-2.106c-0.073-0.113-0.225-0.145-0.338-0.072c-0.113,0.074-0.145,0.225-0.072,0.338l1.321,2.035c-2.186,1.009-3.674,2.928-3.717,5.138h14.464C23.189,7.888,21.702,5.969,19.516,4.96zM12.898,8.062c-0.459,0-0.832-0.373-0.832-0.832s0.373-0.832,0.832-0.832c0.46,0,0.832,0.373,0.832,0.832S13.358,8.062,12.898,8.062zM19.102,8.062c-0.459,0-0.832-0.373-0.832-0.832s0.373-0.832,0.832-0.832s0.832,0.373,0.832,0.832S19.561,8.062,19.102,8.062zM25.87,11.126c-0.894,0-1.624,0.731-1.624,1.624v6.496c0,0.895,0.73,1.624,1.624,1.624s1.624-0.729,1.624-1.624V12.75C27.494,11.856,26.764,11.126,25.87,11.126zM8.756,22.904c0,0.723,0.591,1.312,1.314,1.312h1.363v3.61c0,0.896,0.731,1.624,1.625,1.624c0.893,0,1.624-0.729,1.624-1.624v-3.611h2.636v3.61c0,0.896,0.729,1.624,1.625,1.624c0.894,0,1.623-0.729,1.623-1.624v-3.61h1.363c0.723,0,1.312-0.591,1.312-1.312V11.07H8.756V22.904z",
+		iOS: "M4.065,21.797h2.236v-8.784H4.065V21.797zM5.184,9.352c-0.739,0-1.245,0.523-1.245,1.208c0,0.667,0.487,1.19,1.227,1.19c0.775,0,1.263-0.523,1.263-1.19C6.41,9.875,5.941,9.352,5.184,9.352zM13.915,9.442c-3.427,0-5.771,2.633-5.771,6.367c0,3.571,2.164,6.186,5.591,6.186c3.355,0,5.826-2.326,5.826-6.402C19.561,12.13,17.468,9.442,13.915,9.442zM13.86,20.21c-2.128,0-3.373-1.966-3.373-4.437c0-2.507,1.172-4.545,3.373-4.545c2.218,0,3.354,2.164,3.354,4.455C17.215,18.227,16.007,20.21,13.86,20.21zM25.695,14.727c-1.622-0.631-2.326-1.064-2.326-2.002c0-0.703,0.613-1.461,2.021-1.461c1.137,0,1.979,0.343,2.416,0.577l0.541-1.785c-0.643-0.325-1.604-0.613-2.933-0.613c-2.633,0-4.293,1.515-4.293,3.499c0,1.75,1.278,2.813,3.282,3.535c1.552,0.559,2.162,1.1,2.162,2.02c0,0.992-0.797,1.659-2.227,1.659c-1.137,0-2.219-0.36-2.938-0.775l-0.484,1.84c0.668,0.396,2.002,0.758,3.28,0.758c3.14,0,4.616-1.688,4.616-3.644C28.835,16.585,27.807,15.521,25.695,14.727z",
+		hp: "M29.936,14.968c-0.178-2.385-0.967-4.726-2.301-6.714c-1.307-1.954-3.107-3.585-5.203-4.657c-1.617-0.853-3.414-1.353-5.229-1.514c-0.412-0.087-0.824,0.006-1.238,0.009c-0.981,2.81-2,5.606-2.989,8.413c0.72,0.013,1.439-0.011,2.158,0.011c0.525,0.021,1.076,0.241,1.366,0.701c0.333,0.519,0.312,1.185,0.104,1.748c-0.978,2.751-1.958,5.5-2.938,8.253c-0.863,0.013-1.727-0.001-2.59,0.007c-0.121-0.002-0.245,0.012-0.36-0.033c1.096-3.021,2.167-6.06,3.249-9.083c-0.516-0.008-1.031,0.003-1.546-0.006c-0.08,0.165-0.136,0.339-0.195,0.513C11.23,15.41,10.227,18.204,9.237,21c-0.047,0.066-0.035,0.229-0.147,0.229c-0.822,0.004-1.645-0.004-2.467,0.002c-0.148-0.002-0.299,0.021-0.443-0.021c2.255-6.256,4.46-12.532,6.716-18.789c-4.407,0.943-8.2,4.242-9.838,8.431c-0.672,1.659-0.965,3.45-1.002,5.233c0.046,0.854,0.106,1.715,0.273,2.562c0.53,2.812,1.964,5.438,4.028,7.408c1.713,1.655,3.863,2.854,6.17,3.452c2.247-6.276,4.479-12.562,6.717-18.851c0.021-0.045,0.064-0.137,0.09-0.183c1.381,0.014,2.766,0.002,4.146,0.006c0.453,0.008,0.918-0.042,1.354,0.095c0.506,0.137,0.979,0.502,1.141,1.018c0.109,0.407,0.029,0.841-0.105,1.229c-0.887,2.574-1.812,5.125-2.729,7.695c-0.229,0.67-0.904,1.09-1.599,1.107c-1.076,0.021-2.147-0.012-3.229,0.014c-0.983,2.762-1.962,5.521-2.945,8.272c0.256,0.104,0.528,0.021,0.794,0.036c0.399,0.027,0.802-0.043,1.198-0.065c2.625-0.239,5.173-1.26,7.242-2.885c1.664-1.304,3.024-2.979,3.953-4.875c0.812-1.64,1.269-3.438,1.396-5.244C29.889,16.234,29.906,15.599,29.936,14.968zM20.422,20.031c0.916-2.659,1.889-5.297,2.818-7.951c-0.398-0.008-0.799,0.002-1.197-0.005c-0.115,0.017-0.268-0.042-0.354,0.055c-0.943,2.636-1.879,5.276-2.822,7.912C19.385,20.045,19.906,20.066,20.422,20.031z",
+		gplus: "M9.208,22.73c-0.292-0.396-0.552-0.795-0.779-1.23c-0.267-0.423-0.399-0.934-0.399-1.527c0-0.354,0.05-0.654,0.152-0.893c0.089-0.251,0.171-0.482,0.248-0.693c-0.459,0.053-0.893,0.078-1.3,0.078c-1.927-0.023-3.444-0.568-4.55-1.636v7.21c0.989-0.453,2.013-0.771,3.073-0.955C7.078,22.874,8.264,22.756,9.208,22.73zM10.311,23.872c-0.257-0.026-0.56-0.039-0.908-0.039c-0.207-0.026-0.734,0-1.584,0.079c-0.837,0.117-1.693,0.309-2.568,0.57c-0.206,0.08-0.496,0.197-0.869,0.354c-0.374,0.171-0.753,0.414-1.139,0.729c-0.247,0.229-0.468,0.479-0.664,0.771v1.104c0,1.026,0.838,1.865,1.869,1.865h10.188c0-0.021,0.002-0.051,0.002-0.068c0-1.021-0.335-1.922-1.004-2.688C12.924,25.812,11.817,24.925,10.311,23.872zM6.751,16.594c0.656,0.514,1.404,0.771,2.247,0.771c1.065-0.039,1.952-0.422,2.662-1.146c0.342-0.514,0.562-1.041,0.66-1.581c0.059-0.54,0.088-0.995,0.088-1.364c0-1.594-0.408-3.202-1.224-4.822c-0.382-0.777-0.886-1.41-1.51-1.897C9.037,6.094,8.304,5.85,7.476,5.824C6.38,5.848,5.468,6.289,4.742,7.146C4.129,8.042,3.837,9.043,3.863,10.15c0,1.463,0.428,2.985,1.284,4.566C5.562,15.453,6.097,16.079,6.751,16.594zM27.553,2.707H4.447c-1.031,0-1.869,0.838-1.869,1.869v2.507c0.118-0.125,0.24-0.25,0.367-0.372c1.15-0.947,2.345-1.565,3.584-1.855c1.227-0.25,2.376-0.375,3.45-0.375h8.087l-2.5,1.458h-2.494c0.254,0.158,0.54,0.388,0.857,0.69c0.304,0.315,0.603,0.703,0.895,1.164c0.279,0.434,0.527,0.946,0.743,1.538c0.177,0.592,0.267,1.282,0.267,2.071c-0.024,1.447-0.343,2.604-0.958,3.472c-0.302,0.421-0.621,0.809-0.958,1.164c-0.374,0.354-0.771,0.718-1.193,1.085c-0.241,0.25-0.464,0.533-0.669,0.848c-0.241,0.329-0.361,0.711-0.361,1.146c0,0.421,0.124,0.769,0.371,1.046c0.21,0.264,0.414,0.493,0.612,0.688l1.372,1.125c0.853,0.688,1.6,1.467,2.243,2.31c0.604,0.854,0.921,1.972,0.943,3.354c0,0.562-0.071,1.106-0.223,1.646H27.54c1.03,0,1.869-0.838,1.869-1.87V4.576C29.422,3.545,28.584,2.707,27.553,2.707zM29.023,10.953h-4.244v4.244h-2.057v-4.244H18.48V8.897h4.242V4.654h2.057v4.243h4.244V10.953z",
+		facebook: "M25.566,2.433H6.433c-2.2,0-4,1.8-4,4v19.135c0,2.199,1.8,4,4,4h19.135c2.199,0,4-1.801,4-4V6.433C29.566,4.232,27.768,2.433,25.566,2.433zM25.309,16.916h-3.218v11.65h-4.819v-11.65h-2.409V12.9h2.409v-2.411c0-3.275,1.359-5.224,5.229-5.224h3.218v4.016h-2.011c-1.504,0-1.604,0.562-1.604,1.608L22.091,12.9h3.644L25.309,16.916z",
+		fitocracy: "M16,10.001c1.93,0,3.5-1.57,3.5-3.5C19.5,4.57,17.93,3,16,3c-1.93,0-3.5,1.57-3.5,3.501C12.5,8.431,14.07,10.001,16,10.001zM23.884,7.772c0,0-2.067-1.923-2.521-0.05c-0.59,2.442-2.745,4.279-5.363,4.279s-4.774-1.837-5.364-4.279c-0.452-1.873-2.52,0.05-2.52,0.05c-2.569,2.213-4.199,5.486-4.199,9.145C3.917,23.59,9.326,29,16,29s12.083-5.41,12.083-12.083C28.083,13.259,26.453,9.986,23.884,7.772zM14.96,16.274l0.807-1.635l0.807,1.635l1.805,0.263l-1.306,1.271l0.309,1.797l-1.614-0.854l-1.614,0.854l0.309-1.797l-1.306-1.271L14.96,16.274zM7.838,21.912c-0.896-1.457-1.421-3.164-1.421-4.995c0-1.832,0.525-3.538,1.42-4.995c1.909,0.862,3.247,2.765,3.247,4.995C11.084,19.146,9.746,21.05,7.838,21.912zM16,26.5c-1.832,0-3.538-0.525-4.995-1.421c0.862-1.908,2.765-3.246,4.995-3.246c2.23,0,4.133,1.338,4.995,3.246C19.538,25.975,17.832,26.5,16,26.5zM24.162,21.912c-1.908-0.862-3.246-2.766-3.246-4.995c0-2.23,1.338-4.133,3.247-4.995c0.896,1.457,1.42,3.164,1.42,4.995S25.059,20.455,24.162,21.912z",
+		opensource: "M15.5,1.125c-8.222,0-14.911,6.689-14.911,14.911c0,6.262,3.88,11.634,9.362,13.839l3.639-9.076c-1.888-0.758-3.222-2.604-3.222-4.763c0-2.834,2.297-5.132,5.131-5.132s5.131,2.298,5.131,5.132c0,2.157-1.334,4.005-3.222,4.763l3.64,9.076c5.479-2.206,9.361-7.578,9.361-13.839C30.41,7.814,23.721,1.125,15.5,1.125z"
+    };
+// ┌────────────────────────────────────────────────────────────────────┐ \\
+// │ Raphaël 2.1.2 - JavaScript Vector Library                          │ \\
+// ├────────────────────────────────────────────────────────────────────┤ \\
+// │ Copyright © 2008-2012 Dmitry Baranovskiy (http://raphaeljs.com)    │ \\
+// │ Copyright © 2008-2012 Sencha Labs (http://sencha.com)              │ \\
+// ├────────────────────────────────────────────────────────────────────┤ \\
+// │ Licensed under the MIT (http://raphaeljs.com/license.html) license.│ \\
+// └────────────────────────────────────────────────────────────────────┘ \\
+// Copyright (c) 2013 Adobe Systems Incorporated. All rights reserved.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ┌────────────────────────────────────────────────────────────┐ \\
+// │ Eve 0.4.2 - JavaScript Events Library                      │ \\
+// ├────────────────────────────────────────────────────────────┤ \\
+// │ Author Dmitry Baranovskiy (http://dmitry.baranovskiy.com/) │ \\
+// └────────────────────────────────────────────────────────────┘ \\
+
+(function (glob) {
+    var version = "0.4.2",
+        has = "hasOwnProperty",
+        separator = /[\.\/]/,
+        wildcard = "*",
+        fun = function () {},
+        numsort = function (a, b) {
+            return a - b;
+        },
+        current_event,
+        stop,
+        events = {n: {}},
+    /*\
+     * eve
+     [ method ]
+
+     * Fires event with given `name`, given scope and other parameters.
+
+     > Arguments
+
+     - name (string) name of the *event*, dot (`.`) or slash (`/`) separated
+     - scope (object) context for the event handlers
+     - varargs (...) the rest of arguments will be sent to event handlers
+
+     = (object) array of returned values from the listeners
+    \*/
+        eve = function (name, scope) {
+			name = String(name);
+            var e = events,
+                oldstop = stop,
+                args = Array.prototype.slice.call(arguments, 2),
+                listeners = eve.listeners(name),
+                z = 0,
+                f = false,
+                l,
+                indexed = [],
+                queue = {},
+                out = [],
+                ce = current_event,
+                errors = [];
+            current_event = name;
+            stop = 0;
+            for (var i = 0, ii = listeners.length; i < ii; i++) if ("zIndex" in listeners[i]) {
+                indexed.push(listeners[i].zIndex);
+                if (listeners[i].zIndex < 0) {
+                    queue[listeners[i].zIndex] = listeners[i];
+                }
+            }
+            indexed.sort(numsort);
+            while (indexed[z] < 0) {
+                l = queue[indexed[z++]];
+                out.push(l.apply(scope, args));
+                if (stop) {
+                    stop = oldstop;
+                    return out;
+                }
+            }
+            for (i = 0; i < ii; i++) {
+                l = listeners[i];
+                if ("zIndex" in l) {
+                    if (l.zIndex == indexed[z]) {
+                        out.push(l.apply(scope, args));
+                        if (stop) {
+                            break;
+                        }
+                        do {
+                            z++;
+                            l = queue[indexed[z]];
+                            l && out.push(l.apply(scope, args));
+                            if (stop) {
+                                break;
+                            }
+                        } while (l)
+                    } else {
+                        queue[l.zIndex] = l;
+                    }
+                } else {
+                    out.push(l.apply(scope, args));
+                    if (stop) {
+                        break;
+                    }
+                }
+            }
+            stop = oldstop;
+            current_event = ce;
+            return out.length ? out : null;
+        };
+		// Undocumented. Debug only.
+		eve._events = events;
+    /*\
+     * eve.listeners
+     [ method ]
+
+     * Internal method which gives you array of all event handlers that will be triggered by the given `name`.
+
+     > Arguments
+
+     - name (string) name of the event, dot (`.`) or slash (`/`) separated
+
+     = (array) array of event handlers
+    \*/
+    eve.listeners = function (name) {
+        var names = name.split(separator),
+            e = events,
+            item,
+            items,
+            k,
+            i,
+            ii,
+            j,
+            jj,
+            nes,
+            es = [e],
+            out = [];
+        for (i = 0, ii = names.length; i < ii; i++) {
+            nes = [];
+            for (j = 0, jj = es.length; j < jj; j++) {
+                e = es[j].n;
+                items = [e[names[i]], e[wildcard]];
+                k = 2;
+                while (k--) {
+                    item = items[k];
+                    if (item) {
+                        nes.push(item);
+                        out = out.concat(item.f || []);
+                    }
+                }
+            }
+            es = nes;
+        }
+        return out;
+    };
+    
+    /*\
+     * eve.on
+     [ method ]
+     **
+     * Binds given event handler with a given name. You can use wildcards “`*`” for the names:
+     | eve.on("*.under.*", f);
+     | eve("mouse.under.floor"); // triggers f
+     * Use @eve to trigger the listener.
+     **
+     > Arguments
+     **
+     - name (string) name of the event, dot (`.`) or slash (`/`) separated, with optional wildcards
+     - f (function) event handler function
+     **
+     = (function) returned function accepts a single numeric parameter that represents z-index of the handler. It is an optional feature and only used when you need to ensure that some subset of handlers will be invoked in a given order, despite of the order of assignment. 
+     > Example:
+     | eve.on("mouse", eatIt)(2);
+     | eve.on("mouse", scream);
+     | eve.on("mouse", catchIt)(1);
+     * This will ensure that `catchIt()` function will be called before `eatIt()`.
+	 *
+     * If you want to put your handler before non-indexed handlers, specify a negative value.
+     * Note: I assume most of the time you don’t need to worry about z-index, but it’s nice to have this feature “just in case”.
+    \*/
+    eve.on = function (name, f) {
+		name = String(name);
+		if (typeof f != "function") {
+			return function () {};
+		}
+        var names = name.split(separator),
+            e = events;
+        for (var i = 0, ii = names.length; i < ii; i++) {
+            e = e.n;
+            e = e.hasOwnProperty(names[i]) && e[names[i]] || (e[names[i]] = {n: {}});
+        }
+        e.f = e.f || [];
+        for (i = 0, ii = e.f.length; i < ii; i++) if (e.f[i] == f) {
+            return fun;
+        }
+        e.f.push(f);
+        return function (zIndex) {
+            if (+zIndex == +zIndex) {
+                f.zIndex = +zIndex;
+            }
+        };
+    };
+    /*\
+     * eve.f
+     [ method ]
+     **
+     * Returns function that will fire given event with optional arguments.
+	 * Arguments that will be passed to the result function will be also
+	 * concated to the list of final arguments.
+ 	 | el.onclick = eve.f("click", 1, 2);
+ 	 | eve.on("click", function (a, b, c) {
+ 	 |     console.log(a, b, c); // 1, 2, [event object]
+ 	 | });
+     > Arguments
+	 - event (string) event name
+	 - varargs (…) and any other arguments
+	 = (function) possible event handler function
+    \*/
+	eve.f = function (event) {
+		var attrs = [].slice.call(arguments, 1);
+		return function () {
+			eve.apply(null, [event, null].concat(attrs).concat([].slice.call(arguments, 0)));
+		};
+	};
+    /*\
+     * eve.stop
+     [ method ]
+     **
+     * Is used inside an event handler to stop the event, preventing any subsequent listeners from firing.
+    \*/
+    eve.stop = function () {
+        stop = 1;
+    };
+    /*\
+     * eve.nt
+     [ method ]
+     **
+     * Could be used inside event handler to figure out actual name of the event.
+     **
+     > Arguments
+     **
+     - subname (string) #optional subname of the event
+     **
+     = (string) name of the event, if `subname` is not specified
+     * or
+     = (boolean) `true`, if current event’s name contains `subname`
+    \*/
+    eve.nt = function (subname) {
+        if (subname) {
+            return new RegExp("(?:\\.|\\/|^)" + subname + "(?:\\.|\\/|$)").test(current_event);
+        }
+        return current_event;
+    };
+    /*\
+     * eve.nts
+     [ method ]
+     **
+     * Could be used inside event handler to figure out actual name of the event.
+     **
+     **
+     = (array) names of the event
+    \*/
+    eve.nts = function () {
+        return current_event.split(separator);
+    };
+    /*\
+     * eve.off
+     [ method ]
+     **
+     * Removes given function from the list of event listeners assigned to given name.
+	 * If no arguments specified all the events will be cleared.
+     **
+     > Arguments
+     **
+     - name (string) name of the event, dot (`.`) or slash (`/`) separated, with optional wildcards
+     - f (function) event handler function
+    \*/
+    /*\
+     * eve.unbind
+     [ method ]
+     **
+     * See @eve.off
+    \*/
+    eve.off = eve.unbind = function (name, f) {
+		if (!name) {
+		    eve._events = events = {n: {}};
+			return;
+		}
+        var names = name.split(separator),
+            e,
+            key,
+            splice,
+            i, ii, j, jj,
+            cur = [events];
+        for (i = 0, ii = names.length; i < ii; i++) {
+            for (j = 0; j < cur.length; j += splice.length - 2) {
+                splice = [j, 1];
+                e = cur[j].n;
+                if (names[i] != wildcard) {
+                    if (e[names[i]]) {
+                        splice.push(e[names[i]]);
+                    }
+                } else {
+                    for (key in e) if (e[has](key)) {
+                        splice.push(e[key]);
+                    }
+                }
+                cur.splice.apply(cur, splice);
+            }
+        }
+        for (i = 0, ii = cur.length; i < ii; i++) {
+            e = cur[i];
+            while (e.n) {
+                if (f) {
+                    if (e.f) {
+                        for (j = 0, jj = e.f.length; j < jj; j++) if (e.f[j] == f) {
+                            e.f.splice(j, 1);
+                            break;
+                        }
+                        !e.f.length && delete e.f;
+                    }
+                    for (key in e.n) if (e.n[has](key) && e.n[key].f) {
+                        var funcs = e.n[key].f;
+                        for (j = 0, jj = funcs.length; j < jj; j++) if (funcs[j] == f) {
+                            funcs.splice(j, 1);
+                            break;
+                        }
+                        !funcs.length && delete e.n[key].f;
+                    }
+                } else {
+                    delete e.f;
+                    for (key in e.n) if (e.n[has](key) && e.n[key].f) {
+                        delete e.n[key].f;
+                    }
+                }
+                e = e.n;
+            }
+        }
+    };
+    /*\
+     * eve.once
+     [ method ]
+     **
+     * Binds given event handler with a given name to only run once then unbind itself.
+     | eve.once("login", f);
+     | eve("login"); // triggers f
+     | eve("login"); // no listeners
+     * Use @eve to trigger the listener.
+     **
+     > Arguments
+     **
+     - name (string) name of the event, dot (`.`) or slash (`/`) separated, with optional wildcards
+     - f (function) event handler function
+     **
+     = (function) same return function as @eve.on
+    \*/
+    eve.once = function (name, f) {
+        var f2 = function () {
+            eve.unbind(name, f2);
+            return f.apply(this, arguments);
+        };
+        return eve.on(name, f2);
+    };
+    /*\
+     * eve.version
+     [ property (string) ]
+     **
+     * Current version of the library.
+    \*/
+    eve.version = version;
+    eve.toString = function () {
+        return "You are running Eve " + version;
+    };
+    (typeof module != "undefined" && module.exports) ? (module.exports = eve) : (typeof define != "undefined" ? (define("eve", [], function() { return eve; })) : (glob.eve = eve));
+})(window || this);
+// ┌─────────────────────────────────────────────────────────────────────┐ \\
+// │ "Raphaël 2.1.2" - JavaScript Vector Library                         │ \\
+// ├─────────────────────────────────────────────────────────────────────┤ \\
+// │ Copyright (c) 2008-2011 Dmitry Baranovskiy (http://raphaeljs.com)   │ \\
+// │ Copyright (c) 2008-2011 Sencha Labs (http://sencha.com)             │ \\
+// │ Licensed under the MIT (http://raphaeljs.com/license.html) license. │ \\
+// └─────────────────────────────────────────────────────────────────────┘ \\
+
+(function (glob, factory) {
+    // AMD support
+    if (typeof define === "function" && define.amd) {
+        // Define as an anonymous module
+        define(["eve"], function( eve ) {
+            return factory(glob, eve);
+        });
+    } else {
+        // Browser globals (glob is window)
+        // Raphael adds itself to window
+        factory(glob, glob.eve);
+    }
+}(this, function (window, eve) {
+    /*\
+     * Raphael
+     [ method ]
+     **
+     * Creates a canvas object on which to draw.
+     * You must do this first, as all future calls to drawing methods
+     * from this instance will be bound to this canvas.
+     > Parameters
+     **
+     - container (HTMLElement|string) DOM element or its ID which is going to be a parent for drawing surface
+     - width (number)
+     - height (number)
+     - callback (function) #optional callback function which is going to be executed in the context of newly created paper
+     * or
+     - x (number)
+     - y (number)
+     - width (number)
+     - height (number)
+     - callback (function) #optional callback function which is going to be executed in the context of newly created paper
+     * or
+     - all (array) (first 3 or 4 elements in the array are equal to [containerID, width, height] or [x, y, width, height]. The rest are element descriptions in format {type: type, <attributes>}). See @Paper.add.
+     - callback (function) #optional callback function which is going to be executed in the context of newly created paper
+     * or
+     - onReadyCallback (function) function that is going to be called on DOM ready event. You can also subscribe to this event via Eve’s “DOMLoad” event. In this case method returns `undefined`.
+     = (object) @Paper
+     > Usage
+     | // Each of the following examples create a canvas
+     | // that is 320px wide by 200px high.
+     | // Canvas is created at the viewport’s 10,50 coordinate.
+     | var paper = Raphael(10, 50, 320, 200);
+     | // Canvas is created at the top left corner of the #notepad element
+     | // (or its top right corner in dir="rtl" elements)
+     | var paper = Raphael(document.getElementById("notepad"), 320, 200);
+     | // Same as above
+     | var paper = Raphael("notepad", 320, 200);
+     | // Image dump
+     | var set = Raphael(["notepad", 320, 200, {
+     |     type: "rect",
+     |     x: 10,
+     |     y: 10,
+     |     width: 25,
+     |     height: 25,
+     |     stroke: "#f00"
+     | }, {
+     |     type: "text",
+     |     x: 30,
+     |     y: 40,
+     |     text: "Dump"
+     | }]);
+    \*/
+    function R(first) {
+        if (R.is(first, "function")) {
+            return loaded ? first() : eve.on("raphael.DOMload", first);
+        } else if (R.is(first, array)) {
+            return R._engine.create[apply](R, first.splice(0, 3 + R.is(first[0], nu))).add(first);
+        } else {
+            var args = Array.prototype.slice.call(arguments, 0);
+            if (R.is(args[args.length - 1], "function")) {
+                var f = args.pop();
+                return loaded ? f.call(R._engine.create[apply](R, args)) : eve.on("raphael.DOMload", function () {
+                    f.call(R._engine.create[apply](R, args));
+                });
+            } else {
+                return R._engine.create[apply](R, arguments);
+            }
+        }
+    }
+    R.version = "2.1.2";
+    R.eve = eve;
+    var loaded,
+        separator = /[, ]+/,
+        elements = {circle: 1, rect: 1, path: 1, ellipse: 1, text: 1, image: 1},
+        formatrg = /\{(\d+)\}/g,
+        proto = "prototype",
+        has = "hasOwnProperty",
+        g = {
+            doc: document,
+            win: window
+        },
+        oldRaphael = {
+            was: Object.prototype[has].call(g.win, "Raphael"),
+            is: g.win.Raphael
+        },
+        Paper = function () {
+            /*\
+             * Paper.ca
+             [ property (object) ]
+             **
+             * Shortcut for @Paper.customAttributes
+            \*/
+            /*\
+             * Paper.customAttributes
+             [ property (object) ]
+             **
+             * If you have a set of attributes that you would like to represent
+             * as a function of some number you can do it easily with custom attributes:
+             > Usage
+             | paper.customAttributes.hue = function (num) {
+             |     num = num % 1;
+             |     return {fill: "hsb(" + num + ", 0.75, 1)"};
+             | };
+             | // Custom attribute “hue” will change fill
+             | // to be given hue with fixed saturation and brightness.
+             | // Now you can use it like this:
+             | var c = paper.circle(10, 10, 10).attr({hue: .45});
+             | // or even like this:
+             | c.animate({hue: 1}, 1e3);
+             | 
+             | // You could also create custom attribute
+             | // with multiple parameters:
+             | paper.customAttributes.hsb = function (h, s, b) {
+             |     return {fill: "hsb(" + [h, s, b].join(",") + ")"};
+             | };
+             | c.attr({hsb: "0.5 .8 1"});
+             | c.animate({hsb: [1, 0, 0.5]}, 1e3);
+            \*/
+            this.ca = this.customAttributes = {};
+        },
+        paperproto,
+        appendChild = "appendChild",
+        apply = "apply",
+        concat = "concat",
+        supportsTouch = ('ontouchstart' in g.win) || g.win.DocumentTouch && g.doc instanceof DocumentTouch, //taken from Modernizr touch test
+        E = "",
+        S = " ",
+        Str = String,
+        split = "split",
+        events = "click dblclick mousedown mousemove mouseout mouseover mouseup touchstart touchmove touchend touchcancel"[split](S),
+        touchMap = {
+            mousedown: "touchstart",
+            mousemove: "touchmove",
+            mouseup: "touchend"
+        },
+        lowerCase = Str.prototype.toLowerCase,
+        math = Math,
+        mmax = math.max,
+        mmin = math.min,
+        abs = math.abs,
+        pow = math.pow,
+        PI = math.PI,
+        nu = "number",
+        string = "string",
+        array = "array",
+        toString = "toString",
+        fillString = "fill",
+        objectToString = Object.prototype.toString,
+        paper = {},
+        push = "push",
+        ISURL = R._ISURL = /^url\(['"]?([^\)]+?)['"]?\)$/i,
+        colourRegExp = /^\s*((#[a-f\d]{6})|(#[a-f\d]{3})|rgba?\(\s*([\d\.]+%?\s*,\s*[\d\.]+%?\s*,\s*[\d\.]+%?(?:\s*,\s*[\d\.]+%?)?)\s*\)|hsba?\(\s*([\d\.]+(?:deg|\xb0|%)?\s*,\s*[\d\.]+%?\s*,\s*[\d\.]+(?:%?\s*,\s*[\d\.]+)?)%?\s*\)|hsla?\(\s*([\d\.]+(?:deg|\xb0|%)?\s*,\s*[\d\.]+%?\s*,\s*[\d\.]+(?:%?\s*,\s*[\d\.]+)?)%?\s*\))\s*$/i,
+        isnan = {"NaN": 1, "Infinity": 1, "-Infinity": 1},
+        bezierrg = /^(?:cubic-)?bezier\(([^,]+),([^,]+),([^,]+),([^\)]+)\)/,
+        round = math.round,
+        setAttribute = "setAttribute",
+        toFloat = parseFloat,
+        toInt = parseInt,
+        upperCase = Str.prototype.toUpperCase,
+        availableAttrs = R._availableAttrs = {
+            "class": "",
+            "arrow-end": "none",
+            "arrow-start": "none",
+            blur: 0,
+            "clip-rect": "0 0 1e9 1e9",
+            cursor: "default",
+            cx: 0,
+            cy: 0,
+            fill: "#fff",
+            "fill-opacity": 1,
+            font: '10px "Arial"',
+            "font-family": '"Arial"',
+            "font-size": "10",
+            "font-style": "normal",
+            "font-weight": 400,
+            gradient: 0,
+            height: 0,
+            href: "http://raphaeljs.com/",
+            "letter-spacing": 0,
+            opacity: 1,
+            path: "M0,0",
+            r: 0,
+            rx: 0,
+            ry: 0,
+            src: "",
+            stroke: "#000",
+            "stroke-dasharray": "",
+            "stroke-linecap": "butt",
+            "stroke-linejoin": "butt",
+            "stroke-miterlimit": 0,
+            "stroke-opacity": 1,
+            "stroke-width": 1,
+            target: "_blank",
+            "text-anchor": "middle",
+            title: "Raphael",
+            transform: "",
+            width: 0,
+            x: 0,
+            y: 0
+        },
+        availableAnimAttrs = R._availableAnimAttrs = {
+            blur: nu,
+            "clip-rect": "csv",
+            cx: nu,
+            cy: nu,
+            fill: "colour",
+            "fill-opacity": nu,
+            "font-size": nu,
+            height: nu,
+            opacity: nu,
+            path: "path",
+            r: nu,
+            rx: nu,
+            ry: nu,
+            stroke: "colour",
+            "stroke-opacity": nu,
+            "stroke-width": nu,
+            transform: "transform",
+            width: nu,
+            x: nu,
+            y: nu
+        },
+        whitespace = /[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]/g,
+        commaSpaces = /[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*,[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*/,
+        hsrg = {hs: 1, rg: 1},
+        p2s = /,?([achlmqrstvxz]),?/gi,
+        pathCommand = /([achlmrqstvz])[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029,]*((-?\d*\.?\d*(?:e[\-+]?\d+)?[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*,?[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*)+)/ig,
+        tCommand = /([rstm])[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029,]*((-?\d*\.?\d*(?:e[\-+]?\d+)?[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*,?[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*)+)/ig,
+        pathValues = /(-?\d*\.?\d*(?:e[\-+]?\d+)?)[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*,?[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*/ig,
+        radial_gradient = R._radial_gradient = /^r(?:\(([^,]+?)[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*,[\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029]*([^\)]+?)\))?/,
+        eldata = {},
+        sortByKey = function (a, b) {
+            return a.key - b.key;
+        },
+        sortByNumber = function (a, b) {
+            return toFloat(a) - toFloat(b);
+        },
+        fun = function () {},
+        pipe = function (x) {
+            return x;
+        },
+        rectPath = R._rectPath = function (x, y, w, h, r) {
+            if (r) {
+                return [["M", x + r, y], ["l", w - r * 2, 0], ["a", r, r, 0, 0, 1, r, r], ["l", 0, h - r * 2], ["a", r, r, 0, 0, 1, -r, r], ["l", r * 2 - w, 0], ["a", r, r, 0, 0, 1, -r, -r], ["l", 0, r * 2 - h], ["a", r, r, 0, 0, 1, r, -r], ["z"]];
+            }
+            return [["M", x, y], ["l", w, 0], ["l", 0, h], ["l", -w, 0], ["z"]];
+        },
+        ellipsePath = function (x, y, rx, ry) {
+            if (ry == null) {
+                ry = rx;
+            }
+            return [["M", x, y], ["m", 0, -ry], ["a", rx, ry, 0, 1, 1, 0, 2 * ry], ["a", rx, ry, 0, 1, 1, 0, -2 * ry], ["z"]];
+        },
+        getPath = R._getPath = {
+            path: function (el) {
+                return el.attr("path");
+            },
+            circle: function (el) {
+                var a = el.attrs;
+                return ellipsePath(a.cx, a.cy, a.r);
+            },
+            ellipse: function (el) {
+                var a = el.attrs;
+                return ellipsePath(a.cx, a.cy, a.rx, a.ry);
+            },
+            rect: function (el) {
+                var a = el.attrs;
+                return rectPath(a.x, a.y, a.width, a.height, a.r);
+            },
+            image: function (el) {
+                var a = el.attrs;
+                return rectPath(a.x, a.y, a.width, a.height);
+            },
+            text: function (el) {
+                var bbox = el._getBBox();
+                return rectPath(bbox.x, bbox.y, bbox.width, bbox.height);
+            },
+            set : function(el) {
+                var bbox = el._getBBox();
+                return rectPath(bbox.x, bbox.y, bbox.width, bbox.height);
+            }
+        },
+        /*\
+         * Raphael.mapPath
+         [ method ]
+         **
+         * Transform the path string with given matrix.
+         > Parameters
+         - path (string) path string
+         - matrix (object) see @Matrix
+         = (string) transformed path string
+        \*/
+        mapPath = R.mapPath = function (path, matrix) {
+            if (!matrix) {
+                return path;
+            }
+            var x, y, i, j, ii, jj, pathi;
+            path = path2curve(path);
+            for (i = 0, ii = path.length; i < ii; i++) {
+                pathi = path[i];
+                for (j = 1, jj = pathi.length; j < jj; j += 2) {
+                    x = matrix.x(pathi[j], pathi[j + 1]);
+                    y = matrix.y(pathi[j], pathi[j + 1]);
+                    pathi[j] = x;
+                    pathi[j + 1] = y;
+                }
+            }
+            return path;
+        };
+
+    R._g = g;
+    /*\
+     * Raphael.type
+     [ property (string) ]
+     **
+     * Can be “SVG”, “VML” or empty, depending on browser support.
+    \*/
+    R.type = (g.win.SVGAngle || g.doc.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1") ? "SVG" : "VML");
+    if (R.type == "VML") {
+        var d = g.doc.createElement("div"),
+            b;
+        d.innerHTML = '<v:shape adj="1"/>';
+        b = d.firstChild;
+        b.style.behavior = "url(#default#VML)";
+        if (!(b && typeof b.adj == "object")) {
+            return (R.type = E);
+        }
+        d = null;
+    }
+    /*\
+     * Raphael.svg
+     [ property (boolean) ]
+     **
+     * `true` if browser supports SVG.
+    \*/
+    /*\
+     * Raphael.vml
+     [ property (boolean) ]
+     **
+     * `true` if browser supports VML.
+    \*/
+    R.svg = !(R.vml = R.type == "VML");
+    R._Paper = Paper;
+    /*\
+     * Raphael.fn
+     [ property (object) ]
+     **
+     * You can add your own method to the canvas. For example if you want to draw a pie chart,
+     * you can create your own pie chart function and ship it as a Raphaël plugin. To do this
+     * you need to extend the `Raphael.fn` object. You should modify the `fn` object before a
+     * Raphaël instance is created, otherwise it will take no effect. Please note that the
+     * ability for namespaced plugins was removed in Raphael 2.0. It is up to the plugin to
+     * ensure any namespacing ensures proper context.
+     > Usage
+     | Raphael.fn.arrow = function (x1, y1, x2, y2, size) {
+     |     return this.path( ... );
+     | };
+     | // or create namespace
+     | Raphael.fn.mystuff = {
+     |     arrow: function () {…},
+     |     star: function () {…},
+     |     // etc…
+     | };
+     | var paper = Raphael(10, 10, 630, 480);
+     | // then use it
+     | paper.arrow(10, 10, 30, 30, 5).attr({fill: "#f00"});
+     | paper.mystuff.arrow();
+     | paper.mystuff.star();
+    \*/
+    R.fn = paperproto = Paper.prototype = R.prototype;
+    R._id = 0;
+    R._oid = 0;
+    /*\
+     * Raphael.is
+     [ method ]
+     **
+     * Handfull replacement for `typeof` operator.
+     > Parameters
+     - o (…) any object or primitive
+     - type (string) name of the type, i.e. “string”, “function”, “number”, etc.
+     = (boolean) is given value is of given type
+    \*/
+    R.is = function (o, type) {
+        type = lowerCase.call(type);
+        if (type == "finite") {
+            return !isnan[has](+o);
+        }
+        if (type == "array") {
+            return o instanceof Array;
+        }
+        return  (type == "null" && o === null) ||
+                (type == typeof o && o !== null) ||
+                (type == "object" && o === Object(o)) ||
+                (type == "array" && Array.isArray && Array.isArray(o)) ||
+                objectToString.call(o).slice(8, -1).toLowerCase() == type;
+    };
+
+    function clone(obj) {
+        if (typeof obj == "function" || Object(obj) !== obj) {
+            return obj;
+        }
+        var res = new obj.constructor;
+        for (var key in obj) if (obj[has](key)) {
+            res[key] = clone(obj[key]);
+        }
+        return res;
+    }
+
+    /*\
+     * Raphael.angle
+     [ method ]
+     **
+     * Returns angle between two or three points
+     > Parameters
+     - x1 (number) x coord of first point
+     - y1 (number) y coord of first point
+     - x2 (number) x coord of second point
+     - y2 (number) y coord of second point
+     - x3 (number) #optional x coord of third point
+     - y3 (number) #optional y coord of third point
+     = (number) angle in degrees.
+    \*/
+    R.angle = function (x1, y1, x2, y2, x3, y3) {
+        if (x3 == null) {
+            var x = x1 - x2,
+                y = y1 - y2;
+            if (!x && !y) {
+                return 0;
+            }
+            return (180 + math.atan2(-y, -x) * 180 / PI + 360) % 360;
+        } else {
+            return R.angle(x1, y1, x3, y3) - R.angle(x2, y2, x3, y3);
+        }
+    };
+    /*\
+     * Raphael.rad
+     [ method ]
+     **
+     * Transform angle to radians
+     > Parameters
+     - deg (number) angle in degrees
+     = (number) angle in radians.
+    \*/
+    R.rad = function (deg) {
+        return deg % 360 * PI / 180;
+    };
+    /*\
+     * Raphael.deg
+     [ method ]
+     **
+     * Transform angle to degrees
+     > Parameters
+     - deg (number) angle in radians
+     = (number) angle in degrees.
+    \*/
+    R.deg = function (rad) {
+        return rad * 180 / PI % 360;
+    };
+    /*\
+     * Raphael.snapTo
+     [ method ]
+     **
+     * Snaps given value to given grid.
+     > Parameters
+     - values (array|number) given array of values or step of the grid
+     - value (number) value to adjust
+     - tolerance (number) #optional tolerance for snapping. Default is `10`.
+     = (number) adjusted value.
+    \*/
+    R.snapTo = function (values, value, tolerance) {
+        tolerance = R.is(tolerance, "finite") ? tolerance : 10;
+        if (R.is(values, array)) {
+            var i = values.length;
+            while (i--) if (abs(values[i] - value) <= tolerance) {
+                return values[i];
+            }
+        } else {
+            values = +values;
+            var rem = value % values;
+            if (rem < tolerance) {
+                return value - rem;
+            }
+            if (rem > values - tolerance) {
+                return value - rem + values;
+            }
+        }
+        return value;
+    };
+
+    /*\
+     * Raphael.createUUID
+     [ method ]
+     **
+     * Returns RFC4122, version 4 ID
+    \*/
+    var createUUID = R.createUUID = (function (uuidRegEx, uuidReplacer) {
+        return function () {
+            return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(uuidRegEx, uuidReplacer).toUpperCase();
+        };
+    })(/[xy]/g, function (c) {
+        var r = math.random() * 16 | 0,
+            v = c == "x" ? r : (r & 3 | 8);
+        return v.toString(16);
+    });
+
+    /*\
+     * Raphael.setWindow
+     [ method ]
+     **
+     * Used when you need to draw in `&lt;iframe>`. Switched window to the iframe one.
+     > Parameters
+     - newwin (window) new window object
+    \*/
+    R.setWindow = function (newwin) {
+        eve("raphael.setWindow", R, g.win, newwin);
+        g.win = newwin;
+        g.doc = g.win.document;
+        if (R._engine.initWin) {
+            R._engine.initWin(g.win);
+        }
+    };
+    var toHex = function (color) {
+        if (R.vml) {
+            // http://dean.edwards.name/weblog/2009/10/convert-any-colour-value-to-hex-in-msie/
+            var trim = /^\s+|\s+$/g;
+            var bod;
+            try {
+                var docum = new ActiveXObject("htmlfile");
+                docum.write("<body>");
+                docum.close();
+                bod = docum.body;
+            } catch(e) {
+                bod = createPopup().document.body;
+            }
+            var range = bod.createTextRange();
+            toHex = cacher(function (color) {
+                try {
+                    bod.style.color = Str(color).replace(trim, E);
+                    var value = range.queryCommandValue("ForeColor");
+                    value = ((value & 255) << 16) | (value & 65280) | ((value & 16711680) >>> 16);
+                    return "#" + ("000000" + value.toString(16)).slice(-6);
+                } catch(e) {
+                    return "none";
+                }
+            });
+        } else {
+            var i = g.doc.createElement("i");
+            i.title = "Rapha\xebl Colour Picker";
+            i.style.display = "none";
+            g.doc.body.appendChild(i);
+            toHex = cacher(function (color) {
+                i.style.color = color;
+                return g.doc.defaultView.getComputedStyle(i, E).getPropertyValue("color");
+            });
+        }
+        return toHex(color);
+    },
+    hsbtoString = function () {
+        return "hsb(" + [this.h, this.s, this.b] + ")";
+    },
+    hsltoString = function () {
+        return "hsl(" + [this.h, this.s, this.l] + ")";
+    },
+    rgbtoString = function () {
+        return this.hex;
+    },
+    prepareRGB = function (r, g, b) {
+        if (g == null && R.is(r, "object") && "r" in r && "g" in r && "b" in r) {
+            b = r.b;
+            g = r.g;
+            r = r.r;
+        }
+        if (g == null && R.is(r, string)) {
+            var clr = R.getRGB(r);
+            r = clr.r;
+            g = clr.g;
+            b = clr.b;
+        }
+        if (r > 1 || g > 1 || b > 1) {
+            r /= 255;
+            g /= 255;
+            b /= 255;
+        }
+
+        return [r, g, b];
+    },
+    packageRGB = function (r, g, b, o) {
+        r *= 255;
+        g *= 255;
+        b *= 255;
+        var rgb = {
+            r: r,
+            g: g,
+            b: b,
+            hex: R.rgb(r, g, b),
+            toString: rgbtoString
+        };
+        R.is(o, "finite") && (rgb.opacity = o);
+        return rgb;
+    };
+
+    /*\
+     * Raphael.color
+     [ method ]
+     **
+     * Parses the color string and returns object with all values for the given color.
+     > Parameters
+     - clr (string) color string in one of the supported formats (see @Raphael.getRGB)
+     = (object) Combined RGB & HSB object in format:
+     o {
+     o     r (number) red,
+     o     g (number) green,
+     o     b (number) blue,
+     o     hex (string) color in HTML/CSS format: #••••••,
+     o     error (boolean) `true` if string can’t be parsed,
+     o     h (number) hue,
+     o     s (number) saturation,
+     o     v (number) value (brightness),
+     o     l (number) lightness
+     o }
+    \*/
+    R.color = function (clr) {
+        var rgb;
+        if (R.is(clr, "object") && "h" in clr && "s" in clr && "b" in clr) {
+            rgb = R.hsb2rgb(clr);
+            clr.r = rgb.r;
+            clr.g = rgb.g;
+            clr.b = rgb.b;
+            clr.hex = rgb.hex;
+        } else if (R.is(clr, "object") && "h" in clr && "s" in clr && "l" in clr) {
+            rgb = R.hsl2rgb(clr);
+            clr.r = rgb.r;
+            clr.g = rgb.g;
+            clr.b = rgb.b;
+            clr.hex = rgb.hex;
+        } else {
+            if (R.is(clr, "string")) {
+                clr = R.getRGB(clr);
+            }
+            if (R.is(clr, "object") && "r" in clr && "g" in clr && "b" in clr) {
+                rgb = R.rgb2hsl(clr);
+                clr.h = rgb.h;
+                clr.s = rgb.s;
+                clr.l = rgb.l;
+                rgb = R.rgb2hsb(clr);
+                clr.v = rgb.b;
+            } else {
+                clr = {hex: "none"};
+                clr.r = clr.g = clr.b = clr.h = clr.s = clr.v = clr.l = -1;
+            }
+        }
+        clr.toString = rgbtoString;
+        return clr;
+    };
+    /*\
+     * Raphael.hsb2rgb
+     [ method ]
+     **
+     * Converts HSB values to RGB object.
+     > Parameters
+     - h (number) hue
+     - s (number) saturation
+     - v (number) value or brightness
+     = (object) RGB object in format:
+     o {
+     o     r (number) red,
+     o     g (number) green,
+     o     b (number) blue,
+     o     hex (string) color in HTML/CSS format: #••••••
+     o }
+    \*/
+    R.hsb2rgb = function (h, s, v, o) {
+        if (this.is(h, "object") && "h" in h && "s" in h && "b" in h) {
+            v = h.b;
+            s = h.s;
+            h = h.h;
+            o = h.o;
+        }
+        h *= 360;
+        var R, G, B, X, C;
+        h = (h % 360) / 60;
+        C = v * s;
+        X = C * (1 - abs(h % 2 - 1));
+        R = G = B = v - C;
+
+        h = ~~h;
+        R += [C, X, 0, 0, X, C][h];
+        G += [X, C, C, X, 0, 0][h];
+        B += [0, 0, X, C, C, X][h];
+        return packageRGB(R, G, B, o);
+    };
+    /*\
+     * Raphael.hsl2rgb
+     [ method ]
+     **
+     * Converts HSL values to RGB object.
+     > Parameters
+     - h (number) hue
+     - s (number) saturation
+     - l (number) luminosity
+     = (object) RGB object in format:
+     o {
+     o     r (number) red,
+     o     g (number) green,
+     o     b (number) blue,
+     o     hex (string) color in HTML/CSS format: #••••••
+     o }
+    \*/
+    R.hsl2rgb = function (h, s, l, o) {
+        if (this.is(h, "object") && "h" in h && "s" in h && "l" in h) {
+            l = h.l;
+            s = h.s;
+            h = h.h;
+        }
+        if (h > 1 || s > 1 || l > 1) {
+            h /= 360;
+            s /= 100;
+            l /= 100;
+        }
+        h *= 360;
+        var R, G, B, X, C;
+        h = (h % 360) / 60;
+        C = 2 * s * (l < .5 ? l : 1 - l);
+        X = C * (1 - abs(h % 2 - 1));
+        R = G = B = l - C / 2;
+
+        h = ~~h;
+        R += [C, X, 0, 0, X, C][h];
+        G += [X, C, C, X, 0, 0][h];
+        B += [0, 0, X, C, C, X][h];
+        return packageRGB(R, G, B, o);
+    };
+    /*\
+     * Raphael.rgb2hsb
+     [ method ]
+     **
+     * Converts RGB values to HSB object.
+     > Parameters
+     - r (number) red
+     - g (number) green
+     - b (number) blue
+     = (object) HSB object in format:
+     o {
+     o     h (number) hue
+     o     s (number) saturation
+     o     b (number) brightness
+     o }
+    \*/
+    R.rgb2hsb = function (r, g, b) {
+        b = prepareRGB(r, g, b);
+        r = b[0];
+        g = b[1];
+        b = b[2];
+
+        var H, S, V, C;
+        V = mmax(r, g, b);
+        C = V - mmin(r, g, b);
+        H = (C == 0 ? null :
+             V == r ? (g - b) / C :
+             V == g ? (b - r) / C + 2 :
+                      (r - g) / C + 4
+            );
+        H = ((H + 360) % 6) * 60 / 360;
+        S = C == 0 ? 0 : C / V;
+        return {h: H, s: S, b: V, toString: hsbtoString};
+    };
+    /*\
+     * Raphael.rgb2hsl
+     [ method ]
+     **
+     * Converts RGB values to HSL object.
+     > Parameters
+     - r (number) red
+     - g (number) green
+     - b (number) blue
+     = (object) HSL object in format:
+     o {
+     o     h (number) hue
+     o     s (number) saturation
+     o     l (number) luminosity
+     o }
+    \*/
+    R.rgb2hsl = function (r, g, b) {
+        b = prepareRGB(r, g, b);
+        r = b[0];
+        g = b[1];
+        b = b[2];
+
+        var H, S, L, M, m, C;
+        M = mmax(r, g, b);
+        m = mmin(r, g, b);
+        C = M - m;
+        H = (C == 0 ? null :
+             M == r ? (g - b) / C :
+             M == g ? (b - r) / C + 2 :
+                      (r - g) / C + 4);
+        H = ((H + 360) % 6) * 60 / 360;
+        L = (M + m) / 2;
+        S = (C == 0 ? 0 :
+             L < .5 ? C / (2 * L) :
+                      C / (2 - 2 * L));
+        return {h: H, s: S, l: L, toString: hsltoString};
+    };
+    R._path2string = function () {
+        return this.join(",").replace(p2s, "$1");
+    };
+    function repush(array, item) {
+        for (var i = 0, ii = array.length; i < ii; i++) if (array[i] === item) {
+            return array.push(array.splice(i, 1)[0]);
+        }
+    }
+    function cacher(f, scope, postprocessor) {
+        function newf() {
+            var arg = Array.prototype.slice.call(arguments, 0),
+                args = arg.join("\u2400"),
+                cache = newf.cache = newf.cache || {},
+                count = newf.count = newf.count || [];
+            if (cache[has](args)) {
+                repush(count, args);
+                return postprocessor ? postprocessor(cache[args]) : cache[args];
+            }
+            count.length >= 1e3 && delete cache[count.shift()];
+            count.push(args);
+            cache[args] = f[apply](scope, arg);
+            return postprocessor ? postprocessor(cache[args]) : cache[args];
+        }
+        return newf;
+    }
+
+    var preload = R._preload = function (src, f) {
+        var img = g.doc.createElement("img");
+        img.style.cssText = "position:absolute;left:-9999em;top:-9999em";
+        img.onload = function () {
+            f.call(this);
+            this.onload = null;
+            g.doc.body.removeChild(this);
+        };
+        img.onerror = function () {
+            g.doc.body.removeChild(this);
+        };
+        g.doc.body.appendChild(img);
+        img.src = src;
+    };
+
+    function clrToString() {
+        return this.hex;
+    }
+
+    /*\
+     * Raphael.getRGB
+     [ method ]
+     **
+     * Parses colour string as RGB object
+     > Parameters
+     - colour (string) colour string in one of formats:
+     # <ul>
+     #     <li>Colour name (“<code>red</code>”, “<code>green</code>”, “<code>cornflowerblue</code>”, etc)</li>
+     #     <li>#••• — shortened HTML colour: (“<code>#000</code>”, “<code>#fc0</code>”, etc)</li>
+     #     <li>#•••••• — full length HTML colour: (“<code>#000000</code>”, “<code>#bd2300</code>”)</li>
+     #     <li>rgb(•••, •••, •••) — red, green and blue channels’ values: (“<code>rgb(200,&nbsp;100,&nbsp;0)</code>”)</li>
+     #     <li>rgb(•••%, •••%, •••%) — same as above, but in %: (“<code>rgb(100%,&nbsp;175%,&nbsp;0%)</code>”)</li>
+     #     <li>hsb(•••, •••, •••) — hue, saturation and brightness values: (“<code>hsb(0.5,&nbsp;0.25,&nbsp;1)</code>”)</li>
+     #     <li>hsb(•••%, •••%, •••%) — same as above, but in %</li>
+     #     <li>hsl(•••, •••, •••) — same as hsb</li>
+     #     <li>hsl(•••%, •••%, •••%) — same as hsb</li>
+     # </ul>
+     = (object) RGB object in format:
+     o {
+     o     r (number) red,
+     o     g (number) green,
+     o     b (number) blue
+     o     hex (string) color in HTML/CSS format: #••••••,
+     o     error (boolean) true if string can’t be parsed
+     o }
+    \*/
+    R.getRGB = cacher(function (colour) {
+        if (!colour || !!((colour = Str(colour)).indexOf("-") + 1)) {
+            return {r: -1, g: -1, b: -1, hex: "none", error: 1, toString: clrToString};
+        }
+        if (colour == "none") {
+            return {r: -1, g: -1, b: -1, hex: "none", toString: clrToString};
+        }
+        !(hsrg[has](colour.toLowerCase().substring(0, 2)) || colour.charAt() == "#") && (colour = toHex(colour));
+        var res,
+            red,
+            green,
+            blue,
+            opacity,
+            t,
+            values,
+            rgb = colour.match(colourRegExp);
+        if (rgb) {
+            if (rgb[2]) {
+                blue = toInt(rgb[2].substring(5), 16);
+                green = toInt(rgb[2].substring(3, 5), 16);
+                red = toInt(rgb[2].substring(1, 3), 16);
+            }
+            if (rgb[3]) {
+                blue = toInt((t = rgb[3].charAt(3)) + t, 16);
+                green = toInt((t = rgb[3].charAt(2)) + t, 16);
+                red = toInt((t = rgb[3].charAt(1)) + t, 16);
+            }
+            if (rgb[4]) {
+                values = rgb[4][split](commaSpaces);
+                red = toFloat(values[0]);
+                values[0].slice(-1) == "%" && (red *= 2.55);
+                green = toFloat(values[1]);
+                values[1].slice(-1) == "%" && (green *= 2.55);
+                blue = toFloat(values[2]);
+                values[2].slice(-1) == "%" && (blue *= 2.55);
+                rgb[1].toLowerCase().slice(0, 4) == "rgba" && (opacity = toFloat(values[3]));
+                values[3] && values[3].slice(-1) == "%" && (opacity /= 100);
+            }
+            if (rgb[5]) {
+                values = rgb[5][split](commaSpaces);
+                red = toFloat(values[0]);
+                values[0].slice(-1) == "%" && (red *= 2.55);
+                green = toFloat(values[1]);
+                values[1].slice(-1) == "%" && (green *= 2.55);
+                blue = toFloat(values[2]);
+                values[2].slice(-1) == "%" && (blue *= 2.55);
+                (values[0].slice(-3) == "deg" || values[0].slice(-1) == "\xb0") && (red /= 360);
+                rgb[1].toLowerCase().slice(0, 4) == "hsba" && (opacity = toFloat(values[3]));
+                values[3] && values[3].slice(-1) == "%" && (opacity /= 100);
+                return R.hsb2rgb(red, green, blue, opacity);
+            }
+            if (rgb[6]) {
+                values = rgb[6][split](commaSpaces);
+                red = toFloat(values[0]);
+                values[0].slice(-1) == "%" && (red *= 2.55);
+                green = toFloat(values[1]);
+                values[1].slice(-1) == "%" && (green *= 2.55);
+                blue = toFloat(values[2]);
+                values[2].slice(-1) == "%" && (blue *= 2.55);
+                (values[0].slice(-3) == "deg" || values[0].slice(-1) == "\xb0") && (red /= 360);
+                rgb[1].toLowerCase().slice(0, 4) == "hsla" && (opacity = toFloat(values[3]));
+                values[3] && values[3].slice(-1) == "%" && (opacity /= 100);
+                return R.hsl2rgb(red, green, blue, opacity);
+            }
+            rgb = {r: red, g: green, b: blue, toString: clrToString};
+            rgb.hex = "#" + (16777216 | blue | (green << 8) | (red << 16)).toString(16).slice(1);
+            R.is(opacity, "finite") && (rgb.opacity = opacity);
+            return rgb;
+        }
+        return {r: -1, g: -1, b: -1, hex: "none", error: 1, toString: clrToString};
+    }, R);
+    /*\
+     * Raphael.hsb
+     [ method ]
+     **
+     * Converts HSB values to hex representation of the colour.
+     > Parameters
+     - h (number) hue
+     - s (number) saturation
+     - b (number) value or brightness
+     = (string) hex representation of the colour.
+    \*/
+    R.hsb = cacher(function (h, s, b) {
+        return R.hsb2rgb(h, s, b).hex;
+    });
+    /*\
+     * Raphael.hsl
+     [ method ]
+     **
+     * Converts HSL values to hex representation of the colour.
+     > Parameters
+     - h (number) hue
+     - s (number) saturation
+     - l (number) luminosity
+     = (string) hex representation of the colour.
+    \*/
+    R.hsl = cacher(function (h, s, l) {
+        return R.hsl2rgb(h, s, l).hex;
+    });
+    /*\
+     * Raphael.rgb
+     [ method ]
+     **
+     * Converts RGB values to hex representation of the colour.
+     > Parameters
+     - r (number) red
+     - g (number) green
+     - b (number) blue
+     = (string) hex representation of the colour.
+    \*/
+    R.rgb = cacher(function (r, g, b) {
+        return "#" + (16777216 | b | (g << 8) | (r << 16)).toString(16).slice(1);
+    });
+    /*\
+     * Raphael.getColor
+     [ method ]
+     **
+     * On each call returns next colour in the spectrum. To reset it back to red call @Raphael.getColor.reset
+     > Parameters
+     - value (number) #optional brightness, default is `0.75`
+     = (string) hex representation of the colour.
+    \*/
+    R.getColor = function (value) {
+        var start = this.getColor.start = this.getColor.start || {h: 0, s: 1, b: value || .75},
+            rgb = this.hsb2rgb(start.h, start.s, start.b);
+        start.h += .075;
+        if (start.h > 1) {
+            start.h = 0;
+            start.s -= .2;
+            start.s <= 0 && (this.getColor.start = {h: 0, s: 1, b: start.b});
+        }
+        return rgb.hex;
+    };
+    /*\
+     * Raphael.getColor.reset
+     [ method ]
+     **
+     * Resets spectrum position for @Raphael.getColor back to red.
+    \*/
+    R.getColor.reset = function () {
+        delete this.start;
+    };
+
+    // http://schepers.cc/getting-to-the-point
+    function catmullRom2bezier(crp, z) {
+        var d = [];
+        for (var i = 0, iLen = crp.length; iLen - 2 * !z > i; i += 2) {
+            var p = [
+                        {x: +crp[i - 2], y: +crp[i - 1]},
+                        {x: +crp[i],     y: +crp[i + 1]},
+                        {x: +crp[i + 2], y: +crp[i + 3]},
+                        {x: +crp[i + 4], y: +crp[i + 5]}
+                    ];
+            if (z) {
+                if (!i) {
+                    p[0] = {x: +crp[iLen - 2], y: +crp[iLen - 1]};
+                } else if (iLen - 4 == i) {
+                    p[3] = {x: +crp[0], y: +crp[1]};
+                } else if (iLen - 2 == i) {
+                    p[2] = {x: +crp[0], y: +crp[1]};
+                    p[3] = {x: +crp[2], y: +crp[3]};
+                }
+            } else {
+                if (iLen - 4 == i) {
+                    p[3] = p[2];
+                } else if (!i) {
+                    p[0] = {x: +crp[i], y: +crp[i + 1]};
+                }
+            }
+            d.push(["C",
+                  (-p[0].x + 6 * p[1].x + p[2].x) / 6,
+                  (-p[0].y + 6 * p[1].y + p[2].y) / 6,
+                  (p[1].x + 6 * p[2].x - p[3].x) / 6,
+                  (p[1].y + 6*p[2].y - p[3].y) / 6,
+                  p[2].x,
+                  p[2].y
+            ]);
+        }
+
+        return d;
+    }
+    /*\
+     * Raphael.parsePathString
+     [ method ]
+     **
+     * Utility method
+     **
+     * Parses given path string into an array of arrays of path segments.
+     > Parameters
+     - pathString (string|array) path string or array of segments (in the last case it will be returned straight away)
+     = (array) array of segments.
+    \*/
+    R.parsePathString = function (pathString) {
+        if (!pathString) {
+            return null;
+        }
+        var pth = paths(pathString);
+        if (pth.arr) {
+            return pathClone(pth.arr);
+        }
+
+        var paramCounts = {a: 7, c: 6, h: 1, l: 2, m: 2, r: 4, q: 4, s: 4, t: 2, v: 1, z: 0},
+            data = [];
+        if (R.is(pathString, array) && R.is(pathString[0], array)) { // rough assumption
+            data = pathClone(pathString);
+        }
+        if (!data.length) {
+            Str(pathString).replace(pathCommand, function (a, b, c) {
+                var params = [],
+                    name = b.toLowerCase();
+                c.replace(pathValues, function (a, b) {
+                    b && params.push(+b);
+                });
+                if (name == "m" && params.length > 2) {
+                    data.push([b][concat](params.splice(0, 2)));
+                    name = "l";
+                    b = b == "m" ? "l" : "L";
+                }
+                if (name == "r") {
+                    data.push([b][concat](params));
+                } else while (params.length >= paramCounts[name]) {
+                    data.push([b][concat](params.splice(0, paramCounts[name])));
+                    if (!paramCounts[name]) {
+                        break;
+                    }
+                }
+            });
+        }
+        data.toString = R._path2string;
+        pth.arr = pathClone(data);
+        return data;
+    };
+    /*\
+     * Raphael.parseTransformString
+     [ method ]
+     **
+     * Utility method
+     **
+     * Parses given path string into an array of transformations.
+     > Parameters
+     - TString (string|array) transform string or array of transformations (in the last case it will be returned straight away)
+     = (array) array of transformations.
+    \*/
+    R.parseTransformString = cacher(function (TString) {
+        if (!TString) {
+            return null;
+        }
+        var paramCounts = {r: 3, s: 4, t: 2, m: 6},
+            data = [];
+        if (R.is(TString, array) && R.is(TString[0], array)) { // rough assumption
+            data = pathClone(TString);
+        }
+        if (!data.length) {
+            Str(TString).replace(tCommand, function (a, b, c) {
+                var params = [],
+                    name = lowerCase.call(b);
+                c.replace(pathValues, function (a, b) {
+                    b && params.push(+b);
+                });
+                data.push([b][concat](params));
+            });
+        }
+        data.toString = R._path2string;
+        return data;
+    });
+    // PATHS
+    var paths = function (ps) {
+        var p = paths.ps = paths.ps || {};
+        if (p[ps]) {
+            p[ps].sleep = 100;
+        } else {
+            p[ps] = {
+                sleep: 100
+            };
+        }
+        setTimeout(function () {
+            for (var key in p) if (p[has](key) && key != ps) {
+                p[key].sleep--;
+                !p[key].sleep && delete p[key];
+            }
+        });
+        return p[ps];
+    };
+    /*\
+     * Raphael.findDotsAtSegment
+     [ method ]
+     **
+     * Utility method
+     **
+     * Find dot coordinates on the given cubic bezier curve at the given t.
+     > Parameters
+     - p1x (number) x of the first point of the curve
+     - p1y (number) y of the first point of the curve
+     - c1x (number) x of the first anchor of the curve
+     - c1y (number) y of the first anchor of the curve
+     - c2x (number) x of the second anchor of the curve
+     - c2y (number) y of the second anchor of the curve
+     - p2x (number) x of the second point of the curve
+     - p2y (number) y of the second point of the curve
+     - t (number) position on the curve (0..1)
+     = (object) point information in format:
+     o {
+     o     x: (number) x coordinate of the point
+     o     y: (number) y coordinate of the point
+     o     m: {
+     o         x: (number) x coordinate of the left anchor
+     o         y: (number) y coordinate of the left anchor
+     o     }
+     o     n: {
+     o         x: (number) x coordinate of the right anchor
+     o         y: (number) y coordinate of the right anchor
+     o     }
+     o     start: {
+     o         x: (number) x coordinate of the start of the curve
+     o         y: (number) y coordinate of the start of the curve
+     o     }
+     o     end: {
+     o         x: (number) x coordinate of the end of the curve
+     o         y: (number) y coordinate of the end of the curve
+     o     }
+     o     alpha: (number) angle of the curve derivative at the point
+     o }
+    \*/
+    R.findDotsAtSegment = function (p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, t) {
+        var t1 = 1 - t,
+            t13 = pow(t1, 3),
+            t12 = pow(t1, 2),
+            t2 = t * t,
+            t3 = t2 * t,
+            x = t13 * p1x + t12 * 3 * t * c1x + t1 * 3 * t * t * c2x + t3 * p2x,
+            y = t13 * p1y + t12 * 3 * t * c1y + t1 * 3 * t * t * c2y + t3 * p2y,
+            mx = p1x + 2 * t * (c1x - p1x) + t2 * (c2x - 2 * c1x + p1x),
+            my = p1y + 2 * t * (c1y - p1y) + t2 * (c2y - 2 * c1y + p1y),
+            nx = c1x + 2 * t * (c2x - c1x) + t2 * (p2x - 2 * c2x + c1x),
+            ny = c1y + 2 * t * (c2y - c1y) + t2 * (p2y - 2 * c2y + c1y),
+            ax = t1 * p1x + t * c1x,
+            ay = t1 * p1y + t * c1y,
+            cx = t1 * c2x + t * p2x,
+            cy = t1 * c2y + t * p2y,
+            alpha = (90 - math.atan2(mx - nx, my - ny) * 180 / PI);
+        (mx > nx || my < ny) && (alpha += 180);
+        return {
+            x: x,
+            y: y,
+            m: {x: mx, y: my},
+            n: {x: nx, y: ny},
+            start: {x: ax, y: ay},
+            end: {x: cx, y: cy},
+            alpha: alpha
+        };
+    };
+    /*\
+     * Raphael.bezierBBox
+     [ method ]
+     **
+     * Utility method
+     **
+     * Return bounding box of a given cubic bezier curve
+     > Parameters
+     - p1x (number) x of the first point of the curve
+     - p1y (number) y of the first point of the curve
+     - c1x (number) x of the first anchor of the curve
+     - c1y (number) y of the first anchor of the curve
+     - c2x (number) x of the second anchor of the curve
+     - c2y (number) y of the second anchor of the curve
+     - p2x (number) x of the second point of the curve
+     - p2y (number) y of the second point of the curve
+     * or
+     - bez (array) array of six points for bezier curve
+     = (object) point information in format:
+     o {
+     o     min: {
+     o         x: (number) x coordinate of the left point
+     o         y: (number) y coordinate of the top point
+     o     }
+     o     max: {
+     o         x: (number) x coordinate of the right point
+     o         y: (number) y coordinate of the bottom point
+     o     }
+     o }
+    \*/
+    R.bezierBBox = function (p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y) {
+        if (!R.is(p1x, "array")) {
+            p1x = [p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y];
+        }
+        var bbox = curveDim.apply(null, p1x);
+        return {
+            x: bbox.min.x,
+            y: bbox.min.y,
+            x2: bbox.max.x,
+            y2: bbox.max.y,
+            width: bbox.max.x - bbox.min.x,
+            height: bbox.max.y - bbox.min.y
+        };
+    };
+    /*\
+     * Raphael.isPointInsideBBox
+     [ method ]
+     **
+     * Utility method
+     **
+     * Returns `true` if given point is inside bounding boxes.
+     > Parameters
+     - bbox (string) bounding box
+     - x (string) x coordinate of the point
+     - y (string) y coordinate of the point
+     = (boolean) `true` if point inside
+    \*/
+    R.isPointInsideBBox = function (bbox, x, y) {
+        return x >= bbox.x && x <= bbox.x2 && y >= bbox.y && y <= bbox.y2;
+    };
+    /*\
+     * Raphael.isBBoxIntersect
+     [ method ]
+     **
+     * Utility method
+     **
+     * Returns `true` if two bounding boxes intersect
+     > Parameters
+     - bbox1 (string) first bounding box
+     - bbox2 (string) second bounding box
+     = (boolean) `true` if they intersect
+    \*/
+    R.isBBoxIntersect = function (bbox1, bbox2) {
+        var i = R.isPointInsideBBox;
+        return i(bbox2, bbox1.x, bbox1.y)
+            || i(bbox2, bbox1.x2, bbox1.y)
+            || i(bbox2, bbox1.x, bbox1.y2)
+            || i(bbox2, bbox1.x2, bbox1.y2)
+            || i(bbox1, bbox2.x, bbox2.y)
+            || i(bbox1, bbox2.x2, bbox2.y)
+            || i(bbox1, bbox2.x, bbox2.y2)
+            || i(bbox1, bbox2.x2, bbox2.y2)
+            || (bbox1.x < bbox2.x2 && bbox1.x > bbox2.x || bbox2.x < bbox1.x2 && bbox2.x > bbox1.x)
+            && (bbox1.y < bbox2.y2 && bbox1.y > bbox2.y || bbox2.y < bbox1.y2 && bbox2.y > bbox1.y);
+    };
+    function base3(t, p1, p2, p3, p4) {
+        var t1 = -3 * p1 + 9 * p2 - 9 * p3 + 3 * p4,
+            t2 = t * t1 + 6 * p1 - 12 * p2 + 6 * p3;
+        return t * t2 - 3 * p1 + 3 * p2;
+    }
+    function bezlen(x1, y1, x2, y2, x3, y3, x4, y4, z) {
+        if (z == null) {
+            z = 1;
+        }
+        z = z > 1 ? 1 : z < 0 ? 0 : z;
+        var z2 = z / 2,
+            n = 12,
+            Tvalues = [-0.1252,0.1252,-0.3678,0.3678,-0.5873,0.5873,-0.7699,0.7699,-0.9041,0.9041,-0.9816,0.9816],
+            Cvalues = [0.2491,0.2491,0.2335,0.2335,0.2032,0.2032,0.1601,0.1601,0.1069,0.1069,0.0472,0.0472],
+            sum = 0;
+        for (var i = 0; i < n; i++) {
+            var ct = z2 * Tvalues[i] + z2,
+                xbase = base3(ct, x1, x2, x3, x4),
+                ybase = base3(ct, y1, y2, y3, y4),
+                comb = xbase * xbase + ybase * ybase;
+            sum += Cvalues[i] * math.sqrt(comb);
+        }
+        return z2 * sum;
+    }
+    function getTatLen(x1, y1, x2, y2, x3, y3, x4, y4, ll) {
+        if (ll < 0 || bezlen(x1, y1, x2, y2, x3, y3, x4, y4) < ll) {
+            return;
+        }
+        var t = 1,
+            step = t / 2,
+            t2 = t - step,
+            l,
+            e = .01;
+        l = bezlen(x1, y1, x2, y2, x3, y3, x4, y4, t2);
+        while (abs(l - ll) > e) {
+            step /= 2;
+            t2 += (l < ll ? 1 : -1) * step;
+            l = bezlen(x1, y1, x2, y2, x3, y3, x4, y4, t2);
+        }
+        return t2;
+    }
+    function intersect(x1, y1, x2, y2, x3, y3, x4, y4) {
+        if (
+            mmax(x1, x2) < mmin(x3, x4) ||
+            mmin(x1, x2) > mmax(x3, x4) ||
+            mmax(y1, y2) < mmin(y3, y4) ||
+            mmin(y1, y2) > mmax(y3, y4)
+        ) {
+            return;
+        }
+        var nx = (x1 * y2 - y1 * x2) * (x3 - x4) - (x1 - x2) * (x3 * y4 - y3 * x4),
+            ny = (x1 * y2 - y1 * x2) * (y3 - y4) - (y1 - y2) * (x3 * y4 - y3 * x4),
+            denominator = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
+
+        if (!denominator) {
+            return;
+        }
+        var px = nx / denominator,
+            py = ny / denominator,
+            px2 = +px.toFixed(2),
+            py2 = +py.toFixed(2);
+        if (
+            px2 < +mmin(x1, x2).toFixed(2) ||
+            px2 > +mmax(x1, x2).toFixed(2) ||
+            px2 < +mmin(x3, x4).toFixed(2) ||
+            px2 > +mmax(x3, x4).toFixed(2) ||
+            py2 < +mmin(y1, y2).toFixed(2) ||
+            py2 > +mmax(y1, y2).toFixed(2) ||
+            py2 < +mmin(y3, y4).toFixed(2) ||
+            py2 > +mmax(y3, y4).toFixed(2)
+        ) {
+            return;
+        }
+        return {x: px, y: py};
+    }
+    function inter(bez1, bez2) {
+        return interHelper(bez1, bez2);
+    }
+    function interCount(bez1, bez2) {
+        return interHelper(bez1, bez2, 1);
+    }
+    function interHelper(bez1, bez2, justCount) {
+        var bbox1 = R.bezierBBox(bez1),
+            bbox2 = R.bezierBBox(bez2);
+        if (!R.isBBoxIntersect(bbox1, bbox2)) {
+            return justCount ? 0 : [];
+        }
+        var l1 = bezlen.apply(0, bez1),
+            l2 = bezlen.apply(0, bez2),
+            n1 = mmax(~~(l1 / 5), 1),
+            n2 = mmax(~~(l2 / 5), 1),
+            dots1 = [],
+            dots2 = [],
+            xy = {},
+            res = justCount ? 0 : [];
+        for (var i = 0; i < n1 + 1; i++) {
+            var p = R.findDotsAtSegment.apply(R, bez1.concat(i / n1));
+            dots1.push({x: p.x, y: p.y, t: i / n1});
+        }
+        for (i = 0; i < n2 + 1; i++) {
+            p = R.findDotsAtSegment.apply(R, bez2.concat(i / n2));
+            dots2.push({x: p.x, y: p.y, t: i / n2});
+        }
+        for (i = 0; i < n1; i++) {
+            for (var j = 0; j < n2; j++) {
+                var di = dots1[i],
+                    di1 = dots1[i + 1],
+                    dj = dots2[j],
+                    dj1 = dots2[j + 1],
+                    ci = abs(di1.x - di.x) < .001 ? "y" : "x",
+                    cj = abs(dj1.x - dj.x) < .001 ? "y" : "x",
+                    is = intersect(di.x, di.y, di1.x, di1.y, dj.x, dj.y, dj1.x, dj1.y);
+                if (is) {
+                    if (xy[is.x.toFixed(4)] == is.y.toFixed(4)) {
+                        continue;
+                    }
+                    xy[is.x.toFixed(4)] = is.y.toFixed(4);
+                    var t1 = di.t + abs((is[ci] - di[ci]) / (di1[ci] - di[ci])) * (di1.t - di.t),
+                        t2 = dj.t + abs((is[cj] - dj[cj]) / (dj1[cj] - dj[cj])) * (dj1.t - dj.t);
+                    if (t1 >= 0 && t1 <= 1.001 && t2 >= 0 && t2 <= 1.001) {
+                        if (justCount) {
+                            res++;
+                        } else {
+                            res.push({
+                                x: is.x,
+                                y: is.y,
+                                t1: mmin(t1, 1),
+                                t2: mmin(t2, 1)
+                            });
+                        }
+                    }
+                }
+            }
+        }
+        return res;
+    }
+    /*\
+     * Raphael.pathIntersection
+     [ method ]
+     **
+     * Utility method
+     **
+     * Finds intersections of two paths
+     > Parameters
+     - path1 (string) path string
+     - path2 (string) path string
+     = (array) dots of intersection
+     o [
+     o     {
+     o         x: (number) x coordinate of the point
+     o         y: (number) y coordinate of the point
+     o         t1: (number) t value for segment of path1
+     o         t2: (number) t value for segment of path2
+     o         segment1: (number) order number for segment of path1
+     o         segment2: (number) order number for segment of path2
+     o         bez1: (array) eight coordinates representing beziér curve for the segment of path1
+     o         bez2: (array) eight coordinates representing beziér curve for the segment of path2
+     o     }
+     o ]
+    \*/
+    R.pathIntersection = function (path1, path2) {
+        return interPathHelper(path1, path2);
+    };
+    R.pathIntersectionNumber = function (path1, path2) {
+        return interPathHelper(path1, path2, 1);
+    };
+    function interPathHelper(path1, path2, justCount) {
+        path1 = R._path2curve(path1);
+        path2 = R._path2curve(path2);
+        var x1, y1, x2, y2, x1m, y1m, x2m, y2m, bez1, bez2,
+            res = justCount ? 0 : [];
+        for (var i = 0, ii = path1.length; i < ii; i++) {
+            var pi = path1[i];
+            if (pi[0] == "M") {
+                x1 = x1m = pi[1];
+                y1 = y1m = pi[2];
+            } else {
+                if (pi[0] == "C") {
+                    bez1 = [x1, y1].concat(pi.slice(1));
+                    x1 = bez1[6];
+                    y1 = bez1[7];
+                } else {
+                    bez1 = [x1, y1, x1, y1, x1m, y1m, x1m, y1m];
+                    x1 = x1m;
+                    y1 = y1m;
+                }
+                for (var j = 0, jj = path2.length; j < jj; j++) {
+                    var pj = path2[j];
+                    if (pj[0] == "M") {
+                        x2 = x2m = pj[1];
+                        y2 = y2m = pj[2];
+                    } else {
+                        if (pj[0] == "C") {
+                            bez2 = [x2, y2].concat(pj.slice(1));
+                            x2 = bez2[6];
+                            y2 = bez2[7];
+                        } else {
+                            bez2 = [x2, y2, x2, y2, x2m, y2m, x2m, y2m];
+                            x2 = x2m;
+                            y2 = y2m;
+                        }
+                        var intr = interHelper(bez1, bez2, justCount);
+                        if (justCount) {
+                            res += intr;
+                        } else {
+                            for (var k = 0, kk = intr.length; k < kk; k++) {
+                                intr[k].segment1 = i;
+                                intr[k].segment2 = j;
+                                intr[k].bez1 = bez1;
+                                intr[k].bez2 = bez2;
+                            }
+                            res = res.concat(intr);
+                        }
+                    }
+                }
+            }
+        }
+        return res;
+    }
+    /*\
+     * Raphael.isPointInsidePath
+     [ method ]
+     **
+     * Utility method
+     **
+     * Returns `true` if given point is inside a given closed path.
+     > Parameters
+     - path (string) path string
+     - x (number) x of the point
+     - y (number) y of the point
+     = (boolean) true, if point is inside the path
+    \*/
+    R.isPointInsidePath = function (path, x, y) {
+        var bbox = R.pathBBox(path);
+        return R.isPointInsideBBox(bbox, x, y) &&
+               interPathHelper(path, [["M", x, y], ["H", bbox.x2 + 10]], 1) % 2 == 1;
+    };
+    R._removedFactory = function (methodname) {
+        return function () {
+            eve("raphael.log", null, "Rapha\xebl: you are calling to method \u201c" + methodname + "\u201d of removed object", methodname);
+        };
+    };
+    /*\
+     * Raphael.pathBBox
+     [ method ]
+     **
+     * Utility method
+     **
+     * Return bounding box of a given path
+     > Parameters
+     - path (string) path string
+     = (object) bounding box
+     o {
+     o     x: (number) x coordinate of the left top point of the box
+     o     y: (number) y coordinate of the left top point of the box
+     o     x2: (number) x coordinate of the right bottom point of the box
+     o     y2: (number) y coordinate of the right bottom point of the box
+     o     width: (number) width of the box
+     o     height: (number) height of the box
+     o     cx: (number) x coordinate of the center of the box
+     o     cy: (number) y coordinate of the center of the box
+     o }
+    \*/
+    var pathDimensions = R.pathBBox = function (path) {
+        var pth = paths(path);
+        if (pth.bbox) {
+            return clone(pth.bbox);
+        }
+        if (!path) {
+            return {x: 0, y: 0, width: 0, height: 0, x2: 0, y2: 0};
+        }
+        path = path2curve(path);
+        var x = 0,
+            y = 0,
+            X = [],
+            Y = [],
+            p;
+        for (var i = 0, ii = path.length; i < ii; i++) {
+            p = path[i];
+            if (p[0] == "M") {
+                x = p[1];
+                y = p[2];
+                X.push(x);
+                Y.push(y);
+            } else {
+                var dim = curveDim(x, y, p[1], p[2], p[3], p[4], p[5], p[6]);
+                X = X[concat](dim.min.x, dim.max.x);
+                Y = Y[concat](dim.min.y, dim.max.y);
+                x = p[5];
+                y = p[6];
+            }
+        }
+        var xmin = mmin[apply](0, X),
+            ymin = mmin[apply](0, Y),
+            xmax = mmax[apply](0, X),
+            ymax = mmax[apply](0, Y),
+            width = xmax - xmin,
+            height = ymax - ymin,
+                bb = {
+                x: xmin,
+                y: ymin,
+                x2: xmax,
+                y2: ymax,
+                width: width,
+                height: height,
+                cx: xmin + width / 2,
+                cy: ymin + height / 2
+            };
+        pth.bbox = clone(bb);
+        return bb;
+    },
+        pathClone = function (pathArray) {
+            var res = clone(pathArray);
+            res.toString = R._path2string;
+            return res;
+        },
+        pathToRelative = R._pathToRelative = function (pathArray) {
+            var pth = paths(pathArray);
+            if (pth.rel) {
+                return pathClone(pth.rel);
+            }
+            if (!R.is(pathArray, array) || !R.is(pathArray && pathArray[0], array)) { // rough assumption
+                pathArray = R.parsePathString(pathArray);
+            }
+            var res = [],
+                x = 0,
+                y = 0,
+                mx = 0,
+                my = 0,
+                start = 0;
+            if (pathArray[0][0] == "M") {
+                x = pathArray[0][1];
+                y = pathArray[0][2];
+                mx = x;
+                my = y;
+                start++;
+                res.push(["M", x, y]);
+            }
+            for (var i = start, ii = pathArray.length; i < ii; i++) {
+                var r = res[i] = [],
+                    pa = pathArray[i];
+                if (pa[0] != lowerCase.call(pa[0])) {
+                    r[0] = lowerCase.call(pa[0]);
+                    switch (r[0]) {
+                        case "a":
+                            r[1] = pa[1];
+                            r[2] = pa[2];
+                            r[3] = pa[3];
+                            r[4] = pa[4];
+                            r[5] = pa[5];
+                            r[6] = +(pa[6] - x).toFixed(3);
+                            r[7] = +(pa[7] - y).toFixed(3);
+                            break;
+                        case "v":
+                            r[1] = +(pa[1] - y).toFixed(3);
+                            break;
+                        case "m":
+                            mx = pa[1];
+                            my = pa[2];
+                        default:
+                            for (var j = 1, jj = pa.length; j < jj; j++) {
+                                r[j] = +(pa[j] - ((j % 2) ? x : y)).toFixed(3);
+                            }
+                    }
+                } else {
+                    r = res[i] = [];
+                    if (pa[0] == "m") {
+                        mx = pa[1] + x;
+                        my = pa[2] + y;
+                    }
+                    for (var k = 0, kk = pa.length; k < kk; k++) {
+                        res[i][k] = pa[k];
+                    }
+                }
+                var len = res[i].length;
+                switch (res[i][0]) {
+                    case "z":
+                        x = mx;
+                        y = my;
+                        break;
+                    case "h":
+                        x += +res[i][len - 1];
+                        break;
+                    case "v":
+                        y += +res[i][len - 1];
+                        break;
+                    default:
+                        x += +res[i][len - 2];
+                        y += +res[i][len - 1];
+                }
+            }
+            res.toString = R._path2string;
+            pth.rel = pathClone(res);
+            return res;
+        },
+        pathToAbsolute = R._pathToAbsolute = function (pathArray) {
+            var pth = paths(pathArray);
+            if (pth.abs) {
+                return pathClone(pth.abs);
+            }
+            if (!R.is(pathArray, array) || !R.is(pathArray && pathArray[0], array)) { // rough assumption
+                pathArray = R.parsePathString(pathArray);
+            }
+            if (!pathArray || !pathArray.length) {
+                return [["M", 0, 0]];
+            }
+            var res = [],
+                x = 0,
+                y = 0,
+                mx = 0,
+                my = 0,
+                start = 0;
+            if (pathArray[0][0] == "M") {
+                x = +pathArray[0][1];
+                y = +pathArray[0][2];
+                mx = x;
+                my = y;
+                start++;
+                res[0] = ["M", x, y];
+            }
+            var crz = pathArray.length == 3 && pathArray[0][0] == "M" && pathArray[1][0].toUpperCase() == "R" && pathArray[2][0].toUpperCase() == "Z";
+            for (var r, pa, i = start, ii = pathArray.length; i < ii; i++) {
+                res.push(r = []);
+                pa = pathArray[i];
+                if (pa[0] != upperCase.call(pa[0])) {
+                    r[0] = upperCase.call(pa[0]);
+                    switch (r[0]) {
+                        case "A":
+                            r[1] = pa[1];
+                            r[2] = pa[2];
+                            r[3] = pa[3];
+                            r[4] = pa[4];
+                            r[5] = pa[5];
+                            r[6] = +(pa[6] + x);
+                            r[7] = +(pa[7] + y);
+                            break;
+                        case "V":
+                            r[1] = +pa[1] + y;
+                            break;
+                        case "H":
+                            r[1] = +pa[1] + x;
+                            break;
+                        case "R":
+                            var dots = [x, y][concat](pa.slice(1));
+                            for (var j = 2, jj = dots.length; j < jj; j++) {
+                                dots[j] = +dots[j] + x;
+                                dots[++j] = +dots[j] + y;
+                            }
+                            res.pop();
+                            res = res[concat](catmullRom2bezier(dots, crz));
+                            break;
+                        case "M":
+                            mx = +pa[1] + x;
+                            my = +pa[2] + y;
+                        default:
+                            for (j = 1, jj = pa.length; j < jj; j++) {
+                                r[j] = +pa[j] + ((j % 2) ? x : y);
+                            }
+                    }
+                } else if (pa[0] == "R") {
+                    dots = [x, y][concat](pa.slice(1));
+                    res.pop();
+                    res = res[concat](catmullRom2bezier(dots, crz));
+                    r = ["R"][concat](pa.slice(-2));
+                } else {
+                    for (var k = 0, kk = pa.length; k < kk; k++) {
+                        r[k] = pa[k];
+                    }
+                }
+                switch (r[0]) {
+                    case "Z":
+                        x = mx;
+                        y = my;
+                        break;
+                    case "H":
+                        x = r[1];
+                        break;
+                    case "V":
+                        y = r[1];
+                        break;
+                    case "M":
+                        mx = r[r.length - 2];
+                        my = r[r.length - 1];
+                    default:
+                        x = r[r.length - 2];
+                        y = r[r.length - 1];
+                }
+            }
+            res.toString = R._path2string;
+            pth.abs = pathClone(res);
+            return res;
+        },
+        l2c = function (x1, y1, x2, y2) {
+            return [x1, y1, x2, y2, x2, y2];
+        },
+        q2c = function (x1, y1, ax, ay, x2, y2) {
+            var _13 = 1 / 3,
+                _23 = 2 / 3;
+            return [
+                    _13 * x1 + _23 * ax,
+                    _13 * y1 + _23 * ay,
+                    _13 * x2 + _23 * ax,
+                    _13 * y2 + _23 * ay,
+                    x2,
+                    y2
+                ];
+        },
+        a2c = function (x1, y1, rx, ry, angle, large_arc_flag, sweep_flag, x2, y2, recursive) {
+            // for more information of where this math came from visit:
+            // http://www.w3.org/TR/SVG11/implnote.html#ArcImplementationNotes
+            var _120 = PI * 120 / 180,
+                rad = PI / 180 * (+angle || 0),
+                res = [],
+                xy,
+                rotate = cacher(function (x, y, rad) {
+                    var X = x * math.cos(rad) - y * math.sin(rad),
+                        Y = x * math.sin(rad) + y * math.cos(rad);
+                    return {x: X, y: Y};
+                });
+            if (!recursive) {
+                xy = rotate(x1, y1, -rad);
+                x1 = xy.x;
+                y1 = xy.y;
+                xy = rotate(x2, y2, -rad);
+                x2 = xy.x;
+                y2 = xy.y;
+                var cos = math.cos(PI / 180 * angle),
+                    sin = math.sin(PI / 180 * angle),
+                    x = (x1 - x2) / 2,
+                    y = (y1 - y2) / 2;
+                var h = (x * x) / (rx * rx) + (y * y) / (ry * ry);
+                if (h > 1) {
+                    h = math.sqrt(h);
+                    rx = h * rx;
+                    ry = h * ry;
+                }
+                var rx2 = rx * rx,
+                    ry2 = ry * ry,
+                    k = (large_arc_flag == sweep_flag ? -1 : 1) *
+                        math.sqrt(abs((rx2 * ry2 - rx2 * y * y - ry2 * x * x) / (rx2 * y * y + ry2 * x * x))),
+                    cx = k * rx * y / ry + (x1 + x2) / 2,
+                    cy = k * -ry * x / rx + (y1 + y2) / 2,
+                    f1 = math.asin(((y1 - cy) / ry).toFixed(9)),
+                    f2 = math.asin(((y2 - cy) / ry).toFixed(9));
+
+                f1 = x1 < cx ? PI - f1 : f1;
+                f2 = x2 < cx ? PI - f2 : f2;
+                f1 < 0 && (f1 = PI * 2 + f1);
+                f2 < 0 && (f2 = PI * 2 + f2);
+                if (sweep_flag && f1 > f2) {
+                    f1 = f1 - PI * 2;
+                }
+                if (!sweep_flag && f2 > f1) {
+                    f2 = f2 - PI * 2;
+                }
+            } else {
+                f1 = recursive[0];
+                f2 = recursive[1];
+                cx = recursive[2];
+                cy = recursive[3];
+            }
+            var df = f2 - f1;
+            if (abs(df) > _120) {
+                var f2old = f2,
+                    x2old = x2,
+                    y2old = y2;
+                f2 = f1 + _120 * (sweep_flag && f2 > f1 ? 1 : -1);
+                x2 = cx + rx * math.cos(f2);
+                y2 = cy + ry * math.sin(f2);
+                res = a2c(x2, y2, rx, ry, angle, 0, sweep_flag, x2old, y2old, [f2, f2old, cx, cy]);
+            }
+            df = f2 - f1;
+            var c1 = math.cos(f1),
+                s1 = math.sin(f1),
+                c2 = math.cos(f2),
+                s2 = math.sin(f2),
+                t = math.tan(df / 4),
+                hx = 4 / 3 * rx * t,
+                hy = 4 / 3 * ry * t,
+                m1 = [x1, y1],
+                m2 = [x1 + hx * s1, y1 - hy * c1],
+                m3 = [x2 + hx * s2, y2 - hy * c2],
+                m4 = [x2, y2];
+            m2[0] = 2 * m1[0] - m2[0];
+            m2[1] = 2 * m1[1] - m2[1];
+            if (recursive) {
+                return [m2, m3, m4][concat](res);
+            } else {
+                res = [m2, m3, m4][concat](res).join()[split](",");
+                var newres = [];
+                for (var i = 0, ii = res.length; i < ii; i++) {
+                    newres[i] = i % 2 ? rotate(res[i - 1], res[i], rad).y : rotate(res[i], res[i + 1], rad).x;
+                }
+                return newres;
+            }
+        },
+        findDotAtSegment = function (p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, t) {
+            var t1 = 1 - t;
+            return {
+                x: pow(t1, 3) * p1x + pow(t1, 2) * 3 * t * c1x + t1 * 3 * t * t * c2x + pow(t, 3) * p2x,
+                y: pow(t1, 3) * p1y + pow(t1, 2) * 3 * t * c1y + t1 * 3 * t * t * c2y + pow(t, 3) * p2y
+            };
+        },
+        curveDim = cacher(function (p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y) {
+            var a = (c2x - 2 * c1x + p1x) - (p2x - 2 * c2x + c1x),
+                b = 2 * (c1x - p1x) - 2 * (c2x - c1x),
+                c = p1x - c1x,
+                t1 = (-b + math.sqrt(b * b - 4 * a * c)) / 2 / a,
+                t2 = (-b - math.sqrt(b * b - 4 * a * c)) / 2 / a,
+                y = [p1y, p2y],
+                x = [p1x, p2x],
+                dot;
+            abs(t1) > "1e12" && (t1 = .5);
+            abs(t2) > "1e12" && (t2 = .5);
+            if (t1 > 0 && t1 < 1) {
+                dot = findDotAtSegment(p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, t1);
+                x.push(dot.x);
+                y.push(dot.y);
+            }
+            if (t2 > 0 && t2 < 1) {
+                dot = findDotAtSegment(p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, t2);
+                x.push(dot.x);
+                y.push(dot.y);
+            }
+            a = (c2y - 2 * c1y + p1y) - (p2y - 2 * c2y + c1y);
+            b = 2 * (c1y - p1y) - 2 * (c2y - c1y);
+            c = p1y - c1y;
+            t1 = (-b + math.sqrt(b * b - 4 * a * c)) / 2 / a;
+            t2 = (-b - math.sqrt(b * b - 4 * a * c)) / 2 / a;
+            abs(t1) > "1e12" && (t1 = .5);
+            abs(t2) > "1e12" && (t2 = .5);
+            if (t1 > 0 && t1 < 1) {
+                dot = findDotAtSegment(p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, t1);
+                x.push(dot.x);
+                y.push(dot.y);
+            }
+            if (t2 > 0 && t2 < 1) {
+                dot = findDotAtSegment(p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, t2);
+                x.push(dot.x);
+                y.push(dot.y);
+            }
+            return {
+                min: {x: mmin[apply](0, x), y: mmin[apply](0, y)},
+                max: {x: mmax[apply](0, x), y: mmax[apply](0, y)}
+            };
+        }),
+        path2curve = R._path2curve = cacher(function (path, path2) {
+            var pth = !path2 && paths(path);
+            if (!path2 && pth.curve) {
+                return pathClone(pth.curve);
+            }
+            var p = pathToAbsolute(path),
+                p2 = path2 && pathToAbsolute(path2),
+                attrs = {x: 0, y: 0, bx: 0, by: 0, X: 0, Y: 0, qx: null, qy: null},
+                attrs2 = {x: 0, y: 0, bx: 0, by: 0, X: 0, Y: 0, qx: null, qy: null},
+                processPath = function (path, d, pcom) {
+                    var nx, ny, tq = {T:1, Q:1};
+                    if (!path) {
+                        return ["C", d.x, d.y, d.x, d.y, d.x, d.y];
+                    }
+                    !(path[0] in tq) && (d.qx = d.qy = null);
+                    switch (path[0]) {
+                        case "M":
+                            d.X = path[1];
+                            d.Y = path[2];
+                            break;
+                        case "A":
+                            path = ["C"][concat](a2c[apply](0, [d.x, d.y][concat](path.slice(1))));
+                            break;
+                        case "S":
+                            if (pcom == "C" || pcom == "S") { // In "S" case we have to take into account, if the previous command is C/S.
+                                nx = d.x * 2 - d.bx;          // And reflect the previous
+                                ny = d.y * 2 - d.by;          // command's control point relative to the current point.
+                            }
+                            else {                            // or some else or nothing
+                                nx = d.x;
+                                ny = d.y;
+                            }
+                            path = ["C", nx, ny][concat](path.slice(1));
+                            break;
+                        case "T":
+                            if (pcom == "Q" || pcom == "T") { // In "T" case we have to take into account, if the previous command is Q/T.
+                                d.qx = d.x * 2 - d.qx;        // And make a reflection similar
+                                d.qy = d.y * 2 - d.qy;        // to case "S".
+                            }
+                            else {                            // or something else or nothing
+                                d.qx = d.x;
+                                d.qy = d.y;
+                            }
+                            path = ["C"][concat](q2c(d.x, d.y, d.qx, d.qy, path[1], path[2]));
+                            break;
+                        case "Q":
+                            d.qx = path[1];
+                            d.qy = path[2];
+                            path = ["C"][concat](q2c(d.x, d.y, path[1], path[2], path[3], path[4]));
+                            break;
+                        case "L":
+                            path = ["C"][concat](l2c(d.x, d.y, path[1], path[2]));
+                            break;
+                        case "H":
+                            path = ["C"][concat](l2c(d.x, d.y, path[1], d.y));
+                            break;
+                        case "V":
+                            path = ["C"][concat](l2c(d.x, d.y, d.x, path[1]));
+                            break;
+                        case "Z":
+                            path = ["C"][concat](l2c(d.x, d.y, d.X, d.Y));
+                            break;
+                    }
+                    return path;
+                },
+                fixArc = function (pp, i) {
+                    if (pp[i].length > 7) {
+                        pp[i].shift();
+                        var pi = pp[i];
+                        while (pi.length) {
+                            pp.splice(i++, 0, ["C"][concat](pi.splice(0, 6)));
+                        }
+                        pp.splice(i, 1);
+                        ii = mmax(p.length, p2 && p2.length || 0);
+                    }
+                },
+                fixM = function (path1, path2, a1, a2, i) {
+                    if (path1 && path2 && path1[i][0] == "M" && path2[i][0] != "M") {
+                        path2.splice(i, 0, ["M", a2.x, a2.y]);
+                        a1.bx = 0;
+                        a1.by = 0;
+                        a1.x = path1[i][1];
+                        a1.y = path1[i][2];
+                        ii = mmax(p.length, p2 && p2.length || 0);
+                    }
+                };
+            for (var i = 0, ii = mmax(p.length, p2 && p2.length || 0); i < ii; i++) {
+                p[i] = processPath(p[i], attrs);
+                fixArc(p, i);
+                p2 && (p2[i] = processPath(p2[i], attrs2));
+                p2 && fixArc(p2, i);
+                fixM(p, p2, attrs, attrs2, i);
+                fixM(p2, p, attrs2, attrs, i);
+                var seg = p[i],
+                    seg2 = p2 && p2[i],
+                    seglen = seg.length,
+                    seg2len = p2 && seg2.length;
+                attrs.x = seg[seglen - 2];
+                attrs.y = seg[seglen - 1];
+                attrs.bx = toFloat(seg[seglen - 4]) || attrs.x;
+                attrs.by = toFloat(seg[seglen - 3]) || attrs.y;
+                attrs2.bx = p2 && (toFloat(seg2[seg2len - 4]) || attrs2.x);
+                attrs2.by = p2 && (toFloat(seg2[seg2len - 3]) || attrs2.y);
+                attrs2.x = p2 && seg2[seg2len - 2];
+                attrs2.y = p2 && seg2[seg2len - 1];
+            }
+            if (!p2) {
+                pth.curve = pathClone(p);
+            }
+            return p2 ? [p, p2] : p;
+        }, null, pathClone),
+        parseDots = R._parseDots = cacher(function (gradient) {
+            var dots = [];
+            for (var i = 0, ii = gradient.length; i < ii; i++) {
+                var dot = {},
+                    par = gradient[i].match(/^([^:]*):?([\d\.]*)/);
+                dot.color = R.getRGB(par[1]);
+                if (dot.color.error) {
+                    return null;
+                }
+                dot.color = dot.color.hex;
+                par[2] && (dot.offset = par[2] + "%");
+                dots.push(dot);
+            }
+            for (i = 1, ii = dots.length - 1; i < ii; i++) {
+                if (!dots[i].offset) {
+                    var start = toFloat(dots[i - 1].offset || 0),
+                        end = 0;
+                    for (var j = i + 1; j < ii; j++) {
+                        if (dots[j].offset) {
+                            end = dots[j].offset;
+                            break;
+                        }
+                    }
+                    if (!end) {
+                        end = 100;
+                        j = ii;
+                    }
+                    end = toFloat(end);
+                    var d = (end - start) / (j - i + 1);
+                    for (; i < j; i++) {
+                        start += d;
+                        dots[i].offset = start + "%";
+                    }
+                }
+            }
+            return dots;
+        }),
+        tear = R._tear = function (el, paper) {
+            el == paper.top && (paper.top = el.prev);
+            el == paper.bottom && (paper.bottom = el.next);
+            el.next && (el.next.prev = el.prev);
+            el.prev && (el.prev.next = el.next);
+        },
+        tofront = R._tofront = function (el, paper) {
+            if (paper.top === el) {
+                return;
+            }
+            tear(el, paper);
+            el.next = null;
+            el.prev = paper.top;
+            paper.top.next = el;
+            paper.top = el;
+        },
+        toback = R._toback = function (el, paper) {
+            if (paper.bottom === el) {
+                return;
+            }
+            tear(el, paper);
+            el.next = paper.bottom;
+            el.prev = null;
+            paper.bottom.prev = el;
+            paper.bottom = el;
+        },
+        insertafter = R._insertafter = function (el, el2, paper) {
+            tear(el, paper);
+            el2 == paper.top && (paper.top = el);
+            el2.next && (el2.next.prev = el);
+            el.next = el2.next;
+            el.prev = el2;
+            el2.next = el;
+        },
+        insertbefore = R._insertbefore = function (el, el2, paper) {
+            tear(el, paper);
+            el2 == paper.bottom && (paper.bottom = el);
+            el2.prev && (el2.prev.next = el);
+            el.prev = el2.prev;
+            el2.prev = el;
+            el.next = el2;
+        },
+        /*\
+         * Raphael.toMatrix
+         [ method ]
+         **
+         * Utility method
+         **
+         * Returns matrix of transformations applied to a given path
+         > Parameters
+         - path (string) path string
+         - transform (string|array) transformation string
+         = (object) @Matrix
+        \*/
+        toMatrix = R.toMatrix = function (path, transform) {
+            var bb = pathDimensions(path),
+                el = {
+                    _: {
+                        transform: E
+                    },
+                    getBBox: function () {
+                        return bb;
+                    }
+                };
+            extractTransform(el, transform);
+            return el.matrix;
+        },
+        /*\
+         * Raphael.transformPath
+         [ method ]
+         **
+         * Utility method
+         **
+         * Returns path transformed by a given transformation
+         > Parameters
+         - path (string) path string
+         - transform (string|array) transformation string
+         = (string) path
+        \*/
+        transformPath = R.transformPath = function (path, transform) {
+            return mapPath(path, toMatrix(path, transform));
+        },
+        extractTransform = R._extractTransform = function (el, tstr) {
+            if (tstr == null) {
+                return el._.transform;
+            }
+            tstr = Str(tstr).replace(/\.{3}|\u2026/g, el._.transform || E);
+            var tdata = R.parseTransformString(tstr),
+                deg = 0,
+                dx = 0,
+                dy = 0,
+                sx = 1,
+                sy = 1,
+                _ = el._,
+                m = new Matrix;
+            _.transform = tdata || [];
+            if (tdata) {
+                for (var i = 0, ii = tdata.length; i < ii; i++) {
+                    var t = tdata[i],
+                        tlen = t.length,
+                        command = Str(t[0]).toLowerCase(),
+                        absolute = t[0] != command,
+                        inver = absolute ? m.invert() : 0,
+                        x1,
+                        y1,
+                        x2,
+                        y2,
+                        bb;
+                    if (command == "t" && tlen == 3) {
+                        if (absolute) {
+                            x1 = inver.x(0, 0);
+                            y1 = inver.y(0, 0);
+                            x2 = inver.x(t[1], t[2]);
+                            y2 = inver.y(t[1], t[2]);
+                            m.translate(x2 - x1, y2 - y1);
+                        } else {
+                            m.translate(t[1], t[2]);
+                        }
+                    } else if (command == "r") {
+                        if (tlen == 2) {
+                            bb = bb || el.getBBox(1);
+                            m.rotate(t[1], bb.x + bb.width / 2, bb.y + bb.height / 2);
+                            deg += t[1];
+                        } else if (tlen == 4) {
+                            if (absolute) {
+                                x2 = inver.x(t[2], t[3]);
+                                y2 = inver.y(t[2], t[3]);
+                                m.rotate(t[1], x2, y2);
+                            } else {
+                                m.rotate(t[1], t[2], t[3]);
+                            }
+                            deg += t[1];
+                        }
+                    } else if (command == "s") {
+                        if (tlen == 2 || tlen == 3) {
+                            bb = bb || el.getBBox(1);
+                            m.scale(t[1], t[tlen - 1], bb.x + bb.width / 2, bb.y + bb.height / 2);
+                            sx *= t[1];
+                            sy *= t[tlen - 1];
+                        } else if (tlen == 5) {
+                            if (absolute) {
+                                x2 = inver.x(t[3], t[4]);
+                                y2 = inver.y(t[3], t[4]);
+                                m.scale(t[1], t[2], x2, y2);
+                            } else {
+                                m.scale(t[1], t[2], t[3], t[4]);
+                            }
+                            sx *= t[1];
+                            sy *= t[2];
+                        }
+                    } else if (command == "m" && tlen == 7) {
+                        m.add(t[1], t[2], t[3], t[4], t[5], t[6]);
+                    }
+                    _.dirtyT = 1;
+                    el.matrix = m;
+                }
+            }
+
+            /*\
+             * Element.matrix
+             [ property (object) ]
+             **
+             * Keeps @Matrix object, which represents element transformation
+            \*/
+            el.matrix = m;
+
+            _.sx = sx;
+            _.sy = sy;
+            _.deg = deg;
+            _.dx = dx = m.e;
+            _.dy = dy = m.f;
+
+            if (sx == 1 && sy == 1 && !deg && _.bbox) {
+                _.bbox.x += +dx;
+                _.bbox.y += +dy;
+            } else {
+                _.dirtyT = 1;
+            }
+        },
+        getEmpty = function (item) {
+            var l = item[0];
+            switch (l.toLowerCase()) {
+                case "t": return [l, 0, 0];
+                case "m": return [l, 1, 0, 0, 1, 0, 0];
+                case "r": if (item.length == 4) {
+                    return [l, 0, item[2], item[3]];
+                } else {
+                    return [l, 0];
+                }
+                case "s": if (item.length == 5) {
+                    return [l, 1, 1, item[3], item[4]];
+                } else if (item.length == 3) {
+                    return [l, 1, 1];
+                } else {
+                    return [l, 1];
+                }
+            }
+        },
+        equaliseTransform = R._equaliseTransform = function (t1, t2) {
+            t2 = Str(t2).replace(/\.{3}|\u2026/g, t1);
+            t1 = R.parseTransformString(t1) || [];
+            t2 = R.parseTransformString(t2) || [];
+            var maxlength = mmax(t1.length, t2.length),
+                from = [],
+                to = [],
+                i = 0, j, jj,
+                tt1, tt2;
+            for (; i < maxlength; i++) {
+                tt1 = t1[i] || getEmpty(t2[i]);
+                tt2 = t2[i] || getEmpty(tt1);
+                if ((tt1[0] != tt2[0]) ||
+                    (tt1[0].toLowerCase() == "r" && (tt1[2] != tt2[2] || tt1[3] != tt2[3])) ||
+                    (tt1[0].toLowerCase() == "s" && (tt1[3] != tt2[3] || tt1[4] != tt2[4]))
+                    ) {
+                    return;
+                }
+                from[i] = [];
+                to[i] = [];
+                for (j = 0, jj = mmax(tt1.length, tt2.length); j < jj; j++) {
+                    j in tt1 && (from[i][j] = tt1[j]);
+                    j in tt2 && (to[i][j] = tt2[j]);
+                }
+            }
+            return {
+                from: from,
+                to: to
+            };
+        };
+    R._getContainer = function (x, y, w, h) {
+        var container;
+        container = h == null && !R.is(x, "object") ? g.doc.getElementById(x) : x;
+        if (container == null) {
+            return;
+        }
+        if (container.tagName) {
+            if (y == null) {
+                return {
+                    container: container,
+                    width: container.style.pixelWidth || container.offsetWidth,
+                    height: container.style.pixelHeight || container.offsetHeight
+                };
+            } else {
+                return {
+                    container: container,
+                    width: y,
+                    height: w
+                };
+            }
+        }
+        return {
+            container: 1,
+            x: x,
+            y: y,
+            width: w,
+            height: h
+        };
+    };
+    /*\
+     * Raphael.pathToRelative
+     [ method ]
+     **
+     * Utility method
+     **
+     * Converts path to relative form
+     > Parameters
+     - pathString (string|array) path string or array of segments
+     = (array) array of segments.
+    \*/
+    R.pathToRelative = pathToRelative;
+    R._engine = {};
+    /*\
+     * Raphael.path2curve
+     [ method ]
+     **
+     * Utility method
+     **
+     * Converts path to a new path where all segments are cubic bezier curves.
+     > Parameters
+     - pathString (string|array) path string or array of segments
+     = (array) array of segments.
+    \*/
+    R.path2curve = path2curve;
+    /*\
+     * Raphael.matrix
+     [ method ]
+     **
+     * Utility method
+     **
+     * Returns matrix based on given parameters.
+     > Parameters
+     - a (number)
+     - b (number)
+     - c (number)
+     - d (number)
+     - e (number)
+     - f (number)
+     = (object) @Matrix
+    \*/
+    R.matrix = function (a, b, c, d, e, f) {
+        return new Matrix(a, b, c, d, e, f);
+    };
+    function Matrix(a, b, c, d, e, f) {
+        if (a != null) {
+            this.a = +a;
+            this.b = +b;
+            this.c = +c;
+            this.d = +d;
+            this.e = +e;
+            this.f = +f;
+        } else {
+            this.a = 1;
+            this.b = 0;
+            this.c = 0;
+            this.d = 1;
+            this.e = 0;
+            this.f = 0;
+        }
+    }
+    (function (matrixproto) {
+        /*\
+         * Matrix.add
+         [ method ]
+         **
+         * Adds given matrix to existing one.
+         > Parameters
+         - a (number)
+         - b (number)
+         - c (number)
+         - d (number)
+         - e (number)
+         - f (number)
+         or
+         - matrix (object) @Matrix
+        \*/
+        matrixproto.add = function (a, b, c, d, e, f) {
+            var out = [[], [], []],
+                m = [[this.a, this.c, this.e], [this.b, this.d, this.f], [0, 0, 1]],
+                matrix = [[a, c, e], [b, d, f], [0, 0, 1]],
+                x, y, z, res;
+
+            if (a && a instanceof Matrix) {
+                matrix = [[a.a, a.c, a.e], [a.b, a.d, a.f], [0, 0, 1]];
+            }
+
+            for (x = 0; x < 3; x++) {
+                for (y = 0; y < 3; y++) {
+                    res = 0;
+                    for (z = 0; z < 3; z++) {
+                        res += m[x][z] * matrix[z][y];
+                    }
+                    out[x][y] = res;
+                }
+            }
+            this.a = out[0][0];
+            this.b = out[1][0];
+            this.c = out[0][1];
+            this.d = out[1][1];
+            this.e = out[0][2];
+            this.f = out[1][2];
+        };
+        /*\
+         * Matrix.invert
+         [ method ]
+         **
+         * Returns inverted version of the matrix
+         = (object) @Matrix
+        \*/
+        matrixproto.invert = function () {
+            var me = this,
+                x = me.a * me.d - me.b * me.c;
+            return new Matrix(me.d / x, -me.b / x, -me.c / x, me.a / x, (me.c * me.f - me.d * me.e) / x, (me.b * me.e - me.a * me.f) / x);
+        };
+        /*\
+         * Matrix.clone
+         [ method ]
+         **
+         * Returns copy of the matrix
+         = (object) @Matrix
+        \*/
+        matrixproto.clone = function () {
+            return new Matrix(this.a, this.b, this.c, this.d, this.e, this.f);
+        };
+        /*\
+         * Matrix.translate
+         [ method ]
+         **
+         * Translate the matrix
+         > Parameters
+         - x (number)
+         - y (number)
+        \*/
+        matrixproto.translate = function (x, y) {
+            this.add(1, 0, 0, 1, x, y);
+        };
+        /*\
+         * Matrix.scale
+         [ method ]
+         **
+         * Scales the matrix
+         > Parameters
+         - x (number)
+         - y (number) #optional
+         - cx (number) #optional
+         - cy (number) #optional
+        \*/
+        matrixproto.scale = function (x, y, cx, cy) {
+            y == null && (y = x);
+            (cx || cy) && this.add(1, 0, 0, 1, cx, cy);
+            this.add(x, 0, 0, y, 0, 0);
+            (cx || cy) && this.add(1, 0, 0, 1, -cx, -cy);
+        };
+        /*\
+         * Matrix.rotate
+         [ method ]
+         **
+         * Rotates the matrix
+         > Parameters
+         - a (number)
+         - x (number)
+         - y (number)
+        \*/
+        matrixproto.rotate = function (a, x, y) {
+            a = R.rad(a);
+            x = x || 0;
+            y = y || 0;
+            var cos = +math.cos(a).toFixed(9),
+                sin = +math.sin(a).toFixed(9);
+            this.add(cos, sin, -sin, cos, x, y);
+            this.add(1, 0, 0, 1, -x, -y);
+        };
+        /*\
+         * Matrix.x
+         [ method ]
+         **
+         * Return x coordinate for given point after transformation described by the matrix. See also @Matrix.y
+         > Parameters
+         - x (number)
+         - y (number)
+         = (number) x
+        \*/
+        matrixproto.x = function (x, y) {
+            return x * this.a + y * this.c + this.e;
+        };
+        /*\
+         * Matrix.y
+         [ method ]
+         **
+         * Return y coordinate for given point after transformation described by the matrix. See also @Matrix.x
+         > Parameters
+         - x (number)
+         - y (number)
+         = (number) y
+        \*/
+        matrixproto.y = function (x, y) {
+            return x * this.b + y * this.d + this.f;
+        };
+        matrixproto.get = function (i) {
+            return +this[Str.fromCharCode(97 + i)].toFixed(4);
+        };
+        matrixproto.toString = function () {
+            return R.svg ?
+                "matrix(" + [this.get(0), this.get(1), this.get(2), this.get(3), this.get(4), this.get(5)].join() + ")" :
+                [this.get(0), this.get(2), this.get(1), this.get(3), 0, 0].join();
+        };
+        matrixproto.toFilter = function () {
+            return "progid:DXImageTransform.Microsoft.Matrix(M11=" + this.get(0) +
+                ", M12=" + this.get(2) + ", M21=" + this.get(1) + ", M22=" + this.get(3) +
+                ", Dx=" + this.get(4) + ", Dy=" + this.get(5) + ", sizingmethod='auto expand')";
+        };
+        matrixproto.offset = function () {
+            return [this.e.toFixed(4), this.f.toFixed(4)];
+        };
+        function norm(a) {
+            return a[0] * a[0] + a[1] * a[1];
+        }
+        function normalize(a) {
+            var mag = math.sqrt(norm(a));
+            a[0] && (a[0] /= mag);
+            a[1] && (a[1] /= mag);
+        }
+        /*\
+         * Matrix.split
+         [ method ]
+         **
+         * Splits matrix into primitive transformations
+         = (object) in format:
+         o dx (number) translation by x
+         o dy (number) translation by y
+         o scalex (number) scale by x
+         o scaley (number) scale by y
+         o shear (number) shear
+         o rotate (number) rotation in deg
+         o isSimple (boolean) could it be represented via simple transformations
+        \*/
+        matrixproto.split = function () {
+            var out = {};
+            // translation
+            out.dx = this.e;
+            out.dy = this.f;
+
+            // scale and shear
+            var row = [[this.a, this.c], [this.b, this.d]];
+            out.scalex = math.sqrt(norm(row[0]));
+            normalize(row[0]);
+
+            out.shear = row[0][0] * row[1][0] + row[0][1] * row[1][1];
+            row[1] = [row[1][0] - row[0][0] * out.shear, row[1][1] - row[0][1] * out.shear];
+
+            out.scaley = math.sqrt(norm(row[1]));
+            normalize(row[1]);
+            out.shear /= out.scaley;
+
+            // rotation
+            var sin = -row[0][1],
+                cos = row[1][1];
+            if (cos < 0) {
+                out.rotate = R.deg(math.acos(cos));
+                if (sin < 0) {
+                    out.rotate = 360 - out.rotate;
+                }
+            } else {
+                out.rotate = R.deg(math.asin(sin));
+            }
+
+            out.isSimple = !+out.shear.toFixed(9) && (out.scalex.toFixed(9) == out.scaley.toFixed(9) || !out.rotate);
+            out.isSuperSimple = !+out.shear.toFixed(9) && out.scalex.toFixed(9) == out.scaley.toFixed(9) && !out.rotate;
+            out.noRotation = !+out.shear.toFixed(9) && !out.rotate;
+            return out;
+        };
+        /*\
+         * Matrix.toTransformString
+         [ method ]
+         **
+         * Return transform string that represents given matrix
+         = (string) transform string
+        \*/
+        matrixproto.toTransformString = function (shorter) {
+            var s = shorter || this[split]();
+            if (s.isSimple) {
+                s.scalex = +s.scalex.toFixed(4);
+                s.scaley = +s.scaley.toFixed(4);
+                s.rotate = +s.rotate.toFixed(4);
+                return  (s.dx || s.dy ? "t" + [s.dx, s.dy] : E) +
+                        (s.scalex != 1 || s.scaley != 1 ? "s" + [s.scalex, s.scaley, 0, 0] : E) +
+                        (s.rotate ? "r" + [s.rotate, 0, 0] : E);
+            } else {
+                return "m" + [this.get(0), this.get(1), this.get(2), this.get(3), this.get(4), this.get(5)];
+            }
+        };
+    })(Matrix.prototype);
+
+    // WebKit rendering bug workaround method
+    var version = navigator.userAgent.match(/Version\/(.*?)\s/) || navigator.userAgent.match(/Chrome\/(\d+)/);
+    if ((navigator.vendor == "Apple Computer, Inc.") && (version && version[1] < 4 || navigator.platform.slice(0, 2) == "iP") ||
+        (navigator.vendor == "Google Inc." && version && version[1] < 8)) {
+        /*\
+         * Paper.safari
+         [ method ]
+         **
+         * There is an inconvenient rendering bug in Safari (WebKit):
+         * sometimes the rendering should be forced.
+         * This method should help with dealing with this bug.
+        \*/
+        paperproto.safari = function () {
+            var rect = this.rect(-99, -99, this.width + 99, this.height + 99).attr({stroke: "none"});
+            setTimeout(function () {rect.remove();});
+        };
+    } else {
+        paperproto.safari = fun;
+    }
+
+    var preventDefault = function () {
+        this.returnValue = false;
+    },
+    preventTouch = function () {
+        return this.originalEvent.preventDefault();
+    },
+    stopPropagation = function () {
+        this.cancelBubble = true;
+    },
+    stopTouch = function () {
+        return this.originalEvent.stopPropagation();
+    },
+    getEventPosition = function (e) {
+        var scrollY = g.doc.documentElement.scrollTop || g.doc.body.scrollTop,
+            scrollX = g.doc.documentElement.scrollLeft || g.doc.body.scrollLeft;
+
+        return {
+            x: e.clientX + scrollX,
+            y: e.clientY + scrollY
+        };
+    },
+    addEvent = (function () {
+        if (g.doc.addEventListener) {
+            return function (obj, type, fn, element) {
+                var f = function (e) {
+                    var pos = getEventPosition(e);
+                    return fn.call(element, e, pos.x, pos.y);
+                };
+                obj.addEventListener(type, f, false);
+
+                if (supportsTouch && touchMap[type]) {
+                    var _f = function (e) {
+                        var pos = getEventPosition(e),
+                            olde = e;
+
+                        for (var i = 0, ii = e.targetTouches && e.targetTouches.length; i < ii; i++) {
+                            if (e.targetTouches[i].target == obj) {
+                                e = e.targetTouches[i];
+                                e.originalEvent = olde;
+                                e.preventDefault = preventTouch;
+                                e.stopPropagation = stopTouch;
+                                break;
+                            }
+                        }
+
+                        return fn.call(element, e, pos.x, pos.y);
+                    };
+                    obj.addEventListener(touchMap[type], _f, false);
+                }
+
+                return function () {
+                    obj.removeEventListener(type, f, false);
+
+                    if (supportsTouch && touchMap[type])
+                        obj.removeEventListener(touchMap[type], f, false);
+
+                    return true;
+                };
+            };
+        } else if (g.doc.attachEvent) {
+            return function (obj, type, fn, element) {
+                var f = function (e) {
+                    e = e || g.win.event;
+                    var scrollY = g.doc.documentElement.scrollTop || g.doc.body.scrollTop,
+                        scrollX = g.doc.documentElement.scrollLeft || g.doc.body.scrollLeft,
+                        x = e.clientX + scrollX,
+                        y = e.clientY + scrollY;
+                    e.preventDefault = e.preventDefault || preventDefault;
+                    e.stopPropagation = e.stopPropagation || stopPropagation;
+                    return fn.call(element, e, x, y);
+                };
+                obj.attachEvent("on" + type, f);
+                var detacher = function () {
+                    obj.detachEvent("on" + type, f);
+                    return true;
+                };
+                return detacher;
+            };
+        }
+    })(),
+    drag = [],
+    dragMove = function (e) {
+        var x = e.clientX,
+            y = e.clientY,
+            scrollY = g.doc.documentElement.scrollTop || g.doc.body.scrollTop,
+            scrollX = g.doc.documentElement.scrollLeft || g.doc.body.scrollLeft,
+            dragi,
+            j = drag.length;
+        while (j--) {
+            dragi = drag[j];
+            if (supportsTouch && e.touches) {
+                var i = e.touches.length,
+                    touch;
+                while (i--) {
+                    touch = e.touches[i];
+                    if (touch.identifier == dragi.el._drag.id) {
+                        x = touch.clientX;
+                        y = touch.clientY;
+                        (e.originalEvent ? e.originalEvent : e).preventDefault();
+                        break;
+                    }
+                }
+            } else {
+                e.preventDefault();
+            }
+            var node = dragi.el.node,
+                o,
+                next = node.nextSibling,
+                parent = node.parentNode,
+                display = node.style.display;
+            g.win.opera && parent.removeChild(node);
+            node.style.display = "none";
+            o = dragi.el.paper.getElementByPoint(x, y);
+            node.style.display = display;
+            g.win.opera && (next ? parent.insertBefore(node, next) : parent.appendChild(node));
+            o && eve("raphael.drag.over." + dragi.el.id, dragi.el, o);
+            x += scrollX;
+            y += scrollY;
+            eve("raphael.drag.move." + dragi.el.id, dragi.move_scope || dragi.el, x - dragi.el._drag.x, y - dragi.el._drag.y, x, y, e);
+        }
+    },
+    dragUp = function (e) {
+        R.unmousemove(dragMove).unmouseup(dragUp);
+        var i = drag.length,
+            dragi;
+        while (i--) {
+            dragi = drag[i];
+            dragi.el._drag = {};
+            eve("raphael.drag.end." + dragi.el.id, dragi.end_scope || dragi.start_scope || dragi.move_scope || dragi.el, e);
+        }
+        drag = [];
+    },
+    /*\
+     * Raphael.el
+     [ property (object) ]
+     **
+     * You can add your own method to elements. This is usefull when you want to hack default functionality or
+     * want to wrap some common transformation or attributes in one method. In difference to canvas methods,
+     * you can redefine element method at any time. Expending element methods wouldn’t affect set.
+     > Usage
+     | Raphael.el.red = function () {
+     |     this.attr({fill: "#f00"});
+     | };
+     | // then use it
+     | paper.circle(100, 100, 20).red();
+    \*/
+    elproto = R.el = {};
+    /*\
+     * Element.click
+     [ method ]
+     **
+     * Adds event handler for click for the element.
+     > Parameters
+     - handler (function) handler for the event
+     = (object) @Element
+    \*/
+    /*\
+     * Element.unclick
+     [ method ]
+     **
+     * Removes event handler for click for the element.
+     > Parameters
+     - handler (function) #optional handler for the event
+     = (object) @Element
+    \*/
+
+    /*\
+     * Element.dblclick
+     [ method ]
+     **
+     * Adds event handler for double click for the element.
+     > Parameters
+     - handler (function) handler for the event
+     = (object) @Element
+    \*/
+    /*\
+     * Element.undblclick
+     [ method ]
+     **
+     * Removes event handler for double click for the element.
+     > Parameters
+     - handler (function) #optional handler for the event
+     = (object) @Element
+    \*/
+
+    /*\
+     * Element.mousedown
+     [ method ]
+     **
+     * Adds event handler for mousedown for the element.
+     > Parameters
+     - handler (function) handler for the event
+     = (object) @Element
+    \*/
+    /*\
+     * Element.unmousedown
+     [ method ]
+     **
+     * Removes event handler for mousedown for the element.
+     > Parameters
+     - handler (function) #optional handler for the event
+     = (object) @Element
+    \*/
+
+    /*\
+     * Element.mousemove
+     [ method ]
+     **
+     * Adds event handler for mousemove for the element.
+     > Parameters
+     - handler (function) handler for the event
+     = (object) @Element
+    \*/
+    /*\
+     * Element.unmousemove
+     [ method ]
+     **
+     * Removes event handler for mousemove for the element.
+     > Parameters
+     - handler (function) #optional handler for the event
+     = (object) @Element
+    \*/
+
+    /*\
+     * Element.mouseout
+     [ method ]
+     **
+     * Adds event handler for mouseout for the element.
+     > Parameters
+     - handler (function) handler for the event
+     = (object) @Element
+    \*/
+    /*\
+     * Element.unmouseout
+     [ method ]
+     **
+     * Removes event handler for mouseout for the element.
+     > Parameters
+     - handler (function) #optional handler for the event
+     = (object) @Element
+    \*/
+
+    /*\
+     * Element.mouseover
+     [ method ]
+     **
+     * Adds event handler for mouseover for the element.
+     > Parameters
+     - handler (function) handler for the event
+     = (object) @Element
+    \*/
+    /*\
+     * Element.unmouseover
+     [ method ]
+     **
+     * Removes event handler for mouseover for the element.
+     > Parameters
+     - handler (function) #optional handler for the event
+     = (object) @Element
+    \*/
+
+    /*\
+     * Element.mouseup
+     [ method ]
+     **
+     * Adds event handler for mouseup for the element.
+     > Parameters
+     - handler (function) handler for the event
+     = (object) @Element
+    \*/
+    /*\
+     * Element.unmouseup
+     [ method ]
+     **
+     * Removes event handler for mouseup for the element.
+     > Parameters
+     - handler (function) #optional handler for the event
+     = (object) @Element
+    \*/
+
+    /*\
+     * Element.touchstart
+     [ method ]
+     **
+     * Adds event handler for touchstart for the element.
+     > Parameters
+     - handler (function) handler for the event
+     = (object) @Element
+    \*/
+    /*\
+     * Element.untouchstart
+     [ method ]
+     **
+     * Removes event handler for touchstart for the element.
+     > Parameters
+     - handler (function) #optional handler for the event
+     = (object) @Element
+    \*/
+
+    /*\
+     * Element.touchmove
+     [ method ]
+     **
+     * Adds event handler for touchmove for the element.
+     > Parameters
+     - handler (function) handler for the event
+     = (object) @Element
+    \*/
+    /*\
+     * Element.untouchmove
+     [ method ]
+     **
+     * Removes event handler for touchmove for the element.
+     > Parameters
+     - handler (function) #optional handler for the event
+     = (object) @Element
+    \*/
+
+    /*\
+     * Element.touchend
+     [ method ]
+     **
+     * Adds event handler for touchend for the element.
+     > Parameters
+     - handler (function) handler for the event
+     = (object) @Element
+    \*/
+    /*\
+     * Element.untouchend
+     [ method ]
+     **
+     * Removes event handler for touchend for the element.
+     > Parameters
+     - handler (function) #optional handler for the event
+     = (object) @Element
+    \*/
+
+    /*\
+     * Element.touchcancel
+     [ method ]
+     **
+     * Adds event handler for touchcancel for the element.
+     > Parameters
+     - handler (function) handler for the event
+     = (object) @Element
+    \*/
+    /*\
+     * Element.untouchcancel
+     [ method ]
+     **
+     * Removes event handler for touchcancel for the element.
+     > Parameters
+     - handler (function) #optional handler for the event
+     = (object) @Element
+    \*/
+    for (var i = events.length; i--;) {
+        (function (eventName) {
+            R[eventName] = elproto[eventName] = function (fn, scope) {
+                if (R.is(fn, "function")) {
+                    this.events = this.events || [];
+                    this.events.push({name: eventName, f: fn, unbind: addEvent(this.shape || this.node || g.doc, eventName, fn, scope || this)});
+                }
+                return this;
+            };
+            R["un" + eventName] = elproto["un" + eventName] = function (fn) {
+                var events = this.events || [],
+                    l = events.length;
+                while (l--){
+                    if (events[l].name == eventName && (R.is(fn, "undefined") || events[l].f == fn)) {
+                        events[l].unbind();
+                        events.splice(l, 1);
+                        !events.length && delete this.events;
+                    }
+                }
+                return this;
+            };
+        })(events[i]);
+    }
+
+    /*\
+     * Element.data
+     [ method ]
+     **
+     * Adds or retrieves given value asociated with given key.
+     ** 
+     * See also @Element.removeData
+     > Parameters
+     - key (string) key to store data
+     - value (any) #optional value to store
+     = (object) @Element
+     * or, if value is not specified:
+     = (any) value
+     * or, if key and value are not specified:
+     = (object) Key/value pairs for all the data associated with the element.
+     > Usage
+     | for (var i = 0, i < 5, i++) {
+     |     paper.circle(10 + 15 * i, 10, 10)
+     |          .attr({fill: "#000"})
+     |          .data("i", i)
+     |          .click(function () {
+     |             alert(this.data("i"));
+     |          });
+     | }
+    \*/
+    elproto.data = function (key, value) {
+        var data = eldata[this.id] = eldata[this.id] || {};
+        if (arguments.length == 0) {
+            return data;
+        }
+        if (arguments.length == 1) {
+            if (R.is(key, "object")) {
+                for (var i in key) if (key[has](i)) {
+                    this.data(i, key[i]);
+                }
+                return this;
+            }
+            eve("raphael.data.get." + this.id, this, data[key], key);
+            return data[key];
+        }
+        data[key] = value;
+        eve("raphael.data.set." + this.id, this, value, key);
+        return this;
+    };
+    /*\
+     * Element.removeData
+     [ method ]
+     **
+     * Removes value associated with an element by given key.
+     * If key is not provided, removes all the data of the element.
+     > Parameters
+     - key (string) #optional key
+     = (object) @Element
+    \*/
+    elproto.removeData = function (key) {
+        if (key == null) {
+            eldata[this.id] = {};
+        } else {
+            eldata[this.id] && delete eldata[this.id][key];
+        }
+        return this;
+    };
+     /*\
+     * Element.getData
+     [ method ]
+     **
+     * Retrieves the element data
+     = (object) data
+    \*/
+    elproto.getData = function () {
+        return clone(eldata[this.id] || {});
+    };
+    /*\
+     * Element.hover
+     [ method ]
+     **
+     * Adds event handlers for hover for the element.
+     > Parameters
+     - f_in (function) handler for hover in
+     - f_out (function) handler for hover out
+     - icontext (object) #optional context for hover in handler
+     - ocontext (object) #optional context for hover out handler
+     = (object) @Element
+    \*/
+    elproto.hover = function (f_in, f_out, scope_in, scope_out) {
+        return this.mouseover(f_in, scope_in).mouseout(f_out, scope_out || scope_in);
+    };
+    /*\
+     * Element.unhover
+     [ method ]
+     **
+     * Removes event handlers for hover for the element.
+     > Parameters
+     - f_in (function) handler for hover in
+     - f_out (function) handler for hover out
+     = (object) @Element
+    \*/
+    elproto.unhover = function (f_in, f_out) {
+        return this.unmouseover(f_in).unmouseout(f_out);
+    };
+    var draggable = [];
+    /*\
+     * Element.drag
+     [ method ]
+     **
+     * Adds event handlers for drag of the element.
+     > Parameters
+     - onmove (function) handler for moving
+     - onstart (function) handler for drag start
+     - onend (function) handler for drag end
+     - mcontext (object) #optional context for moving handler
+     - scontext (object) #optional context for drag start handler
+     - econtext (object) #optional context for drag end handler
+     * Additionaly following `drag` events will be triggered: `drag.start.<id>` on start, 
+     * `drag.end.<id>` on end and `drag.move.<id>` on every move. When element will be dragged over another element 
+     * `drag.over.<id>` will be fired as well.
+     *
+     * Start event and start handler will be called in specified context or in context of the element with following parameters:
+     o x (number) x position of the mouse
+     o y (number) y position of the mouse
+     o event (object) DOM event object
+     * Move event and move handler will be called in specified context or in context of the element with following parameters:
+     o dx (number) shift by x from the start point
+     o dy (number) shift by y from the start point
+     o x (number) x position of the mouse
+     o y (number) y position of the mouse
+     o event (object) DOM event object
+     * End event and end handler will be called in specified context or in context of the element with following parameters:
+     o event (object) DOM event object
+     = (object) @Element
+    \*/
+    elproto.drag = function (onmove, onstart, onend, move_scope, start_scope, end_scope) {
+        function start(e) {
+            (e.originalEvent || e).preventDefault();
+            var x = e.clientX,
+                y = e.clientY,
+                scrollY = g.doc.documentElement.scrollTop || g.doc.body.scrollTop,
+                scrollX = g.doc.documentElement.scrollLeft || g.doc.body.scrollLeft;
+            this._drag.id = e.identifier;
+            if (supportsTouch && e.touches) {
+                var i = e.touches.length, touch;
+                while (i--) {
+                    touch = e.touches[i];
+                    this._drag.id = touch.identifier;
+                    if (touch.identifier == this._drag.id) {
+                        x = touch.clientX;
+                        y = touch.clientY;
+                        break;
+                    }
+                }
+            }
+            this._drag.x = x + scrollX;
+            this._drag.y = y + scrollY;
+            !drag.length && R.mousemove(dragMove).mouseup(dragUp);
+            drag.push({el: this, move_scope: move_scope, start_scope: start_scope, end_scope: end_scope});
+            onstart && eve.on("raphael.drag.start." + this.id, onstart);
+            onmove && eve.on("raphael.drag.move." + this.id, onmove);
+            onend && eve.on("raphael.drag.end." + this.id, onend);
+            eve("raphael.drag.start." + this.id, start_scope || move_scope || this, e.clientX + scrollX, e.clientY + scrollY, e);
+        }
+        this._drag = {};
+        draggable.push({el: this, start: start});
+        this.mousedown(start);
+        return this;
+    };
+    /*\
+     * Element.onDragOver
+     [ method ]
+     **
+     * Shortcut for assigning event handler for `drag.over.<id>` event, where id is id of the element (see @Element.id).
+     > Parameters
+     - f (function) handler for event, first argument would be the element you are dragging over
+    \*/
+    elproto.onDragOver = function (f) {
+        f ? eve.on("raphael.drag.over." + this.id, f) : eve.unbind("raphael.drag.over." + this.id);
+    };
+    /*\
+     * Element.undrag
+     [ method ]
+     **
+     * Removes all drag event handlers from given element.
+    \*/
+    elproto.undrag = function () {
+        var i = draggable.length;
+        while (i--) if (draggable[i].el == this) {
+            this.unmousedown(draggable[i].start);
+            draggable.splice(i, 1);
+            eve.unbind("raphael.drag.*." + this.id);
+        }
+        !draggable.length && R.unmousemove(dragMove).unmouseup(dragUp);
+        drag = [];
+    };
+    /*\
+     * Paper.circle
+     [ method ]
+     **
+     * Draws a circle.
+     **
+     > Parameters
+     **
+     - x (number) x coordinate of the centre
+     - y (number) y coordinate of the centre
+     - r (number) radius
+     = (object) Raphaël element object with type “circle”
+     **
+     > Usage
+     | var c = paper.circle(50, 50, 40);
+    \*/
+    paperproto.circle = function (x, y, r) {
+        var out = R._engine.circle(this, x || 0, y || 0, r || 0);
+        this.__set__ && this.__set__.push(out);
+        return out;
+    };
+    /*\
+     * Paper.rect
+     [ method ]
+     *
+     * Draws a rectangle.
+     **
+     > Parameters
+     **
+     - x (number) x coordinate of the top left corner
+     - y (number) y coordinate of the top left corner
+     - width (number) width
+     - height (number) height
+     - r (number) #optional radius for rounded corners, default is 0
+     = (object) Raphaël element object with type “rect”
+     **
+     > Usage
+     | // regular rectangle
+     | var c = paper.rect(10, 10, 50, 50);
+     | // rectangle with rounded corners
+     | var c = paper.rect(40, 40, 50, 50, 10);
+    \*/
+    paperproto.rect = function (x, y, w, h, r) {
+        var out = R._engine.rect(this, x || 0, y || 0, w || 0, h || 0, r || 0);
+        this.__set__ && this.__set__.push(out);
+        return out;
+    };
+    /*\
+     * Paper.ellipse
+     [ method ]
+     **
+     * Draws an ellipse.
+     **
+     > Parameters
+     **
+     - x (number) x coordinate of the centre
+     - y (number) y coordinate of the centre
+     - rx (number) horizontal radius
+     - ry (number) vertical radius
+     = (object) Raphaël element object with type “ellipse”
+     **
+     > Usage
+     | var c = paper.ellipse(50, 50, 40, 20);
+    \*/
+    paperproto.ellipse = function (x, y, rx, ry) {
+        var out = R._engine.ellipse(this, x || 0, y || 0, rx || 0, ry || 0);
+        this.__set__ && this.__set__.push(out);
+        return out;
+    };
+    /*\
+     * Paper.path
+     [ method ]
+     **
+     * Creates a path element by given path data string.
+     > Parameters
+     - pathString (string) #optional path string in SVG format.
+     * Path string consists of one-letter commands, followed by comma seprarated arguments in numercal form. Example:
+     | "M10,20L30,40"
+     * Here we can see two commands: “M”, with arguments `(10, 20)` and “L” with arguments `(30, 40)`. Upper case letter mean command is absolute, lower case—relative.
+     *
+     # <p>Here is short list of commands available, for more details see <a href="http://www.w3.org/TR/SVG/paths.html#PathData" title="Details of a path's data attribute's format are described in the SVG specification.">SVG path string format</a>.</p>
+     # <table><thead><tr><th>Command</th><th>Name</th><th>Parameters</th></tr></thead><tbody>
+     # <tr><td>M</td><td>moveto</td><td>(x y)+</td></tr>
+     # <tr><td>Z</td><td>closepath</td><td>(none)</td></tr>
+     # <tr><td>L</td><td>lineto</td><td>(x y)+</td></tr>
+     # <tr><td>H</td><td>horizontal lineto</td><td>x+</td></tr>
+     # <tr><td>V</td><td>vertical lineto</td><td>y+</td></tr>
+     # <tr><td>C</td><td>curveto</td><td>(x1 y1 x2 y2 x y)+</td></tr>
+     # <tr><td>S</td><td>smooth curveto</td><td>(x2 y2 x y)+</td></tr>
+     # <tr><td>Q</td><td>quadratic Bézier curveto</td><td>(x1 y1 x y)+</td></tr>
+     # <tr><td>T</td><td>smooth quadratic Bézier curveto</td><td>(x y)+</td></tr>
+     # <tr><td>A</td><td>elliptical arc</td><td>(rx ry x-axis-rotation large-arc-flag sweep-flag x y)+</td></tr>
+     # <tr><td>R</td><td><a href="http://en.wikipedia.org/wiki/Catmull–Rom_spline#Catmull.E2.80.93Rom_spline">Catmull-Rom curveto</a>*</td><td>x1 y1 (x y)+</td></tr></tbody></table>
+     * * “Catmull-Rom curveto” is a not standard SVG command and added in 2.0 to make life easier.
+     * Note: there is a special case when path consist of just three commands: “M10,10R…z”. In this case path will smoothly connects to its beginning.
+     > Usage
+     | var c = paper.path("M10 10L90 90");
+     | // draw a diagonal line:
+     | // move to 10,10, line to 90,90
+     * For example of path strings, check out these icons: http://raphaeljs.com/icons/
+    \*/
+    paperproto.path = function (pathString) {
+        pathString && !R.is(pathString, string) && !R.is(pathString[0], array) && (pathString += E);
+        var out = R._engine.path(R.format[apply](R, arguments), this);
+        this.__set__ && this.__set__.push(out);
+        return out;
+    };
+    /*\
+     * Paper.image
+     [ method ]
+     **
+     * Embeds an image into the surface.
+     **
+     > Parameters
+     **
+     - src (string) URI of the source image
+     - x (number) x coordinate position
+     - y (number) y coordinate position
+     - width (number) width of the image
+     - height (number) height of the image
+     = (object) Raphaël element object with type “image”
+     **
+     > Usage
+     | var c = paper.image("apple.png", 10, 10, 80, 80);
+    \*/
+    paperproto.image = function (src, x, y, w, h) {
+        var out = R._engine.image(this, src || "about:blank", x || 0, y || 0, w || 0, h || 0);
+        this.__set__ && this.__set__.push(out);
+        return out;
+    };
+    /*\
+     * Paper.text
+     [ method ]
+     **
+     * Draws a text string. If you need line breaks, put “\n” in the string.
+     **
+     > Parameters
+     **
+     - x (number) x coordinate position
+     - y (number) y coordinate position
+     - text (string) The text string to draw
+     = (object) Raphaël element object with type “text”
+     **
+     > Usage
+     | var t = paper.text(50, 50, "Raphaël\nkicks\nbutt!");
+    \*/
+    paperproto.text = function (x, y, text) {
+        var out = R._engine.text(this, x || 0, y || 0, Str(text));
+        this.__set__ && this.__set__.push(out);
+        return out;
+    };
+    /*\
+     * Paper.set
+     [ method ]
+     **
+     * Creates array-like object to keep and operate several elements at once.
+     * Warning: it doesn’t create any elements for itself in the page, it just groups existing elements.
+     * Sets act as pseudo elements — all methods available to an element can be used on a set.
+     = (object) array-like object that represents set of elements
+     **
+     > Usage
+     | var st = paper.set();
+     | st.push(
+     |     paper.circle(10, 10, 5),
+     |     paper.circle(30, 10, 5)
+     | );
+     | st.attr({fill: "red"}); // changes the fill of both circles
+    \*/
+    paperproto.set = function (itemsArray) {
+        !R.is(itemsArray, "array") && (itemsArray = Array.prototype.splice.call(arguments, 0, arguments.length));
+        var out = new Set(itemsArray);
+        this.__set__ && this.__set__.push(out);
+        out["paper"] = this;
+        out["type"] = "set";
+        return out;
+    };
+    /*\
+     * Paper.setStart
+     [ method ]
+     **
+     * Creates @Paper.set. All elements that will be created after calling this method and before calling
+     * @Paper.setFinish will be added to the set.
+     **
+     > Usage
+     | paper.setStart();
+     | paper.circle(10, 10, 5),
+     | paper.circle(30, 10, 5)
+     | var st = paper.setFinish();
+     | st.attr({fill: "red"}); // changes the fill of both circles
+    \*/
+    paperproto.setStart = function (set) {
+        this.__set__ = set || this.set();
+    };
+    /*\
+     * Paper.setFinish
+     [ method ]
+     **
+     * See @Paper.setStart. This method finishes catching and returns resulting set.
+     **
+     = (object) set
+    \*/
+    paperproto.setFinish = function (set) {
+        var out = this.__set__;
+        delete this.__set__;
+        return out;
+    };
+    /*\
+     * Paper.setSize
+     [ method ]
+     **
+     * If you need to change dimensions of the canvas call this method
+     **
+     > Parameters
+     **
+     - width (number) new width of the canvas
+     - height (number) new height of the canvas
+    \*/
+    paperproto.setSize = function (width, height) {
+        return R._engine.setSize.call(this, width, height);
+    };
+    /*\
+     * Paper.setViewBox
+     [ method ]
+     **
+     * Sets the view box of the paper. Practically it gives you ability to zoom and pan whole paper surface by 
+     * specifying new boundaries.
+     **
+     > Parameters
+     **
+     - x (number) new x position, default is `0`
+     - y (number) new y position, default is `0`
+     - w (number) new width of the canvas
+     - h (number) new height of the canvas
+     - fit (boolean) `true` if you want graphics to fit into new boundary box
+    \*/
+    paperproto.setViewBox = function (x, y, w, h, fit) {
+        return R._engine.setViewBox.call(this, x, y, w, h, fit);
+    };
+    /*\
+     * Paper.top
+     [ property ]
+     **
+     * Points to the topmost element on the paper
+    \*/
+    /*\
+     * Paper.bottom
+     [ property ]
+     **
+     * Points to the bottom element on the paper
+    \*/
+    paperproto.top = paperproto.bottom = null;
+    /*\
+     * Paper.raphael
+     [ property ]
+     **
+     * Points to the @Raphael object/function
+    \*/
+    paperproto.raphael = R;
+    var getOffset = function (elem) {
+        var box = elem.getBoundingClientRect(),
+            doc = elem.ownerDocument,
+            body = doc.body,
+            docElem = doc.documentElement,
+            clientTop = docElem.clientTop || body.clientTop || 0, clientLeft = docElem.clientLeft || body.clientLeft || 0,
+            top  = box.top  + (g.win.pageYOffset || docElem.scrollTop || body.scrollTop ) - clientTop,
+            left = box.left + (g.win.pageXOffset || docElem.scrollLeft || body.scrollLeft) - clientLeft;
+        return {
+            y: top,
+            x: left
+        };
+    };
+    /*\
+     * Paper.getElementByPoint
+     [ method ]
+     **
+     * Returns you topmost element under given point.
+     **
+     = (object) Raphaël element object
+     > Parameters
+     **
+     - x (number) x coordinate from the top left corner of the window
+     - y (number) y coordinate from the top left corner of the window
+     > Usage
+     | paper.getElementByPoint(mouseX, mouseY).attr({stroke: "#f00"});
+    \*/
+    paperproto.getElementByPoint = function (x, y) {
+        var paper = this,
+            svg = paper.canvas,
+            target = g.doc.elementFromPoint(x, y);
+        if (g.win.opera && target.tagName == "svg") {
+            var so = getOffset(svg),
+                sr = svg.createSVGRect();
+            sr.x = x - so.x;
+            sr.y = y - so.y;
+            sr.width = sr.height = 1;
+            var hits = svg.getIntersectionList(sr, null);
+            if (hits.length) {
+                target = hits[hits.length - 1];
+            }
+        }
+        if (!target) {
+            return null;
+        }
+        while (target.parentNode && target != svg.parentNode && !target.raphael) {
+            target = target.parentNode;
+        }
+        target == paper.canvas.parentNode && (target = svg);
+        target = target && target.raphael ? paper.getById(target.raphaelid) : null;
+        return target;
+    };
+
+    /*\
+     * Paper.getElementsByBBox
+     [ method ]
+     **
+     * Returns set of elements that have an intersecting bounding box
+     **
+     > Parameters
+     **
+     - bbox (object) bbox to check with
+     = (object) @Set
+     \*/
+    paperproto.getElementsByBBox = function (bbox) {
+        var set = this.set();
+        this.forEach(function (el) {
+            if (R.isBBoxIntersect(el.getBBox(), bbox)) {
+                set.push(el);
+            }
+        });
+        return set;
+    };
+
+    /*\
+     * Paper.getById
+     [ method ]
+     **
+     * Returns you element by its internal ID.
+     **
+     > Parameters
+     **
+     - id (number) id
+     = (object) Raphaël element object
+    \*/
+    paperproto.getById = function (id) {
+        var bot = this.bottom;
+        while (bot) {
+            if (bot.id == id) {
+                return bot;
+            }
+            bot = bot.next;
+        }
+        return null;
+    };
+    /*\
+     * Paper.forEach
+     [ method ]
+     **
+     * Executes given function for each element on the paper
+     *
+     * If callback function returns `false` it will stop loop running.
+     **
+     > Parameters
+     **
+     - callback (function) function to run
+     - thisArg (object) context object for the callback
+     = (object) Paper object
+     > Usage
+     | paper.forEach(function (el) {
+     |     el.attr({ stroke: "blue" });
+     | });
+    \*/
+    paperproto.forEach = function (callback, thisArg) {
+        var bot = this.bottom;
+        while (bot) {
+            if (callback.call(thisArg, bot) === false) {
+                return this;
+            }
+            bot = bot.next;
+        }
+        return this;
+    };
+    /*\
+     * Paper.getElementsByPoint
+     [ method ]
+     **
+     * Returns set of elements that have common point inside
+     **
+     > Parameters
+     **
+     - x (number) x coordinate of the point
+     - y (number) y coordinate of the point
+     = (object) @Set
+    \*/
+    paperproto.getElementsByPoint = function (x, y) {
+        var set = this.set();
+        this.forEach(function (el) {
+            if (el.isPointInside(x, y)) {
+                set.push(el);
+            }
+        });
+        return set;
+    };
+    function x_y() {
+        return this.x + S + this.y;
+    }
+    function x_y_w_h() {
+        return this.x + S + this.y + S + this.width + " \xd7 " + this.height;
+    }
+    /*\
+     * Element.isPointInside
+     [ method ]
+     **
+     * Determine if given point is inside this element’s shape
+     **
+     > Parameters
+     **
+     - x (number) x coordinate of the point
+     - y (number) y coordinate of the point
+     = (boolean) `true` if point inside the shape
+    \*/
+    elproto.isPointInside = function (x, y) {
+        var rp = this.realPath = getPath[this.type](this);
+        if (this.attr('transform') && this.attr('transform').length) {
+            rp = R.transformPath(rp, this.attr('transform'));
+        }
+        return R.isPointInsidePath(rp, x, y);
+    };
+    /*\
+     * Element.getBBox
+     [ method ]
+     **
+     * Return bounding box for a given element
+     **
+     > Parameters
+     **
+     - isWithoutTransform (boolean) flag, `true` if you want to have bounding box before transformations. Default is `false`.
+     = (object) Bounding box object:
+     o {
+     o     x: (number) top left corner x
+     o     y: (number) top left corner y
+     o     x2: (number) bottom right corner x
+     o     y2: (number) bottom right corner y
+     o     width: (number) width
+     o     height: (number) height
+     o }
+    \*/
+    elproto.getBBox = function (isWithoutTransform) {
+        if (this.removed) {
+            return {};
+        }
+        var _ = this._;
+        if (isWithoutTransform) {
+            if (_.dirty || !_.bboxwt) {
+                this.realPath = getPath[this.type](this);
+                _.bboxwt = pathDimensions(this.realPath);
+                _.bboxwt.toString = x_y_w_h;
+                _.dirty = 0;
+            }
+            return _.bboxwt;
+        }
+        if (_.dirty || _.dirtyT || !_.bbox) {
+            if (_.dirty || !this.realPath) {
+                _.bboxwt = 0;
+                this.realPath = getPath[this.type](this);
+            }
+            _.bbox = pathDimensions(mapPath(this.realPath, this.matrix));
+            _.bbox.toString = x_y_w_h;
+            _.dirty = _.dirtyT = 0;
+        }
+        return _.bbox;
+    };
+    /*\
+     * Element.clone
+     [ method ]
+     **
+     = (object) clone of a given element
+     **
+    \*/
+    elproto.clone = function () {
+        if (this.removed) {
+            return null;
+        }
+        var out = this.paper[this.type]().attr(this.attr());
+        this.__set__ && this.__set__.push(out);
+        return out;
+    };
+    /*\
+     * Element.glow
+     [ method ]
+     **
+     * Return set of elements that create glow-like effect around given element. See @Paper.set.
+     *
+     * Note: Glow is not connected to the element. If you change element attributes it won’t adjust itself.
+     **
+     > Parameters
+     **
+     - glow (object) #optional parameters object with all properties optional:
+     o {
+     o     width (number) size of the glow, default is `10`
+     o     fill (boolean) will it be filled, default is `false`
+     o     opacity (number) opacity, default is `0.5`
+     o     offsetx (number) horizontal offset, default is `0`
+     o     offsety (number) vertical offset, default is `0`
+     o     color (string) glow colour, default is `black`
+     o }
+     = (object) @Paper.set of elements that represents glow
+    \*/
+    elproto.glow = function (glow) {
+        if (this.type == "text") {
+            return null;
+        }
+        glow = glow || {};
+        var s = {
+            width: (glow.width || 10) + (+this.attr("stroke-width") || 1),
+            fill: glow.fill || false,
+            opacity: glow.opacity || .5,
+            offsetx: glow.offsetx || 0,
+            offsety: glow.offsety || 0,
+            color: glow.color || "#000"
+        },
+            c = s.width / 2,
+            r = this.paper,
+            out = r.set(),
+            path = this.realPath || getPath[this.type](this);
+        path = this.matrix ? mapPath(path, this.matrix) : path;
+        for (var i = 1; i < c + 1; i++) {
+            out.push(r.path(path).attr({
+                stroke: s.color,
+                fill: s.fill ? s.color : "none",
+                "stroke-linejoin": "round",
+                "stroke-linecap": "round",
+                "stroke-width": +(s.width / c * i).toFixed(3),
+                opacity: +(s.opacity / c).toFixed(3)
+            }));
+        }
+        return out.insertBefore(this).translate(s.offsetx, s.offsety);
+    };
+    var curveslengths = {},
+    getPointAtSegmentLength = function (p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, length) {
+        if (length == null) {
+            return bezlen(p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y);
+        } else {
+            return R.findDotsAtSegment(p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, getTatLen(p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, length));
+        }
+    },
+    getLengthFactory = function (istotal, subpath) {
+        return function (path, length, onlystart) {
+            path = path2curve(path);
+            var x, y, p, l, sp = "", subpaths = {}, point,
+                len = 0;
+            for (var i = 0, ii = path.length; i < ii; i++) {
+                p = path[i];
+                if (p[0] == "M") {
+                    x = +p[1];
+                    y = +p[2];
+                } else {
+                    l = getPointAtSegmentLength(x, y, p[1], p[2], p[3], p[4], p[5], p[6]);
+                    if (len + l > length) {
+                        if (subpath && !subpaths.start) {
+                            point = getPointAtSegmentLength(x, y, p[1], p[2], p[3], p[4], p[5], p[6], length - len);
+                            sp += ["C" + point.start.x, point.start.y, point.m.x, point.m.y, point.x, point.y];
+                            if (onlystart) {return sp;}
+                            subpaths.start = sp;
+                            sp = ["M" + point.x, point.y + "C" + point.n.x, point.n.y, point.end.x, point.end.y, p[5], p[6]].join();
+                            len += l;
+                            x = +p[5];
+                            y = +p[6];
+                            continue;
+                        }
+                        if (!istotal && !subpath) {
+                            point = getPointAtSegmentLength(x, y, p[1], p[2], p[3], p[4], p[5], p[6], length - len);
+                            return {x: point.x, y: point.y, alpha: point.alpha};
+                        }
+                    }
+                    len += l;
+                    x = +p[5];
+                    y = +p[6];
+                }
+                sp += p.shift() + p;
+            }
+            subpaths.end = sp;
+            point = istotal ? len : subpath ? subpaths : R.findDotsAtSegment(x, y, p[0], p[1], p[2], p[3], p[4], p[5], 1);
+            point.alpha && (point = {x: point.x, y: point.y, alpha: point.alpha});
+            return point;
+        };
+    };
+    var getTotalLength = getLengthFactory(1),
+        getPointAtLength = getLengthFactory(),
+        getSubpathsAtLength = getLengthFactory(0, 1);
+    /*\
+     * Raphael.getTotalLength
+     [ method ]
+     **
+     * Returns length of the given path in pixels.
+     **
+     > Parameters
+     **
+     - path (string) SVG path string.
+     **
+     = (number) length.
+    \*/
+    R.getTotalLength = getTotalLength;
+    /*\
+     * Raphael.getPointAtLength
+     [ method ]
+     **
+     * Return coordinates of the point located at the given length on the given path.
+     **
+     > Parameters
+     **
+     - path (string) SVG path string
+     - length (number)
+     **
+     = (object) representation of the point:
+     o {
+     o     x: (number) x coordinate
+     o     y: (number) y coordinate
+     o     alpha: (number) angle of derivative
+     o }
+    \*/
+    R.getPointAtLength = getPointAtLength;
+    /*\
+     * Raphael.getSubpath
+     [ method ]
+     **
+     * Return subpath of a given path from given length to given length.
+     **
+     > Parameters
+     **
+     - path (string) SVG path string
+     - from (number) position of the start of the segment
+     - to (number) position of the end of the segment
+     **
+     = (string) pathstring for the segment
+    \*/
+    R.getSubpath = function (path, from, to) {
+        if (this.getTotalLength(path) - to < 1e-6) {
+            return getSubpathsAtLength(path, from).end;
+        }
+        var a = getSubpathsAtLength(path, to, 1);
+        return from ? getSubpathsAtLength(a, from).end : a;
+    };
+    /*\
+     * Element.getTotalLength
+     [ method ]
+     **
+     * Returns length of the path in pixels. Only works for element of “path” type.
+     = (number) length.
+    \*/
+    elproto.getTotalLength = function () {
+        var path = this.getPath();
+        if (!path) {
+            return;
+        }
+
+        if (this.node.getTotalLength) {
+            return this.node.getTotalLength();
+        }
+
+        return getTotalLength(path);
+    };
+    /*\
+     * Element.getPointAtLength
+     [ method ]
+     **
+     * Return coordinates of the point located at the given length on the given path. Only works for element of “path” type.
+     **
+     > Parameters
+     **
+     - length (number)
+     **
+     = (object) representation of the point:
+     o {
+     o     x: (number) x coordinate
+     o     y: (number) y coordinate
+     o     alpha: (number) angle of derivative
+     o }
+    \*/
+    elproto.getPointAtLength = function (length) {
+        var path = this.getPath();
+        if (!path) {
+            return;
+        }
+
+        return getPointAtLength(path, length);
+    };
+    /*\
+     * Element.getPath
+     [ method ]
+     **
+     * Returns path of the element. Only works for elements of “path” type and simple elements like circle.
+     = (object) path
+     **
+    \*/
+    elproto.getPath = function () {
+        var path,
+            getPath = R._getPath[this.type];
+        
+        if (this.type == "text" || this.type == "set") {
+            return;
+        }
+
+        if (getPath) {
+            path = getPath(this);
+        }
+
+        return path;
+    };
+    /*\
+     * Element.getSubpath
+     [ method ]
+     **
+     * Return subpath of a given element from given length to given length. Only works for element of “path” type.
+     **
+     > Parameters
+     **
+     - from (number) position of the start of the segment
+     - to (number) position of the end of the segment
+     **
+     = (string) pathstring for the segment
+    \*/
+    elproto.getSubpath = function (from, to) {
+        var path = this.getPath();
+        if (!path) {
+            return;
+        }
+
+        return R.getSubpath(path, from, to);
+    };
+    /*\
+     * Raphael.easing_formulas
+     [ property ]
+     **
+     * Object that contains easing formulas for animation. You could extend it with your own. By default it has following list of easing:
+     # <ul>
+     #     <li>“linear”</li>
+     #     <li>“&lt;” or “easeIn” or “ease-in”</li>
+     #     <li>“>” or “easeOut” or “ease-out”</li>
+     #     <li>“&lt;>” or “easeInOut” or “ease-in-out”</li>
+     #     <li>“backIn” or “back-in”</li>
+     #     <li>“backOut” or “back-out”</li>
+     #     <li>“elastic”</li>
+     #     <li>“bounce”</li>
+     # </ul>
+     # <p>See also <a href="http://raphaeljs.com/easing.html">Easing demo</a>.</p>
+    \*/
+    var ef = R.easing_formulas = {
+        linear: function (n) {
+            return n;
+        },
+        "<": function (n) {
+            return pow(n, 1.7);
+        },
+        ">": function (n) {
+            return pow(n, .48);
+        },
+        "<>": function (n) {
+            var q = .48 - n / 1.04,
+                Q = math.sqrt(.1734 + q * q),
+                x = Q - q,
+                X = pow(abs(x), 1 / 3) * (x < 0 ? -1 : 1),
+                y = -Q - q,
+                Y = pow(abs(y), 1 / 3) * (y < 0 ? -1 : 1),
+                t = X + Y + .5;
+            return (1 - t) * 3 * t * t + t * t * t;
+        },
+        backIn: function (n) {
+            var s = 1.70158;
+            return n * n * ((s + 1) * n - s);
+        },
+        backOut: function (n) {
+            n = n - 1;
+            var s = 1.70158;
+            return n * n * ((s + 1) * n + s) + 1;
+        },
+        elastic: function (n) {
+            if (n == !!n) {
+                return n;
+            }
+            return pow(2, -10 * n) * math.sin((n - .075) * (2 * PI) / .3) + 1;
+        },
+        bounce: function (n) {
+            var s = 7.5625,
+                p = 2.75,
+                l;
+            if (n < (1 / p)) {
+                l = s * n * n;
+            } else {
+                if (n < (2 / p)) {
+                    n -= (1.5 / p);
+                    l = s * n * n + .75;
+                } else {
+                    if (n < (2.5 / p)) {
+                        n -= (2.25 / p);
+                        l = s * n * n + .9375;
+                    } else {
+                        n -= (2.625 / p);
+                        l = s * n * n + .984375;
+                    }
+                }
+            }
+            return l;
+        }
+    };
+    ef.easeIn = ef["ease-in"] = ef["<"];
+    ef.easeOut = ef["ease-out"] = ef[">"];
+    ef.easeInOut = ef["ease-in-out"] = ef["<>"];
+    ef["back-in"] = ef.backIn;
+    ef["back-out"] = ef.backOut;
+
+    var animationElements = [],
+        requestAnimFrame = window.requestAnimationFrame       ||
+                           window.webkitRequestAnimationFrame ||
+                           window.mozRequestAnimationFrame    ||
+                           window.oRequestAnimationFrame      ||
+                           window.msRequestAnimationFrame     ||
+                           function (callback) {
+                               setTimeout(callback, 16);
+                           },
+        animation = function () {
+            var Now = +new Date,
+                l = 0;
+            for (; l < animationElements.length; l++) {
+                var e = animationElements[l];
+                if (e.el.removed || e.paused) {
+                    continue;
+                }
+                var time = Now - e.start,
+                    ms = e.ms,
+                    easing = e.easing,
+                    from = e.from,
+                    diff = e.diff,
+                    to = e.to,
+                    t = e.t,
+                    that = e.el,
+                    set = {},
+                    now,
+                    init = {},
+                    key;
+                if (e.initstatus) {
+                    time = (e.initstatus * e.anim.top - e.prev) / (e.percent - e.prev) * ms;
+                    e.status = e.initstatus;
+                    delete e.initstatus;
+                    e.stop && animationElements.splice(l--, 1);
+                } else {
+                    e.status = (e.prev + (e.percent - e.prev) * (time / ms)) / e.anim.top;
+                }
+                if (time < 0) {
+                    continue;
+                }
+                if (time < ms) {
+                    var pos = easing(time / ms);
+                    for (var attr in from) if (from[has](attr)) {
+                        switch (availableAnimAttrs[attr]) {
+                            case nu:
+                                now = +from[attr] + pos * ms * diff[attr];
+                                break;
+                            case "colour":
+                                now = "rgb(" + [
+                                    upto255(round(from[attr].r + pos * ms * diff[attr].r)),
+                                    upto255(round(from[attr].g + pos * ms * diff[attr].g)),
+                                    upto255(round(from[attr].b + pos * ms * diff[attr].b))
+                                ].join(",") + ")";
+                                break;
+                            case "path":
+                                now = [];
+                                for (var i = 0, ii = from[attr].length; i < ii; i++) {
+                                    now[i] = [from[attr][i][0]];
+                                    for (var j = 1, jj = from[attr][i].length; j < jj; j++) {
+                                        now[i][j] = +from[attr][i][j] + pos * ms * diff[attr][i][j];
+                                    }
+                                    now[i] = now[i].join(S);
+                                }
+                                now = now.join(S);
+                                break;
+                            case "transform":
+                                if (diff[attr].real) {
+                                    now = [];
+                                    for (i = 0, ii = from[attr].length; i < ii; i++) {
+                                        now[i] = [from[attr][i][0]];
+                                        for (j = 1, jj = from[attr][i].length; j < jj; j++) {
+                                            now[i][j] = from[attr][i][j] + pos * ms * diff[attr][i][j];
+                                        }
+                                    }
+                                } else {
+                                    var get = function (i) {
+                                        return +from[attr][i] + pos * ms * diff[attr][i];
+                                    };
+                                    // now = [["r", get(2), 0, 0], ["t", get(3), get(4)], ["s", get(0), get(1), 0, 0]];
+                                    now = [["m", get(0), get(1), get(2), get(3), get(4), get(5)]];
+                                }
+                                break;
+                            case "csv":
+                                if (attr == "clip-rect") {
+                                    now = [];
+                                    i = 4;
+                                    while (i--) {
+                                        now[i] = +from[attr][i] + pos * ms * diff[attr][i];
+                                    }
+                                }
+                                break;
+                            default:
+                                var from2 = [][concat](from[attr]);
+                                now = [];
+                                i = that.paper.customAttributes[attr].length;
+                                while (i--) {
+                                    now[i] = +from2[i] + pos * ms * diff[attr][i];
+                                }
+                                break;
+                        }
+                        set[attr] = now;
+                    }
+                    that.attr(set);
+                    (function (id, that, anim) {
+                        setTimeout(function () {
+                            eve("raphael.anim.frame." + id, that, anim);
+                        });
+                    })(that.id, that, e.anim);
+                } else {
+                    (function(f, el, a) {
+                        setTimeout(function() {
+                            eve("raphael.anim.frame." + el.id, el, a);
+                            eve("raphael.anim.finish." + el.id, el, a);
+                            R.is(f, "function") && f.call(el);
+                        });
+                    })(e.callback, that, e.anim);
+                    that.attr(to);
+                    animationElements.splice(l--, 1);
+                    if (e.repeat > 1 && !e.next) {
+                        for (key in to) if (to[has](key)) {
+                            init[key] = e.totalOrigin[key];
+                        }
+                        e.el.attr(init);
+                        runAnimation(e.anim, e.el, e.anim.percents[0], null, e.totalOrigin, e.repeat - 1);
+                    }
+                    if (e.next && !e.stop) {
+                        runAnimation(e.anim, e.el, e.next, null, e.totalOrigin, e.repeat);
+                    }
+                }
+            }
+            R.svg && that && that.paper && that.paper.safari();
+            animationElements.length && requestAnimFrame(animation);
+        },
+        upto255 = function (color) {
+            return color > 255 ? 255 : color < 0 ? 0 : color;
+        };
+    /*\
+     * Element.animateWith
+     [ method ]
+     **
+     * Acts similar to @Element.animate, but ensure that given animation runs in sync with another given element.
+     **
+     > Parameters
+     **
+     - el (object) element to sync with
+     - anim (object) animation to sync with
+     - params (object) #optional final attributes for the element, see also @Element.attr
+     - ms (number) #optional number of milliseconds for animation to run
+     - easing (string) #optional easing type. Accept on of @Raphael.easing_formulas or CSS format: `cubic&#x2010;bezier(XX,&#160;XX,&#160;XX,&#160;XX)`
+     - callback (function) #optional callback function. Will be called at the end of animation.
+     * or
+     - element (object) element to sync with
+     - anim (object) animation to sync with
+     - animation (object) #optional animation object, see @Raphael.animation
+     **
+     = (object) original element
+    \*/
+    elproto.animateWith = function (el, anim, params, ms, easing, callback) {
+        var element = this;
+        if (element.removed) {
+            callback && callback.call(element);
+            return element;
+        }
+        var a = params instanceof Animation ? params : R.animation(params, ms, easing, callback),
+            x, y;
+        runAnimation(a, element, a.percents[0], null, element.attr());
+        for (var i = 0, ii = animationElements.length; i < ii; i++) {
+            if (animationElements[i].anim == anim && animationElements[i].el == el) {
+                animationElements[ii - 1].start = animationElements[i].start;
+                break;
+            }
+        }
+        return element;
+        // 
+        // 
+        // var a = params ? R.animation(params, ms, easing, callback) : anim,
+        //     status = element.status(anim);
+        // return this.animate(a).status(a, status * anim.ms / a.ms);
+    };
+    function CubicBezierAtTime(t, p1x, p1y, p2x, p2y, duration) {
+        var cx = 3 * p1x,
+            bx = 3 * (p2x - p1x) - cx,
+            ax = 1 - cx - bx,
+            cy = 3 * p1y,
+            by = 3 * (p2y - p1y) - cy,
+            ay = 1 - cy - by;
+        function sampleCurveX(t) {
+            return ((ax * t + bx) * t + cx) * t;
+        }
+        function solve(x, epsilon) {
+            var t = solveCurveX(x, epsilon);
+            return ((ay * t + by) * t + cy) * t;
+        }
+        function solveCurveX(x, epsilon) {
+            var t0, t1, t2, x2, d2, i;
+            for(t2 = x, i = 0; i < 8; i++) {
+                x2 = sampleCurveX(t2) - x;
+                if (abs(x2) < epsilon) {
+                    return t2;
+                }
+                d2 = (3 * ax * t2 + 2 * bx) * t2 + cx;
+                if (abs(d2) < 1e-6) {
+                    break;
+                }
+                t2 = t2 - x2 / d2;
+            }
+            t0 = 0;
+            t1 = 1;
+            t2 = x;
+            if (t2 < t0) {
+                return t0;
+            }
+            if (t2 > t1) {
+                return t1;
+            }
+            while (t0 < t1) {
+                x2 = sampleCurveX(t2);
+                if (abs(x2 - x) < epsilon) {
+                    return t2;
+                }
+                if (x > x2) {
+                    t0 = t2;
+                } else {
+                    t1 = t2;
+                }
+                t2 = (t1 - t0) / 2 + t0;
+            }
+            return t2;
+        }
+        return solve(t, 1 / (200 * duration));
+    }
+    elproto.onAnimation = function (f) {
+        f ? eve.on("raphael.anim.frame." + this.id, f) : eve.unbind("raphael.anim.frame." + this.id);
+        return this;
+    };
+    function Animation(anim, ms) {
+        var percents = [],
+            newAnim = {};
+        this.ms = ms;
+        this.times = 1;
+        if (anim) {
+            for (var attr in anim) if (anim[has](attr)) {
+                newAnim[toFloat(attr)] = anim[attr];
+                percents.push(toFloat(attr));
+            }
+            percents.sort(sortByNumber);
+        }
+        this.anim = newAnim;
+        this.top = percents[percents.length - 1];
+        this.percents = percents;
+    }
+    /*\
+     * Animation.delay
+     [ method ]
+     **
+     * Creates a copy of existing animation object with given delay.
+     **
+     > Parameters
+     **
+     - delay (number) number of ms to pass between animation start and actual animation
+     **
+     = (object) new altered Animation object
+     | var anim = Raphael.animation({cx: 10, cy: 20}, 2e3);
+     | circle1.animate(anim); // run the given animation immediately
+     | circle2.animate(anim.delay(500)); // run the given animation after 500 ms
+    \*/
+    Animation.prototype.delay = function (delay) {
+        var a = new Animation(this.anim, this.ms);
+        a.times = this.times;
+        a.del = +delay || 0;
+        return a;
+    };
+    /*\
+     * Animation.repeat
+     [ method ]
+     **
+     * Creates a copy of existing animation object with given repetition.
+     **
+     > Parameters
+     **
+     - repeat (number) number iterations of animation. For infinite animation pass `Infinity`
+     **
+     = (object) new altered Animation object
+    \*/
+    Animation.prototype.repeat = function (times) {
+        var a = new Animation(this.anim, this.ms);
+        a.del = this.del;
+        a.times = math.floor(mmax(times, 0)) || 1;
+        return a;
+    };
+    function runAnimation(anim, element, percent, status, totalOrigin, times) {
+        percent = toFloat(percent);
+        var params,
+            isInAnim,
+            isInAnimSet,
+            percents = [],
+            next,
+            prev,
+            timestamp,
+            ms = anim.ms,
+            from = {},
+            to = {},
+            diff = {};
+        if (status) {
+            for (i = 0, ii = animationElements.length; i < ii; i++) {
+                var e = animationElements[i];
+                if (e.el.id == element.id && e.anim == anim) {
+                    if (e.percent != percent) {
+                        animationElements.splice(i, 1);
+                        isInAnimSet = 1;
+                    } else {
+                        isInAnim = e;
+                    }
+                    element.attr(e.totalOrigin);
+                    break;
+                }
+            }
+        } else {
+            status = +to; // NaN
+        }
+        for (var i = 0, ii = anim.percents.length; i < ii; i++) {
+            if (anim.percents[i] == percent || anim.percents[i] > status * anim.top) {
+                percent = anim.percents[i];
+                prev = anim.percents[i - 1] || 0;
+                ms = ms / anim.top * (percent - prev);
+                next = anim.percents[i + 1];
+                params = anim.anim[percent];
+                break;
+            } else if (status) {
+                element.attr(anim.anim[anim.percents[i]]);
+            }
+        }
+        if (!params) {
+            return;
+        }
+        if (!isInAnim) {
+            for (var attr in params) if (params[has](attr)) {
+                if (availableAnimAttrs[has](attr) || element.paper.customAttributes[has](attr)) {
+                    from[attr] = element.attr(attr);
+                    (from[attr] == null) && (from[attr] = availableAttrs[attr]);
+                    to[attr] = params[attr];
+                    switch (availableAnimAttrs[attr]) {
+                        case nu:
+                            diff[attr] = (to[attr] - from[attr]) / ms;
+                            break;
+                        case "colour":
+                            from[attr] = R.getRGB(from[attr]);
+                            var toColour = R.getRGB(to[attr]);
+                            diff[attr] = {
+                                r: (toColour.r - from[attr].r) / ms,
+                                g: (toColour.g - from[attr].g) / ms,
+                                b: (toColour.b - from[attr].b) / ms
+                            };
+                            break;
+                        case "path":
+                            var pathes = path2curve(from[attr], to[attr]),
+                                toPath = pathes[1];
+                            from[attr] = pathes[0];
+                            diff[attr] = [];
+                            for (i = 0, ii = from[attr].length; i < ii; i++) {
+                                diff[attr][i] = [0];
+                                for (var j = 1, jj = from[attr][i].length; j < jj; j++) {
+                                    diff[attr][i][j] = (toPath[i][j] - from[attr][i][j]) / ms;
+                                }
+                            }
+                            break;
+                        case "transform":
+                            var _ = element._,
+                                eq = equaliseTransform(_[attr], to[attr]);
+                            if (eq) {
+                                from[attr] = eq.from;
+                                to[attr] = eq.to;
+                                diff[attr] = [];
+                                diff[attr].real = true;
+                                for (i = 0, ii = from[attr].length; i < ii; i++) {
+                                    diff[attr][i] = [from[attr][i][0]];
+                                    for (j = 1, jj = from[attr][i].length; j < jj; j++) {
+                                        diff[attr][i][j] = (to[attr][i][j] - from[attr][i][j]) / ms;
+                                    }
+                                }
+                            } else {
+                                var m = (element.matrix || new Matrix),
+                                    to2 = {
+                                        _: {transform: _.transform},
+                                        getBBox: function () {
+                                            return element.getBBox(1);
+                                        }
+                                    };
+                                from[attr] = [
+                                    m.a,
+                                    m.b,
+                                    m.c,
+                                    m.d,
+                                    m.e,
+                                    m.f
+                                ];
+                                extractTransform(to2, to[attr]);
+                                to[attr] = to2._.transform;
+                                diff[attr] = [
+                                    (to2.matrix.a - m.a) / ms,
+                                    (to2.matrix.b - m.b) / ms,
+                                    (to2.matrix.c - m.c) / ms,
+                                    (to2.matrix.d - m.d) / ms,
+                                    (to2.matrix.e - m.e) / ms,
+                                    (to2.matrix.f - m.f) / ms
+                                ];
+                                // from[attr] = [_.sx, _.sy, _.deg, _.dx, _.dy];
+                                // var to2 = {_:{}, getBBox: function () { return element.getBBox(); }};
+                                // extractTransform(to2, to[attr]);
+                                // diff[attr] = [
+                                //     (to2._.sx - _.sx) / ms,
+                                //     (to2._.sy - _.sy) / ms,
+                                //     (to2._.deg - _.deg) / ms,
+                                //     (to2._.dx - _.dx) / ms,
+                                //     (to2._.dy - _.dy) / ms
+                                // ];
+                            }
+                            break;
+                        case "csv":
+                            var values = Str(params[attr])[split](separator),
+                                from2 = Str(from[attr])[split](separator);
+                            if (attr == "clip-rect") {
+                                from[attr] = from2;
+                                diff[attr] = [];
+                                i = from2.length;
+                                while (i--) {
+                                    diff[attr][i] = (values[i] - from[attr][i]) / ms;
+                                }
+                            }
+                            to[attr] = values;
+                            break;
+                        default:
+                            values = [][concat](params[attr]);
+                            from2 = [][concat](from[attr]);
+                            diff[attr] = [];
+                            i = element.paper.customAttributes[attr].length;
+                            while (i--) {
+                                diff[attr][i] = ((values[i] || 0) - (from2[i] || 0)) / ms;
+                            }
+                            break;
+                    }
+                }
+            }
+            var easing = params.easing,
+                easyeasy = R.easing_formulas[easing];
+            if (!easyeasy) {
+                easyeasy = Str(easing).match(bezierrg);
+                if (easyeasy && easyeasy.length == 5) {
+                    var curve = easyeasy;
+                    easyeasy = function (t) {
+                        return CubicBezierAtTime(t, +curve[1], +curve[2], +curve[3], +curve[4], ms);
+                    };
+                } else {
+                    easyeasy = pipe;
+                }
+            }
+            timestamp = params.start || anim.start || +new Date;
+            e = {
+                anim: anim,
+                percent: percent,
+                timestamp: timestamp,
+                start: timestamp + (anim.del || 0),
+                status: 0,
+                initstatus: status || 0,
+                stop: false,
+                ms: ms,
+                easing: easyeasy,
+                from: from,
+                diff: diff,
+                to: to,
+                el: element,
+                callback: params.callback,
+                prev: prev,
+                next: next,
+                repeat: times || anim.times,
+                origin: element.attr(),
+                totalOrigin: totalOrigin
+            };
+            animationElements.push(e);
+            if (status && !isInAnim && !isInAnimSet) {
+                e.stop = true;
+                e.start = new Date - ms * status;
+                if (animationElements.length == 1) {
+                    return animation();
+                }
+            }
+            if (isInAnimSet) {
+                e.start = new Date - e.ms * status;
+            }
+            animationElements.length == 1 && requestAnimFrame(animation);
+        } else {
+            isInAnim.initstatus = status;
+            isInAnim.start = new Date - isInAnim.ms * status;
+        }
+        eve("raphael.anim.start." + element.id, element, anim);
+    }
+    /*\
+     * Raphael.animation
+     [ method ]
+     **
+     * Creates an animation object that can be passed to the @Element.animate or @Element.animateWith methods.
+     * See also @Animation.delay and @Animation.repeat methods.
+     **
+     > Parameters
+     **
+     - params (object) final attributes for the element, see also @Element.attr
+     - ms (number) number of milliseconds for animation to run
+     - easing (string) #optional easing type. Accept one of @Raphael.easing_formulas or CSS format: `cubic&#x2010;bezier(XX,&#160;XX,&#160;XX,&#160;XX)`
+     - callback (function) #optional callback function. Will be called at the end of animation.
+     **
+     = (object) @Animation
+    \*/
+    R.animation = function (params, ms, easing, callback) {
+        if (params instanceof Animation) {
+            return params;
+        }
+        if (R.is(easing, "function") || !easing) {
+            callback = callback || easing || null;
+            easing = null;
+        }
+        params = Object(params);
+        ms = +ms || 0;
+        var p = {},
+            json,
+            attr;
+        for (attr in params) if (params[has](attr) && toFloat(attr) != attr && toFloat(attr) + "%" != attr) {
+            json = true;
+            p[attr] = params[attr];
+        }
+        if (!json) {
+            return new Animation(params, ms);
+        } else {
+            easing && (p.easing = easing);
+            callback && (p.callback = callback);
+            return new Animation({100: p}, ms);
+        }
+    };
+    /*\
+     * Element.animate
+     [ method ]
+     **
+     * Creates and starts animation for given element.
+     **
+     > Parameters
+     **
+     - params (object) final attributes for the element, see also @Element.attr
+     - ms (number) number of milliseconds for animation to run
+     - easing (string) #optional easing type. Accept one of @Raphael.easing_formulas or CSS format: `cubic&#x2010;bezier(XX,&#160;XX,&#160;XX,&#160;XX)`
+     - callback (function) #optional callback function. Will be called at the end of animation.
+     * or
+     - animation (object) animation object, see @Raphael.animation
+     **
+     = (object) original element
+    \*/
+    elproto.animate = function (params, ms, easing, callback) {
+        var element = this;
+        if (element.removed) {
+            callback && callback.call(element);
+            return element;
+        }
+        var anim = params instanceof Animation ? params : R.animation(params, ms, easing, callback);
+        runAnimation(anim, element, anim.percents[0], null, element.attr());
+        return element;
+    };
+    /*\
+     * Element.setTime
+     [ method ]
+     **
+     * Sets the status of animation of the element in milliseconds. Similar to @Element.status method.
+     **
+     > Parameters
+     **
+     - anim (object) animation object
+     - value (number) number of milliseconds from the beginning of the animation
+     **
+     = (object) original element if `value` is specified
+     * Note, that during animation following events are triggered:
+     *
+     * On each animation frame event `anim.frame.<id>`, on start `anim.start.<id>` and on end `anim.finish.<id>`.
+    \*/
+    elproto.setTime = function (anim, value) {
+        if (anim && value != null) {
+            this.status(anim, mmin(value, anim.ms) / anim.ms);
+        }
+        return this;
+    };
+    /*\
+     * Element.status
+     [ method ]
+     **
+     * Gets or sets the status of animation of the element.
+     **
+     > Parameters
+     **
+     - anim (object) #optional animation object
+     - value (number) #optional 0 – 1. If specified, method works like a setter and sets the status of a given animation to the value. This will cause animation to jump to the given position.
+     **
+     = (number) status
+     * or
+     = (array) status if `anim` is not specified. Array of objects in format:
+     o {
+     o     anim: (object) animation object
+     o     status: (number) status
+     o }
+     * or
+     = (object) original element if `value` is specified
+    \*/
+    elproto.status = function (anim, value) {
+        var out = [],
+            i = 0,
+            len,
+            e;
+        if (value != null) {
+            runAnimation(anim, this, -1, mmin(value, 1));
+            return this;
+        } else {
+            len = animationElements.length;
+            for (; i < len; i++) {
+                e = animationElements[i];
+                if (e.el.id == this.id && (!anim || e.anim == anim)) {
+                    if (anim) {
+                        return e.status;
+                    }
+                    out.push({
+                        anim: e.anim,
+                        status: e.status
+                    });
+                }
+            }
+            if (anim) {
+                return 0;
+            }
+            return out;
+        }
+    };
+    /*\
+     * Element.pause
+     [ method ]
+     **
+     * Stops animation of the element with ability to resume it later on.
+     **
+     > Parameters
+     **
+     - anim (object) #optional animation object
+     **
+     = (object) original element
+    \*/
+    elproto.pause = function (anim) {
+        for (var i = 0; i < animationElements.length; i++) if (animationElements[i].el.id == this.id && (!anim || animationElements[i].anim == anim)) {
+            if (eve("raphael.anim.pause." + this.id, this, animationElements[i].anim) !== false) {
+                animationElements[i].paused = true;
+            }
+        }
+        return this;
+    };
+    /*\
+     * Element.resume
+     [ method ]
+     **
+     * Resumes animation if it was paused with @Element.pause method.
+     **
+     > Parameters
+     **
+     - anim (object) #optional animation object
+     **
+     = (object) original element
+    \*/
+    elproto.resume = function (anim) {
+        for (var i = 0; i < animationElements.length; i++) if (animationElements[i].el.id == this.id && (!anim || animationElements[i].anim == anim)) {
+            var e = animationElements[i];
+            if (eve("raphael.anim.resume." + this.id, this, e.anim) !== false) {
+                delete e.paused;
+                this.status(e.anim, e.status);
+            }
+        }
+        return this;
+    };
+    /*\
+     * Element.stop
+     [ method ]
+     **
+     * Stops animation of the element.
+     **
+     > Parameters
+     **
+     - anim (object) #optional animation object
+     **
+     = (object) original element
+    \*/
+    elproto.stop = function (anim) {
+        for (var i = 0; i < animationElements.length; i++) if (animationElements[i].el.id == this.id && (!anim || animationElements[i].anim == anim)) {
+            if (eve("raphael.anim.stop." + this.id, this, animationElements[i].anim) !== false) {
+                animationElements.splice(i--, 1);
+            }
+        }
+        return this;
+    };
+    function stopAnimation(paper) {
+        for (var i = 0; i < animationElements.length; i++) if (animationElements[i].el.paper == paper) {
+            animationElements.splice(i--, 1);
+        }
+    }
+    eve.on("raphael.remove", stopAnimation);
+    eve.on("raphael.clear", stopAnimation);
+    elproto.toString = function () {
+        return "Rapha\xebl\u2019s object";
+    };
+
+    // Set
+    var Set = function (items) {
+        this.items = [];
+        this.length = 0;
+        this.type = "set";
+        if (items) {
+            for (var i = 0, ii = items.length; i < ii; i++) {
+                if (items[i] && (items[i].constructor == elproto.constructor || items[i].constructor == Set)) {
+                    this[this.items.length] = this.items[this.items.length] = items[i];
+                    this.length++;
+                }
+            }
+        }
+    },
+    setproto = Set.prototype;
+    /*\
+     * Set.push
+     [ method ]
+     **
+     * Adds each argument to the current set.
+     = (object) original element
+    \*/
+    setproto.push = function () {
+        var item,
+            len;
+        for (var i = 0, ii = arguments.length; i < ii; i++) {
+            item = arguments[i];
+            if (item && (item.constructor == elproto.constructor || item.constructor == Set)) {
+                len = this.items.length;
+                this[len] = this.items[len] = item;
+                this.length++;
+            }
+        }
+        return this;
+    };
+    /*\
+     * Set.pop
+     [ method ]
+     **
+     * Removes last element and returns it.
+     = (object) element
+    \*/
+    setproto.pop = function () {
+        this.length && delete this[this.length--];
+        return this.items.pop();
+    };
+    /*\
+     * Set.forEach
+     [ method ]
+     **
+     * Executes given function for each element in the set.
+     *
+     * If function returns `false` it will stop loop running.
+     **
+     > Parameters
+     **
+     - callback (function) function to run
+     - thisArg (object) context object for the callback
+     = (object) Set object
+    \*/
+    setproto.forEach = function (callback, thisArg) {
+        for (var i = 0, ii = this.items.length; i < ii; i++) {
+            if (callback.call(thisArg, this.items[i], i) === false) {
+                return this;
+            }
+        }
+        return this;
+    };
+    for (var method in elproto) if (elproto[has](method)) {
+        setproto[method] = (function (methodname) {
+            return function () {
+                var arg = arguments;
+                return this.forEach(function (el) {
+                    el[methodname][apply](el, arg);
+                });
+            };
+        })(method);
+    }
+    setproto.attr = function (name, value) {
+        if (name && R.is(name, array) && R.is(name[0], "object")) {
+            for (var j = 0, jj = name.length; j < jj; j++) {
+                this.items[j].attr(name[j]);
+            }
+        } else {
+            for (var i = 0, ii = this.items.length; i < ii; i++) {
+                this.items[i].attr(name, value);
+            }
+        }
+        return this;
+    };
+    /*\
+     * Set.clear
+     [ method ]
+     **
+     * Removeds all elements from the set
+    \*/
+    setproto.clear = function () {
+        while (this.length) {
+            this.pop();
+        }
+    };
+    /*\
+     * Set.splice
+     [ method ]
+     **
+     * Removes given element from the set
+     **
+     > Parameters
+     **
+     - index (number) position of the deletion
+     - count (number) number of element to remove
+     - insertion… (object) #optional elements to insert
+     = (object) set elements that were deleted
+    \*/
+    setproto.splice = function (index, count, insertion) {
+        index = index < 0 ? mmax(this.length + index, 0) : index;
+        count = mmax(0, mmin(this.length - index, count));
+        var tail = [],
+            todel = [],
+            args = [],
+            i;
+        for (i = 2; i < arguments.length; i++) {
+            args.push(arguments[i]);
+        }
+        for (i = 0; i < count; i++) {
+            todel.push(this[index + i]);
+        }
+        for (; i < this.length - index; i++) {
+            tail.push(this[index + i]);
+        }
+        var arglen = args.length;
+        for (i = 0; i < arglen + tail.length; i++) {
+            this.items[index + i] = this[index + i] = i < arglen ? args[i] : tail[i - arglen];
+        }
+        i = this.items.length = this.length -= count - arglen;
+        while (this[i]) {
+            delete this[i++];
+        }
+        return new Set(todel);
+    };
+    /*\
+     * Set.exclude
+     [ method ]
+     **
+     * Removes given element from the set
+     **
+     > Parameters
+     **
+     - element (object) element to remove
+     = (boolean) `true` if object was found & removed from the set
+    \*/
+    setproto.exclude = function (el) {
+        for (var i = 0, ii = this.length; i < ii; i++) if (this[i] == el) {
+            this.splice(i, 1);
+            return true;
+        }
+    };
+    setproto.animate = function (params, ms, easing, callback) {
+        (R.is(easing, "function") || !easing) && (callback = easing || null);
+        var len = this.items.length,
+            i = len,
+            item,
+            set = this,
+            collector;
+        if (!len) {
+            return this;
+        }
+        callback && (collector = function () {
+            !--len && callback.call(set);
+        });
+        easing = R.is(easing, string) ? easing : collector;
+        var anim = R.animation(params, ms, easing, collector);
+        item = this.items[--i].animate(anim);
+        while (i--) {
+            this.items[i] && !this.items[i].removed && this.items[i].animateWith(item, anim, anim);
+            (this.items[i] && !this.items[i].removed) || len--;
+        }
+        return this;
+    };
+    setproto.insertAfter = function (el) {
+        var i = this.items.length;
+        while (i--) {
+            this.items[i].insertAfter(el);
+        }
+        return this;
+    };
+    setproto.getBBox = function () {
+        var x = [],
+            y = [],
+            x2 = [],
+            y2 = [];
+        for (var i = this.items.length; i--;) if (!this.items[i].removed) {
+            var box = this.items[i].getBBox();
+            x.push(box.x);
+            y.push(box.y);
+            x2.push(box.x + box.width);
+            y2.push(box.y + box.height);
+        }
+        x = mmin[apply](0, x);
+        y = mmin[apply](0, y);
+        x2 = mmax[apply](0, x2);
+        y2 = mmax[apply](0, y2);
+        return {
+            x: x,
+            y: y,
+            x2: x2,
+            y2: y2,
+            width: x2 - x,
+            height: y2 - y
+        };
+    };
+    setproto.clone = function (s) {
+        s = this.paper.set();
+        for (var i = 0, ii = this.items.length; i < ii; i++) {
+            s.push(this.items[i].clone());
+        }
+        return s;
+    };
+    setproto.toString = function () {
+        return "Rapha\xebl\u2018s set";
+    };
+
+    setproto.glow = function(glowConfig) {
+        var ret = this.paper.set();
+        this.forEach(function(shape, index){
+            var g = shape.glow(glowConfig);
+            if(g != null){
+                g.forEach(function(shape2, index2){
+                    ret.push(shape2);
+                });
+            }
+        });
+        return ret;
+    };
+
+
+    /*\
+     * Set.isPointInside
+     [ method ]
+     **
+     * Determine if given point is inside this set’s elements
+     **
+     > Parameters
+     **
+     - x (number) x coordinate of the point
+     - y (number) y coordinate of the point
+     = (boolean) `true` if point is inside any of the set's elements
+     \*/
+    setproto.isPointInside = function (x, y) {
+        var isPointInside = false;
+        this.forEach(function (el) {
+            if (el.isPointInside(x, y)) {
+                isPointInside = true;
+                return false; // stop loop
+            }
+        });
+        return isPointInside;
+    };
+
+    /*\
+     * Raphael.registerFont
+     [ method ]
+     **
+     * Adds given font to the registered set of fonts for Raphaël. Should be used as an internal call from within Cufón’s font file.
+     * Returns original parameter, so it could be used with chaining.
+     # <a href="http://wiki.github.com/sorccu/cufon/about">More about Cufón and how to convert your font form TTF, OTF, etc to JavaScript file.</a>
+     **
+     > Parameters
+     **
+     - font (object) the font to register
+     = (object) the font you passed in
+     > Usage
+     | Cufon.registerFont(Raphael.registerFont({…}));
+    \*/
+    R.registerFont = function (font) {
+        if (!font.face) {
+            return font;
+        }
+        this.fonts = this.fonts || {};
+        var fontcopy = {
+                w: font.w,
+                face: {},
+                glyphs: {}
+            },
+            family = font.face["font-family"];
+        for (var prop in font.face) if (font.face[has](prop)) {
+            fontcopy.face[prop] = font.face[prop];
+        }
+        if (this.fonts[family]) {
+            this.fonts[family].push(fontcopy);
+        } else {
+            this.fonts[family] = [fontcopy];
+        }
+        if (!font.svg) {
+            fontcopy.face["units-per-em"] = toInt(font.face["units-per-em"], 10);
+            for (var glyph in font.glyphs) if (font.glyphs[has](glyph)) {
+                var path = font.glyphs[glyph];
+                fontcopy.glyphs[glyph] = {
+                    w: path.w,
+                    k: {},
+                    d: path.d && "M" + path.d.replace(/[mlcxtrv]/g, function (command) {
+                            return {l: "L", c: "C", x: "z", t: "m", r: "l", v: "c"}[command] || "M";
+                        }) + "z"
+                };
+                if (path.k) {
+                    for (var k in path.k) if (path[has](k)) {
+                        fontcopy.glyphs[glyph].k[k] = path.k[k];
+                    }
+                }
+            }
+        }
+        return font;
+    };
+    /*\
+     * Paper.getFont
+     [ method ]
+     **
+     * Finds font object in the registered fonts by given parameters. You could specify only one word from the font name, like “Myriad” for “Myriad Pro”.
+     **
+     > Parameters
+     **
+     - family (string) font family name or any word from it
+     - weight (string) #optional font weight
+     - style (string) #optional font style
+     - stretch (string) #optional font stretch
+     = (object) the font object
+     > Usage
+     | paper.print(100, 100, "Test string", paper.getFont("Times", 800), 30);
+    \*/
+    paperproto.getFont = function (family, weight, style, stretch) {
+        stretch = stretch || "normal";
+        style = style || "normal";
+        weight = +weight || {normal: 400, bold: 700, lighter: 300, bolder: 800}[weight] || 400;
+        if (!R.fonts) {
+            return;
+        }
+        var font = R.fonts[family];
+        if (!font) {
+            var name = new RegExp("(^|\\s)" + family.replace(/[^\w\d\s+!~.:_-]/g, E) + "(\\s|$)", "i");
+            for (var fontName in R.fonts) if (R.fonts[has](fontName)) {
+                if (name.test(fontName)) {
+                    font = R.fonts[fontName];
+                    break;
+                }
+            }
+        }
+        var thefont;
+        if (font) {
+            for (var i = 0, ii = font.length; i < ii; i++) {
+                thefont = font[i];
+                if (thefont.face["font-weight"] == weight && (thefont.face["font-style"] == style || !thefont.face["font-style"]) && thefont.face["font-stretch"] == stretch) {
+                    break;
+                }
+            }
+        }
+        return thefont;
+    };
+    /*\
+     * Paper.print
+     [ method ]
+     **
+     * Creates path that represent given text written using given font at given position with given size.
+     * Result of the method is path element that contains whole text as a separate path.
+     **
+     > Parameters
+     **
+     - x (number) x position of the text
+     - y (number) y position of the text
+     - string (string) text to print
+     - font (object) font object, see @Paper.getFont
+     - size (number) #optional size of the font, default is `16`
+     - origin (string) #optional could be `"baseline"` or `"middle"`, default is `"middle"`
+     - letter_spacing (number) #optional number in range `-1..1`, default is `0`
+     - line_spacing (number) #optional number in range `1..3`, default is `1`
+     = (object) resulting path element, which consist of all letters
+     > Usage
+     | var txt = r.print(10, 50, "print", r.getFont("Museo"), 30).attr({fill: "#fff"});
+    \*/
+    paperproto.print = function (x, y, string, font, size, origin, letter_spacing, line_spacing) {
+        origin = origin || "middle"; // baseline|middle
+        letter_spacing = mmax(mmin(letter_spacing || 0, 1), -1);
+        line_spacing = mmax(mmin(line_spacing || 1, 3), 1);
+        var letters = Str(string)[split](E),
+            shift = 0,
+            notfirst = 0,
+            path = E,
+            scale;
+        R.is(font, "string") && (font = this.getFont(font));
+        if (font) {
+            scale = (size || 16) / font.face["units-per-em"];
+            var bb = font.face.bbox[split](separator),
+                top = +bb[0],
+                lineHeight = bb[3] - bb[1],
+                shifty = 0,
+                height = +bb[1] + (origin == "baseline" ? lineHeight + (+font.face.descent) : lineHeight / 2);
+            for (var i = 0, ii = letters.length; i < ii; i++) {
+                if (letters[i] == "\n") {
+                    shift = 0;
+                    curr = 0;
+                    notfirst = 0;
+                    shifty += lineHeight * line_spacing;
+                } else {
+                    var prev = notfirst && font.glyphs[letters[i - 1]] || {},
+                        curr = font.glyphs[letters[i]];
+                    shift += notfirst ? (prev.w || font.w) + (prev.k && prev.k[letters[i]] || 0) + (font.w * letter_spacing) : 0;
+                    notfirst = 1;
+                }
+                if (curr && curr.d) {
+                    path += R.transformPath(curr.d, ["t", shift * scale, shifty * scale, "s", scale, scale, top, height, "t", (x - top) / scale, (y - height) / scale]);
+                }
+            }
+        }
+        return this.path(path).attr({
+            fill: "#000",
+            stroke: "none"
+        });
+    };
+
+    /*\
+     * Paper.add
+     [ method ]
+     **
+     * Imports elements in JSON array in format `{type: type, <attributes>}`
+     **
+     > Parameters
+     **
+     - json (array)
+     = (object) resulting set of imported elements
+     > Usage
+     | paper.add([
+     |     {
+     |         type: "circle",
+     |         cx: 10,
+     |         cy: 10,
+     |         r: 5
+     |     },
+     |     {
+     |         type: "rect",
+     |         x: 10,
+     |         y: 10,
+     |         width: 10,
+     |         height: 10,
+     |         fill: "#fc0"
+     |     }
+     | ]);
+    \*/
+    paperproto.add = function (json) {
+        if (R.is(json, "array")) {
+            var res = this.set(),
+                i = 0,
+                ii = json.length,
+                j;
+            for (; i < ii; i++) {
+                j = json[i] || {};
+                elements[has](j.type) && res.push(this[j.type]().attr(j));
+            }
+        }
+        return res;
+    };
+
+    /*\
+     * Raphael.format
+     [ method ]
+     **
+     * Simple format function. Replaces construction of type “`{<number>}`” to the corresponding argument.
+     **
+     > Parameters
+     **
+     - token (string) string to format
+     - … (string) rest of arguments will be treated as parameters for replacement
+     = (string) formated string
+     > Usage
+     | var x = 10,
+     |     y = 20,
+     |     width = 40,
+     |     height = 50;
+     | // this will draw a rectangular shape equivalent to "M10,20h40v50h-40z"
+     | paper.path(Raphael.format("M{0},{1}h{2}v{3}h{4}z", x, y, width, height, -width));
+    \*/
+    R.format = function (token, params) {
+        var args = R.is(params, array) ? [0][concat](params) : arguments;
+        token && R.is(token, string) && args.length - 1 && (token = token.replace(formatrg, function (str, i) {
+            return args[++i] == null ? E : args[i];
+        }));
+        return token || E;
+    };
+    /*\
+     * Raphael.fullfill
+     [ method ]
+     **
+     * A little bit more advanced format function than @Raphael.format. Replaces construction of type “`{<name>}`” to the corresponding argument.
+     **
+     > Parameters
+     **
+     - token (string) string to format
+     - json (object) object which properties will be used as a replacement
+     = (string) formated string
+     > Usage
+     | // this will draw a rectangular shape equivalent to "M10,20h40v50h-40z"
+     | paper.path(Raphael.fullfill("M{x},{y}h{dim.width}v{dim.height}h{dim['negative width']}z", {
+     |     x: 10,
+     |     y: 20,
+     |     dim: {
+     |         width: 40,
+     |         height: 50,
+     |         "negative width": -40
+     |     }
+     | }));
+    \*/
+    R.fullfill = (function () {
+        var tokenRegex = /\{([^\}]+)\}/g,
+            objNotationRegex = /(?:(?:^|\.)(.+?)(?=\[|\.|$|\()|\[('|")(.+?)\2\])(\(\))?/g, // matches .xxxxx or ["xxxxx"] to run over object properties
+            replacer = function (all, key, obj) {
+                var res = obj;
+                key.replace(objNotationRegex, function (all, name, quote, quotedName, isFunc) {
+                    name = name || quotedName;
+                    if (res) {
+                        if (name in res) {
+                            res = res[name];
+                        }
+                        typeof res == "function" && isFunc && (res = res());
+                    }
+                });
+                res = (res == null || res == obj ? all : res) + "";
+                return res;
+            };
+        return function (str, obj) {
+            return String(str).replace(tokenRegex, function (all, key) {
+                return replacer(all, key, obj);
+            });
+        };
+    })();
+    /*\
+     * Raphael.ninja
+     [ method ]
+     **
+     * If you want to leave no trace of Raphaël (Well, Raphaël creates only one global variable `Raphael`, but anyway.) You can use `ninja` method.
+     * Beware, that in this case plugins could stop working, because they are depending on global variable existance.
+     **
+     = (object) Raphael object
+     > Usage
+     | (function (local_raphael) {
+     |     var paper = local_raphael(10, 10, 320, 200);
+     |     …
+     | })(Raphael.ninja());
+    \*/
+    R.ninja = function () {
+        oldRaphael.was ? (g.win.Raphael = oldRaphael.is) : delete Raphael;
+        return R;
+    };
+    /*\
+     * Raphael.st
+     [ property (object) ]
+     **
+     * You can add your own method to elements and sets. It is wise to add a set method for each element method
+     * you added, so you will be able to call the same method on sets too.
+     **
+     * See also @Raphael.el.
+     > Usage
+     | Raphael.el.red = function () {
+     |     this.attr({fill: "#f00"});
+     | };
+     | Raphael.st.red = function () {
+     |     this.forEach(function (el) {
+     |         el.red();
+     |     });
+     | };
+     | // then use it
+     | paper.set(paper.circle(100, 100, 20), paper.circle(110, 100, 20)).red();
+    \*/
+    R.st = setproto;
+    // Firefox <3.6 fix: http://webreflection.blogspot.com/2009/11/195-chars-to-help-lazy-loading.html
+    (function (doc, loaded, f) {
+        if (doc.readyState == null && doc.addEventListener){
+            doc.addEventListener(loaded, f = function () {
+                doc.removeEventListener(loaded, f, false);
+                doc.readyState = "complete";
+            }, false);
+            doc.readyState = "loading";
+        }
+        function isLoaded() {
+            (/in/).test(doc.readyState) ? setTimeout(isLoaded, 9) : R.eve("raphael.DOMload");
+        }
+        isLoaded();
+    })(document, "DOMContentLoaded");
+
+    eve.on("raphael.DOMload", function () {
+        loaded = true;
+    });
+
+// ┌─────────────────────────────────────────────────────────────────────┐ \\
+// │ Raphaël - JavaScript Vector Library                                 │ \\
+// ├─────────────────────────────────────────────────────────────────────┤ \\
+// │ SVG Module                                                          │ \\
+// ├─────────────────────────────────────────────────────────────────────┤ \\
+// │ Copyright (c) 2008-2011 Dmitry Baranovskiy (http://raphaeljs.com)   │ \\
+// │ Copyright (c) 2008-2011 Sencha Labs (http://sencha.com)             │ \\
+// │ Licensed under the MIT (http://raphaeljs.com/license.html) license. │ \\
+// └─────────────────────────────────────────────────────────────────────┘ \\
+
+(function(){
+    if (!R.svg) {
+        return;
+    }
+    var has = "hasOwnProperty",
+        Str = String,
+        toFloat = parseFloat,
+        toInt = parseInt,
+        math = Math,
+        mmax = math.max,
+        abs = math.abs,
+        pow = math.pow,
+        separator = /[, ]+/,
+        eve = R.eve,
+        E = "",
+        S = " ";
+    var xlink = "http://www.w3.org/1999/xlink",
+        markers = {
+            block: "M5,0 0,2.5 5,5z",
+            classic: "M5,0 0,2.5 5,5 3.5,3 3.5,2z",
+            diamond: "M2.5,0 5,2.5 2.5,5 0,2.5z",
+            open: "M6,1 1,3.5 6,6",
+            oval: "M2.5,0A2.5,2.5,0,0,1,2.5,5 2.5,2.5,0,0,1,2.5,0z"
+        },
+        markerCounter = {};
+    R.toString = function () {
+        return  "Your browser supports SVG.\nYou are running Rapha\xebl " + this.version;
+    };
+    var $ = function (el, attr) {
+        if (attr) {
+            if (typeof el == "string") {
+                el = $(el);
+            }
+            for (var key in attr) if (attr[has](key)) {
+                if (key.substring(0, 6) == "xlink:") {
+                    el.setAttributeNS(xlink, key.substring(6), Str(attr[key]));
+                } else {
+                    if (el !== undefined) {
+                        var elValue = Str(attr[key]);
+                        if (key !== "d" || key === "d" && elValue !== "M,0,0") {
+                            el.setAttribute(key, elValue);
+                        }
+                    }
+                }
+            }
+        } else {
+            el = R._g.doc.createElementNS("http://www.w3.org/2000/svg", el);
+            el.style && (el.style.webkitTapHighlightColor = "rgba(0,0,0,0)");
+        }
+        return el;
+    },
+    addGradientFill = function (element, gradient) {
+        var type = "linear",
+            id = element.id + gradient,
+            fx = .5, fy = .5,
+            o = element.node,
+            SVG = element.paper,
+            s = o.style,
+            el = R._g.doc.getElementById(id);
+        if (!el) {
+            gradient = Str(gradient).replace(R._radial_gradient, function (all, _fx, _fy) {
+                type = "radial";
+                if (_fx && _fy) {
+                    fx = toFloat(_fx);
+                    fy = toFloat(_fy);
+                    var dir = ((fy > .5) * 2 - 1);
+                    pow(fx - .5, 2) + pow(fy - .5, 2) > .25 &&
+                        (fy = math.sqrt(.25 - pow(fx - .5, 2)) * dir + .5) &&
+                        fy != .5 &&
+                        (fy = fy.toFixed(5) - 1e-5 * dir);
+                }
+                return E;
+            });
+            gradient = gradient.split(/\s*\-\s*/);
+            if (type == "linear") {
+                var angle = gradient.shift();
+                angle = -toFloat(angle);
+                if (isNaN(angle)) {
+                    return null;
+                }
+                var vector = [0, 0, math.cos(R.rad(angle)), math.sin(R.rad(angle))],
+                    max = 1 / (mmax(abs(vector[2]), abs(vector[3])) || 1);
+                vector[2] *= max;
+                vector[3] *= max;
+                if (vector[2] < 0) {
+                    vector[0] = -vector[2];
+                    vector[2] = 0;
+                }
+                if (vector[3] < 0) {
+                    vector[1] = -vector[3];
+                    vector[3] = 0;
+                }
+            }
+            var dots = R._parseDots(gradient);
+            if (!dots) {
+                return null;
+            }
+            id = id.replace(/[\(\)\s,\xb0#]/g, "_");
+            
+            if (element.gradient && id != element.gradient.id) {
+                SVG.defs.removeChild(element.gradient);
+                delete element.gradient;
+            }
+
+            if (!element.gradient) {
+                el = $(type + "Gradient", {id: id});
+                element.gradient = el;
+                $(el, type == "radial" ? {
+                    fx: fx,
+                    fy: fy
+                } : {
+                    x1: vector[0],
+                    y1: vector[1],
+                    x2: vector[2],
+                    y2: vector[3],
+                    gradientTransform: element.matrix.invert()
+                });
+                SVG.defs.appendChild(el);
+                for (var i = 0, ii = dots.length; i < ii; i++) {
+                    el.appendChild($("stop", {
+                        offset: dots[i].offset ? dots[i].offset : i ? "100%" : "0%",
+                        "stop-color": dots[i].color || "#fff"
+                    }));
+                }
+            }
+        }
+        $(o, {
+            fill: "url(#" + id + ")",
+            opacity: 1,
+            "fill-opacity": 1
+        });
+        s.fill = E;
+        s.opacity = 1;
+        s.fillOpacity = 1;
+        return 1;
+    },
+    updatePosition = function (o) {
+        var bbox = o.getBBox(1);
+        $(o.pattern, {patternTransform: o.matrix.invert() + " translate(" + bbox.x + "," + bbox.y + ")"});
+    },
+    addArrow = function (o, value, isEnd) {
+        if (o.type == "path") {
+            var values = Str(value).toLowerCase().split("-"),
+                p = o.paper,
+                se = isEnd ? "end" : "start",
+                node = o.node,
+                attrs = o.attrs,
+                stroke = attrs["stroke-width"],
+                i = values.length,
+                type = "classic",
+                from,
+                to,
+                dx,
+                refX,
+                attr,
+                w = 3,
+                h = 3,
+                t = 5;
+            while (i--) {
+                switch (values[i]) {
+                    case "block":
+                    case "classic":
+                    case "oval":
+                    case "diamond":
+                    case "open":
+                    case "none":
+                        type = values[i];
+                        break;
+                    case "wide": h = 5; break;
+                    case "narrow": h = 2; break;
+                    case "long": w = 5; break;
+                    case "short": w = 2; break;
+                }
+            }
+            if (type == "open") {
+                w += 2;
+                h += 2;
+                t += 2;
+                dx = 1;
+                refX = isEnd ? 4 : 1;
+                attr = {
+                    fill: "none",
+                    stroke: attrs.stroke
+                };
+            } else {
+                refX = dx = w / 2;
+                attr = {
+                    fill: attrs.stroke,
+                    stroke: "none"
+                };
+            }
+            if (o._.arrows) {
+                if (isEnd) {
+                    o._.arrows.endPath && markerCounter[o._.arrows.endPath]--;
+                    o._.arrows.endMarker && markerCounter[o._.arrows.endMarker]--;
+                } else {
+                    o._.arrows.startPath && markerCounter[o._.arrows.startPath]--;
+                    o._.arrows.startMarker && markerCounter[o._.arrows.startMarker]--;
+                }
+            } else {
+                o._.arrows = {};
+            }
+            if (type != "none") {
+                var pathId = "raphael-marker-" + type,
+                    markerId = "raphael-marker-" + se + type + w + h;
+                if (!R._g.doc.getElementById(pathId)) {
+                    p.defs.appendChild($($("path"), {
+                        "stroke-linecap": "round",
+                        d: markers[type],
+                        id: pathId
+                    }));
+                    markerCounter[pathId] = 1;
+                } else {
+                    markerCounter[pathId]++;
+                }
+                var marker = R._g.doc.getElementById(markerId),
+                    use;
+                if (!marker) {
+                    marker = $($("marker"), {
+                        id: markerId,
+                        markerHeight: h,
+                        markerWidth: w,
+                        orient: "auto",
+                        refX: refX,
+                        refY: h / 2
+                    });
+                    use = $($("use"), {
+                        "xlink:href": "#" + pathId,
+                        transform: (isEnd ? "rotate(180 " + w / 2 + " " + h / 2 + ") " : E) + "scale(" + w / t + "," + h / t + ")",
+                        "stroke-width": (1 / ((w / t + h / t) / 2)).toFixed(4)
+                    });
+                    marker.appendChild(use);
+                    p.defs.appendChild(marker);
+                    markerCounter[markerId] = 1;
+                } else {
+                    markerCounter[markerId]++;
+                    use = marker.getElementsByTagName("use")[0];
+                }
+                $(use, attr);
+                var delta = dx * (type != "diamond" && type != "oval");
+                if (isEnd) {
+                    from = o._.arrows.startdx * stroke || 0;
+                    to = R.getTotalLength(attrs.path) - delta * stroke;
+                } else {
+                    from = delta * stroke;
+                    to = R.getTotalLength(attrs.path) - (o._.arrows.enddx * stroke || 0);
+                }
+                attr = {};
+                attr["marker-" + se] = "url(#" + markerId + ")";
+                if (to || from) {
+                    attr.d = R.getSubpath(attrs.path, from, to);
+                }
+                $(node, attr);
+                o._.arrows[se + "Path"] = pathId;
+                o._.arrows[se + "Marker"] = markerId;
+                o._.arrows[se + "dx"] = delta;
+                o._.arrows[se + "Type"] = type;
+                o._.arrows[se + "String"] = value;
+            } else {
+                if (isEnd) {
+                    from = o._.arrows.startdx * stroke || 0;
+                    to = R.getTotalLength(attrs.path) - from;
+                } else {
+                    from = 0;
+                    to = R.getTotalLength(attrs.path) - (o._.arrows.enddx * stroke || 0);
+                }
+                o._.arrows[se + "Path"] && $(node, {d: R.getSubpath(attrs.path, from, to)});
+                delete o._.arrows[se + "Path"];
+                delete o._.arrows[se + "Marker"];
+                delete o._.arrows[se + "dx"];
+                delete o._.arrows[se + "Type"];
+                delete o._.arrows[se + "String"];
+            }
+            for (attr in markerCounter) if (markerCounter[has](attr) && !markerCounter[attr]) {
+                var item = R._g.doc.getElementById(attr);
+                item && item.parentNode.removeChild(item);
+            }
+        }
+    },
+    dasharray = {
+        "": [0],
+        "none": [0],
+        "-": [3, 1],
+        ".": [1, 1],
+        "-.": [3, 1, 1, 1],
+        "-..": [3, 1, 1, 1, 1, 1],
+        ". ": [1, 3],
+        "- ": [4, 3],
+        "--": [8, 3],
+        "- .": [4, 3, 1, 3],
+        "--.": [8, 3, 1, 3],
+        "--..": [8, 3, 1, 3, 1, 3]
+    },
+    addDashes = function (o, value, params) {
+        value = dasharray[Str(value).toLowerCase()];
+        if (value) {
+            var width = o.attrs["stroke-width"] || "1",
+                butt = {round: width, square: width, butt: 0}[o.attrs["stroke-linecap"] || params["stroke-linecap"]] || 0,
+                dashes = [],
+                i = value.length;
+            while (i--) {
+                dashes[i] = value[i] * width + ((i % 2) ? 1 : -1) * butt;
+            }
+            $(o.node, {"stroke-dasharray": dashes.join(",")});
+        }
+    },
+    setFillAndStroke = function (o, params) {
+        var node = o.node,
+            attrs = o.attrs,
+            vis = node.style.visibility;
+        node.style.visibility = "hidden";
+        for (var att in params) {
+            if (params[has](att)) {
+                if (!R._availableAttrs[has](att)) {
+                    continue;
+                }
+                var value = params[att];
+                attrs[att] = value;
+                switch (att) {
+                    case "blur":
+                        o.blur(value);
+                        break;
+                    case "title":
+                        var title = node.getElementsByTagName("title");
+
+                        // Use the existing <title>.
+                        if (title.length && (title = title[0])) {
+                          title.firstChild.nodeValue = value;
+                        } else {
+                          title = $("title");
+                          var val = R._g.doc.createTextNode(value);
+                          title.appendChild(val);
+                          node.appendChild(title);
+                        }
+                        break;
+                    case "href":
+                    case "target":
+                        var pn = node.parentNode;
+                        if (pn.tagName.toLowerCase() != "a") {
+                            var hl = $("a");
+                            pn.insertBefore(hl, node);
+                            hl.appendChild(node);
+                            pn = hl;
+                        }
+                        if (att == "target") {
+                            pn.setAttributeNS(xlink, "show", value == "blank" ? "new" : value);
+                        } else {
+                            pn.setAttributeNS(xlink, att, value);
+                        }
+                        break;
+                    case "cursor":
+                        node.style.cursor = value;
+                        break;
+                    case "transform":
+                        o.transform(value);
+                        break;
+                    case "arrow-start":
+                        addArrow(o, value);
+                        break;
+                    case "arrow-end":
+                        addArrow(o, value, 1);
+                        break;
+                    case "clip-rect":
+                        var rect = Str(value).split(separator);
+                        if (rect.length == 4) {
+                            o.clip && o.clip.parentNode.parentNode.removeChild(o.clip.parentNode);
+                            var el = $("clipPath"),
+                                rc = $("rect");
+                            el.id = R.createUUID();
+                            $(rc, {
+                                x: rect[0],
+                                y: rect[1],
+                                width: rect[2],
+                                height: rect[3]
+                            });
+                            el.appendChild(rc);
+                            o.paper.defs.appendChild(el);
+                            $(node, {"clip-path": "url(#" + el.id + ")"});
+                            o.clip = rc;
+                        }
+                        if (!value) {
+                            var path = node.getAttribute("clip-path");
+                            if (path) {
+                                var clip = R._g.doc.getElementById(path.replace(/(^url\(#|\)$)/g, E));
+                                clip && clip.parentNode.removeChild(clip);
+                                $(node, {"clip-path": E});
+                                delete o.clip;
+                            }
+                        }
+                    break;
+                    case "path":
+                        if (o.type == "path") {
+                            $(node, {d: value ? attrs.path = R._pathToAbsolute(value) : "M0,0"});
+                            o._.dirty = 1;
+                            if (o._.arrows) {
+                                "startString" in o._.arrows && addArrow(o, o._.arrows.startString);
+                                "endString" in o._.arrows && addArrow(o, o._.arrows.endString, 1);
+                            }
+                        }
+                        break;
+                    case "width":
+                        node.setAttribute(att, value);
+                        o._.dirty = 1;
+                        if (attrs.fx) {
+                            att = "x";
+                            value = attrs.x;
+                        } else {
+                            break;
+                        }
+                    case "x":
+                        if (attrs.fx) {
+                            value = -attrs.x - (attrs.width || 0);
+                        }
+                    case "rx":
+                        if (att == "rx" && o.type == "rect") {
+                            break;
+                        }
+                    case "cx":
+                        node.setAttribute(att, value);
+                        o.pattern && updatePosition(o);
+                        o._.dirty = 1;
+                        break;
+                    case "height":
+                        node.setAttribute(att, value);
+                        o._.dirty = 1;
+                        if (attrs.fy) {
+                            att = "y";
+                            value = attrs.y;
+                        } else {
+                            break;
+                        }
+                    case "y":
+                        if (attrs.fy) {
+                            value = -attrs.y - (attrs.height || 0);
+                        }
+                    case "ry":
+                        if (att == "ry" && o.type == "rect") {
+                            break;
+                        }
+                    case "cy":
+                        node.setAttribute(att, value);
+                        o.pattern && updatePosition(o);
+                        o._.dirty = 1;
+                        break;
+                    case "r":
+                        if (o.type == "rect") {
+                            $(node, {rx: value, ry: value});
+                        } else {
+                            node.setAttribute(att, value);
+                        }
+                        o._.dirty = 1;
+                        break;
+                    case "src":
+                        if (o.type == "image") {
+                            node.setAttributeNS(xlink, "href", value);
+                        }
+                        break;
+                    case "stroke-width":
+                        if (o._.sx != 1 || o._.sy != 1) {
+                            value /= mmax(abs(o._.sx), abs(o._.sy)) || 1;
+                        }
+                        if (o.paper._vbSize) {
+                            value *= o.paper._vbSize;
+                        }
+                        node.setAttribute(att, value);
+                        if (attrs["stroke-dasharray"]) {
+                            addDashes(o, attrs["stroke-dasharray"], params);
+                        }
+                        if (o._.arrows) {
+                            "startString" in o._.arrows && addArrow(o, o._.arrows.startString);
+                            "endString" in o._.arrows && addArrow(o, o._.arrows.endString, 1);
+                        }
+                        break;
+                    case "stroke-dasharray":
+                        addDashes(o, value, params);
+                        break;
+                    case "fill":
+                        var isURL = Str(value).match(R._ISURL);
+                        if (isURL) {
+                            el = $("pattern");
+                            var ig = $("image");
+                            el.id = R.createUUID();
+                            $(el, {x: 0, y: 0, patternUnits: "userSpaceOnUse", height: 1, width: 1});
+                            $(ig, {x: 0, y: 0, "xlink:href": isURL[1]});
+                            el.appendChild(ig);
+
+                            (function (el) {
+                                R._preload(isURL[1], function () {
+                                    var w = this.offsetWidth,
+                                        h = this.offsetHeight;
+                                    $(el, {width: w, height: h});
+                                    $(ig, {width: w, height: h});
+                                    o.paper.safari();
+                                });
+                            })(el);
+                            o.paper.defs.appendChild(el);
+                            $(node, {fill: "url(#" + el.id + ")"});
+                            o.pattern = el;
+                            o.pattern && updatePosition(o);
+                            break;
+                        }
+                        var clr = R.getRGB(value);
+                        if (!clr.error) {
+                            delete params.gradient;
+                            delete attrs.gradient;
+                            !R.is(attrs.opacity, "undefined") &&
+                                R.is(params.opacity, "undefined") &&
+                                $(node, {opacity: attrs.opacity});
+                            !R.is(attrs["fill-opacity"], "undefined") &&
+                                R.is(params["fill-opacity"], "undefined") &&
+                                $(node, {"fill-opacity": attrs["fill-opacity"]});
+                        } else if ((o.type == "circle" || o.type == "ellipse" || Str(value).charAt() != "r") && addGradientFill(o, value)) {
+                            if ("opacity" in attrs || "fill-opacity" in attrs) {
+                                var gradient = R._g.doc.getElementById(node.getAttribute("fill").replace(/^url\(#|\)$/g, E));
+                                if (gradient) {
+                                    var stops = gradient.getElementsByTagName("stop");
+                                    $(stops[stops.length - 1], {"stop-opacity": ("opacity" in attrs ? attrs.opacity : 1) * ("fill-opacity" in attrs ? attrs["fill-opacity"] : 1)});
+                                }
+                            }
+                            attrs.gradient = value;
+                            attrs.fill = "none";
+                            break;
+                        }
+                        clr[has]("opacity") && $(node, {"fill-opacity": clr.opacity > 1 ? clr.opacity / 100 : clr.opacity});
+                    case "stroke":
+                        clr = R.getRGB(value);
+                        node.setAttribute(att, clr.hex);
+                        att == "stroke" && clr[has]("opacity") && $(node, {"stroke-opacity": clr.opacity > 1 ? clr.opacity / 100 : clr.opacity});
+                        if (att == "stroke" && o._.arrows) {
+                            "startString" in o._.arrows && addArrow(o, o._.arrows.startString);
+                            "endString" in o._.arrows && addArrow(o, o._.arrows.endString, 1);
+                        }
+                        break;
+                    case "gradient":
+                        (o.type == "circle" || o.type == "ellipse" || Str(value).charAt() != "r") && addGradientFill(o, value);
+                        break;
+                    case "opacity":
+                        if (attrs.gradient && !attrs[has]("stroke-opacity")) {
+                            $(node, {"stroke-opacity": value > 1 ? value / 100 : value});
+                        }
+                        // fall
+                    case "fill-opacity":
+                        if (attrs.gradient) {
+                            gradient = R._g.doc.getElementById(node.getAttribute("fill").replace(/^url\(#|\)$/g, E));
+                            if (gradient) {
+                                stops = gradient.getElementsByTagName("stop");
+                                $(stops[stops.length - 1], {"stop-opacity": value});
+                            }
+                            break;
+                        }
+                    default:
+                        att == "font-size" && (value = toInt(value, 10) + "px");
+                        var cssrule = att.replace(/(\-.)/g, function (w) {
+                            return w.substring(1).toUpperCase();
+                        });
+                        node.style[cssrule] = value;
+                        o._.dirty = 1;
+                        node.setAttribute(att, value);
+                        break;
+                }
+            }
+        }
+
+        tuneText(o, params);
+        node.style.visibility = vis;
+    },
+    leading = 1.2,
+    tuneText = function (el, params) {
+        if (el.type != "text" || !(params[has]("text") || params[has]("font") || params[has]("font-size") || params[has]("x") || params[has]("y"))) {
+            return;
+        }
+        var a = el.attrs,
+            node = el.node,
+            fontSize = node.firstChild ? toInt(R._g.doc.defaultView.getComputedStyle(node.firstChild, E).getPropertyValue("font-size"), 10) : 10;
+
+        if (params[has]("text")) {
+            a.text = params.text;
+            while (node.firstChild) {
+                node.removeChild(node.firstChild);
+            }
+            var texts = Str(params.text).split("\n"),
+                tspans = [],
+                tspan;
+            for (var i = 0, ii = texts.length; i < ii; i++) {
+                tspan = $("tspan");
+                i && $(tspan, {dy: fontSize * leading, x: a.x});
+                tspan.appendChild(R._g.doc.createTextNode(texts[i]));
+                node.appendChild(tspan);
+                tspans[i] = tspan;
+            }
+        } else {
+            tspans = node.getElementsByTagName("tspan");
+            for (i = 0, ii = tspans.length; i < ii; i++) if (i) {
+                $(tspans[i], {dy: fontSize * leading, x: a.x});
+            } else {
+                $(tspans[0], {dy: 0});
+            }
+        }
+        $(node, {x: a.x, y: a.y});
+        el._.dirty = 1;
+        var bb = el._getBBox(),
+            dif = a.y - (bb.y + bb.height / 2);
+        dif && R.is(dif, "finite") && $(tspans[0], {dy: dif});
+    },
+    Element = function (node, svg) {
+        var X = 0,
+            Y = 0;
+        /*\
+         * Element.node
+         [ property (object) ]
+         **
+         * Gives you a reference to the DOM object, so you can assign event handlers or just mess around.
+         **
+         * Note: Don’t mess with it.
+         > Usage
+         | // draw a circle at coordinate 10,10 with radius of 10
+         | var c = paper.circle(10, 10, 10);
+         | c.node.onclick = function () {
+         |     c.attr("fill", "red");
+         | };
+        \*/
+        this[0] = this.node = node;
+        /*\
+         * Element.raphael
+         [ property (object) ]
+         **
+         * Internal reference to @Raphael object. In case it is not available.
+         > Usage
+         | Raphael.el.red = function () {
+         |     var hsb = this.paper.raphael.rgb2hsb(this.attr("fill"));
+         |     hsb.h = 1;
+         |     this.attr({fill: this.paper.raphael.hsb2rgb(hsb).hex});
+         | }
+        \*/
+        node.raphael = true;
+        /*\
+         * Element.id
+         [ property (number) ]
+         **
+         * Unique id of the element. Especially usesful when you want to listen to events of the element, 
+         * because all events are fired in format `<module>.<action>.<id>`. Also useful for @Paper.getById method.
+        \*/
+        this.id = R._oid++;
+        node.raphaelid = this.id;
+        this.matrix = R.matrix();
+        this.realPath = null;
+        /*\
+         * Element.paper
+         [ property (object) ]
+         **
+         * Internal reference to “paper” where object drawn. Mainly for use in plugins and element extensions.
+         > Usage
+         | Raphael.el.cross = function () {
+         |     this.attr({fill: "red"});
+         |     this.paper.path("M10,10L50,50M50,10L10,50")
+         |         .attr({stroke: "red"});
+         | }
+        \*/
+        this.paper = svg;
+        this.attrs = this.attrs || {};
+        this._ = {
+            transform: [],
+            sx: 1,
+            sy: 1,
+            deg: 0,
+            dx: 0,
+            dy: 0,
+            dirty: 1
+        };
+        !svg.bottom && (svg.bottom = this);
+        /*\
+         * Element.prev
+         [ property (object) ]
+         **
+         * Reference to the previous element in the hierarchy.
+        \*/
+        this.prev = svg.top;
+        svg.top && (svg.top.next = this);
+        svg.top = this;
+        /*\
+         * Element.next
+         [ property (object) ]
+         **
+         * Reference to the next element in the hierarchy.
+        \*/
+        this.next = null;
+    },
+    elproto = R.el;
+
+    Element.prototype = elproto;
+    elproto.constructor = Element;
+
+    R._engine.path = function (pathString, SVG) {
+        var el = $("path");
+        SVG.canvas && SVG.canvas.appendChild(el);
+        var p = new Element(el, SVG);
+        p.type = "path";
+        setFillAndStroke(p, {
+            fill: "none",
+            stroke: "#000",
+            path: pathString
+        });
+        return p;
+    };
+    /*\
+     * Element.rotate
+     [ method ]
+     **
+     * Deprecated! Use @Element.transform instead.
+     * Adds rotation by given angle around given point to the list of
+     * transformations of the element.
+     > Parameters
+     - deg (number) angle in degrees
+     - cx (number) #optional x coordinate of the centre of rotation
+     - cy (number) #optional y coordinate of the centre of rotation
+     * If cx & cy aren’t specified centre of the shape is used as a point of rotation.
+     = (object) @Element
+    \*/
+    elproto.rotate = function (deg, cx, cy) {
+        if (this.removed) {
+            return this;
+        }
+        deg = Str(deg).split(separator);
+        if (deg.length - 1) {
+            cx = toFloat(deg[1]);
+            cy = toFloat(deg[2]);
+        }
+        deg = toFloat(deg[0]);
+        (cy == null) && (cx = cy);
+        if (cx == null || cy == null) {
+            var bbox = this.getBBox(1);
+            cx = bbox.x + bbox.width / 2;
+            cy = bbox.y + bbox.height / 2;
+        }
+        this.transform(this._.transform.concat([["r", deg, cx, cy]]));
+        return this;
+    };
+    /*\
+     * Element.scale
+     [ method ]
+     **
+     * Deprecated! Use @Element.transform instead.
+     * Adds scale by given amount relative to given point to the list of
+     * transformations of the element.
+     > Parameters
+     - sx (number) horisontal scale amount
+     - sy (number) vertical scale amount
+     - cx (number) #optional x coordinate of the centre of scale
+     - cy (number) #optional y coordinate of the centre of scale
+     * If cx & cy aren’t specified centre of the shape is used instead.
+     = (object) @Element
+    \*/
+    elproto.scale = function (sx, sy, cx, cy) {
+        if (this.removed) {
+            return this;
+        }
+        sx = Str(sx).split(separator);
+        if (sx.length - 1) {
+            sy = toFloat(sx[1]);
+            cx = toFloat(sx[2]);
+            cy = toFloat(sx[3]);
+        }
+        sx = toFloat(sx[0]);
+        (sy == null) && (sy = sx);
+        (cy == null) && (cx = cy);
+        if (cx == null || cy == null) {
+            var bbox = this.getBBox(1);
+        }
+        cx = cx == null ? bbox.x + bbox.width / 2 : cx;
+        cy = cy == null ? bbox.y + bbox.height / 2 : cy;
+        this.transform(this._.transform.concat([["s", sx, sy, cx, cy]]));
+        return this;
+    };
+    /*\
+     * Element.translate
+     [ method ]
+     **
+     * Deprecated! Use @Element.transform instead.
+     * Adds translation by given amount to the list of transformations of the element.
+     > Parameters
+     - dx (number) horisontal shift
+     - dy (number) vertical shift
+     = (object) @Element
+    \*/
+    elproto.translate = function (dx, dy) {
+        if (this.removed) {
+            return this;
+        }
+        dx = Str(dx).split(separator);
+        if (dx.length - 1) {
+            dy = toFloat(dx[1]);
+        }
+        dx = toFloat(dx[0]) || 0;
+        dy = +dy || 0;
+        this.transform(this._.transform.concat([["t", dx, dy]]));
+        return this;
+    };
+    /*\
+     * Element.transform
+     [ method ]
+     **
+     * Adds transformation to the element which is separate to other attributes,
+     * i.e. translation doesn’t change `x` or `y` of the rectange. The format
+     * of transformation string is similar to the path string syntax:
+     | "t100,100r30,100,100s2,2,100,100r45s1.5"
+     * Each letter is a command. There are four commands: `t` is for translate, `r` is for rotate, `s` is for
+     * scale and `m` is for matrix.
+     *
+     * There are also alternative “absolute” translation, rotation and scale: `T`, `R` and `S`. They will not take previous transformation into account. For example, `...T100,0` will always move element 100 px horisontally, while `...t100,0` could move it vertically if there is `r90` before. Just compare results of `r90t100,0` and `r90T100,0`.
+     *
+     * So, the example line above could be read like “translate by 100, 100; rotate 30° around 100, 100; scale twice around 100, 100;
+     * rotate 45° around centre; scale 1.5 times relative to centre”. As you can see rotate and scale commands have origin
+     * coordinates as optional parameters, the default is the centre point of the element.
+     * Matrix accepts six parameters.
+     > Usage
+     | var el = paper.rect(10, 20, 300, 200);
+     | // translate 100, 100, rotate 45°, translate -100, 0
+     | el.transform("t100,100r45t-100,0");
+     | // if you want you can append or prepend transformations
+     | el.transform("...t50,50");
+     | el.transform("s2...");
+     | // or even wrap
+     | el.transform("t50,50...t-50-50");
+     | // to reset transformation call method with empty string
+     | el.transform("");
+     | // to get current value call it without parameters
+     | console.log(el.transform());
+     > Parameters
+     - tstr (string) #optional transformation string
+     * If tstr isn’t specified
+     = (string) current transformation string
+     * else
+     = (object) @Element
+    \*/
+    elproto.transform = function (tstr) {
+        var _ = this._;
+        if (tstr == null) {
+            return _.transform;
+        }
+        R._extractTransform(this, tstr);
+
+        this.clip && $(this.clip, {transform: this.matrix.invert()});
+        this.pattern && updatePosition(this);
+        this.node && $(this.node, {transform: this.matrix});
+    
+        if (_.sx != 1 || _.sy != 1) {
+            var sw = this.attrs[has]("stroke-width") ? this.attrs["stroke-width"] : 1;
+            this.attr({"stroke-width": sw});
+        }
+
+        return this;
+    };
+    /*\
+     * Element.hide
+     [ method ]
+     **
+     * Makes element invisible. See @Element.show.
+     = (object) @Element
+    \*/
+    elproto.hide = function () {
+        !this.removed && this.paper.safari(this.node.style.display = "none");
+        return this;
+    };
+    /*\
+     * Element.show
+     [ method ]
+     **
+     * Makes element visible. See @Element.hide.
+     = (object) @Element
+    \*/
+    elproto.show = function () {
+        !this.removed && this.paper.safari(this.node.style.display = "");
+        return this;
+    };
+    /*\
+     * Element.remove
+     [ method ]
+     **
+     * Removes element from the paper.
+    \*/
+    elproto.remove = function () {
+        if (this.removed || !this.node.parentNode) {
+            return;
+        }
+        var paper = this.paper;
+        paper.__set__ && paper.__set__.exclude(this);
+        eve.unbind("raphael.*.*." + this.id);
+        if (this.gradient) {
+            paper.defs.removeChild(this.gradient);
+        }
+        R._tear(this, paper);
+        if (this.node.parentNode.tagName.toLowerCase() == "a") {
+            this.node.parentNode.parentNode.removeChild(this.node.parentNode);
+        } else {
+            this.node.parentNode.removeChild(this.node);
+        }
+        for (var i in this) {
+            this[i] = typeof this[i] == "function" ? R._removedFactory(i) : null;
+        }
+        this.removed = true;
+    };
+    elproto._getBBox = function () {
+        if (this.node.style.display == "none") {
+            this.show();
+            var hide = true;
+        }
+        var bbox = {};
+        try {
+            bbox = this.node.getBBox();
+        } catch(e) {
+            // Firefox 3.0.x plays badly here
+        } finally {
+            bbox = bbox || {};
+        }
+        hide && this.hide();
+        return bbox;
+    };
+    /*\
+     * Element.attr
+     [ method ]
+     **
+     * Sets the attributes of the element.
+     > Parameters
+     - attrName (string) attribute’s name
+     - value (string) value
+     * or
+     - params (object) object of name/value pairs
+     * or
+     - attrName (string) attribute’s name
+     * or
+     - attrNames (array) in this case method returns array of current values for given attribute names
+     = (object) @Element if attrsName & value or params are passed in.
+     = (...) value of the attribute if only attrsName is passed in.
+     = (array) array of values of the attribute if attrsNames is passed in.
+     = (object) object of attributes if nothing is passed in.
+     > Possible parameters
+     # <p>Please refer to the <a href="http://www.w3.org/TR/SVG/" title="The W3C Recommendation for the SVG language describes these properties in detail.">SVG specification</a> for an explanation of these parameters.</p>
+     o arrow-end (string) arrowhead on the end of the path. The format for string is `<type>[-<width>[-<length>]]`. Possible types: `classic`, `block`, `open`, `oval`, `diamond`, `none`, width: `wide`, `narrow`, `medium`, length: `long`, `short`, `midium`.
+     o clip-rect (string) comma or space separated values: x, y, width and height
+     o cursor (string) CSS type of the cursor
+     o cx (number) the x-axis coordinate of the center of the circle, or ellipse
+     o cy (number) the y-axis coordinate of the center of the circle, or ellipse
+     o fill (string) colour, gradient or image
+     o fill-opacity (number)
+     o font (string)
+     o font-family (string)
+     o font-size (number) font size in pixels
+     o font-weight (string)
+     o height (number)
+     o href (string) URL, if specified element behaves as hyperlink
+     o opacity (number)
+     o path (string) SVG path string format
+     o r (number) radius of the circle, ellipse or rounded corner on the rect
+     o rx (number) horisontal radius of the ellipse
+     o ry (number) vertical radius of the ellipse
+     o src (string) image URL, only works for @Element.image element
+     o stroke (string) stroke colour
+     o stroke-dasharray (string) [“”, “`-`”, “`.`”, “`-.`”, “`-..`”, “`. `”, “`- `”, “`--`”, “`- .`”, “`--.`”, “`--..`”]
+     o stroke-linecap (string) [“`butt`”, “`square`”, “`round`”]
+     o stroke-linejoin (string) [“`bevel`”, “`round`”, “`miter`”]
+     o stroke-miterlimit (number)
+     o stroke-opacity (number)
+     o stroke-width (number) stroke width in pixels, default is '1'
+     o target (string) used with href
+     o text (string) contents of the text element. Use `\n` for multiline text
+     o text-anchor (string) [“`start`”, “`middle`”, “`end`”], default is “`middle`”
+     o title (string) will create tooltip with a given text
+     o transform (string) see @Element.transform
+     o width (number)
+     o x (number)
+     o y (number)
+     > Gradients
+     * Linear gradient format: “`‹angle›-‹colour›[-‹colour›[:‹offset›]]*-‹colour›`”, example: “`90-#fff-#000`” – 90°
+     * gradient from white to black or “`0-#fff-#f00:20-#000`” – 0° gradient from white via red (at 20%) to black.
+     *
+     * radial gradient: “`r[(‹fx›, ‹fy›)]‹colour›[-‹colour›[:‹offset›]]*-‹colour›`”, example: “`r#fff-#000`” –
+     * gradient from white to black or “`r(0.25, 0.75)#fff-#000`” – gradient from white to black with focus point
+     * at 0.25, 0.75. Focus point coordinates are in 0..1 range. Radial gradients can only be applied to circles and ellipses.
+     > Path String
+     # <p>Please refer to <a href="http://www.w3.org/TR/SVG/paths.html#PathData" title="Details of a path’s data attribute’s format are described in the SVG specification.">SVG documentation regarding path string</a>. Raphaël fully supports it.</p>
+     > Colour Parsing
+     # <ul>
+     #     <li>Colour name (“<code>red</code>”, “<code>green</code>”, “<code>cornflowerblue</code>”, etc)</li>
+     #     <li>#••• — shortened HTML colour: (“<code>#000</code>”, “<code>#fc0</code>”, etc)</li>
+     #     <li>#•••••• — full length HTML colour: (“<code>#000000</code>”, “<code>#bd2300</code>”)</li>
+     #     <li>rgb(•••, •••, •••) — red, green and blue channels’ values: (“<code>rgb(200,&nbsp;100,&nbsp;0)</code>”)</li>
+     #     <li>rgb(•••%, •••%, •••%) — same as above, but in %: (“<code>rgb(100%,&nbsp;175%,&nbsp;0%)</code>”)</li>
+     #     <li>rgba(•••, •••, •••, •••) — red, green and blue channels’ values: (“<code>rgba(200,&nbsp;100,&nbsp;0, .5)</code>”)</li>
+     #     <li>rgba(•••%, •••%, •••%, •••%) — same as above, but in %: (“<code>rgba(100%,&nbsp;175%,&nbsp;0%, 50%)</code>”)</li>
+     #     <li>hsb(•••, •••, •••) — hue, saturation and brightness values: (“<code>hsb(0.5,&nbsp;0.25,&nbsp;1)</code>”)</li>
+     #     <li>hsb(•••%, •••%, •••%) — same as above, but in %</li>
+     #     <li>hsba(•••, •••, •••, •••) — same as above, but with opacity</li>
+     #     <li>hsl(•••, •••, •••) — almost the same as hsb, see <a href="http://en.wikipedia.org/wiki/HSL_and_HSV" title="HSL and HSV - Wikipedia, the free encyclopedia">Wikipedia page</a></li>
+     #     <li>hsl(•••%, •••%, •••%) — same as above, but in %</li>
+     #     <li>hsla(•••, •••, •••, •••) — same as above, but with opacity</li>
+     #     <li>Optionally for hsb and hsl you could specify hue as a degree: “<code>hsl(240deg,&nbsp;1,&nbsp;.5)</code>” or, if you want to go fancy, “<code>hsl(240°,&nbsp;1,&nbsp;.5)</code>”</li>
+     # </ul>
+    \*/
+    elproto.attr = function (name, value) {
+        if (this.removed) {
+            return this;
+        }
+        if (name == null) {
+            var res = {};
+            for (var a in this.attrs) if (this.attrs[has](a)) {
+                res[a] = this.attrs[a];
+            }
+            res.gradient && res.fill == "none" && (res.fill = res.gradient) && delete res.gradient;
+            res.transform = this._.transform;
+            return res;
+        }
+        if (value == null && R.is(name, "string")) {
+            if (name == "fill" && this.attrs.fill == "none" && this.attrs.gradient) {
+                return this.attrs.gradient;
+            }
+            if (name == "transform") {
+                return this._.transform;
+            }
+            var names = name.split(separator),
+                out = {};
+            for (var i = 0, ii = names.length; i < ii; i++) {
+                name = names[i];
+                if (name in this.attrs) {
+                    out[name] = this.attrs[name];
+                } else if (R.is(this.paper.customAttributes[name], "function")) {
+                    out[name] = this.paper.customAttributes[name].def;
+                } else {
+                    out[name] = R._availableAttrs[name];
+                }
+            }
+            return ii - 1 ? out : out[names[0]];
+        }
+        if (value == null && R.is(name, "array")) {
+            out = {};
+            for (i = 0, ii = name.length; i < ii; i++) {
+                out[name[i]] = this.attr(name[i]);
+            }
+            return out;
+        }
+        if (value != null) {
+            var params = {};
+            params[name] = value;
+        } else if (name != null && R.is(name, "object")) {
+            params = name;
+        }
+        for (var key in params) {
+            eve("raphael.attr." + key + "." + this.id, this, params[key]);
+        }
+        for (key in this.paper.customAttributes) if (this.paper.customAttributes[has](key) && params[has](key) && R.is(this.paper.customAttributes[key], "function")) {
+            var par = this.paper.customAttributes[key].apply(this, [].concat(params[key]));
+            this.attrs[key] = params[key];
+            for (var subkey in par) if (par[has](subkey)) {
+                params[subkey] = par[subkey];
+            }
+        }
+        setFillAndStroke(this, params);
+        return this;
+    };
+    /*\
+     * Element.toFront
+     [ method ]
+     **
+     * Moves the element so it is the closest to the viewer’s eyes, on top of other elements.
+     = (object) @Element
+    \*/
+    elproto.toFront = function () {
+        if (this.removed) {
+            return this;
+        }
+        if (this.node.parentNode.tagName.toLowerCase() == "a") {
+            this.node.parentNode.parentNode.appendChild(this.node.parentNode);
+        } else {
+            this.node.parentNode.appendChild(this.node);
+        }
+        var svg = this.paper;
+        svg.top != this && R._tofront(this, svg);
+        return this;
+    };
+    /*\
+     * Element.toBack
+     [ method ]
+     **
+     * Moves the element so it is the furthest from the viewer’s eyes, behind other elements.
+     = (object) @Element
+    \*/
+    elproto.toBack = function () {
+        if (this.removed) {
+            return this;
+        }
+        var parent = this.node.parentNode;
+        if (parent === null) {
+            return this;
+        }
+        if (parent.tagName.toLowerCase() == "a") {
+            parent.parentNode.insertBefore(this.node.parentNode, this.node.parentNode.parentNode.firstChild); 
+        } else if (parent.firstChild != this.node) {
+            parent.insertBefore(this.node, this.node.parentNode.firstChild);
+        }
+        R._toback(this, this.paper);
+        var svg = this.paper;
+        return this;
+    };
+    /*\
+     * Element.insertAfter
+     [ method ]
+     **
+     * Inserts current object after the given one.
+     = (object) @Element
+    \*/
+    elproto.insertAfter = function (element) {
+        if (this.removed) {
+            return this;
+        }
+        var node = element.node || element[element.length - 1].node;
+        if (node.nextSibling) {
+            node.parentNode.insertBefore(this.node, node.nextSibling);
+        } else {
+            node.parentNode.appendChild(this.node);
+        }
+        R._insertafter(this, element, this.paper);
+        return this;
+    };
+    /*\
+     * Element.insertBefore
+     [ method ]
+     **
+     * Inserts current object before the given one.
+     = (object) @Element
+    \*/
+    elproto.insertBefore = function (element) {
+        if (this.removed) {
+            return this;
+        }
+        var node = element.node || element[0].node;
+        node.parentNode.insertBefore(this.node, node);
+        R._insertbefore(this, element, this.paper);
+        return this;
+    };
+    elproto.blur = function (size) {
+        // Experimental. No Safari support. Use it on your own risk.
+        var t = this;
+        if (+size !== 0) {
+            var fltr = $("filter"),
+                blur = $("feGaussianBlur");
+            t.attrs.blur = size;
+            fltr.id = R.createUUID();
+            $(blur, {stdDeviation: +size || 1.5});
+            fltr.appendChild(blur);
+            t.paper.defs.appendChild(fltr);
+            t._blur = fltr;
+            $(t.node, {filter: "url(#" + fltr.id + ")"});
+        } else {
+            if (t._blur) {
+                t._blur.parentNode.removeChild(t._blur);
+                delete t._blur;
+                delete t.attrs.blur;
+            }
+            t.node.removeAttribute("filter");
+        }
+        return t;
+    };
+    R._engine.circle = function (svg, x, y, r) {
+        var el = $("circle");
+        svg.canvas && svg.canvas.appendChild(el);
+        var res = new Element(el, svg);
+        res.attrs = {cx: x, cy: y, r: r, fill: "none", stroke: "#000"};
+        res.type = "circle";
+        $(el, res.attrs);
+        return res;
+    };
+    R._engine.rect = function (svg, x, y, w, h, r) {
+        var el = $("rect");
+        svg.canvas && svg.canvas.appendChild(el);
+        var res = new Element(el, svg);
+        res.attrs = {x: x, y: y, width: w, height: h, r: r || 0, rx: r || 0, ry: r || 0, fill: "none", stroke: "#000"};
+        res.type = "rect";
+        $(el, res.attrs);
+        return res;
+    };
+    R._engine.ellipse = function (svg, x, y, rx, ry) {
+        var el = $("ellipse");
+        svg.canvas && svg.canvas.appendChild(el);
+        var res = new Element(el, svg);
+        res.attrs = {cx: x, cy: y, rx: rx, ry: ry, fill: "none", stroke: "#000"};
+        res.type = "ellipse";
+        $(el, res.attrs);
+        return res;
+    };
+    R._engine.image = function (svg, src, x, y, w, h) {
+        var el = $("image");
+        $(el, {x: x, y: y, width: w, height: h, preserveAspectRatio: "none"});
+        el.setAttributeNS(xlink, "href", src);
+        svg.canvas && svg.canvas.appendChild(el);
+        var res = new Element(el, svg);
+        res.attrs = {x: x, y: y, width: w, height: h, src: src};
+        res.type = "image";
+        return res;
+    };
+    R._engine.text = function (svg, x, y, text) {
+        var el = $("text");
+        svg.canvas && svg.canvas.appendChild(el);
+        var res = new Element(el, svg);
+        res.attrs = {
+            x: x,
+            y: y,
+            "text-anchor": "middle",
+            text: text,
+            font: R._availableAttrs.font,
+            stroke: "none",
+            fill: "#000"
+        };
+        res.type = "text";
+        setFillAndStroke(res, res.attrs);
+        return res;
+    };
+    R._engine.setSize = function (width, height) {
+        this.width = width || this.width;
+        this.height = height || this.height;
+        this.canvas.setAttribute("width", this.width);
+        this.canvas.setAttribute("height", this.height);
+        if (this._viewBox) {
+            this.setViewBox.apply(this, this._viewBox);
+        }
+        return this;
+    };
+    R._engine.create = function () {
+        var con = R._getContainer.apply(0, arguments),
+            container = con && con.container,
+            x = con.x,
+            y = con.y,
+            width = con.width,
+            height = con.height;
+        if (!container) {
+            throw new Error("SVG container not found.");
+        }
+        var cnvs = $("svg"),
+            css = "overflow:hidden;",
+            isFloating;
+        x = x || 0;
+        y = y || 0;
+        width = width || 512;
+        height = height || 342;
+        $(cnvs, {
+            height: height,
+            version: 1.1,
+            width: width,
+            xmlns: "http://www.w3.org/2000/svg"
+        });
+        if (container == 1) {
+            cnvs.style.cssText = css + "position:absolute;left:" + x + "px;top:" + y + "px";
+            R._g.doc.body.appendChild(cnvs);
+            isFloating = 1;
+        } else {
+            cnvs.style.cssText = css + "position:relative";
+            if (container.firstChild) {
+                container.insertBefore(cnvs, container.firstChild);
+            } else {
+                container.appendChild(cnvs);
+            }
+        }
+        container = new R._Paper;
+        container.width = width;
+        container.height = height;
+        container.canvas = cnvs;
+        container.clear();
+        container._left = container._top = 0;
+        isFloating && (container.renderfix = function () {});
+        container.renderfix();
+        return container;
+    };
+    R._engine.setViewBox = function (x, y, w, h, fit) {
+        eve("raphael.setViewBox", this, this._viewBox, [x, y, w, h, fit]);
+        var size = mmax(w / this.width, h / this.height),
+            top = this.top,
+            aspectRatio = fit ? "xMidYMid meet" : "xMinYMin",
+            vb,
+            sw;
+        if (x == null) {
+            if (this._vbSize) {
+                size = 1;
+            }
+            delete this._vbSize;
+            vb = "0 0 " + this.width + S + this.height;
+        } else {
+            this._vbSize = size;
+            vb = x + S + y + S + w + S + h;
+        }
+        $(this.canvas, {
+            viewBox: vb,
+            preserveAspectRatio: aspectRatio
+        });
+        while (size && top) {
+            sw = "stroke-width" in top.attrs ? top.attrs["stroke-width"] : 1;
+            top.attr({"stroke-width": sw});
+            top._.dirty = 1;
+            top._.dirtyT = 1;
+            top = top.prev;
+        }
+        this._viewBox = [x, y, w, h, !!fit];
+        return this;
+    };
+    /*\
+     * Paper.renderfix
+     [ method ]
+     **
+     * Fixes the issue of Firefox and IE9 regarding subpixel rendering. If paper is dependant
+     * on other elements after reflow it could shift half pixel which cause for lines to lost their crispness.
+     * This method fixes the issue.
+     **
+       Special thanks to Mariusz Nowak (http://www.medikoo.com/) for this method.
+    \*/
+    R.prototype.renderfix = function () {
+        var cnvs = this.canvas,
+            s = cnvs.style,
+            pos;
+        try {
+            pos = cnvs.getScreenCTM() || cnvs.createSVGMatrix();
+        } catch (e) {
+            pos = cnvs.createSVGMatrix();
+        }
+        var left = -pos.e % 1,
+            top = -pos.f % 1;
+        if (left || top) {
+            if (left) {
+                this._left = (this._left + left) % 1;
+                s.left = this._left + "px";
+            }
+            if (top) {
+                this._top = (this._top + top) % 1;
+                s.top = this._top + "px";
+            }
+        }
+    };
+    /*\
+     * Paper.clear
+     [ method ]
+     **
+     * Clears the paper, i.e. removes all the elements.
+    \*/
+    R.prototype.clear = function () {
+        R.eve("raphael.clear", this);
+        var c = this.canvas;
+        while (c.firstChild) {
+            c.removeChild(c.firstChild);
+        }
+        this.bottom = this.top = null;
+        (this.desc = $("desc")).appendChild(R._g.doc.createTextNode("Created with Rapha\xebl " + R.version));
+        c.appendChild(this.desc);
+        c.appendChild(this.defs = $("defs"));
+    };
+    /*\
+     * Paper.remove
+     [ method ]
+     **
+     * Removes the paper from the DOM.
+    \*/
+    R.prototype.remove = function () {
+        eve("raphael.remove", this);
+        this.canvas.parentNode && this.canvas.parentNode.removeChild(this.canvas);
+        for (var i in this) {
+            this[i] = typeof this[i] == "function" ? R._removedFactory(i) : null;
+        }
+    };
+    var setproto = R.st;
+    for (var method in elproto) if (elproto[has](method) && !setproto[has](method)) {
+        setproto[method] = (function (methodname) {
+            return function () {
+                var arg = arguments;
+                return this.forEach(function (el) {
+                    el[methodname].apply(el, arg);
+                });
+            };
+        })(method);
+    }
+})();
+
+// ┌─────────────────────────────────────────────────────────────────────┐ \\
+// │ Raphaël - JavaScript Vector Library                                 │ \\
+// ├─────────────────────────────────────────────────────────────────────┤ \\
+// │ VML Module                                                          │ \\
+// ├─────────────────────────────────────────────────────────────────────┤ \\
+// │ Copyright (c) 2008-2011 Dmitry Baranovskiy (http://raphaeljs.com)   │ \\
+// │ Copyright (c) 2008-2011 Sencha Labs (http://sencha.com)             │ \\
+// │ Licensed under the MIT (http://raphaeljs.com/license.html) license. │ \\
+// └─────────────────────────────────────────────────────────────────────┘ \\
+
+(function(){
+    if (!R.vml) {
+        return;
+    }
+    var has = "hasOwnProperty",
+        Str = String,
+        toFloat = parseFloat,
+        math = Math,
+        round = math.round,
+        mmax = math.max,
+        mmin = math.min,
+        abs = math.abs,
+        fillString = "fill",
+        separator = /[, ]+/,
+        eve = R.eve,
+        ms = " progid:DXImageTransform.Microsoft",
+        S = " ",
+        E = "",
+        map = {M: "m", L: "l", C: "c", Z: "x", m: "t", l: "r", c: "v", z: "x"},
+        bites = /([clmz]),?([^clmz]*)/gi,
+        blurregexp = / progid:\S+Blur\([^\)]+\)/g,
+        val = /-?[^,\s-]+/g,
+        cssDot = "position:absolute;left:0;top:0;width:1px;height:1px",
+        zoom = 21600,
+        pathTypes = {path: 1, rect: 1, image: 1},
+        ovalTypes = {circle: 1, ellipse: 1},
+        path2vml = function (path) {
+            var total =  /[ahqstv]/ig,
+                command = R._pathToAbsolute;
+            Str(path).match(total) && (command = R._path2curve);
+            total = /[clmz]/g;
+            if (command == R._pathToAbsolute && !Str(path).match(total)) {
+                var res = Str(path).replace(bites, function (all, command, args) {
+                    var vals = [],
+                        isMove = command.toLowerCase() == "m",
+                        res = map[command];
+                    args.replace(val, function (value) {
+                        if (isMove && vals.length == 2) {
+                            res += vals + map[command == "m" ? "l" : "L"];
+                            vals = [];
+                        }
+                        vals.push(round(value * zoom));
+                    });
+                    return res + vals;
+                });
+                return res;
+            }
+            var pa = command(path), p, r;
+            res = [];
+            for (var i = 0, ii = pa.length; i < ii; i++) {
+                p = pa[i];
+                r = pa[i][0].toLowerCase();
+                r == "z" && (r = "x");
+                for (var j = 1, jj = p.length; j < jj; j++) {
+                    r += round(p[j] * zoom) + (j != jj - 1 ? "," : E);
+                }
+                res.push(r);
+            }
+            return res.join(S);
+        },
+        compensation = function (deg, dx, dy) {
+            var m = R.matrix();
+            m.rotate(-deg, .5, .5);
+            return {
+                dx: m.x(dx, dy),
+                dy: m.y(dx, dy)
+            };
+        },
+        setCoords = function (p, sx, sy, dx, dy, deg) {
+            var _ = p._,
+                m = p.matrix,
+                fillpos = _.fillpos,
+                o = p.node,
+                s = o.style,
+                y = 1,
+                flip = "",
+                dxdy,
+                kx = zoom / sx,
+                ky = zoom / sy;
+            s.visibility = "hidden";
+            if (!sx || !sy) {
+                return;
+            }
+            o.coordsize = abs(kx) + S + abs(ky);
+            s.rotation = deg * (sx * sy < 0 ? -1 : 1);
+            if (deg) {
+                var c = compensation(deg, dx, dy);
+                dx = c.dx;
+                dy = c.dy;
+            }
+            sx < 0 && (flip += "x");
+            sy < 0 && (flip += " y") && (y = -1);
+            s.flip = flip;
+            o.coordorigin = (dx * -kx) + S + (dy * -ky);
+            if (fillpos || _.fillsize) {
+                var fill = o.getElementsByTagName(fillString);
+                fill = fill && fill[0];
+                o.removeChild(fill);
+                if (fillpos) {
+                    c = compensation(deg, m.x(fillpos[0], fillpos[1]), m.y(fillpos[0], fillpos[1]));
+                    fill.position = c.dx * y + S + c.dy * y;
+                }
+                if (_.fillsize) {
+                    fill.size = _.fillsize[0] * abs(sx) + S + _.fillsize[1] * abs(sy);
+                }
+                o.appendChild(fill);
+            }
+            s.visibility = "visible";
+        };
+    R.toString = function () {
+        return  "Your browser doesn\u2019t support SVG. Falling down to VML.\nYou are running Rapha\xebl " + this.version;
+    };
+    var addArrow = function (o, value, isEnd) {
+        var values = Str(value).toLowerCase().split("-"),
+            se = isEnd ? "end" : "start",
+            i = values.length,
+            type = "classic",
+            w = "medium",
+            h = "medium";
+        while (i--) {
+            switch (values[i]) {
+                case "block":
+                case "classic":
+                case "oval":
+                case "diamond":
+                case "open":
+                case "none":
+                    type = values[i];
+                    break;
+                case "wide":
+                case "narrow": h = values[i]; break;
+                case "long":
+                case "short": w = values[i]; break;
+            }
+        }
+        var stroke = o.node.getElementsByTagName("stroke")[0];
+        stroke[se + "arrow"] = type;
+        stroke[se + "arrowlength"] = w;
+        stroke[se + "arrowwidth"] = h;
+    },
+    setFillAndStroke = function (o, params) {
+        // o.paper.canvas.style.display = "none";
+        o.attrs = o.attrs || {};
+        var node = o.node,
+            a = o.attrs,
+            s = node.style,
+            xy,
+            newpath = pathTypes[o.type] && (params.x != a.x || params.y != a.y || params.width != a.width || params.height != a.height || params.cx != a.cx || params.cy != a.cy || params.rx != a.rx || params.ry != a.ry || params.r != a.r),
+            isOval = ovalTypes[o.type] && (a.cx != params.cx || a.cy != params.cy || a.r != params.r || a.rx != params.rx || a.ry != params.ry),
+            res = o;
+
+
+        for (var par in params) if (params[has](par)) {
+            a[par] = params[par];
+        }
+        if (newpath) {
+            a.path = R._getPath[o.type](o);
+            o._.dirty = 1;
+        }
+        params.href && (node.href = params.href);
+        params.title && (node.title = params.title);
+        params.target && (node.target = params.target);
+        params.cursor && (s.cursor = params.cursor);
+        "blur" in params && o.blur(params.blur);
+        if (params.path && o.type == "path" || newpath) {
+            node.path = path2vml(~Str(a.path).toLowerCase().indexOf("r") ? R._pathToAbsolute(a.path) : a.path);
+            if (o.type == "image") {
+                o._.fillpos = [a.x, a.y];
+                o._.fillsize = [a.width, a.height];
+                setCoords(o, 1, 1, 0, 0, 0);
+            }
+        }
+        "transform" in params && o.transform(params.transform);
+        if (isOval) {
+            var cx = +a.cx,
+                cy = +a.cy,
+                rx = +a.rx || +a.r || 0,
+                ry = +a.ry || +a.r || 0;
+            node.path = R.format("ar{0},{1},{2},{3},{4},{1},{4},{1}x", round((cx - rx) * zoom), round((cy - ry) * zoom), round((cx + rx) * zoom), round((cy + ry) * zoom), round(cx * zoom));
+            o._.dirty = 1;
+        }
+        if ("clip-rect" in params) {
+            var rect = Str(params["clip-rect"]).split(separator);
+            if (rect.length == 4) {
+                rect[2] = +rect[2] + (+rect[0]);
+                rect[3] = +rect[3] + (+rect[1]);
+                var div = node.clipRect || R._g.doc.createElement("div"),
+                    dstyle = div.style;
+                dstyle.clip = R.format("rect({1}px {2}px {3}px {0}px)", rect);
+                if (!node.clipRect) {
+                    dstyle.position = "absolute";
+                    dstyle.top = 0;
+                    dstyle.left = 0;
+                    dstyle.width = o.paper.width + "px";
+                    dstyle.height = o.paper.height + "px";
+                    node.parentNode.insertBefore(div, node);
+                    div.appendChild(node);
+                    node.clipRect = div;
+                }
+            }
+            if (!params["clip-rect"]) {
+                node.clipRect && (node.clipRect.style.clip = "auto");
+            }
+        }
+        if (o.textpath) {
+            var textpathStyle = o.textpath.style;
+            params.font && (textpathStyle.font = params.font);
+            params["font-family"] && (textpathStyle.fontFamily = '"' + params["font-family"].split(",")[0].replace(/^['"]+|['"]+$/g, E) + '"');
+            params["font-size"] && (textpathStyle.fontSize = params["font-size"]);
+            params["font-weight"] && (textpathStyle.fontWeight = params["font-weight"]);
+            params["font-style"] && (textpathStyle.fontStyle = params["font-style"]);
+        }
+        if ("arrow-start" in params) {
+            addArrow(res, params["arrow-start"]);
+        }
+        if ("arrow-end" in params) {
+            addArrow(res, params["arrow-end"], 1);
+        }
+        if (params.opacity != null || 
+            params["stroke-width"] != null ||
+            params.fill != null ||
+            params.src != null ||
+            params.stroke != null ||
+            params["stroke-width"] != null ||
+            params["stroke-opacity"] != null ||
+            params["fill-opacity"] != null ||
+            params["stroke-dasharray"] != null ||
+            params["stroke-miterlimit"] != null ||
+            params["stroke-linejoin"] != null ||
+            params["stroke-linecap"] != null) {
+            var fill = node.getElementsByTagName(fillString),
+                newfill = false;
+            fill = fill && fill[0];
+            !fill && (newfill = fill = createNode(fillString));
+            if (o.type == "image" && params.src) {
+                fill.src = params.src;
+            }
+            params.fill && (fill.on = true);
+            if (fill.on == null || params.fill == "none" || params.fill === null) {
+                fill.on = false;
+            }
+            if (fill.on && params.fill) {
+                var isURL = Str(params.fill).match(R._ISURL);
+                if (isURL) {
+                    fill.parentNode == node && node.removeChild(fill);
+                    fill.rotate = true;
+                    fill.src = isURL[1];
+                    fill.type = "tile";
+                    var bbox = o.getBBox(1);
+                    fill.position = bbox.x + S + bbox.y;
+                    o._.fillpos = [bbox.x, bbox.y];
+
+                    R._preload(isURL[1], function () {
+                        o._.fillsize = [this.offsetWidth, this.offsetHeight];
+                    });
+                } else {
+                    fill.color = R.getRGB(params.fill).hex;
+                    fill.src = E;
+                    fill.type = "solid";
+                    if (R.getRGB(params.fill).error && (res.type in {circle: 1, ellipse: 1} || Str(params.fill).charAt() != "r") && addGradientFill(res, params.fill, fill)) {
+                        a.fill = "none";
+                        a.gradient = params.fill;
+                        fill.rotate = false;
+                    }
+                }
+            }
+            if ("fill-opacity" in params || "opacity" in params) {
+                var opacity = ((+a["fill-opacity"] + 1 || 2) - 1) * ((+a.opacity + 1 || 2) - 1) * ((+R.getRGB(params.fill).o + 1 || 2) - 1);
+                opacity = mmin(mmax(opacity, 0), 1);
+                fill.opacity = opacity;
+                if (fill.src) {
+                    fill.color = "none";
+                }
+            }
+            node.appendChild(fill);
+            var stroke = (node.getElementsByTagName("stroke") && node.getElementsByTagName("stroke")[0]),
+            newstroke = false;
+            !stroke && (newstroke = stroke = createNode("stroke"));
+            if ((params.stroke && params.stroke != "none") ||
+                params["stroke-width"] ||
+                params["stroke-opacity"] != null ||
+                params["stroke-dasharray"] ||
+                params["stroke-miterlimit"] ||
+                params["stroke-linejoin"] ||
+                params["stroke-linecap"]) {
+                stroke.on = true;
+            }
+            (params.stroke == "none" || params.stroke === null || stroke.on == null || params.stroke == 0 || params["stroke-width"] == 0) && (stroke.on = false);
+            var strokeColor = R.getRGB(params.stroke);
+            stroke.on && params.stroke && (stroke.color = strokeColor.hex);
+            opacity = ((+a["stroke-opacity"] + 1 || 2) - 1) * ((+a.opacity + 1 || 2) - 1) * ((+strokeColor.o + 1 || 2) - 1);
+            var width = (toFloat(params["stroke-width"]) || 1) * .75;
+            opacity = mmin(mmax(opacity, 0), 1);
+            params["stroke-width"] == null && (width = a["stroke-width"]);
+            params["stroke-width"] && (stroke.weight = width);
+            width && width < 1 && (opacity *= width) && (stroke.weight = 1);
+            stroke.opacity = opacity;
+        
+            params["stroke-linejoin"] && (stroke.joinstyle = params["stroke-linejoin"] || "miter");
+            stroke.miterlimit = params["stroke-miterlimit"] || 8;
+            params["stroke-linecap"] && (stroke.endcap = params["stroke-linecap"] == "butt" ? "flat" : params["stroke-linecap"] == "square" ? "square" : "round");
+            if ("stroke-dasharray" in params) {
+                var dasharray = {
+                    "-": "shortdash",
+                    ".": "shortdot",
+                    "-.": "shortdashdot",
+                    "-..": "shortdashdotdot",
+                    ". ": "dot",
+                    "- ": "dash",
+                    "--": "longdash",
+                    "- .": "dashdot",
+                    "--.": "longdashdot",
+                    "--..": "longdashdotdot"
+                };
+                stroke.dashstyle = dasharray[has](params["stroke-dasharray"]) ? dasharray[params["stroke-dasharray"]] : E;
+            }
+            newstroke && node.appendChild(stroke);
+        }
+        if (res.type == "text") {
+            res.paper.canvas.style.display = E;
+            var span = res.paper.span,
+                m = 100,
+                fontSize = a.font && a.font.match(/\d+(?:\.\d*)?(?=px)/);
+            s = span.style;
+            a.font && (s.font = a.font);
+            a["font-family"] && (s.fontFamily = a["font-family"]);
+            a["font-weight"] && (s.fontWeight = a["font-weight"]);
+            a["font-style"] && (s.fontStyle = a["font-style"]);
+            fontSize = toFloat(a["font-size"] || fontSize && fontSize[0]) || 10;
+            s.fontSize = fontSize * m + "px";
+            res.textpath.string && (span.innerHTML = Str(res.textpath.string).replace(/</g, "&#60;").replace(/&/g, "&#38;").replace(/\n/g, "<br>"));
+            var brect = span.getBoundingClientRect();
+            res.W = a.w = (brect.right - brect.left) / m;
+            res.H = a.h = (brect.bottom - brect.top) / m;
+            // res.paper.canvas.style.display = "none";
+            res.X = a.x;
+            res.Y = a.y + res.H / 2;
+
+            ("x" in params || "y" in params) && (res.path.v = R.format("m{0},{1}l{2},{1}", round(a.x * zoom), round(a.y * zoom), round(a.x * zoom) + 1));
+            var dirtyattrs = ["x", "y", "text", "font", "font-family", "font-weight", "font-style", "font-size"];
+            for (var d = 0, dd = dirtyattrs.length; d < dd; d++) if (dirtyattrs[d] in params) {
+                res._.dirty = 1;
+                break;
+            }
+        
+            // text-anchor emulation
+            switch (a["text-anchor"]) {
+                case "start":
+                    res.textpath.style["v-text-align"] = "left";
+                    res.bbx = res.W / 2;
+                break;
+                case "end":
+                    res.textpath.style["v-text-align"] = "right";
+                    res.bbx = -res.W / 2;
+                break;
+                default:
+                    res.textpath.style["v-text-align"] = "center";
+                    res.bbx = 0;
+                break;
+            }
+            res.textpath.style["v-text-kern"] = true;
+        }
+        // res.paper.canvas.style.display = E;
+    },
+    addGradientFill = function (o, gradient, fill) {
+        o.attrs = o.attrs || {};
+        var attrs = o.attrs,
+            pow = Math.pow,
+            opacity,
+            oindex,
+            type = "linear",
+            fxfy = ".5 .5";
+        o.attrs.gradient = gradient;
+        gradient = Str(gradient).replace(R._radial_gradient, function (all, fx, fy) {
+            type = "radial";
+            if (fx && fy) {
+                fx = toFloat(fx);
+                fy = toFloat(fy);
+                pow(fx - .5, 2) + pow(fy - .5, 2) > .25 && (fy = math.sqrt(.25 - pow(fx - .5, 2)) * ((fy > .5) * 2 - 1) + .5);
+                fxfy = fx + S + fy;
+            }
+            return E;
+        });
+        gradient = gradient.split(/\s*\-\s*/);
+        if (type == "linear") {
+            var angle = gradient.shift();
+            angle = -toFloat(angle);
+            if (isNaN(angle)) {
+                return null;
+            }
+        }
+        var dots = R._parseDots(gradient);
+        if (!dots) {
+            return null;
+        }
+        o = o.shape || o.node;
+        if (dots.length) {
+            o.removeChild(fill);
+            fill.on = true;
+            fill.method = "none";
+            fill.color = dots[0].color;
+            fill.color2 = dots[dots.length - 1].color;
+            var clrs = [];
+            for (var i = 0, ii = dots.length; i < ii; i++) {
+                dots[i].offset && clrs.push(dots[i].offset + S + dots[i].color);
+            }
+            fill.colors = clrs.length ? clrs.join() : "0% " + fill.color;
+            if (type == "radial") {
+                fill.type = "gradientTitle";
+                fill.focus = "100%";
+                fill.focussize = "0 0";
+                fill.focusposition = fxfy;
+                fill.angle = 0;
+            } else {
+                // fill.rotate= true;
+                fill.type = "gradient";
+                fill.angle = (270 - angle) % 360;
+            }
+            o.appendChild(fill);
+        }
+        return 1;
+    },
+    Element = function (node, vml) {
+        this[0] = this.node = node;
+        node.raphael = true;
+        this.id = R._oid++;
+        node.raphaelid = this.id;
+        this.X = 0;
+        this.Y = 0;
+        this.attrs = {};
+        this.paper = vml;
+        this.matrix = R.matrix();
+        this._ = {
+            transform: [],
+            sx: 1,
+            sy: 1,
+            dx: 0,
+            dy: 0,
+            deg: 0,
+            dirty: 1,
+            dirtyT: 1
+        };
+        !vml.bottom && (vml.bottom = this);
+        this.prev = vml.top;
+        vml.top && (vml.top.next = this);
+        vml.top = this;
+        this.next = null;
+    };
+    var elproto = R.el;
+
+    Element.prototype = elproto;
+    elproto.constructor = Element;
+    elproto.transform = function (tstr) {
+        if (tstr == null) {
+            return this._.transform;
+        }
+        var vbs = this.paper._viewBoxShift,
+            vbt = vbs ? "s" + [vbs.scale, vbs.scale] + "-1-1t" + [vbs.dx, vbs.dy] : E,
+            oldt;
+        if (vbs) {
+            oldt = tstr = Str(tstr).replace(/\.{3}|\u2026/g, this._.transform || E);
+        }
+        R._extractTransform(this, vbt + tstr);
+        var matrix = this.matrix.clone(),
+            skew = this.skew,
+            o = this.node,
+            split,
+            isGrad = ~Str(this.attrs.fill).indexOf("-"),
+            isPatt = !Str(this.attrs.fill).indexOf("url(");
+        matrix.translate(1, 1);
+        if (isPatt || isGrad || this.type == "image") {
+            skew.matrix = "1 0 0 1";
+            skew.offset = "0 0";
+            split = matrix.split();
+            if ((isGrad && split.noRotation) || !split.isSimple) {
+                o.style.filter = matrix.toFilter();
+                var bb = this.getBBox(),
+                    bbt = this.getBBox(1),
+                    dx = bb.x - bbt.x,
+                    dy = bb.y - bbt.y;
+                o.coordorigin = (dx * -zoom) + S + (dy * -zoom);
+                setCoords(this, 1, 1, dx, dy, 0);
+            } else {
+                o.style.filter = E;
+                setCoords(this, split.scalex, split.scaley, split.dx, split.dy, split.rotate);
+            }
+        } else {
+            o.style.filter = E;
+            skew.matrix = Str(matrix);
+            skew.offset = matrix.offset();
+        }
+        oldt && (this._.transform = oldt);
+        return this;
+    };
+    elproto.rotate = function (deg, cx, cy) {
+        if (this.removed) {
+            return this;
+        }
+        if (deg == null) {
+            return;
+        }
+        deg = Str(deg).split(separator);
+        if (deg.length - 1) {
+            cx = toFloat(deg[1]);
+            cy = toFloat(deg[2]);
+        }
+        deg = toFloat(deg[0]);
+        (cy == null) && (cx = cy);
+        if (cx == null || cy == null) {
+            var bbox = this.getBBox(1);
+            cx = bbox.x + bbox.width / 2;
+            cy = bbox.y + bbox.height / 2;
+        }
+        this._.dirtyT = 1;
+        this.transform(this._.transform.concat([["r", deg, cx, cy]]));
+        return this;
+    };
+    elproto.translate = function (dx, dy) {
+        if (this.removed) {
+            return this;
+        }
+        dx = Str(dx).split(separator);
+        if (dx.length - 1) {
+            dy = toFloat(dx[1]);
+        }
+        dx = toFloat(dx[0]) || 0;
+        dy = +dy || 0;
+        if (this._.bbox) {
+            this._.bbox.x += dx;
+            this._.bbox.y += dy;
+        }
+        this.transform(this._.transform.concat([["t", dx, dy]]));
+        return this;
+    };
+    elproto.scale = function (sx, sy, cx, cy) {
+        if (this.removed) {
+            return this;
+        }
+        sx = Str(sx).split(separator);
+        if (sx.length - 1) {
+            sy = toFloat(sx[1]);
+            cx = toFloat(sx[2]);
+            cy = toFloat(sx[3]);
+            isNaN(cx) && (cx = null);
+            isNaN(cy) && (cy = null);
+        }
+        sx = toFloat(sx[0]);
+        (sy == null) && (sy = sx);
+        (cy == null) && (cx = cy);
+        if (cx == null || cy == null) {
+            var bbox = this.getBBox(1);
+        }
+        cx = cx == null ? bbox.x + bbox.width / 2 : cx;
+        cy = cy == null ? bbox.y + bbox.height / 2 : cy;
+    
+        this.transform(this._.transform.concat([["s", sx, sy, cx, cy]]));
+        this._.dirtyT = 1;
+        return this;
+    };
+    elproto.hide = function () {
+        !this.removed && (this.node.style.display = "none");
+        return this;
+    };
+    elproto.show = function () {
+        !this.removed && (this.node.style.display = E);
+        return this;
+    };
+    elproto._getBBox = function () {
+        if (this.removed) {
+            return {};
+        }
+        return {
+            x: this.X + (this.bbx || 0) - this.W / 2,
+            y: this.Y - this.H,
+            width: this.W,
+            height: this.H
+        };
+    };
+    elproto.remove = function () {
+        if (this.removed || !this.node.parentNode) {
+            return;
+        }
+        this.paper.__set__ && this.paper.__set__.exclude(this);
+        R.eve.unbind("raphael.*.*." + this.id);
+        R._tear(this, this.paper);
+        this.node.parentNode.removeChild(this.node);
+        this.shape && this.shape.parentNode.removeChild(this.shape);
+        for (var i in this) {
+            this[i] = typeof this[i] == "function" ? R._removedFactory(i) : null;
+        }
+        this.removed = true;
+    };
+    elproto.attr = function (name, value) {
+        if (this.removed) {
+            return this;
+        }
+        if (name == null) {
+            var res = {};
+            for (var a in this.attrs) if (this.attrs[has](a)) {
+                res[a] = this.attrs[a];
+            }
+            res.gradient && res.fill == "none" && (res.fill = res.gradient) && delete res.gradient;
+            res.transform = this._.transform;
+            return res;
+        }
+        if (value == null && R.is(name, "string")) {
+            if (name == fillString && this.attrs.fill == "none" && this.attrs.gradient) {
+                return this.attrs.gradient;
+            }
+            var names = name.split(separator),
+                out = {};
+            for (var i = 0, ii = names.length; i < ii; i++) {
+                name = names[i];
+                if (name in this.attrs) {
+                    out[name] = this.attrs[name];
+                } else if (R.is(this.paper.customAttributes[name], "function")) {
+                    out[name] = this.paper.customAttributes[name].def;
+                } else {
+                    out[name] = R._availableAttrs[name];
+                }
+            }
+            return ii - 1 ? out : out[names[0]];
+        }
+        if (this.attrs && value == null && R.is(name, "array")) {
+            out = {};
+            for (i = 0, ii = name.length; i < ii; i++) {
+                out[name[i]] = this.attr(name[i]);
+            }
+            return out;
+        }
+        var params;
+        if (value != null) {
+            params = {};
+            params[name] = value;
+        }
+        value == null && R.is(name, "object") && (params = name);
+        for (var key in params) {
+            eve("raphael.attr." + key + "." + this.id, this, params[key]);
+        }
+        if (params) {
+            for (key in this.paper.customAttributes) if (this.paper.customAttributes[has](key) && params[has](key) && R.is(this.paper.customAttributes[key], "function")) {
+                var par = this.paper.customAttributes[key].apply(this, [].concat(params[key]));
+                this.attrs[key] = params[key];
+                for (var subkey in par) if (par[has](subkey)) {
+                    params[subkey] = par[subkey];
+                }
+            }
+            // this.paper.canvas.style.display = "none";
+            if (params.text && this.type == "text") {
+                this.textpath.string = params.text;
+            }
+            setFillAndStroke(this, params);
+            // this.paper.canvas.style.display = E;
+        }
+        return this;
+    };
+    elproto.toFront = function () {
+        !this.removed && this.node.parentNode.appendChild(this.node);
+        this.paper && this.paper.top != this && R._tofront(this, this.paper);
+        return this;
+    };
+    elproto.toBack = function () {
+        if (this.removed) {
+            return this;
+        }
+        if (this.node.parentNode.firstChild != this.node) {
+            this.node.parentNode.insertBefore(this.node, this.node.parentNode.firstChild);
+            R._toback(this, this.paper);
+        }
+        return this;
+    };
+    elproto.insertAfter = function (element) {
+        if (this.removed) {
+            return this;
+        }
+        if (element.constructor == R.st.constructor) {
+            element = element[element.length - 1];
+        }
+        if (element.node.nextSibling) {
+            element.node.parentNode.insertBefore(this.node, element.node.nextSibling);
+        } else {
+            element.node.parentNode.appendChild(this.node);
+        }
+        R._insertafter(this, element, this.paper);
+        return this;
+    };
+    elproto.insertBefore = function (element) {
+        if (this.removed) {
+            return this;
+        }
+        if (element.constructor == R.st.constructor) {
+            element = element[0];
+        }
+        element.node.parentNode.insertBefore(this.node, element.node);
+        R._insertbefore(this, element, this.paper);
+        return this;
+    };
+    elproto.blur = function (size) {
+        var s = this.node.runtimeStyle,
+            f = s.filter;
+        f = f.replace(blurregexp, E);
+        if (+size !== 0) {
+            this.attrs.blur = size;
+            s.filter = f + S + ms + ".Blur(pixelradius=" + (+size || 1.5) + ")";
+            s.margin = R.format("-{0}px 0 0 -{0}px", round(+size || 1.5));
+        } else {
+            s.filter = f;
+            s.margin = 0;
+            delete this.attrs.blur;
+        }
+        return this;
+    };
+
+    R._engine.path = function (pathString, vml) {
+        var el = createNode("shape");
+        el.style.cssText = cssDot;
+        el.coordsize = zoom + S + zoom;
+        el.coordorigin = vml.coordorigin;
+        var p = new Element(el, vml),
+            attr = {fill: "none", stroke: "#000"};
+        pathString && (attr.path = pathString);
+        p.type = "path";
+        p.path = [];
+        p.Path = E;
+        setFillAndStroke(p, attr);
+        vml.canvas.appendChild(el);
+        var skew = createNode("skew");
+        skew.on = true;
+        el.appendChild(skew);
+        p.skew = skew;
+        p.transform(E);
+        return p;
+    };
+    R._engine.rect = function (vml, x, y, w, h, r) {
+        var path = R._rectPath(x, y, w, h, r),
+            res = vml.path(path),
+            a = res.attrs;
+        res.X = a.x = x;
+        res.Y = a.y = y;
+        res.W = a.width = w;
+        res.H = a.height = h;
+        a.r = r;
+        a.path = path;
+        res.type = "rect";
+        return res;
+    };
+    R._engine.ellipse = function (vml, x, y, rx, ry) {
+        var res = vml.path(),
+            a = res.attrs;
+        res.X = x - rx;
+        res.Y = y - ry;
+        res.W = rx * 2;
+        res.H = ry * 2;
+        res.type = "ellipse";
+        setFillAndStroke(res, {
+            cx: x,
+            cy: y,
+            rx: rx,
+            ry: ry
+        });
+        return res;
+    };
+    R._engine.circle = function (vml, x, y, r) {
+        var res = vml.path(),
+            a = res.attrs;
+        res.X = x - r;
+        res.Y = y - r;
+        res.W = res.H = r * 2;
+        res.type = "circle";
+        setFillAndStroke(res, {
+            cx: x,
+            cy: y,
+            r: r
+        });
+        return res;
+    };
+    R._engine.image = function (vml, src, x, y, w, h) {
+        var path = R._rectPath(x, y, w, h),
+            res = vml.path(path).attr({stroke: "none"}),
+            a = res.attrs,
+            node = res.node,
+            fill = node.getElementsByTagName(fillString)[0];
+        a.src = src;
+        res.X = a.x = x;
+        res.Y = a.y = y;
+        res.W = a.width = w;
+        res.H = a.height = h;
+        a.path = path;
+        res.type = "image";
+        fill.parentNode == node && node.removeChild(fill);
+        fill.rotate = true;
+        fill.src = src;
+        fill.type = "tile";
+        res._.fillpos = [x, y];
+        res._.fillsize = [w, h];
+        node.appendChild(fill);
+        setCoords(res, 1, 1, 0, 0, 0);
+        return res;
+    };
+    R._engine.text = function (vml, x, y, text) {
+        var el = createNode("shape"),
+            path = createNode("path"),
+            o = createNode("textpath");
+        x = x || 0;
+        y = y || 0;
+        text = text || "";
+        path.v = R.format("m{0},{1}l{2},{1}", round(x * zoom), round(y * zoom), round(x * zoom) + 1);
+        path.textpathok = true;
+        o.string = Str(text);
+        o.on = true;
+        el.style.cssText = cssDot;
+        el.coordsize = zoom + S + zoom;
+        el.coordorigin = "0 0";
+        var p = new Element(el, vml),
+            attr = {
+                fill: "#000",
+                stroke: "none",
+                font: R._availableAttrs.font,
+                text: text
+            };
+        p.shape = el;
+        p.path = path;
+        p.textpath = o;
+        p.type = "text";
+        p.attrs.text = Str(text);
+        p.attrs.x = x;
+        p.attrs.y = y;
+        p.attrs.w = 1;
+        p.attrs.h = 1;
+        setFillAndStroke(p, attr);
+        el.appendChild(o);
+        el.appendChild(path);
+        vml.canvas.appendChild(el);
+        var skew = createNode("skew");
+        skew.on = true;
+        el.appendChild(skew);
+        p.skew = skew;
+        p.transform(E);
+        return p;
+    };
+    R._engine.setSize = function (width, height) {
+        var cs = this.canvas.style;
+        this.width = width;
+        this.height = height;
+        width == +width && (width += "px");
+        height == +height && (height += "px");
+        cs.width = width;
+        cs.height = height;
+        cs.clip = "rect(0 " + width + " " + height + " 0)";
+        if (this._viewBox) {
+            R._engine.setViewBox.apply(this, this._viewBox);
+        }
+        return this;
+    };
+    R._engine.setViewBox = function (x, y, w, h, fit) {
+        R.eve("raphael.setViewBox", this, this._viewBox, [x, y, w, h, fit]);
+        var width = this.width,
+            height = this.height,
+            size = 1 / mmax(w / width, h / height),
+            H, W;
+        if (fit) {
+            H = height / h;
+            W = width / w;
+            if (w * H < width) {
+                x -= (width - w * H) / 2 / H;
+            }
+            if (h * W < height) {
+                y -= (height - h * W) / 2 / W;
+            }
+        }
+        this._viewBox = [x, y, w, h, !!fit];
+        this._viewBoxShift = {
+            dx: -x,
+            dy: -y,
+            scale: size
+        };
+        this.forEach(function (el) {
+            el.transform("...");
+        });
+        return this;
+    };
+    var createNode;
+    R._engine.initWin = function (win) {
+            var doc = win.document;
+            doc.createStyleSheet().addRule(".rvml", "behavior:url(#default#VML)");
+            try {
+                !doc.namespaces.rvml && doc.namespaces.add("rvml", "urn:schemas-microsoft-com:vml");
+                createNode = function (tagName) {
+                    return doc.createElement('<rvml:' + tagName + ' class="rvml">');
+                };
+            } catch (e) {
+                createNode = function (tagName) {
+                    return doc.createElement('<' + tagName + ' xmlns="urn:schemas-microsoft.com:vml" class="rvml">');
+                };
+            }
+        };
+    R._engine.initWin(R._g.win);
+    R._engine.create = function () {
+        var con = R._getContainer.apply(0, arguments),
+            container = con.container,
+            height = con.height,
+            s,
+            width = con.width,
+            x = con.x,
+            y = con.y;
+        if (!container) {
+            throw new Error("VML container not found.");
+        }
+        var res = new R._Paper,
+            c = res.canvas = R._g.doc.createElement("div"),
+            cs = c.style;
+        x = x || 0;
+        y = y || 0;
+        width = width || 512;
+        height = height || 342;
+        res.width = width;
+        res.height = height;
+        width == +width && (width += "px");
+        height == +height && (height += "px");
+        res.coordsize = zoom * 1e3 + S + zoom * 1e3;
+        res.coordorigin = "0 0";
+        res.span = R._g.doc.createElement("span");
+        res.span.style.cssText = "position:absolute;left:-9999em;top:-9999em;padding:0;margin:0;line-height:1;";
+        c.appendChild(res.span);
+        cs.cssText = R.format("top:0;left:0;width:{0};height:{1};display:inline-block;position:relative;clip:rect(0 {0} {1} 0);overflow:hidden", width, height);
+        if (container == 1) {
+            R._g.doc.body.appendChild(c);
+            cs.left = x + "px";
+            cs.top = y + "px";
+            cs.position = "absolute";
+        } else {
+            if (container.firstChild) {
+                container.insertBefore(c, container.firstChild);
+            } else {
+                container.appendChild(c);
+            }
+        }
+        res.renderfix = function () {};
+        return res;
+    };
+    R.prototype.clear = function () {
+        R.eve("raphael.clear", this);
+        this.canvas.innerHTML = E;
+        this.span = R._g.doc.createElement("span");
+        this.span.style.cssText = "position:absolute;left:-9999em;top:-9999em;padding:0;margin:0;line-height:1;display:inline;";
+        this.canvas.appendChild(this.span);
+        this.bottom = this.top = null;
+    };
+    R.prototype.remove = function () {
+        R.eve("raphael.remove", this);
+        this.canvas.parentNode.removeChild(this.canvas);
+        for (var i in this) {
+            this[i] = typeof this[i] == "function" ? R._removedFactory(i) : null;
+        }
+        return true;
+    };
+
+    var setproto = R.st;
+    for (var method in elproto) if (elproto[has](method) && !setproto[has](method)) {
+        setproto[method] = (function (methodname) {
+            return function () {
+                var arg = arguments;
+                return this.forEach(function (el) {
+                    el[methodname].apply(el, arg);
+                });
+            };
+        })(method);
+    }
+})();
+
+    // EXPOSE
+    // SVG and VML are appended just before the EXPOSE line
+    // Even with AMD, Raphael should be defined globally
+    oldRaphael.was ? (g.win.Raphael = R) : (Raphael = R);
+
+    return R;
+}));
 
 /* ======================================================================================= */
 /*                                   wheelnav.js - v1.8.0                                  */
