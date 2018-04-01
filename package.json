@@ -25,7 +25,7 @@
         "js/dist/raphael.license.txt",
         "js/dist/welcome.html",
         "LICENSE"
-    ],    
+    ],
     "keywords": [
         "animated",
         "navigation",
@@ -39,5 +39,13 @@
     "bugs": {
         "url": "https://github.com/softwaretailoring/wheelnav/issues"
     },
-    "license": "MIT"
+    "license": "MIT",
+    "devDependencies": {
+        "gulp": "^3.9.1",
+        "gulp-concat": "^2.6.1",
+        "gulp-plumber": "^1.2.0",
+        "gulp-rename": "^1.2.2",
+        "gulp-sourcemaps": "^2.6.4",
+        "gulp-uglify": "^3.0.0"
+    }
 }

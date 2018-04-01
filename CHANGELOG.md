@@ -1,3 +1,6 @@
+## 1.8.1
+* Migrated to VSCode with gulp and npm modules
+
 ## 1.7.1
 
 * Fix render issue with slicaAngle > 180

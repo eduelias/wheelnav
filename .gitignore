@@ -1,2 +1,4 @@
 /Bin
 /*.config
+/.vs
+/node_modules
