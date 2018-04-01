@@ -6,20 +6,6 @@
     var sourcemaps = require('gulp-sourcemaps');
     var plumber = require('gulp-plumber');
 
-    var jsFiles = 'js/**/*.js',
-        jsDest = 'dist/scripts';
-
-    gulp.task('scripts', function() {
-        return gulp.src(jsFiles)
-            .pipe(concat('scripts.js'))
-            .pipe(gulp.dest(jsDest));
-    });
-
-    gulp.task('default', function() {
-        // Default task code
-        console.log('GULP GULP GULP')
-    });
-
     var jsFiles = [
             "./js/required/raphael.icons.js",
             "./js/required/raphael.js",
